@@ -3,7 +3,7 @@ import "../Category/Category.css";
 
 function Category() {
   return (
-    <div className="category-container">
+    <div id={'categories'} className="category-container">
       <div className="category-card">
         <div className="category-icon">
         <ion-icon name="logo-javascript"></ion-icon>

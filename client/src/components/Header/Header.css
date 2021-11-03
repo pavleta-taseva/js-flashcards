@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+
+body {
+  min-height: 150vh;
+}
+
+.header {
+  font-family: "Audiowide", cursive;
+  position: relative;
+  height: 100vh;
+  background-size: cover;
+  background-position: top;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  clip-path: circle(180vh at 50% -80vh);
+}
+
+.header-content {
+  width: 100vw;
+  text-align: center;
+}
+
+.header-content a {
+  position: absolute;
+  top: 4vh;
+  left: 10%;
+  font-size: 5em;
+  color: #6b2e67;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.header-content ion-icon {
+  position: relative;
+  font-size: 65px;
+  z-index: 1;
+  color: #6b2e67;
+}

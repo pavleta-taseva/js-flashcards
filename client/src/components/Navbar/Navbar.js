@@ -51,6 +51,13 @@ function Navbar() {
                         <span className="nav-item-title">Logout</span>
                     </Link>
                 </li>
+                {/* Make visible only for admin */}
+                {/* <li className={splitLocation[1] === "admin" ? "active" : ""}>
+                    <Link to="/admin">
+                        <span className="nav-icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                        <span className="nav-item-title">Admin</span>
+                    </Link>
+                </li> */}
             </ul>
         </div>
     )
