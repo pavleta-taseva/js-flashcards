@@ -117,7 +117,7 @@ body {
 
 .second {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   text-decoration: none;
@@ -127,7 +127,7 @@ body {
   color: #fff;
   cursor: pointer;
   background-color: transparent;
-  margin: 20px auto;
+  margin: 5px auto;
   font-weight: 400;
   border-bottom: 1px solid #fff;
 }

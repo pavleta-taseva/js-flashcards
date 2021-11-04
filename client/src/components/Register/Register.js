@@ -39,7 +39,8 @@ function Register() {
                     </div>
             </form>
                 <div className="second">
-                    <Link className="link" to="/login">Already have an account?</Link>
+                    <Link className="link" to="/login">Already have an account?</Link><br></br>
+                    <Link className="link" to="/">Back to Home</Link>
                 </div>
             </div>
         </div>

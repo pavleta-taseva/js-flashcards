@@ -19,7 +19,7 @@ function App() {
       <Category />
       <Footer />
         </>
-      ) } />
+      )} />
       <Route path='/register' component={ Register } />
     </div>
     </Router>
