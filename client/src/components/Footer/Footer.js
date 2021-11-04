@@ -1,17 +1,18 @@
-import React from 'react';
 import '../Footer/Footer.css';
 
 function Footer() {
     return (
-        <div className="footer-bottom">
+        <footer>
             <small>Copyright &copy; 2021
-                @Kumiho - for educational purposes only.
+                <a className="links" href="https://github.com/KumihoBG" target="_blanc"> Pavleta Taseva</a> - for educational purposes only.
             </small>
             <br></br>
             <small>
-                Credits to Online Tutorials - YouTube Channel
+            Credits to <a className="links" href="https://www.youtube.com/channel/UCbwXnUipZsLfUckBPsC7Jog" target="_blanc"> Online Tutorials - YouTube Channel</a>
+            <br></br>
+            Credits to <a className="links" href="http://www.freepik.com"> vectorjuice / Freepik</a>
             </small>
-        </div>
+        </footer>
     )
 }
 

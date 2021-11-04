@@ -1,12 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
-.footer-bottom {
+footer {
     padding-top: 100px;
     height: 100px;
 }
 
-.footer-bottom small {
+footer small {
   color: #eee;
+  font-size: 16px;
+  font-family: 'Roboto Mono', monospace;
+}
+
+footer small a {
   font-size: 16px;
   font-family: 'Roboto Mono', monospace;
 }

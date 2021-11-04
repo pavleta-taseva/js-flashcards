@@ -1,4 +1,3 @@
-import React from 'react';
 import '../Navbar/Navbar.css';
 import { Link } from 'react-router-dom';
 import { useLocation } from "react-router-dom";
@@ -53,10 +52,10 @@ function Navbar() {
                         <span className="nav-item-title">Logout</span>
                     </Link>
                 </li>
-        
+                {/* Visible only for admin */}
                 <li className={splitLocation[1] === "admin" ? "active" : ""}>
                     <Link to="/admin">
-                        <span className="nav-icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                        <span className="nav-icon"><ion-icon name="cog-outline"></ion-icon></span>
                         <span className="nav-item-title">Admin Panel</span>
                     </Link>
                 </li>
