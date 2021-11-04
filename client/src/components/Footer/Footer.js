@@ -6,7 +6,6 @@ function Footer() {
             <small>Copyright &copy; 2021
                 <a className="links" href="https://github.com/KumihoBG" target="_blanc"> Pavleta Taseva</a> - for educational purposes only.
             </small>
-            <br></br>
             <small>
             Credits to <a className="links" href="https://www.youtube.com/channel/UCbwXnUipZsLfUckBPsC7Jog" target="_blanc"> Online Tutorials - YouTube Channel</a>
             <br></br>
