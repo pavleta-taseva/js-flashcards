@@ -6,12 +6,12 @@ function Footer() {
     return (
         <div className="footer-bottom">
             <small>Copyright &copy; 2021 
-                <Link className="links" to="https://github.com/KumihoBG" target="_blank"> @Kumiho
+                <Link className="links" to={{ pathname:"https://github.com/KumihoBG" }} target="_blank"> @Kumiho
                 </Link> - for educational purposes only.
             </small>
             <br></br>
             <small>
-            <Link className="links" to="https://www.youtube.com/channel/UCbwXnUipZsLfUckBPsC7Jog" target="_blank"> Designed by Online Tutorials
+            <Link className="links" to={{ pathname:"https://www.youtube.com/channel/UCbwXnUipZsLfUckBPsC7Jog" }} target="_blank"> Designed by Online Tutorials
             </Link></small>
         </div>
     )
