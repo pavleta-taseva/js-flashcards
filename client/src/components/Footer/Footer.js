@@ -10,9 +10,12 @@ function Footer() {
                 </Link> - for educational purposes only.
             </small>
             <br></br>
-            <small>Designed by Online Tutorials</small>
+            <small>
+            <Link className="links" to="https://www.youtube.com/channel/UCbwXnUipZsLfUckBPsC7Jog" target="_blank"> Designed by Online Tutorials
+            </Link></small>
         </div>
     )
 }
 
 export default Footer;
+
