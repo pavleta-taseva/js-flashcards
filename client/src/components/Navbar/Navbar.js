@@ -24,14 +24,14 @@ function Navbar() {
                 </li>
                 <div className="guest">
                 <li className={splitLocation[1] === "register" ? "active" : ""}>
-                    <Link to="/register">
+                    <Link to="/auth/register">
                         <span className="nav-icon"><ion-icon name="person-add-outline"></ion-icon></span>
                         <span className="nav-item-title">Register</span>
                     </Link>
                 </li>
 
                 <li className={splitLocation[1] === "login" ? "active" : ""}>
-                    <Link to="/login">
+                    <Link to="/auth/login">
                         <span className="nav-icon"><ion-icon name="log-in-outline"></ion-icon></span>
                         <span className="nav-item-title">Login</span>
                     </Link>
@@ -47,7 +47,7 @@ function Navbar() {
                     </li>
                 </div>
                 <li className={splitLocation[1] === "logout" ? "active" : ""}>
-                    <Link to="/logout">
+                    <Link to="/auth/logout">
                         <span className="nav-icon"><ion-icon name="log-out-outline"></ion-icon></span>
                         <span className="nav-item-title">Logout</span>
                     </Link>

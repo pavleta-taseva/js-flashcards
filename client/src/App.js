@@ -6,22 +6,25 @@ import Navbar from './components/Navbar/Navbar.js';
 import Header from './components/Header/Header.js';
 import Footer from './components/Footer/Footer.js';
 import Register from './components/Register/Register.js';
+import Login from './components/Login/Login.js';
 
 function App() {
   return (
     <Router>
-    <div className="App">
-      <Route path='/' exact render={ (props) => (
-        <>
-      <Header />
-      <CategoryIntro />
-      <Navbar />
-      <Category />
-      <Footer />
-        </>
-      )} />
-      <Route path='/register' component={ Register } />
-    </div>
+      <div className="App">
+        <Route path='/' exact render={(props) => (
+          <>
+            <Header />
+            <CategoryIntro />
+            <Navbar />
+            <Category />
+            <Footer />
+          </>
+        )} />
+        <Route path='/auth/register' component={ Register } />
+        <Route path='/auth/login' component={ Login } />
+
+      </div>
     </Router>
   );
 }
