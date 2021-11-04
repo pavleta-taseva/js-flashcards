@@ -23,7 +23,7 @@ function Navbar() {
                         <span className="nav-item-title">Home</span>
                     </Link>
                 </li>
-
+                <div className="guest">
                 <li className={splitLocation[1] === "register" ? "active" : ""}>
                     <Link to="/register">
                         <span className="nav-icon"><ion-icon name="person-add-outline"></ion-icon></span>
@@ -37,27 +37,29 @@ function Navbar() {
                         <span className="nav-item-title">Login</span>
                     </Link>
                 </li>
+                </div>
 
-                <li className={splitLocation[1] === "profile" ? "active" : ""}>
-                    <Link to="/profile">
-                        <span className="nav-icon"><ion-icon name="person-outline"></ion-icon></span>
-                        <span className="nav-item-title">Profile</span>
-                    </Link>
-                </li>
-
+                <div className="user">
+                    <li className={splitLocation[1] === "profile" ? "active" : ""}>
+                        <Link to="/profile">
+                            <span className="nav-icon"><ion-icon name="person-outline"></ion-icon></span>
+                            <span className="nav-item-title">Profile</span>
+                        </Link>
+                    </li>
+                </div>
                 <li className={splitLocation[1] === "logout" ? "active" : ""}>
                     <Link to="/logout">
                         <span className="nav-icon"><ion-icon name="log-out-outline"></ion-icon></span>
                         <span className="nav-item-title">Logout</span>
                     </Link>
                 </li>
-                {/* Make visible only for admin */}
-                {/* <li className={splitLocation[1] === "admin" ? "active" : ""}>
+        
+                <li className={splitLocation[1] === "admin" ? "active" : ""}>
                     <Link to="/admin">
                         <span className="nav-icon"><ion-icon name="log-out-outline"></ion-icon></span>
-                        <span className="nav-item-title">Admin</span>
+                        <span className="nav-item-title">Admin Panel</span>
                     </Link>
-                </li> */}
+                </li>
             </ul>
         </div>
     )
