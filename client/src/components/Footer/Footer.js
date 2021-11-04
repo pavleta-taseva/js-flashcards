@@ -1,18 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import '../Footer/Footer.css';
 
 function Footer() {
     return (
         <div className="footer-bottom">
-            <small>Copyright &copy; 2021 
-                <Link className="links" to={{ pathname:"https://github.com/KumihoBG" }} target="_blank"> @Kumiho
-                </Link> - for educational purposes only.
+            <small>Copyright &copy; 2021
+                @Kumiho - for educational purposes only.
             </small>
             <br></br>
             <small>
-            <Link className="links" to={{ pathname:"https://www.youtube.com/channel/UCbwXnUipZsLfUckBPsC7Jog" }} target="_blank"> Designed by Online Tutorials
-            </Link></small>
+                Credits to Online Tutorials - YouTube Channel
+            </small>
         </div>
     )
 }
