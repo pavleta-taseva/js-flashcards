@@ -28,12 +28,16 @@ async function editFlashcardById(id, flashcardData) {
     return flashcard.save();
 }
 
+async function deleteFlashcard(id) {
+    return await Flashcard.findByIdAndDelete(id);
+}
+
 async function favorite(flashcardId, userId) {
     const user = await User.findById(userId);
     const flashcard = await Flashcard.findById(flashcardId);
 
     if(user._id == flashcard.owner) {
-        throw new Error('You are not authorized to book your own flashcard.');
+        throw new Error('You are not authorized to add your own flashcard to favorites.');
     }
 
     user.favoriteFlashcards.push(flashcard);
@@ -46,5 +50,6 @@ module.exports = {
     getAll,
     getFlashcardById,
     editFlashcardById,
+    deleteFlashcard,
     favorite
 }

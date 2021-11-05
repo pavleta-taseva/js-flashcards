@@ -11,7 +11,7 @@ async function createUser(username, email, hashedPassword) {
         await user.save();
         return user;
     } catch (error) {
-    console.error(error);
+        console.error(error);
     }
 }
 

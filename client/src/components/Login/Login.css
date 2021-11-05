@@ -72,6 +72,8 @@ body {
   padding: 10px;
   text-align: center;
   border-radius: 5px;
+  color: #0f1224;
+  font-size: 18px;
 }
 
 .loginBtn {

@@ -100,6 +100,21 @@ router.post('/edit/:id', isRegistered(), async (req, res) => {
     }   
 });
 
+router.get('/delete/:id', isRegistered(), async (req, res) => {
+    try {
+        const flashcard = await req.storage.getFlashcardById(req.params.id);
+
+        if (flashcard.owner != req.user._id) {
+            throw new Error('You are not authorized to delete this flashcard.');
+        }
+        await req.storage.deleteFlashcard(req.params.id);
+        res.redirect('/');
+    } catch(err) {
+        console.log(err.message)
+        res.redirect('/flashcards/details/' + req.params.id);
+    }
+});
+
 router.get('/favorite/:id', isRegistered(), async(req, res) => {
     try {
         await req.storage.favorite(req.params.id, req.user._id);
