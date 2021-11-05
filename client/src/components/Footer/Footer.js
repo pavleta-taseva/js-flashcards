@@ -3,7 +3,7 @@ import '../Footer/Footer.css';
 function Footer() {
     return (
         <footer>
-            <small>Copyright &copy; 2021
+            <small>Copyright &copy; 2021 | Design by 
                 <a className="links" href="https://github.com/KumihoBG" target="_blanc"> Pavleta Taseva</a> - for educational purposes only.
             </small>
             <small>

@@ -31,7 +31,7 @@ function Register() {
                     <label>Repeat password</label><br></br>
                     <div className="icon">
                         <i className="fas fa-lock"></i>
-                        <input className="repeatPass" type="password" autoComplete="current-password" name="repeatPass"></input><br></br>
+                        <input className="repeatPass" type="password" autoComplete="current-password" name="rePass"></input><br></br>
                         <i id="eye-two" className="fas fa-eye"></i>
                     </div>
                     <div>
