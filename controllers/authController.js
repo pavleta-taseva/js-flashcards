@@ -30,16 +30,13 @@ router.post('/register',
     }),
     async (req, res) => {
         const { errors } = validationResult(req);
-        console.log(req.body.username, req.body.email);
         try {
             if (errors.length > 0) {
                 const message = errors.map(e => e.msg).join('\n');
                 throw new Error(message);
             }
-
-            const newUser = await req.authentication.createUser(req.body.username, req.body.email, req.body.password);
-            console.log(newUser);
-            res.json(newUser);
+            
+            await req.authentication.createUser(req.body.username, req.body.email, req.body.password);
             // Change redirect according to the requirements
             res.redirect('/');
         } catch (err) {
@@ -49,7 +46,7 @@ router.post('/register',
 );
 
 router.get('/login', isGuest(), (req, res) => {
-    res.render('user/login');
+    res.json({ status: 200 });
 });
 
 router.post('/login', isGuest(), async (req, res) => {
@@ -64,12 +61,13 @@ router.post('/login', isGuest(), async (req, res) => {
                 username: req.body.username,
             }
         }
-        res.render('user/login', context);
+        res.json({ context });
     }
 });
 
 router.get('/logout', (req, res) => {
     req.authentication.logout();
+    console.log('User logged out...');
     res.redirect('/');
 });
 
