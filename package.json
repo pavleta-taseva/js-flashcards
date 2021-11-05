@@ -6,8 +6,8 @@
   "scripts": {
     "build": "cd client && npm run build",
     "install": "cd client && npm install",
-    "start": "node server",
-    "server": "nodemon server",
+    "start": "node index",
+    "server": "nodemon index",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
