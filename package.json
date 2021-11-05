@@ -1,12 +1,12 @@
 {
-  "name": "bookuni",
+  "name": "js-flashcards",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
     "server": "nodemon index.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install cd ../client && npm run build cd ../client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install cd client && npm run build cd client"
   },
   "keywords": [],
   "author": "",
