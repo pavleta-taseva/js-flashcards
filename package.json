@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "server": "nodemon index.js",
-    "client": "cd client && npm run start",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install cd client && npm run build cd client"
+    "dev": "react-scripts start",
+    "start": "serve -s build",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +23,7 @@
     "express-validator": "^6.12.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.10",
-    "nodemon": "^2.0.13"
+    "nodemon": "^2.0.13",
+    "serve": "^13.0.2"
   }
 }
