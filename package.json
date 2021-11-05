@@ -2,14 +2,12 @@
   "name": "jsflashcards",
   "version": "1.0.0",
   "description": "",
-  "engines": {
-    "node": "14.x"
-  },
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
     "server": "nodemon index.js",
     "client": "cd client && npm run start",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install cd client && npm run build cd client"
   },
   "keywords": [],
@@ -25,5 +23,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.10",
     "nodemon": "^2.0.13"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
