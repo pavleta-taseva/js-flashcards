@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const userService = require('../services/userService.js');
-const { TOKEN_SECRET, COOKIE_NAME } = require('../config');
+const { TOKEN_SECRET, COOKIE_NAME } = require('../config/credentials.js');
 
 // Factory function (returns another function)
 module.exports = () => (req, res, next) => {
