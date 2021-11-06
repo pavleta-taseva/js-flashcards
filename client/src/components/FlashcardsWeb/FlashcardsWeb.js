@@ -1,19 +1,30 @@
+import React, { useState } from 'react';
 import '../FlashcardsWeb/FlashcardsWeb.css';
-import Flashcard from '../Flashcard/Flashcard.js';
+import FlashcardList from '../FlashcardList/FlashcardList.js';
 
 function FlashcardsWeb() {
+    const [flashcards, setFlashcards] = useState(SAMPLE_FLASHCARDS);
     return (
-        <div className="flashcards-wrapper">
-            <h1>Show us what you got!</h1>
-            <h3>Pick a card and try to answer it. Then reveal it in order to see the correct answer.</h3>
-            <h3>If you feel like you need to practice this question more than once, just add it your Practice List by clicking the <ion-icon name="heart-outline"></ion-icon> icon.</h3>
-            <div className="flashcards-container">
-                <Flashcard />
-                <Flashcard />
-                <Flashcard />
-            </div>
-        </div>
+        <FlashcardList flashcards={flashcards} />
     )
 }
+
+const SAMPLE_FLASHCARDS = [
+    {
+        id: 1,
+        question: "What is CSS",
+        answer: "CSS stands for Cascading Style Sheets · CSS describes how HTML elements are to be displayed on screen, paper, or in other media."
+    },
+    {
+        id: 2,
+        question: "What is CSS",
+        answer: "CSS stands for Cascading Style Sheets · CSS describes how HTML elements are to be displayed on screen, paper, or in other media."
+    },
+    {
+        id: 3,
+        question: "What is CSS",
+        answer: "CSS stands for Cascading Style Sheets · CSS describes how HTML elements are to be displayed on screen, paper, or in other media."
+    }
+]
 
 export default FlashcardsWeb;

@@ -66,6 +66,15 @@ body {
     padding: 5%;
 }
 
+.answer {
+    margin: 0 auto;
+    height: 50%;
+    width: 80%;
+    padding: 2% 7%;
+    text-align: justify;
+    letter-spacing: 1px;
+}   
+
 .listed-container {
     position: absolute;
     bottom: 20px;
