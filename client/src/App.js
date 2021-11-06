@@ -7,6 +7,8 @@ import Header from './components/Header/Header.js';
 import Footer from './components/Footer/Footer.js';
 import Register from './components/Register/Register.js';
 import Login from './components/Login/Login.js';
+import FlashcardsBasic from './components/FlashcardsBasic/FlashcardsBasic.js';
+import React from 'react';
 
 function App() {
   return (
@@ -21,9 +23,14 @@ function App() {
             <Footer />
           </>
         )} />
-        <Route path='/auth/register' component={ Register } />
-        <Route path='/auth/login' component={ Login } />
-
+        <Route path='/auth/register' component={Register} />
+        <Route path='/auth/login' component={Login} />
+        <Route path='/flashcards-basic' render={(props) => (
+          <React.Fragment>
+            <Navbar />
+            <FlashcardsBasic />
+          </React.Fragment>
+        )} />
       </div>
     </Router>
   );

@@ -1,4 +1,5 @@
 import "../Category/Category.css";
+import { Link } from 'react-router-dom';
 
 function Category() {
   return (
@@ -8,7 +9,7 @@ function Category() {
           <ion-icon name="logo-javascript"></ion-icon>
         </div>
         <div className="category-content">
-          <h2 className="category-title">JS Basics</h2>
+          <Link to="/flashcards-basic"><h2 className="category-title">JS Basics</h2></Link>
           <p className="category-description">
             Learn with ease the basics of JS Programming language through series
             of flashcards, created for beginners.
