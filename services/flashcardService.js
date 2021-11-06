@@ -32,15 +32,15 @@ async function deleteFlashcard(id) {
     return await Flashcard.findByIdAndDelete(id);
 }
 
-async function favorite(flashcardId, userId) {
+async function practice(flashcardId, userId) {
     const user = await User.findById(userId);
     const flashcard = await Flashcard.findById(flashcardId);
 
     if(user._id == flashcard.owner) {
-        throw new Error('You are not authorized to add your own flashcard to favorites.');
+        throw new Error('You are not authorized to add your own flashcard to Practice list.');
     }
 
-    user.favoriteFlashcards.push(flashcard);
+    user.listedFlashcards.push(flashcard);
     // flashcard.bookedBy.push(user);
     return Promise.all([user.save(), flashcard.save()]);
 }
@@ -51,5 +51,5 @@ module.exports = {
     getFlashcardById,
     editFlashcardById,
     deleteFlashcard,
-    favorite
+    practice
 }

@@ -18,7 +18,7 @@ const userSchema = new Schema({
         ref: 'Flashcard',
         default: []
     }],
-    favoriteFlashcards: [{
+    listedFlashcards: [{
         type: Schema.Types.ObjectId,
         ref: 'Flashcard',
         default: []

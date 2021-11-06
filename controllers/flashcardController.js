@@ -115,9 +115,9 @@ router.get('/delete/:id', isRegistered(), async (req, res) => {
     }
 });
 
-router.get('/favorite/:id', isRegistered(), async(req, res) => {
+router.get('/practice-list/:id', isRegistered(), async(req, res) => {
     try {
-        await req.storage.favorite(req.params.id, req.user._id);
+        await req.storage.practice(req.params.id, req.user._id);
         res.redirect('/flashcards/details/' + req.params.id);
     } catch(err) {
         console.log(err.message);

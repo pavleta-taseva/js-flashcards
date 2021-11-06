@@ -37,7 +37,7 @@ async function getUserByEmail(email) {
 
 async function getUserById(id) {
     try {
-        const user = await User.findById(id).populate('favoriteFlashcards').lean();
+        const user = await User.findById(id).populate('listedFlashcards').lean();
         return user;
     } catch(err) {
         console.log(err.message);

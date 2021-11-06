@@ -60,3 +60,24 @@ body {
     background: var(--dark-purple);
     z-index: 10;
 }
+
+.question {
+    text-align: center;
+    padding: 5%;
+}
+
+.listed-container {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 20px;
+}
+
+.box ion-icon {
+    font-size: 40px;
+    margin-right: 10px;
+    cursor: pointer;
+}
