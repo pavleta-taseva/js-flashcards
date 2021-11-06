@@ -22,7 +22,7 @@ function Category() {
           <ion-icon name="logo-javascript"></ion-icon>
         </div>
         <div className="category-content">
-          <h2 className="category-title">JS Advanced</h2>
+        <Link to="/flashcards-advanced"><h2 className="category-title">JS Advanced</h2></Link>
           <p className="category-description">
             Feeling confident enough? Test your advanced knowledge in
             JavaScript.
@@ -35,7 +35,7 @@ function Category() {
           <ion-icon name="logo-javascript"></ion-icon>
         </div>
         <div className="category-content">
-          <h2 className="category-title">JS Web</h2>
+        <Link to="/flashcards-web"><h2 className="category-title">JS Web</h2></Link>
           <p className="category-description">
             Already able to create JS Applications and Web servers? Prove your
             mastery!

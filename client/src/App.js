@@ -8,6 +8,8 @@ import Footer from './components/Footer/Footer.js';
 import Register from './components/Register/Register.js';
 import Login from './components/Login/Login.js';
 import FlashcardsBasic from './components/FlashcardsBasic/FlashcardsBasic.js';
+import FlashcardsAdvanced from './components/FlashcardsAdvanced/FlashcardsAdvanced.js';
+import FlashcardsWeb from './components/FlashcardsWeb/FlashcardsWeb.js';
 import React from 'react';
 
 function App() {
@@ -29,6 +31,18 @@ function App() {
           <React.Fragment>
             <Navbar />
             <FlashcardsBasic />
+          </React.Fragment>
+        )} />
+        <Route path='/flashcards-advanced' render={(props) => (
+          <React.Fragment>
+            <Navbar />
+            <FlashcardsAdvanced />
+          </React.Fragment>
+        )} />
+        <Route path='/flashcards-web' render={(props) => (
+          <React.Fragment>
+            <Navbar />
+            <FlashcardsWeb />
           </React.Fragment>
         )} />
       </div>
