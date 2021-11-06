@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const config = require('./index.js');
+const config = require('./credentials.js');
 
 // Asynchronous - using promise to wait for the database to connect before starting application
 
