@@ -26,6 +26,12 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0 2%;
+    cursor: pointer;
+}
+
+.box:hover {
+    transform: scale(1.05);
+    transition: transform 1.2s ease-in-out;
 }
 
 .box::before {
@@ -61,6 +67,31 @@ body {
     z-index: 10;
 }
 
+.box.flip::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    transform: skewX(2deg) skewY(4deg);
+    transition: 150ms;
+    background: linear-gradient(125deg, #00ccff, var(--dark-purple), #d400d4);
+}
+
+.box.flip::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    transform: skewX(2deg) skewY(4deg);
+    transition: 150ms;
+    background: linear-gradient(125deg, #00ccff, var(--dark-purple), #d400d4);
+    filter: blur(50px);
+}
+
 .question {
     text-align: center;
     padding: 5%;
@@ -89,4 +120,11 @@ body {
     font-size: 40px;
     margin-right: 10px;
     cursor: pointer;
+}
+
+.listed-link {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
