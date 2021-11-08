@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+:root {
+  --main-color: #3c2846;
+  --light-pink: #ca90e0;
+  --dark-purple: #1c1320;
+}
+
+.edit {
+    width: 35vw;
+    background: #2a1d30;
+    font-family: "Roboto Mono", monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+    border-radius: 25px;
+    box-shadow: 0px 3px 56px 23px rgba(196,146,217,0.75);
+    -webkit-box-shadow: 0px 3px 56px 23px rgba(196,146,217,0.75);
+    -moz-box-shadow: 0px 3px 56px 23px rgba(196,146,217,0.75);
+}
+
+.edit-form label {
+    font-size: 20px;
+}
+
+.edit-form .category {
+    color: #000;
+}
+
+.edit-form .category option {
+    color: #000;
+}
+
+.edit-form div {
+    margin-bottom: 30px;
+}
+
+.edit-form textarea,
+.edit-form select {
+    margin-top: 10px;
+    color: #000;
+    outline: none;
+}
+
+.edit-form textarea {
+    height: 200px;
+    padding: 10px;
+    width: 95%;
+}
+
+.edit-form select {
+    height: 35px;
+    width: 100%;
+}
+
+.editBtn {
+    display: inline-block;
+    padding: 15px 70px;
+    background: var(--main-color);
+    color: #fff;
+    border: 1px solid var(--light-pink);
+    outline: none;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0px 3px 26px -1px rgba(196,146,217,0.25);
+    -webkit-box-shadow: 0px 3px 26px -1px rgba(196,146,217,0.25);
+    -moz-box-shadow: 0px 3px 26px -1px rgba(196,146,217,0.25);
+}

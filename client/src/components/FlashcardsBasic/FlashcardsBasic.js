@@ -12,17 +12,20 @@ function FlashcardBasic() {
 const SAMPLE_FLASHCARDS = [
     {
         id: 1,
+        category: "JS Basics",
         question: "What is CSS",
         answer: "CSS stands for Cascading Style Sheets · CSS describes how HTML elements are to be displayed on screen, paper, or in other media."
     },
     {
         id: 2,
-        question: "What is CSS",
+        category: "JS Basics",
+        question: "What is HTTP",
         answer: "CSS stands for Cascading Style Sheets · CSS describes how HTML elements are to be displayed on screen, paper, or in other media."
     },
     {
         id: 3,
-        question: "What is CSS",
+        category: "JS Basics",
+        question: "What is Java",
         answer: "CSS stands for Cascading Style Sheets · CSS describes how HTML elements are to be displayed on screen, paper, or in other media."
     }
 ]

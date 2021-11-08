@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import CategoryIntro from './components/CategoryIntro/CategoryIntro.js';
 import Category from './components/Category/Category.js';
 import Navbar from './components/Navbar/Navbar.js';
@@ -10,11 +10,13 @@ import Login from './components/Login/Login.js';
 import FlashcardsBasic from './components/FlashcardsBasic/FlashcardsBasic.js';
 import FlashcardsAdvanced from './components/FlashcardsAdvanced/FlashcardsAdvanced.js';
 import FlashcardsWeb from './components/FlashcardsWeb/FlashcardsWeb.js';
+import Edit from './components/Edit/Edit.js';
 import React from 'react';
 
 function App() {
   return (
     <Router>
+      <Switch>
       <div className="App">
         <Route path='/' exact render={(props) => (
           <>
@@ -45,7 +47,14 @@ function App() {
             <FlashcardsWeb />
           </React.Fragment>
         )} />
+         <Route path="/edit/:id" render={(props) => (
+          <React.Fragment>
+            <Navbar />
+            <Edit />
+          </React.Fragment>
+        )} />
       </div>
+      </Switch>
     </Router>
   );
 }

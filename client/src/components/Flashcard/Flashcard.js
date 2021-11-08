@@ -19,7 +19,14 @@ function Flashcard({ flashcard }) {
         <Link className="details-button" to={`/details/${flashcard.id}`}>Read More</Link>
         <div className="buttons">
             <Link className="flashcard-buttons" to={`/delete/${flashcard.id}`}>Delete</Link>
-            <Link className="flashcard-buttons" to={`/edit/${flashcard.id}`}>Edit</Link>
+            <Link className="flashcard-buttons"
+            to={{
+                pathname: `/edit/${flashcard.id}`, 
+                state: { 
+                    flashcard: flashcard
+                }
+            }}>
+            Edit</Link>
         </div>
         <div>
             {isFavorite ? listed : notListed}
