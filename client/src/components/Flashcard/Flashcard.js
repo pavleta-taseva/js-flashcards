@@ -1,37 +1,40 @@
 import '../Flashcard/Flashcard.css';
-import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function Flashcard( { flashcard }) {
-    const [flip, setFlip] = useState(false);
-    let isFavorite = false;    
-    const notListed = <div className="listed-container"><Link className="listed-link" to={`/practice-list/${flashcard.id}`}><ion-icon name="heart-outline"></ion-icon> Add to Practice List</Link></div>;
+function Flashcard({ flashcard }) {
+    let isFavorite = false;
+    const notListed = <div className="listed-container"><Link className="listed-link" to={`/practice-list/${flashcard.id}`}><ion-icon name="add-circle-outline"></ion-icon>Add to Practice List</Link></div>;
 
-    const listed = <div className="listed-container"><ion-icon name="heart-dislike-outline"></ion-icon><h3>Added to Practice List</h3></div>;
+    const listed = <div className="listed-container"><ion-icon name="add-circle-outline"></ion-icon><h3>Added to Practice List</h3></div>;
     const questionElement = <span>
-                            <h2 className="question">Question:</h2>
-                            <h2>{flashcard.question}</h2>
-                            <div>
-                                {isFavorite ? listed : notListed}
-                            </div>
-                        </span>;
+        <h2 className="question">Question:</h2>
+        <h2>{flashcard.question}</h2>
+        <div>
+            {isFavorite ? listed : notListed}
+        </div>
+    </span>;
     const answerElement = <span>
-                        <h2 className="question">Answer:</h2>
-                        <p className="answer">{flashcard.answer}</p>
-                        <div>
-                            {isFavorite ? listed : notListed}
-                        </div>
-                        </span>
-    const front =   <div className="front">
-                        {questionElement}
-                    </div>;
-    const back =    <div className="back">
-                        {answerElement}
-                    </div>
+        <h2 className="question">Answer:</h2>
+        <p className="answer">{flashcard.answer}        <Link className="flashcard-buttons" to={`/details/${flashcard.id}`}>Read More</Link></p>
+        <div className="buttons">
+            <Link className="flashcard-buttons" to={`/delete/${flashcard.id}`}>Delete</Link>
+            <Link className="flashcard-buttons" to={`/edit/${flashcard.id}`}>Edit</Link>
+        </div>
+        <div>
+            {isFavorite ? listed : notListed}
+        </div>
+    </span>
+    const cover = <div className="cover">
+        {questionElement}
+    </div>;
+    const details = <div className="details">
+        {answerElement}
+    </div>
 
     return (
-        <div onClick={() => setFlip(!flip)} className={`box ${flip ? `flip` : ''}`}>
-             { flip ? back : front }             
+        <div className="card">
+            {cover}
+            {details}
         </div>
     );
 }

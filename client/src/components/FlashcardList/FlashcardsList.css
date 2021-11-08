@@ -1,5 +1,11 @@
+.flashcards-list-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .flashcards-wrapper {
-    width: 100%;
+    width: 100%; 
 }
 
 .flashcards-wrapper h1 {
@@ -13,8 +19,13 @@
 .flashcards-container {
     width: 100vw;
     height: 70vh;
-    display: flex;
-    flex-direction: row;
+    display: grid;
     justify-content: center;
     align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+}
+
+.flashcards-wrapper h3 ion-icon {
+    font-size: 18px;
 }
