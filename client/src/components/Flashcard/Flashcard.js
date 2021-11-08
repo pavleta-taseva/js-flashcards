@@ -15,7 +15,8 @@ function Flashcard({ flashcard }) {
     </span>;
     const answerElement = <span>
         <h2 className="question">Answer:</h2>
-        <p className="answer">{flashcard.answer}        <Link className="flashcard-buttons" to={`/details/${flashcard.id}`}>Read More</Link></p>
+        <p className="answer">{flashcard.answer}</p>
+        <Link className="details-button" to={`/details/${flashcard.id}`}>Read More</Link>
         <div className="buttons">
             <Link className="flashcard-buttons" to={`/delete/${flashcard.id}`}>Delete</Link>
             <Link className="flashcard-buttons" to={`/edit/${flashcard.id}`}>Edit</Link>

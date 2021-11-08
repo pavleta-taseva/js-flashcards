@@ -115,7 +115,7 @@ body {
 
 .answer {
   margin: 0 auto;
-  height: 45%;
+  height: 40%;
   width: 85%;
   padding: 1% 7%;
   text-align: justify;
@@ -147,12 +147,27 @@ body {
 
 .flashcard-buttons {
   display: inline-block;
-  padding: 6px 20px;
+  width: 15%;
+  padding: 6px 30px;
   background: #00ccff;
+  color: #000;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border-radius: 15px;
+  font-weight: 500;
+  margin: 17% 0;
+}
+
+.details-button {
+  display: inline-block;
+  position: absolute;
+  top: 65%;
+  left: 8%;
+  padding: 6px 30px;
+  background:#3c2846;
   color: #fff;
   letter-spacing: 1px;
   text-decoration: none;
   border-radius: 15px;
   font-weight: 500;
-  margin-top: 5%;
 }
