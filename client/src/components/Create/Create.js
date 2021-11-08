@@ -2,16 +2,15 @@ import '../Create/Create.css';
 
 function Edit() {
     return (
-
         <div className="create">
-            <form className="create-form" action="/create" method="POST">
+            <form className="create-form" action="/flashcards/create" method="POST">
                 <h1>Create your own Flashcard</h1>
                 <div>
                     <label>Choose category:</label><br></br>
                     <select className="category-name" name="category">
-                        <option value="js-basics">JS Basics</option>
-                        <option value="js-advanced">JS Advanced</option>
-                        <option value="js-web">JS Web</option>
+                        <option value="JS Basics">JS Basics</option>
+                        <option value="JS Advanced">JS Advanced</option>
+                        <option value="JS Web">JS Web</option>
                     </select>
                 </div>
                 <div>

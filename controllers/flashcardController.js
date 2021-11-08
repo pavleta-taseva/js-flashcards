@@ -2,11 +2,11 @@ const router = require('express').Router();
 const { isRegistered } = require('../middleware/guards.js');
 
 router.get('/create', isRegistered(), (req, res) => {
-    res.sendFile('C:\Users\PC\Desktop\React\js-flashcards\client\public\index.html')
+    res.json({ status: true });
 });
 
 router.post('/create', isRegistered(), async (req, res) => {
-    const ownerId = req.user.id;
+    const ownerId = req.user._id;
     const flashcardData = {
         category: req.body.category,
         question: req.body.question,
@@ -36,7 +36,7 @@ router.post('/create', isRegistered(), async (req, res) => {
             }
         };
 
-        res.render('create', context)
+        res.json({ context })
     }   
 });
 

@@ -5,6 +5,7 @@ async function createFlashcard(flashcardData, ownerId) {
     const flashcard = new Flashcard(flashcardData);
     const user = await User.findById(ownerId);
     user.myCards.push(flashcard);
+    await user.save();
     await flashcard.save();
     return flashcard;
 }

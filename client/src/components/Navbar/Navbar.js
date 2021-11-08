@@ -46,7 +46,7 @@ function Navbar() {
                         </Link>
                     </li>
                     <li className={splitLocation[1] === "create" ? "active" : ""}>
-                        <Link to="/create">
+                        <Link to="/flashcards/create">
                             <span className="nav-icon"><ion-icon name="create-outline"></ion-icon></span>
                             <span className="nav-item-title">Create</span>
                         </Link>

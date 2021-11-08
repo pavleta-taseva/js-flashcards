@@ -48,7 +48,7 @@ function App() {
             <FlashcardsWeb />
           </React.Fragment>
         )} />
-        <Route path="/create" render={(props) => (
+        <Route path="/flashcards/create" render={(props) => (
           <React.Fragment>
             <Navbar />
             <Create />
