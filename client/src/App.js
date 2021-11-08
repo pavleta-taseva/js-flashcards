@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Home from './components/Home/Home.js';
 import CategoryIntro from './components/CategoryIntro/CategoryIntro.js';
 import Category from './components/Category/Category.js';
 import Navbar from './components/Navbar/Navbar.js';
@@ -22,6 +23,15 @@ function App() {
         <Route path='/' exact render={(props) => (
           <>
             <Header />
+            <CategoryIntro />
+            <Navbar />
+            <Category />
+            <Footer />
+          </>
+        )} />
+        <Route path='/home' render={(props) => (
+          <>
+            <Home />
             <CategoryIntro />
             <Navbar />
             <Category />
