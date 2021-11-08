@@ -5,7 +5,7 @@
   --dark-purple: #1c1320;
 }
 
-.edit {
+.create {
     width: 35vw;
     background: #2a1d30;
     font-family: "Roboto Mono", monospace;
@@ -19,46 +19,46 @@
     -moz-box-shadow: 0px 3px 56px 23px rgba(196,146,217,0.75);
 }
 
-.edit-form h1 {
+.create-form h1 {
     margin-bottom: 30px;
     color:#ca90e0;
 }
 
-.edit-form label {
+.create-form label {
     font-size: 20px;
 }
 
-.edit-form .category {
+.create-form .category-name {
     color: #000;
 }
 
-.edit-form .category option {
+.create-form .category-name option {
     color: #000;
 }
 
-.edit-form div {
+.create-form div {
     margin-bottom: 30px;
 }
 
-.edit-form textarea,
-.edit-form select {
+.create-form textarea,
+.create-form select {
     margin-top: 10px;
     color: #000;
     outline: none;
 }
 
-.edit-form textarea {
+.create-form textarea {
     height: 200px;
     padding: 10px;
     width: 95%;
 }
 
-.edit-form select {
+.create-form select {
     height: 35px;
     width: 100%;
 }
 
-.editBtn {
+.createBtn {
     display: inline-block;
     padding: 15px 70px;
     background: var(--main-color);

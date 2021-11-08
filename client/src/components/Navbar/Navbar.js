@@ -23,19 +23,19 @@ function Navbar() {
                     </Link>
                 </li>
                 <div className="guest">
-                <li className={splitLocation[1] === "register" ? "active" : ""}>
-                    <Link to="/auth/register">
-                        <span className="nav-icon"><ion-icon name="person-add-outline"></ion-icon></span>
-                        <span className="nav-item-title">Register</span>
-                    </Link>
-                </li>
+                    <li className={splitLocation[1] === "register" ? "active" : ""}>
+                        <Link to="/auth/register">
+                            <span className="nav-icon"><ion-icon name="person-add-outline"></ion-icon></span>
+                            <span className="nav-item-title">Register</span>
+                        </Link>
+                    </li>
 
-                <li className={splitLocation[1] === "login" ? "active" : ""}>
-                    <Link to="/auth/login">
-                        <span className="nav-icon"><ion-icon name="log-in-outline"></ion-icon></span>
-                        <span className="nav-item-title">Login</span>
-                    </Link>
-                </li>
+                    <li className={splitLocation[1] === "login" ? "active" : ""}>
+                        <Link to="/auth/login">
+                            <span className="nav-icon"><ion-icon name="log-in-outline"></ion-icon></span>
+                            <span className="nav-item-title">Login</span>
+                        </Link>
+                    </li>
                 </div>
 
                 <div className="user">
@@ -45,13 +45,19 @@ function Navbar() {
                             <span className="nav-item-title">Profile</span>
                         </Link>
                     </li>
+                    <li className={splitLocation[1] === "create" ? "active" : ""}>
+                        <Link to="/create">
+                            <span className="nav-icon"><ion-icon name="create-outline"></ion-icon></span>
+                            <span className="nav-item-title">Create</span>
+                        </Link>
+                    </li>
+                    <li className={splitLocation[1] === "logout" ? "active" : ""}>
+                        <Link to="/auth/logout">
+                            <span className="nav-icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                            <span className="nav-item-title">Logout</span>
+                        </Link>
+                    </li>
                 </div>
-                <li className={splitLocation[1] === "logout" ? "active" : ""}>
-                    <Link to="/auth/logout">
-                        <span className="nav-icon"><ion-icon name="log-out-outline"></ion-icon></span>
-                        <span className="nav-item-title">Logout</span>
-                    </Link>
-                </li>
                 {/* Visible only for admin */}
                 <li className={splitLocation[1] === "admin" ? "active" : ""}>
                     <Link to="/admin">

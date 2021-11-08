@@ -11,6 +11,7 @@ import FlashcardsBasic from './components/FlashcardsBasic/FlashcardsBasic.js';
 import FlashcardsAdvanced from './components/FlashcardsAdvanced/FlashcardsAdvanced.js';
 import FlashcardsWeb from './components/FlashcardsWeb/FlashcardsWeb.js';
 import Edit from './components/Edit/Edit.js';
+import Create from './components/Create/Create.js';
 import React from 'react';
 
 function App() {
@@ -45,6 +46,12 @@ function App() {
           <React.Fragment>
             <Navbar />
             <FlashcardsWeb />
+          </React.Fragment>
+        )} />
+        <Route path="/create" render={(props) => (
+          <React.Fragment>
+            <Navbar />
+            <Create />
           </React.Fragment>
         )} />
          <Route path="/edit/:id" render={(props) => (
