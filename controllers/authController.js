@@ -53,7 +53,7 @@ router.post('/login', isGuest(), async (req, res) => {
     try {
         await req.authentication.loginUser(req.body.username, req.body.password);
         // Change redirect according to the requirements
-        res.redirect('/');
+        res.redirect('/home');
     } catch (err) {
         const context = {
             errors: [err.message],

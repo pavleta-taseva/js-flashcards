@@ -14,6 +14,8 @@ import FlashcardsWeb from './components/FlashcardsWeb/FlashcardsWeb.js';
 import Edit from './components/Edit/Edit.js';
 import Create from './components/Create/Create.js';
 import React from 'react';
+import Profile from './components/Profile/Profile.js';
+import HeaderLogged from './components/Header-logged/Header-logged.js';
 
 function App() {
   return (
@@ -21,22 +23,25 @@ function App() {
       <Switch>
       <div className="App">
         <Route path='/' exact render={(props) => (
-          <>
+          <React.Fragment>
             <Header />
             <CategoryIntro />
             <Navbar />
             <Category />
-            <Footer />
-          </>
+          </React.Fragment>
         )} />
         <Route path='/home' render={(props) => (
-          <>
+          <React.Fragment>
+            <HeaderLogged />
             <Home />
-            <CategoryIntro />
-            <Navbar />
             <Category />
-            <Footer />
-          </>
+          </React.Fragment>
+        )} />
+        <Route path='/profile' render={(props) => (
+          <React.Fragment>
+            <HeaderLogged />
+            <Profile />
+          </React.Fragment>
         )} />
         <Route path='/auth/register' component={Register} />
         <Route path='/auth/login' component={Login} />
@@ -70,6 +75,7 @@ function App() {
             <Edit />
           </React.Fragment>
         )} />
+        <Footer />
       </div>
       </Switch>
     </Router>
