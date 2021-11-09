@@ -15,7 +15,6 @@ import Edit from './components/Edit/Edit.js';
 import Create from './components/Create/Create.js';
 import React from 'react';
 import Profile from './components/Profile/Profile.js';
-import HeaderLogged from './components/Header-logged/Header-logged.js';
 
 function App() {
   return (
@@ -32,14 +31,14 @@ function App() {
         )} />
         <Route path='/home' render={(props) => (
           <React.Fragment>
-            <HeaderLogged />
+            <Navbar />
             <Home />
             <Category />
           </React.Fragment>
         )} />
         <Route path='/profile' render={(props) => (
           <React.Fragment>
-            <HeaderLogged />
+            <Navbar />
             <Profile />
           </React.Fragment>
         )} />

@@ -1,6 +1,5 @@
 import '../Navbar/Navbar.css';
-import { Link } from 'react-router-dom';
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from 'react-router-dom';
 
 function Navbar() {
     //assigning location variable
