@@ -1,10 +1,9 @@
 import '../Navbar/Navbar.css';
 import { Link, useLocation } from 'react-router-dom';
 
-function Navbar() {
+function Navbar({ match }) {
     //assigning location variable
     const location = useLocation();
-
     //destructuring pathname from location
     const { pathname } = location;
 
@@ -12,6 +11,7 @@ function Navbar() {
     const splitLocation = pathname.split("/");
 
     return (
+
         <div className="nav">
             <ul>
                 {/* Checking the current path name using javascript ternary operator and if true adding active classname to it */}
@@ -39,7 +39,7 @@ function Navbar() {
 
                 <div className="user">
                     <li className={splitLocation[1] === "profile" ? "active" : ""}>
-                        <Link to="/profile">
+                        <Link to={`/profile/:userId`}>
                             <span className="nav-icon"><ion-icon name="person-outline"></ion-icon></span>
                             <span className="nav-item-title">Profile</span>
                         </Link>

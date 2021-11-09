@@ -9,7 +9,8 @@ function Header() {
             <div className="header-content">
                 <div onClick={() => window.location.replace("/#categories")}>
                     <Link to="#categories" className="animate__animated animate__fadeInDown">
-                    <ion-icon name="arrow-forward-circle-outline"></ion-icon> JavaScript Flashcards Trainer
+                        JavaScript Flashcards Trainer
+                        <h6><ion-icon name="arrow-forward-circle-outline"></ion-icon> Choose your level</h6>
                     </Link>
                 </div>
             </div>

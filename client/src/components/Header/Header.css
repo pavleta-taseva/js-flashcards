@@ -24,6 +24,17 @@ body {
 }
 
 .header-content a {
+  padding-left: 10%;
+}
+
+.header-content h6 {
+  color: #6b2e67;
+  margin-top: 0;
+  font-size: 45px;
+  padding-left: 50%;
+}
+
+.header-content a {
   position: absolute;
   top: 8vh;
   left: 10%;
@@ -36,7 +47,7 @@ body {
 
 .header-content ion-icon {
   position: relative;
-  font-size: 65px;
+  font-size: 45px;
   z-index: 1;
   color: #6b2e67;
 }

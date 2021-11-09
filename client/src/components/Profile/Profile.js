@@ -9,7 +9,7 @@ function Profile() {
                     <div id="user">
                         <div id="user-image-container">
                             <form className="upload-form">
-                                <label for="upload">
+                                <label htmlFor="upload">
                                     <p className="i"><i id="header-upload-two" className="fas fa-camera fa-2x"></i></p>
                                     <input type="file" id="upload" name="upload" style={{display:"none"}} accept="image/*" visibility="none"></input>
                                 </label>
@@ -40,18 +40,18 @@ function Profile() {
                                     must consist only of letters and at least 2 digits.</p>
                             </div>
                             <form id="profile-form" action="#" method="post">
-                                <input hidden id="username-hidden" name="username-hidden" type="text" autocomplete="username"></input>
-                                <label for="new-password">New password:</label>
+                                <input hidden id="username-hidden" name="username-hidden" type="text" autoComplete="username"></input>
+                                <label htmlFor="new-password">New password:</label>
                                 <div className="icon">
                                     <i className="fas fa-lock"></i>
-                                    <input id="new-password" type="password" name="change-password" autocomplete="password"></input><br></br>
+                                    <input id="new-password" type="password" name="change-password" autoComplete="password"></input><br></br>
                                     <i id="eye-four" className="fas fa-eye togglePassword"></i>
                                 </div>
                                 <br></br>
-                                <label for="repeat-password">Repeat password:</label>
+                                <label htmlFor="repeat-password">Repeat password:</label>
                                 <div className="icon">
                                     <i className="fas fa-lock"></i>
-                                    <input id="repeat-password" type="password" name="change-password" autocomplete="current-password"></input><br></br>
+                                    <input id="repeat-password" type="password" name="change-password" autoComplete="current-password"></input><br></br>
                                     <i id="eye-five" className="fas fa-eye"></i>
                                 </div>
                                 <button type="button" id="submitNewPass" name="submitNewPass">Change Password</button>

@@ -9,13 +9,17 @@ router.get('/', async (req, res) => {
     }   
 });
 
-router.get('/user/:id', async (req, res) => {
+router.get('/profile/:userId', async (req, res) => {
     const userId = req.params.id;
     const currentUser = await req.storage.getUserById(userId);
     const flashcards = currentUser.flashcards;
+    const username = currentUser.username;
+    console.log(username);
+
     res.json({
         currentUser,
-        flashcards
+        flashcards,
+        username
     });
 });
 

@@ -19,8 +19,10 @@ import Profile from './components/Profile/Profile.js';
 function App() {
   return (
     <Router>
+      {/* Switch makes router stop when found match */}
       <Switch>
       <div className="App">
+        {/* Exact is used to match the exact path and nothing else after it or function which returns component */}
         <Route path='/' exact render={(props) => (
           <React.Fragment>
             <Header />
@@ -36,7 +38,8 @@ function App() {
             <Category />
           </React.Fragment>
         )} />
-        <Route path='/profile' render={(props) => (
+        {/* Render is usually used to render expression as component, directly */}
+        <Route path='/profile/:userId' render={(props) => (
           <React.Fragment>
             <Navbar />
             <Profile />
@@ -74,6 +77,7 @@ function App() {
             <Edit />
           </React.Fragment>
         )} />
+        {/* <Route render={() => <h1>404, Page Not Found</h1>} /> */}
         <Footer />
       </div>
       </Switch>
