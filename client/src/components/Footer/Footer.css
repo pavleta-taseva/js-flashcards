@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
 
 footer {
+  width: 100vw;
   border-top: 0.5px solid #ca90e0;
   background: #2a1c31;
   display: flex;
