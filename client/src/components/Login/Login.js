@@ -28,7 +28,6 @@ function Login() {
                     </form>
                     <div className="second">
                         <Link className="link" to="/auth/register">Create new account</Link>
-                        <Link className="link" to="/">Back to Home</Link>
                     </div>
                 </div>
             </div>

@@ -5,14 +5,30 @@
   --dark-purple: #1c1320;
 }
 
+.create-container {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 0;
+    width: 100vw;
+    height: 110vh;
+}
+
+.nav {
+    grid-column: 1;
+}
+
 .create {
+    grid-column: 2;
     width: 35vw;
+    height: 90vh;
     background: #2a1d30;
     font-family: "Roboto Mono", monospace;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5%;
+    padding: 1%;
+    margin-top: 2%;
     border-radius: 25px;
     box-shadow: 0px 3px 56px 23px rgba(196,146,217,0.75);
     -webkit-box-shadow: 0px 3px 56px 23px rgba(196,146,217,0.75);
@@ -48,7 +64,7 @@
 }
 
 .create-form textarea {
-    height: 200px;
+    height: 150px;
     padding: 10px;
     width: 95%;
 }

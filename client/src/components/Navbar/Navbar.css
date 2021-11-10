@@ -7,7 +7,7 @@
 }
 
 .nav {
-    position: absolute;
+    position: fixed;
     top: 0vh;
     left: 0;
     height: 100vh;

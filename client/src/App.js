@@ -15,6 +15,7 @@ import Edit from './components/Edit/Edit.js';
 import Create from './components/Create/Create.js';
 import React from 'react';
 import Profile from './components/Profile/Profile.js';
+import Practice from './components/Practice/Practice.js';
 
 function App() {
   return (
@@ -45,8 +46,24 @@ function App() {
             <Profile />
           </React.Fragment>
         )} />
-        <Route path='/auth/register' component={Register} />
-        <Route path='/auth/login' component={Login} />
+        <Route path='/practice/:userId' render={(props) => (
+          <React.Fragment>
+            <Navbar />
+            <Practice />
+          </React.Fragment>
+        )} />
+         <Route path='/auth/register' render={(props) => (
+          <React.Fragment>
+            <Navbar />
+            <Register />
+          </React.Fragment>
+        )} />
+        <Route path='/auth/login' render={(props) => (
+          <React.Fragment>
+            <Navbar />
+            <Login />
+          </React.Fragment>
+        )} />
         <Route path='/flashcards-basic' render={(props) => (
           <React.Fragment>
             <Navbar />

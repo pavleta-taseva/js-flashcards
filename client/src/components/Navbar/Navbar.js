@@ -50,6 +50,12 @@ function Navbar({ match }) {
                             <span className="nav-item-title">Create</span>
                         </Link>
                     </li>
+                    <li className={splitLocation[1] === "practice" ? "active" : ""}>
+                        <Link to={`/practice/:userId`}>
+                            <span className="nav-icon"><ion-icon name="bulb-outline"></ion-icon></span>
+                            <span className="nav-item-title">Practice</span>
+                        </Link>
+                    </li>
                     <li className={splitLocation[1] === "logout" ? "active" : ""}>
                         <Link to="/auth/logout">
                             <span className="nav-icon"><ion-icon name="log-out-outline"></ion-icon></span>
