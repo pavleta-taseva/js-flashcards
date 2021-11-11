@@ -9,6 +9,7 @@ async function createUser(username, email, hashedPassword) {
         });
 
         await user.save();
+        console.log("Successful registration into the database: ", user);
         return user;
     } catch (error) {
         console.error(error);

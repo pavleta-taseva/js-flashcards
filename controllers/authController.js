@@ -2,9 +2,10 @@
 const router = require('express').Router();
 const { body, validationResult } = require('express-validator');
 const { isGuest } = require('../middleware/guards.js');
+const { TOKEN_SECRET, COOKIE_NAME } = require('../config/credentials.js');
 
 router.get('/register', isGuest(), (req, res) => {
-    res.json({ status: 200 });
+    res.send({ status: 200});
 });
 
 router.post('/register',
@@ -21,14 +22,7 @@ router.post('/register',
         .bail()
         .matches(/[a-zA-z0-9]/)
         .withMessage('Password may contain only english letters and numbers.'),
-
-    body('rePass').custom((value, { req }) => {
-        if (value !== req.body.password) {
-            throw new Error('Passwords don\'t match.');
-        }
-        return true;
-    }),
-    async (req, res) => {
+     async (req, res) => {
         const { errors } = validationResult(req);
         try {
             if (errors.length > 0) {
@@ -37,8 +31,6 @@ router.post('/register',
             }
             
             await req.authentication.createUser(req.body.username, req.body.email, req.body.password);
-            // Change redirect according to the requirements
-            res.redirect('/');
         } catch (err) {
             console.log(err);
         }
@@ -51,9 +43,8 @@ router.get('/login', isGuest(), (req, res) => {
 
 router.post('/login', isGuest(), async (req, res) => {
     try {
-        await req.authentication.loginUser(req.body.username, req.body.password);
-        // Change redirect according to the requirements
-        res.redirect('/home');
+        const user = await req.authentication.loginUser(req.body.username, req.body.password);
+        res.json(user);
     } catch (err) {
         const context = {
             errors: [err.message],
@@ -67,8 +58,7 @@ router.post('/login', isGuest(), async (req, res) => {
 
 router.get('/logout', (req, res) => {
     req.authentication.logout();
-    console.log('User logged out...');
-    res.redirect('/');
+    console.log('User successfully logged out.');
 });
 
 module.exports = router;

@@ -11,14 +11,22 @@ module.exports = () => (req, res, next) => {
         req.authentication = {
             async createUser(username, email, password) {
                 const token = await register(username, email, password);
-                res.cookie(COOKIE_NAME, token, { httpOnly: true });
+                // console.log('Token from authentication.js', token);
+                res.cookie(COOKIE_NAME, token).json({ username: username, email: email });
             },
             async loginUser(username, password) {
                 const token = await login(username, password);
-                res.cookie(COOKIE_NAME, token, { httpOnly: true });
+                console.log('Token from login ', token);
+                res.cookie(COOKIE_NAME, token).json({ 
+                    username: username, 
+                    token
+                });
             },
             logout() {
-                res.clearCookie(COOKIE_NAME);
+                // Clearing the cookie
+                res.cookie(COOKIE_NAME, '').send();
+                // res.clearCookie('authToken').send();
+                console.log("Cookie cleared");
             }
         }
         next();
@@ -27,10 +35,6 @@ module.exports = () => (req, res, next) => {
 
 // Registration
 async function register(username, email, password) {
-    // Change parameters according to the current project
-    // Include validations according to the requirements
-
-    // Check if user already exists in the database 
     const existingUsername = await userService.getUserByUsername(username);
     const existingEmail = await userService.getUserByEmail(email);
 
@@ -71,7 +75,7 @@ function generateToken(user) {
         _id: user._id,
         username: user.username,
         email: user.email,
-    }, TOKEN_SECRET);
+    }, TOKEN_SECRET );
 }
 
 // Parse token
@@ -84,7 +88,6 @@ function parseToken(req, res) {
             res.locals.currentUser = userData;
         } catch (err) {
             res.clearCookie(COOKIE_NAME);
-            res.redirect('/auth/login');
             return false;
         }
     }

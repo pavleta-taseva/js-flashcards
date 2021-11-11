@@ -1,7 +1,12 @@
 import '../Navbar/Navbar.css';
 import { Link, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import axios from 'axios';
 
-function Navbar({ match }) {
+function Navbar() {
+    const [username, setUsername] = useState();
+    const [email, setEmail] = useState();
+
     //assigning location variable
     const location = useLocation();
     //destructuring pathname from location
@@ -9,6 +14,14 @@ function Navbar({ match }) {
 
     //Javascript split method to get the name of the path in array
     const splitLocation = pathname.split("/");
+
+    function logout() {
+        axios.get('http://localhost:5000/auth/logout', {}, { withCredentials: true })
+        .then(() => {
+            setUsername('')
+            setEmail('')
+        });
+    }
 
     return (
 
@@ -57,10 +70,10 @@ function Navbar({ match }) {
                         </Link>
                     </li>
                     <li className={splitLocation[1] === "logout" ? "active" : ""}>
-                        <Link to="/auth/logout">
-                            <span className="nav-icon"><ion-icon name="log-out-outline"></ion-icon></span>
-                            <span className="nav-item-title">Logout</span>
-                        </Link>
+                    <Link to={`#`}>
+                        <span className="nav-icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                        <span onClick={() => logout()} className="nav-item-title">Logout</span>
+                    </Link>
                     </li>
                 </div>
                 {/* Visible only for admin */}

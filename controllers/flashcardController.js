@@ -47,11 +47,11 @@ router.get('/details/:id', async (req, res) => {
         flashcard.isOwner = req.user && req.user._id == flashcard.owner;
         flashcard.isListed = req.user && flashcard.popularity.find(h => h == req.user._id);
 
-        res.render('details', { flashcard });
+        // res.render('details', { flashcard });
         return flashcard;
     } catch(err) {
         console.log(err.message)
-        res.redirect('/');
+        // res.redirect('/');
     }
 });
 

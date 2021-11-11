@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 const authMiddleware = require('../middleware/authentication.js');
 const storageMiddleWare = require('../middleware/storage.js');
+const cors = require('cors');
 
 module.exports = (app) => {
     app.engine('hbs', hbs({
@@ -12,10 +13,15 @@ module.exports = (app) => {
     app.set('view engine', 'hbs');
 
     app.use('/client', express.static('client'));
-    app.use(express.urlencoded({ extended: true }));
     app.use(cookieParser());
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
     app.use(authMiddleware());
     app.use(storageMiddleWare());
+    app.use(cors({
+        credentials: true,
+        origin: 'http://localhost:3000',
+    }));
     
     // Serve static files if in production
     if (process.env.NODE_ENV === 'production') {
