@@ -5,6 +5,8 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import UserContext from '../../UserContext.js';
 import { Redirect } from 'react-router-dom';
+const localUrl = 'http://localhost:5000/auth/register';
+const herokuUrl = 'https://js-flashcards.herokuapp.com/auth/register';
 
 function Register() {
     const [username, setUsername] = useState();
@@ -24,7 +26,7 @@ function Register() {
         const data = { username, email, password };
         axios({
             method: 'post',
-            url: 'http://localhost:5000/auth/register',
+            url:  herokuUrl,
             data,
             withCredentials: true 
         })

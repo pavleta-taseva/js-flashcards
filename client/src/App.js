@@ -18,12 +18,14 @@ import Profile from './components/Profile/Profile.js';
 import Practice from './components/Practice/Practice.js';
 import UserContext from './UserContext.js';
 import axios from 'axios';
+const localUrl = 'http://localhost:5000/profile/:userId';
+const herokuUrl = 'https://js-flashcards.herokuapp.com/profile/:userId';
 
 function App() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   useEffect(() => {
-    axios.get('http://localhost:5000/profile/:userId', { withCredentials: true })
+    axios.get(herokuUrl, { withCredentials: true })
     .then(response => {
       setUsername(response.data.username);
       setEmail(response.data.email);

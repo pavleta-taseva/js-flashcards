@@ -11,12 +11,14 @@ function Navbar() {
     const location = useLocation();
     //destructuring pathname from location
     const { pathname } = location;
+    const localUrl = 'http://localhost:5000/auth/logout';
+    const herokuUrl = 'https://js-flashcards.herokuapp.com/auth/logout';
 
     //Javascript split method to get the name of the path in array
     const splitLocation = pathname.split("/");
 
     function logout() {
-        axios.get('http://localhost:5000/auth/logout', {}, { withCredentials: true })
+        axios.get(herokuUrl, {}, { withCredentials: true })
         .then(() => {
             setUsername('')
             setEmail('')

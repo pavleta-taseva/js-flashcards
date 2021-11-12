@@ -4,11 +4,13 @@ import '../Login/Login.css';
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import UserContext from '../../UserContext.js';
-import { Redirect } from 'react-router-dom';
+const localUrl = 'http://localhost:5000/auth/login';
+const herokuUrl = 'https://js-flashcards.herokuapp.com/auth/login';
 
 function Login() {
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
+    const [error, setError] = useState(false);
     const user = useContext(UserContext);
 
     function loginUser(e) {
@@ -16,15 +18,16 @@ function Login() {
         const data = { username, password };
         axios({
             method: 'post',
-            url: 'http://localhost:5000/auth/login',
+            url: herokuUrl,
             data,
             withCredentials: true 
         })
         .then((response) => {
             user.setUsername(response.data.username);
-            return <Redirect to='/home'  />
+            setError(false);
         })
         .catch((err) => {
+            setError(true);
             console.log(err);
         });
     }
@@ -33,6 +36,9 @@ function Login() {
             <div className="login-container">
                 <div className="loginForm-container">
                     <form onSubmit={e => loginUser(e)} action="/auth/login" method="POST">
+                        {error && (
+                            <div>Error: Wrong email or password!</div>
+                        )}
                         <h1>Login</h1>
                         <p>Please enter your credentials.</p>
                         <label>Username</label><br></br>
