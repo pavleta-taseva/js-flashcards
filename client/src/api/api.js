@@ -1,4 +1,3 @@
-// import { notify } from "../views/notification.js";
 import Parse from 'parse/dist/parse.min.js';
 
 export const settings = {
