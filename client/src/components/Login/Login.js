@@ -1,13 +1,12 @@
+import { login } from '../../api/data.js';
+import '../Login/Login.css';
 import { Link, useHistory } from 'react-router-dom';
 import loginBackground from '../../images/login-bg.jpg';
-import '../Login/Login.css';
 import React, { useState, useContext } from 'react';
-import axios from 'axios';
 import UserContext from '../../UserContext.js';
-const host = 'https://js-flashcards.herokuapp.com';
-const localhost = 'http://localhost:5000';
-const HOST = localhost || host;
-const URL = `${HOST}/auth/login`;
+
+const localUrl = 'http://localhost:5000/auth/login';
+// const herokuUrl = 'https://js-flashcards.herokuapp.com/auth/login';
 
 function Login() {
     const [username, setUsername] = useState();
@@ -16,30 +15,20 @@ function Login() {
     const user = useContext(UserContext);
     const history = useHistory();
 
-    function loginUser(e) {
+    async function loginUser(e) {
         e.preventDefault();
         const data = { username, password };
-   
+
         if (data.username !== undefined && data.password !== undefined) {
-            axios({
-                method: 'post',
-                url: URL,
-                data,
-                withCredentials: true 
-            })
-            .then((response) => {
-                user.setUsername(response.data.username);
+            try {
+                await login(username, password);
+                user.setUsername(username);
                 setError(false);
-                // window.location.href = '/home';
-                history.replace('/home');
+                history.replace('/');
                 window.location.reload();
-            })
-            .catch((err) => {
-                setError(true);
-                console.log(err);
-            });
-        } else {
-            alert('Wrong username or password.')
+            } catch(err) {
+                console.log(err.message)
+            }
         }
     }
     return (

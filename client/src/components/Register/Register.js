@@ -1,13 +1,9 @@
+import { register } from '../../api/data.js';
 import '../Register/Register.css';
 import registerBackground from '../../images/register-bg.jpg';
 import { Link,  useHistory } from 'react-router-dom';
 import React, { useState, useContext } from 'react';
-import axios from 'axios';
 import UserContext from '../../UserContext.js';
-const host = 'https://js-flashcards.herokuapp.com';
-const localhost = 'http://localhost:5000';
-const HOST = localhost || host;
-const URL = `${HOST}/auth/register`;
 
 function Register() {
     const [username, setUsername] = useState();
@@ -17,7 +13,7 @@ function Register() {
     const history = useHistory();
     const user = useContext(UserContext);
 
-    function registerUser(e) {
+    async function registerUser(e) {
         e.preventDefault();
 
         if (password !== rePass) {
@@ -28,23 +24,14 @@ function Register() {
         const data = { username, email, password };
 
         if (data.username !== undefined && data.email !== undefined && data.password !== undefined) {
-            axios({
-                method: 'post',
-                url: URL,
-                data,
-                withCredentials: true
-            })
-                .then((response) => {
-                    user.setEmail(response.data.email);
-                    user.setUsername(response.data.username);
-                    // window.location.href = '/home';
-                    history.replace('/home');
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        } else {
-            alert('Please provide your credentials.')
+            try {
+                await register(username, email, password);
+                user.setUsername(username);
+                history.replace('/auth/login');
+                window.location.reload();
+            } catch (error) {
+                console.log(error);
+            }
         }
     }
 

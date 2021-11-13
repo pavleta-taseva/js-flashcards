@@ -1,10 +1,8 @@
+import { logout } from '../../api/data.js';
 import '../Navbar/Navbar.css';
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import React, { useState, useContext } from 'react';
 import UserContext from '../../UserContext.js';
-import axios from 'axios';
-const host = 'https://js-flashcards.herokuapp.com';
-const localhost = 'http://localhost:5000';
 
 function Navbar() {
     let [username, setUsername] = useState();
@@ -16,21 +14,17 @@ function Navbar() {
     const location = useLocation();
     //destructuring pathname from location
     const { pathname } = location;
-    const HOST = localhost || host;
-    const URL = `${HOST}/auth/logout`;
 
     //Javascript split method to get the name of the path in array
     const splitLocation = pathname.split("/");
 
-    function logout() {
-        axios.get(URL, {}, { withCredentials: true })
-            .then(() => {
-                setUsername('')
-                setEmail('')
-                user.username = undefined;
-                // window.location.href = '/auth/login';
-                history.replace('/auth/login');
-            });
+    async function onLogout() {
+        try {
+            await logout();
+            history.replace('/auth/login');
+        } catch(err) {
+            console.log(err.message)
+        }
     }
 
     return (
@@ -44,8 +38,8 @@ function Navbar() {
                         <span className="nav-item-title">Home</span>
                     </Link>
                 </li>
-                {isLogged
-                    ? <div className="user">
+                
+                    <div className="user">
                         <li className={splitLocation[1] === "practice" ? "active" : ""}>
                             <Link to={`/practice/:userId`}>
                                 <span className="nav-icon"><ion-icon name="bulb-outline"></ion-icon></span>
@@ -61,11 +55,11 @@ function Navbar() {
                         <li className={splitLocation[1] === "logout" ? "active" : ""}>
                             <Link to={`#`}>
                                 <span className="nav-icon"><ion-icon name="log-out-outline"></ion-icon></span>
-                                <button onClick={() => logout()} className="nav-logout-btn">Logout</button>
+                                <button onClick={() => onLogout()} className="nav-logout-btn">Logout</button>
                             </Link>
                         </li>
                     </div>
-                    : <div className="guest">
+                    <div className="guest">
                         <li className={splitLocation[1] === "register" ? "active" : ""}>
                             <Link to="/auth/register">
                                 <span className="nav-icon"><ion-icon name="person-add-outline"></ion-icon></span>
@@ -80,7 +74,6 @@ function Navbar() {
                             </Link>
                         </li>
                     </div>
-                }
             </ul>
         </div>
     )
