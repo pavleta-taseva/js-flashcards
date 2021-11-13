@@ -17,7 +17,7 @@ router.post('/create', isRegistered(), async (req, res) => {
 
     try {
         await req.storage.createFlashcard(flashcardData, ownerId);
-        res.redirect('/');
+        // res.redirect('/');
     } catch (err) {
         let errors;
         if (err.errors) {
@@ -36,7 +36,7 @@ router.post('/create', isRegistered(), async (req, res) => {
             }
         };
 
-        res.json({ context })
+        res.status(500).res.json({ context });
     }   
 });
 
@@ -51,7 +51,7 @@ router.get('/details/:id', async (req, res) => {
         return flashcard;
     } catch(err) {
         console.log(err.message)
-        // res.redirect('/');
+        res.status(500).json({ error: err.message });
     }
 });
 
@@ -65,7 +65,7 @@ router.get('/edit/:id', isRegistered(), async (req, res) => {
         res.render('edit', { flashcard });
     } catch(err) {
         console.log(err.message)
-        res.redirect('/');
+        res.status(500).json({ error: err.message });
     }
 });
 
@@ -76,7 +76,7 @@ router.post('/edit/:id', isRegistered(), async (req, res) => {
             throw new Error('You are not authorized to edit this flashcard.');
         }
         await req.storage.editFlashcardById(req.params.id, req.body);
-        res.redirect('/');
+        res.status(200).json({ status: "ok" });
     } catch(err) {
         let errors;
         if (err.errors) {
@@ -95,8 +95,7 @@ router.post('/edit/:id', isRegistered(), async (req, res) => {
                 popularity: [],
             }
         };
-
-        res.render('edit', context)
+        res.status(500).res.json({ context });
     }   
 });
 
@@ -108,20 +107,20 @@ router.get('/delete/:id', isRegistered(), async (req, res) => {
             throw new Error('You are not authorized to delete this flashcard.');
         }
         await req.storage.deleteFlashcard(req.params.id);
-        res.redirect('/');
+        res.status(200).json({ status: "ok" });
     } catch(err) {
         console.log(err.message)
-        res.redirect('/flashcards/details/' + req.params.id);
+        res.status(500).json({ error: err.message });
     }
 });
 
 router.get('/practice-list/:id', isRegistered(), async(req, res) => {
     try {
         await req.storage.practice(req.params.id, req.user._id);
-        res.redirect('/flashcards/details/' + req.params.id);
+        res.status(200).json({ status: "ok" });
     } catch(err) {
         console.log(err.message);
-        res.redirect('/');
+        res.status(500).json({ error: err.message });
     }
 });
 

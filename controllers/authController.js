@@ -2,10 +2,9 @@
 const router = require('express').Router();
 const { body, validationResult } = require('express-validator');
 const { isGuest } = require('../middleware/guards.js');
-const { TOKEN_SECRET, COOKIE_NAME } = require('../config/credentials.js');
 
 router.get('/register', isGuest(), (req, res) => {
-    res.send({ status: 200});
+    res.json({ status: "ok"});
 });
 
 router.post('/register',
@@ -31,14 +30,16 @@ router.post('/register',
             }
             
             await req.authentication.createUser(req.body.username, req.body.email, req.body.password);
+            res.status(200).json({ status: "ok" });
         } catch (err) {
             console.log(err);
+            res.status(500).json({ error: err.message });
         }
     }
 );
 
 router.get('/login', isGuest(), (req, res) => {
-    res.json({ status: 200 });
+    res.json({ status: "ok" });
 });
 
 router.post('/login', isGuest(), async (req, res) => {

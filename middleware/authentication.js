@@ -25,7 +25,6 @@ module.exports = () => (req, res, next) => {
             logout() {
                 // Clearing the cookie
                 res.cookie(COOKIE_NAME, '').send();
-                // res.clearCookie('authToken').send();
                 console.log("Cookie cleared");
             }
         }

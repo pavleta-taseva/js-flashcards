@@ -4,7 +4,7 @@ function isRegistered() {
         if (req.user) {
             next();
         } else {
-            res.redirect('/auth/login');
+            res.json({ message: 'Logged users are not authorized for this action. '});
         }
     }
 }
@@ -14,7 +14,7 @@ function isGuest() {
         if (!req.user) {
            next();
         } else {
-            res.redirect('/');
+            res.json({ message: 'Guests are not authorized for this action. '});
         }
     }
 }

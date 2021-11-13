@@ -1,41 +1,52 @@
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import loginBackground from '../../images/login-bg.jpg';
 import '../Login/Login.css';
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import UserContext from '../../UserContext.js';
-const localUrl = 'http://localhost:5000/auth/login';
-const herokuUrl = 'https://js-flashcards.herokuapp.com/auth/login';
+const host = 'https://js-flashcards.herokuapp.com';
+const localhost = 'http://localhost:5000';
+const HOST = localhost || host;
+const URL = `${HOST}/auth/login`;
 
 function Login() {
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
     const [error, setError] = useState(false);
     const user = useContext(UserContext);
+    const history = useHistory();
 
     function loginUser(e) {
         e.preventDefault();
         const data = { username, password };
-        axios({
-            method: 'post',
-            url: herokuUrl,
-            data,
-            withCredentials: true 
-        })
-        .then((response) => {
-            user.setUsername(response.data.username);
-            setError(false);
-        })
-        .catch((err) => {
-            setError(true);
-            console.log(err);
-        });
+   
+        if (data.username !== undefined && data.password !== undefined) {
+            axios({
+                method: 'post',
+                url: URL,
+                data,
+                withCredentials: true 
+            })
+            .then((response) => {
+                user.setUsername(response.data.username);
+                setError(false);
+                // window.location.href = '/home';
+                history.replace('/home');
+                window.location.reload();
+            })
+            .catch((err) => {
+                setError(true);
+                console.log(err);
+            });
+        } else {
+            alert('Wrong username or password.')
+        }
     }
     return (
         <section className="login-section">
             <div className="login-container">
                 <div className="loginForm-container">
-                    <form onSubmit={e => loginUser(e)} action="/auth/login" method="POST">
+                    <form onSubmit={e => loginUser(e)}>
                         {error && (
                             <div>Error: Wrong email or password!</div>
                         )}

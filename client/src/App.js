@@ -14,18 +14,19 @@ import FlashcardsAdvanced from './components/FlashcardsAdvanced/FlashcardsAdvanc
 import FlashcardsWeb from './components/FlashcardsWeb/FlashcardsWeb.js';
 import Edit from './components/Edit/Edit.js';
 import Create from './components/Create/Create.js';
-import Profile from './components/Profile/Profile.js';
 import Practice from './components/Practice/Practice.js';
 import UserContext from './UserContext.js';
 import axios from 'axios';
-const localUrl = 'http://localhost:5000/profile/:userId';
-const herokuUrl = 'https://js-flashcards.herokuapp.com/profile/:userId';
+const host = 'https://js-flashcards.herokuapp.com';
+const localhost = 'http://localhost:5000';
+const HOST = localhost || host;
+const URL = `${HOST}/practice/:userId`;
 
 function App() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   useEffect(() => {
-    axios.get(herokuUrl, { withCredentials: true })
+    axios.get(URL, { withCredentials: true })
     .then(response => {
       setUsername(response.data.username);
       setEmail(response.data.email);
@@ -58,18 +59,6 @@ function App() {
               </React.Fragment>
             )} />
             {/* Render is usually used to render expression as component, directly */}
-            <Route path='/profile/:userId' render={(props) => (
-              <React.Fragment>
-                <Navbar />
-                <Profile />
-              </React.Fragment>
-            )} />
-                <Route path='/user' render={(props) => (
-              <React.Fragment>
-                <Navbar />
-                <Profile />
-              </React.Fragment>
-            )} />
             <Route path='/practice/:userId' render={(props) => (
               <React.Fragment>
                 <Navbar />
