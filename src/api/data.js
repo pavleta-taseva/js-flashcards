@@ -1,5 +1,6 @@
 import * as api from "./api.js";
-import Parse from 'parse/dist/parse.min.js';
+import Parse from '../../node_modules/parse/dist/parse.js'
+// import Parse from 'parse/dist/parse.min.js';
 
 Parse.serverURL = 'https://parseapi.back4app.com';
 Parse.initialize(

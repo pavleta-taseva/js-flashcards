@@ -1,7 +1,7 @@
+import React, { useState, useContext } from 'react';
 import { logout } from '../../api/data.js';
 import '../Navbar/Navbar.css';
-import { Link, useLocation, useHistory } from 'react-router-dom';
-import React, { useState, useContext } from 'react';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import UserContext from '../../UserContext.js';
 
 function Navbar() {
@@ -9,7 +9,7 @@ function Navbar() {
     const [email, setEmail] = useState();
     let user = useContext(UserContext);
     const isLogged = user.username !== undefined;
-    const history = useHistory();
+    const history = useNavigate();
     //assigning location variable
     const location = useLocation();
     //destructuring pathname from location
@@ -33,45 +33,45 @@ function Navbar() {
             <ul>
                 {/* Checking the current path name using javascript ternary operator and if true adding active classname to it */}
                 <li className={splitLocation[1] === "" ? "active" : ""}>
-                    <Link to="/">
+                    <NavLink to="/">
                         <span className="nav-icon"><ion-icon name="home-outline"></ion-icon></span>
                         <span className="nav-item-title">Home</span>
-                    </Link>
+                    </NavLink>
                 </li>
                 
                     <div className="user">
                         <li className={splitLocation[1] === "practice" ? "active" : ""}>
-                            <Link to={`/practice/:userId`}>
+                            <NavLink to={`/practice/:userId`}>
                                 <span className="nav-icon"><ion-icon name="bulb-outline"></ion-icon></span>
                                 <span className="nav-item-title">Practice</span>
-                            </Link>
+                            </NavLink>
                         </li>
                         <li className={splitLocation[1] === "flashcards" ? "active" : ""}>
-                            <Link to={`/flashcards/create`}>
+                            <NavLink to={`/flashcards/create`}>
                                 <span className="nav-icon"><ion-icon name="create-outline"></ion-icon></span>
                                 <span className="nav-item-title">Create</span>
-                            </Link>
+                            </NavLink>
                         </li>
                         <li className={splitLocation[1] === "logout" ? "active" : ""}>
-                            <Link to={`#`}>
+                            <NavLink to={`#`}>
                                 <span className="nav-icon"><ion-icon name="log-out-outline"></ion-icon></span>
                                 <button onClick={() => onLogout()} className="nav-logout-btn">Logout</button>
-                            </Link>
+                            </NavLink>
                         </li>
                     </div>
                     <div className="guest">
                         <li className={splitLocation[1] === "register" ? "active" : ""}>
-                            <Link to="/auth/register">
+                            <NavLink to="/auth/register">
                                 <span className="nav-icon"><ion-icon name="person-add-outline"></ion-icon></span>
                                 <span className="nav-item-title">Register</span>
-                            </Link>
+                            </NavLink>
                         </li>
 
                         <li className={splitLocation[1] === "login" ? "active" : ""}>
-                            <Link to="/auth/login">
+                            <NavLink to="/auth/login">
                                 <span className="nav-icon"><ion-icon name="log-in-outline"></ion-icon></span>
                                 <span className="nav-item-title">Login</span>
-                            </Link>
+                            </NavLink>
                         </li>
                     </div>
             </ul>

@@ -1,8 +1,8 @@
+import React, { useState, useContext } from 'react';
 import { login } from '../../api/data.js';
 import '../Login/Login.css';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import loginBackground from '../../images/login-bg.jpg';
-import React, { useState, useContext } from 'react';
 import UserContext from '../../UserContext.js';
 
 const localUrl = 'http://localhost:5000/auth/login';
@@ -13,7 +13,7 @@ function Login() {
     const [password, setPassword] = useState();
     const [error, setError] = useState(false);
     const user = useContext(UserContext);
-    const history = useHistory();
+    const history = useNavigate();
 
     async function loginUser(e) {
         e.preventDefault();

@@ -1,3 +1,4 @@
+import React from 'react';
 import '../Create/Create.css';
 
 function Edit() {

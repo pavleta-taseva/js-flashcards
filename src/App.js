@@ -1,6 +1,6 @@
+import React, { useState, useEffect, Fragment } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
 import CategoryIntro from './components/CategoryIntro/CategoryIntro.js';
 import Category from './components/Category/Category.js';
 import Navbar from './components/Navbar/Navbar.js';
@@ -19,16 +19,16 @@ import UserContext from './UserContext.js';
 function App() {
   const [username, setUsername] = useState('');
   useEffect(() => {
-    
+
   }, [])
 
   return (
-    <UserContext.Provider value={ { username, setUsername } }>
+    <UserContext.Provider value={{ username, setUsername }}>
       <Router>
-        {/* Switch makes router stop when found match */}
-          <div className="App">
+        <Routes>
+          {/* Switch makes router stop when found match */}
+          <Fragment>
             {/* Exact is used to match the exact path and nothing else after it or function which returns component */}
-          <Switch>
             <Route path='/' exact render={(props) => (
               <React.Fragment>
                 <Header />
@@ -86,10 +86,8 @@ function App() {
                 <Edit />
               </React.Fragment>
             )} />
-            {/* <Route render={() => <h1>404, Page Not Found</h1>} /> */}
-            <Footer />
-          </Switch>
-          </div>
+          </Fragment>
+        </Routes>
       </Router>
     </UserContext.Provider>
   );

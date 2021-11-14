@@ -1,8 +1,8 @@
+import React, { useState, useContext } from 'react';
 import { register } from '../../api/data.js';
 import '../Register/Register.css';
 import registerBackground from '../../images/register-bg.jpg';
-import { Link,  useHistory } from 'react-router-dom';
-import React, { useState, useContext } from 'react';
+import { Link,  useNavigate } from 'react-router-dom';
 import UserContext from '../../UserContext.js';
 
 function Register() {
@@ -10,7 +10,7 @@ function Register() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [rePass, setRePass] = useState();
-    const history = useHistory();
+    const history = useNavigate();
     const user = useContext(UserContext);
 
     async function registerUser(e) {
