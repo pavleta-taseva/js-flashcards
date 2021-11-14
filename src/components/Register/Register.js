@@ -10,7 +10,7 @@ function Register() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [rePass, setRePass] = useState();
-    const history = useNavigate();
+    const navigate = useNavigate();
     const user = useContext(UserContext);
 
     async function registerUser(e) {
@@ -27,7 +27,7 @@ function Register() {
             try {
                 await register(username, email, password);
                 user.setUsername(username);
-                history.replace('/auth/login');
+                navigate('/auth/login', { replace: true });
                 window.location.reload();
             } catch (error) {
                 console.log(error);

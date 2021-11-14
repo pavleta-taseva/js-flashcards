@@ -9,7 +9,7 @@ function Navbar() {
     const [email, setEmail] = useState();
     let user = useContext(UserContext);
     const isLogged = user.username !== undefined;
-    const history = useNavigate();
+    const navigate = useNavigate();
     //assigning location variable
     const location = useLocation();
     //destructuring pathname from location
@@ -21,7 +21,7 @@ function Navbar() {
     async function onLogout() {
         try {
             await logout();
-            history.replace('/auth/login');
+            navigate('/auth/login', { replace: true });
         } catch(err) {
             console.log(err.message)
         }
@@ -32,8 +32,8 @@ function Navbar() {
         <div className="nav">
             <ul>
                 {/* Checking the current path name using javascript ternary operator and if true adding active classname to it */}
-                <li className={splitLocation[1] === "" ? "active" : ""}>
-                    <NavLink to="/">
+                <li>
+                    <NavLink className={(navData) =>  navData.isActive ? 'active' : '' } to="/">
                         <span className="nav-icon"><ion-icon name="home-outline"></ion-icon></span>
                         <span className="nav-item-title">Home</span>
                     </NavLink>

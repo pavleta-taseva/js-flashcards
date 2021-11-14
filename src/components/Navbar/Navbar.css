@@ -19,6 +19,7 @@
     transition: width 0.5s;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
+    z-index: 9999;
 }
 
 .nav:hover {

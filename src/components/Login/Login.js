@@ -13,7 +13,7 @@ function Login() {
     const [password, setPassword] = useState();
     const [error, setError] = useState(false);
     const user = useContext(UserContext);
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     async function loginUser(e) {
         e.preventDefault();
@@ -24,7 +24,7 @@ function Login() {
                 await login(username, password);
                 user.setUsername(username);
                 setError(false);
-                history.replace('/');
+                navigate('/', { replace: true });
                 window.location.reload();
             } catch(err) {
                 console.log(err.message)
