@@ -39,7 +39,7 @@ export async function getSingleItem(id) {
 
 export async function getMyItem() {
   const userId = sessionStorage.getItem('userId');
-  return await api.getRequest(host + `/data/ideas?where=_ownerId%3D%22${userId}%22`);
+  return await api.getRequest(host + `/my-cards/${userId}`);
 }
 
 export async function createItem(data) {

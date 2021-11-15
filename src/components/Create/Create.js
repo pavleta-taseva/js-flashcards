@@ -45,17 +45,20 @@ function Create() {
         setAnswer(answer);
 
         const data = { category, question, answer };
-        console.log(data);
+     
         if (data.category !== undefined && data.question !== undefined && data.answer !== undefined) {
             try {
                 const newFlashcard = new Parse.Object('Flashcard');
                 const currentUser = Parse.User.current();
+                currentUser.add('myCards', data);
                 newFlashcard.set('category', category);
                 newFlashcard.set('question', question);
                 newFlashcard.set('answer', answer);
                 newFlashcard.set('owner', currentUser);
                 try {
                     const result = await newFlashcard.save();
+                    const response = await currentUser.save();
+                    console.log('User updated ', response);
                     setError(false);
                     navigate(`/my-cards/${owner}`, { replace: true });
                     // Access the Parse Object attributes using the .GET method
