@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import { logout } from '../../api/data.js';
 import '../Navbar/Navbar.css';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
@@ -12,7 +12,6 @@ function Navbar() {
     const location = useLocation();
     //destructuring pathname from location
     const { pathname } = location;
-
     //Javascript split method to get the name of the path in array
     const splitLocation = pathname.split("/");
 
@@ -26,11 +25,10 @@ function Navbar() {
     }
 
     return (
-
         <div className="nav">
             <ul>
-                <li className={splitLocation[1] === "/" ? "active" : ""}>
-                    <NavLink to={"/"}>
+                <li className={pathname === "/" ? "active" : ""}>
+                    <NavLink exact={true} to="/" end={true}>
                         <span className="nav-icon"><ion-icon name="home-outline"></ion-icon></span>
                         <span className="nav-item-title">Home</span>
                     </NavLink>
