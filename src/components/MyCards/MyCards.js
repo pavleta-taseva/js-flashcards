@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react"
 import Parse from '../../../node_modules/parse/dist/parse.js';
-import { useNavigate } from 'react-router-dom';
-import { getMyItem } from '../../api/data.js';
 import Flashcard from '../Flashcard/Flashcard.js';
 import '../Create/Create.css';
+import { Link } from 'react-router-dom';
+
 let myCards = [];
 
 async function getMyCards() {
@@ -25,7 +25,7 @@ async function getMyCards() {
 }
 
 function MyCards() {
-    const [cards, setCards] = useState(myCards);
+    let [cards, setCards] = useState(myCards);
     useEffect(() => {
         async function fetchData() {
             try {
@@ -38,14 +38,25 @@ function MyCards() {
         fetchData();
     }, []);
 
+
+    let isEmpty = false;
+    const length = cards.length === undefined;
+    if (length) {
+        isEmpty = true;
+    }
+
+
     return (
         <div className="my-list-container">
             <h2>My Flashcards</h2><br />
-            <div className="flashcards-container">
-                {cards.map(flashcard => {
-                    return <Flashcard flashcard={flashcard} key={flashcard.id} />
-                })}
-            </div>
+            {!isEmpty
+                ? <div className="flashcards-container">
+                    {cards.map((flashcard, index) => {
+                        return <Flashcard flashcard={flashcard} key={index} />
+                    })}
+                </div>
+                : <h3>You have no own flashcards. Why don't you try to <Link to="/flashcards/create">create</Link> one?</h3>
+            }
         </div>
     )
 }
