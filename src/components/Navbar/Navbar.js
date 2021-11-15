@@ -28,7 +28,7 @@ function Navbar() {
         <div className="nav">
             <ul>
                 <li className={pathname === "/" ? "active" : ""}>
-                    <NavLink exact={true} to="/" end={true}>
+                    <NavLink to="/" end={true}>
                         <span className="nav-icon"><ion-icon name="home-outline"></ion-icon></span>
                         <span className="nav-item-title">Home</span>
                     </NavLink>

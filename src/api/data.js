@@ -43,7 +43,7 @@ export async function getMyItem() {
 }
 
 export async function createItem(data) {
-  return await api.postRequest(host + '/data/ideas', data);
+  return await api.postRequest(host + '/classes/Flashcard', data);
 }
 
 export async function editItem(id, data) {
