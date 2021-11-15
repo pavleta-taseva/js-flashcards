@@ -3,7 +3,7 @@ import { Link, Outlet } from 'react-router-dom';
 import '../CategoryIntro/CategoryIntro.css';
 
 function CategoryIntro() {
-    const link = <Link className="links" to="/auth/register">Register</Link>;
+    const link = <Link className="links" to="/register">Register</Link>;
 
     return (
         <div className="category-intro-container">

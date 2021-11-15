@@ -1,18 +1,13 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { login } from '../../api/data.js';
 import '../Login/Login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import loginBackground from '../../images/login-bg.jpg';
-import UserContext from '../../UserContext.js';
-
-const localUrl = 'http://localhost:5000/auth/login';
-// const herokuUrl = 'https://js-flashcards.herokuapp.com/auth/login';
 
 function Login() {
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
     const [error, setError] = useState(false);
-    const user = useContext(UserContext);
     const navigate = useNavigate();
 
     async function loginUser(e) {
@@ -22,10 +17,9 @@ function Login() {
         if (data.username !== undefined && data.password !== undefined) {
             try {
                 await login(username, password);
-                user.setUsername(username);
+                setUsername(username);
                 setError(false);
                 navigate('/', { replace: true });
-                window.location.reload();
             } catch(err) {
                 console.log(err.message)
             }
@@ -58,7 +52,7 @@ function Login() {
                         </div>
                     </form>
                     <div className="second">
-                        <Link className="link" to="/auth/register">Create new account</Link>
+                        <Link className="link" to="/register">Create new account</Link>
                     </div>
                 </div>
             </div>

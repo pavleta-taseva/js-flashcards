@@ -1,4 +1,4 @@
-import Parse from 'parse/dist/parse.min.js';
+import Parse from '../../node_modules/parse/dist/parse.js';
 
 export const settings = {
     host: '',
@@ -93,6 +93,7 @@ export async function register(username, email, password) {
         Parse.User.logOut();
         localStorage.setItem('email', email);
         alert("Email must be verified. Please, visit your mail inbox for further instructions.");
+        window.location.replace('/login');
     } catch (error) {
         alert("Ops, something went wrong: " + error);
         console.error(error);
@@ -102,7 +103,6 @@ export async function register(username, email, password) {
 export async function logout() {
     try {
         Parse.User.logOut();
-        alert('You\'ve been logged out.');
         localStorage.removeItem('username');
         localStorage.removeItem('authToken');
         localStorage.removeItem('userId');

@@ -26,54 +26,14 @@ function App() {
                 <Route path='/' element={ <Category /> } />
               </Route>
           </Route>
-          <Route path='/practice/:userId' render={(props) => (
-            <React.Fragment>
-              <Navbar />
-              <Practice />
-            </React.Fragment>
-          )} />
-          <Route path='/auth/register' render={(props) => (
-            <React.Fragment>
-              <Navbar />
-              <Register />
-            </React.Fragment>
-          )} />
-          <Route path='/auth/login' render={(props) => (
-            <React.Fragment>
-              <Navbar />
-              <Login />
-            </React.Fragment>
-          )} />
-          <Route path='/flashcards-basic' render={(props) => (
-            <React.Fragment>
-              <Navbar />
-              <FlashcardsBasic />
-            </React.Fragment>
-          )} />
-          <Route path='/flashcards-advanced' render={(props) => (
-            <React.Fragment>
-              <Navbar />
-              <FlashcardsAdvanced />
-            </React.Fragment>
-          )} />
-          <Route path='/flashcards-web' render={(props) => (
-            <React.Fragment>
-              <Navbar />
-              <FlashcardsWeb />
-            </React.Fragment>
-          )} />
-          <Route path="/flashcards/create" render={(props) => (
-            <React.Fragment>
-              <Navbar />
-              <Create />
-            </React.Fragment>
-          )} />
-          <Route path="/edit/:id" render={(props) => (
-            <React.Fragment>
-              <Navbar />
-              <Edit />
-            </React.Fragment>
-          )} />
+          <Route path='/practice/:userId' element={ <Practice /> } />
+          <Route path='/register' element={ <Register /> } />
+          <Route path='/login' element={ <Login /> } />
+          <Route path='/flashcards-basic' element={ <FlashcardsBasic /> } />
+          <Route path='/flashcards-advanced' element={ <FlashcardsAdvanced /> } />
+          <Route path='/flashcards-web' element={ <FlashcardsWeb /> } />
+          <Route path="/flashcards/create" element={ <Create /> } />
+          <Route path="/edit/:id" element={ <Edit /> } />
         </Routes>
       </main>
       <Footer />

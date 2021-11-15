@@ -27,8 +27,7 @@ function Register() {
             try {
                 await register(username, email, password);
                 user.setUsername(username);
-                navigate('/auth/login', { replace: true });
-                window.location.reload();
+                navigate('/login', { replace: true });
             } catch (error) {
                 console.log(error);
             }
@@ -71,7 +70,7 @@ function Register() {
                         </div>
                     </form>
                     <div className="second">
-                        <Link className="link" to="/auth/login">Already have an account?</Link><br></br>
+                        <Link className="link" to="/login">Already have an account?</Link><br></br>
                     </div>
                 </div>
             </div>
