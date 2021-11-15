@@ -14,7 +14,6 @@ function Navbar() {
     const { pathname } = location;
     //Javascript split method to get the name of the path in array
     const splitLocation = pathname.split("/");
-
     async function onLogout() {
         try {
             await logout();
@@ -36,19 +35,19 @@ function Navbar() {
                 {isLogged
                     ? <div className="user">
                         <li className={splitLocation[1] === "profile" ? "active" : ""}>
-                            <NavLink to={`/profile/:userId`}>
+                            <NavLink to={`/profile/${userId}`}>
                                 <span className="nav-icon"><ion-icon name="person-outline"></ion-icon></span>
                                 <span className="nav-item-title">Profile</span>
                             </NavLink>
                         </li>
                         <li className={splitLocation[1] === "practice" ? "active" : ""}>
-                            <NavLink to={`/practice/:userId`}>
+                            <NavLink to={`/practice/${userId}`}>
                                 <span className="nav-icon"><ion-icon name="bulb-outline"></ion-icon></span>
                                 <span className="nav-item-title">Practice</span>
                             </NavLink>
                         </li>
                         <li className={splitLocation[1] === "my-cards" ? "active" : ""}>
-                            <NavLink to={`/my-cards/:userId`}>
+                            <NavLink to={`/my-cards/${userId}`}>
                                 <span className="nav-icon"><ion-icon name="construct-outline"></ion-icon></span>
                                 <span className="nav-item-title">My Cards</span>
                             </NavLink>
