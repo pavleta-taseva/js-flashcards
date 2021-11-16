@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from 'react-router-dom';
 import Parse from '../../../node_modules/parse/dist/parse.js';
 import '../Details/Details.css';
 

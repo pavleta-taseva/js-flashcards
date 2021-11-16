@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
 import Parse from '../../../node_modules/parse/dist/parse.js';
 import Flashcard from '../Flashcard/Flashcard.js';
 
@@ -30,7 +29,7 @@ async function getAdvancedCards() {
         return advancedCards;
     }
     
-    function FlashcardAdvanced() {
+    function FlashcardsAdvanced() {
         let [advanced, setAdvancedCards] = useState(advancedCards);
         useEffect(() => {
             async function fetchData() {
@@ -65,4 +64,4 @@ async function getAdvancedCards() {
     )
 }
 
-export default FlashcardAdvanced;
+export default FlashcardsAdvanced;

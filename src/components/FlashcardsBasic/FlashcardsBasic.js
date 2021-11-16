@@ -29,7 +29,7 @@ async function getBasicsCards() {
         return basicsCards;
     }
     
-    function FlashcardBasic() {
+    function FlashcardsBasic() {
         let [basics, setBasicsCards] = useState(basicsCards);
         useEffect(() => {
             async function fetchData() {
@@ -64,4 +64,4 @@ async function getBasicsCards() {
     )
 }
 
-export default FlashcardBasic;
+export default FlashcardsBasic;
