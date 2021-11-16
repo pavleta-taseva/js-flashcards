@@ -15,6 +15,7 @@ import Edit from './components/Edit/Edit.js';
 import Create from './components/Create/Create.js';
 import Practice from './components/Practice/Practice.js';
 import MyCards from './components/MyCards/MyCards.js';
+import Details from './components/Details/Details.js';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path='/flashcards-advanced' element={ <FlashcardsAdvanced /> } />
           <Route path='/flashcards-web' element={ <FlashcardsWeb /> } />
           <Route path='/flashcards/create' element={ <Create /> } />
+          <Route path="/details/:id" element={ <Details /> } />
           <Route path='/my-cards/:userId' element={ <MyCards /> } />
           <Route path='/practice/:userId' element={ <Practice /> } />
           <Route path="/edit/:id" element={ <Edit /> } />

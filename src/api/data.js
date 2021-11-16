@@ -4,9 +4,9 @@ import Parse from '../../node_modules/parse/dist/parse.js'
 
 Parse.serverURL = 'https://parseapi.back4app.com';
 Parse.initialize(
-    '48BkBrVWc2vgaWll9O6ktpdDS4SKQoJla55qCjPq', // This is your Application ID
-    'j2LuPEhDJVN3XfVnbuW4Ku1vpogMtKQ2QS0AVNum', // This is your Javascript key
-  );
+  '48BkBrVWc2vgaWll9O6ktpdDS4SKQoJla55qCjPq', // This is your Application ID
+  'j2LuPEhDJVN3XfVnbuW4Ku1vpogMtKQ2QS0AVNum', // This is your Javascript key
+);
 
 const host = 'https://parseapi.back4app.com';
 api.settings.host = host;
@@ -17,10 +17,14 @@ export const logout = api.logout;
 
 // Implement application specific requests
 export async function getCurrentUser(id) {
-    return await api.getRequest(host + '/practice/' + id);
+  return await api.getRequest(host + '/practice/' + id);
 }
 
 // Implement application specific requests
+export async function getAll() {
+  return await api.getRequest(host + '/classes/Flashcard');
+}
+
 export async function getBasicItems() {
   return await api.getRequest(host + '/flashcards-basic');
 }
@@ -31,10 +35,6 @@ export async function getAdvancedItems() {
 
 export async function getWebItems() {
   return await api.getRequest(host + '/flashcards-web');
-}
-
-export async function getSingleItem(id) {
-  return await api.getRequest(host + '/details/' + id);
 }
 
 export async function getMyItem() {
@@ -52,20 +52,4 @@ export async function editItem(id, data) {
 
 export async function deleteItem(id) {
   return await api.deleteRequest(host + `/data/ideas/${id}`);
-}
-
-export async function getOwner(flashcardId) {
-  const Flashcard = Parse.Object.extend('Flashcard');
-  const query = new Parse.Query(Flashcard);
-  query.equalTo('objectId', flashcardId);
-  try {
-    const results = await query.find();
-    for (const object of results) {
-      // Access the Parse Object attributes using the .GET method
-      const owner = object.get('owner')
-      console.log(owner);
-    }
-  } catch (error) {
-    console.error('Error while fetching Flashcard', error);
-  }
 }

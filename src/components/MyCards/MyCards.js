@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react"
+import { Link } from 'react-router-dom';
 import Parse from '../../../node_modules/parse/dist/parse.js';
 import Flashcard from '../Flashcard/Flashcard.js';
 import '../MyCards/MyCards.css';
-import { Link } from 'react-router-dom';
 
 let myCards = [];
 
@@ -42,7 +42,6 @@ function MyCards() {
     if (length) {
         isEmpty = true;
     }
-
 
     return (
         <div className="my-list-container">

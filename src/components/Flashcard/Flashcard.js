@@ -1,16 +1,8 @@
 import React from 'react';
 import '../Flashcard/Flashcard.css';
 import { Link } from 'react-router-dom';
-import { getOwner } from '../../api/data.js';
-
 
 function Flashcard({ flashcard }) {
-    const flashcardId = flashcard._id;
-    async function getCurrentOwner() {
-        let owner = await getOwner(flashcardId);
-        console.log(owner);
-    }
-    getCurrentOwner();
     let isFavorite = false;
     const notListed = <div className="listed-container"><Link className="listed-link" to={`/practice-list/${flashcard.id}`}><ion-icon name="add-circle-outline"></ion-icon>Add to Practice List</Link></div>;
 
@@ -28,17 +20,7 @@ function Flashcard({ flashcard }) {
         <h2 className="question">Answer:</h2>
         <p className="answer">{flashcard.answer}</p>
         <Link className="details-button" to={`/details/${flashcard.id}`}>Read More</Link>
-        <div className="buttons">
-            <Link className="flashcard-buttons" to={`/delete/${flashcard.id}`}>Delete</Link>
-            <Link className="flashcard-buttons"
-                to={{
-                    pathname: `/edit/${flashcard.id}`,
-                    state: {
-                        flashcard: flashcard
-                    }
-                }}>
-                Edit</Link>
-        </div>
+
         <div>
             {isFavorite ? listed : notListed}
         </div>
