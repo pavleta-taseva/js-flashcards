@@ -53,3 +53,19 @@ export async function editItem(id, data) {
 export async function deleteItem(id) {
   return await api.deleteRequest(host + `/data/ideas/${id}`);
 }
+
+export async function getOwner(flashcardId) {
+  const Flashcard = Parse.Object.extend('Flashcard');
+  const query = new Parse.Query(Flashcard);
+  query.equalTo('objectId', flashcardId);
+  try {
+    const results = await query.find();
+    for (const object of results) {
+      // Access the Parse Object attributes using the .GET method
+      const owner = object.get('owner')
+      console.log(owner);
+    }
+  } catch (error) {
+    console.error('Error while fetching Flashcard', error);
+  }
+}

@@ -33,7 +33,7 @@ function Create() {
     const Checkbox = ({ label, value, onChange }) => {
         return (
             <label>
-                <input type="checkbox" checked={value} onChange={onChange}/>
+                <input id="checkbox" type="checkbox" checked={value} onChange={onChange}/>
                 {label}
             </label>
         );
@@ -77,7 +77,7 @@ function Create() {
             <div className="create">
                 <form onSubmit={e => onCreate(e)} className="create-form">
                     <h1>Create your own Flashcard</h1>
-                    <label>Choose category:</label><br></br>
+                    <label className="create-form-label">Choose category:</label><br></br>
                     <div>
                         <Checkbox
                         label="JS Basics"
@@ -96,12 +96,12 @@ function Create() {
                         />
                     </div>
                     <div>
-                    <label>Question: </label><br></br>
-                    <textarea placeholder="Enter question" name="question" onChange={e => setQuestion(e.target.value)}>{question}</textarea>
+                    <label className="create-form-label">Question: </label><br></br>
+                    <textarea id="question" placeholder="Enter question" name="question" onChange={e => setQuestion(e.target.value)}>{question}</textarea>
                     </div>
                     <div>
-                    <label>Answer: </label><br></br>
-                    <textarea placeholder="Enter answer" name="answer" onChange={e => setAnswer(e.target.value)}>{answer}</textarea>
+                    <label className="create-form-label">Answer: </label><br></br>
+                    <textarea id="answer" placeholder="Enter answer" name="answer" onChange={e => setAnswer(e.target.value)}>{answer}</textarea>
                     </div>
                     <button className="createBtn" type ="submit">Create</button>
                 </form>

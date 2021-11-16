@@ -1,4 +1,3 @@
-import '../FlashcardsBasic/FlashcardsBasic.css';
 import React, { useState } from 'react';
 import FlashcardList from '../FlashcardList/FlashcardList.js';
 

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../FlashcardsWeb/FlashcardsWeb.css';
 import FlashcardList from '../FlashcardList/FlashcardList.js';
 
 function FlashcardsWeb() {

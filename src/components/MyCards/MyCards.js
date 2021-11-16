@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import Parse from '../../../node_modules/parse/dist/parse.js';
 import Flashcard from '../Flashcard/Flashcard.js';
-import '../Create/Create.css';
+import '../MyCards/MyCards.css';
 import { Link } from 'react-router-dom';
 
 let myCards = [];
@@ -15,9 +15,7 @@ async function getMyCards() {
         const attributes = user.attributes;
         const array = Object.entries(attributes);
         const userArray = array[6];
-        myCards = userArray[1];
-        // myCards = new Array(array[6]);    
-        // console.log(myCards[0]);    
+        myCards = userArray[1];  
     } catch (error) {
         console.log(`Error: ${JSON.stringify(error)}`);
     }
@@ -48,7 +46,7 @@ function MyCards() {
 
     return (
         <div className="my-list-container">
-            <h2>My Flashcards</h2><br />
+            <h2 className="my-cards-title">My Flashcards</h2><br />
             {!isEmpty
                 ? <div className="flashcards-container">
                     {cards.map((flashcard, index) => {

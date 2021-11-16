@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
+.my-cards-title {
+    margin-bottom: 5%;
+    font-family: "Audiowide", cursive;
+    letter-spacing: 2px;
+    font-size: 2.3rem;
+    color: #fff;
+}

@@ -1,10 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
 
-body {
-  min-height: 150vh;
-}
-
 .header {
   font-family: "Audiowide", cursive;
   position: relative;

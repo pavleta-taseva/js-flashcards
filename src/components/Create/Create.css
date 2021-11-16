@@ -20,7 +20,7 @@
 
 .create {
     grid-column: 2;
-    width: 35vw;
+    width: 30vw;
     height: 90vh;
     background: #2a1d30;
     font-family: "Roboto Mono", monospace;
@@ -37,41 +37,35 @@
 
 .create-form h1 {
     margin-bottom: 30px;
-    color:#ca90e0;
+    color:#fff;
 }
 
-.create-form label {
-    font-size: 20px;
-}
-
-.create-form .category-name {
-    color: #000;
-}
-
-.create-form .category-name option {
-    color: #000;
+.create-form-label {
+    padding-bottom: 3%;
+    font-size: 22px;
+    color: #ca90e0;
 }
 
 .create-form div {
     margin-bottom: 30px;
 }
 
-.create-form textarea,
-.create-form select {
+.create-form textarea {
     margin-top: 10px;
     color: #000;
     outline: none;
 }
 
-.create-form textarea {
-    height: 150px;
+#question {
+    height: 50px;
     padding: 10px;
     width: 95%;
 }
 
-.create-form select {
-    height: 35px;
-    width: 100%;
+#answer {
+    height: 200px;
+    padding: 10px;
+    width: 95%;
 }
 
 .createBtn {
@@ -89,4 +83,10 @@
     box-shadow: 0px 3px 26px -1px rgba(196,146,217,0.25);
     -webkit-box-shadow: 0px 3px 26px -1px rgba(196,146,217,0.25);
     -moz-box-shadow: 0px 3px 26px -1px rgba(196,146,217,0.25);
+}
+
+#checkbox {
+    margin-top: 10%;
+    margin-left: 10%;
+    margin-right: 2%;
 }

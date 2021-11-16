@@ -1,8 +1,12 @@
+
 .flashcards-list-container {
-    width: 90vw;
+    width: 100vw;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: end;
     align-items: center;
+    height: auto;
+    margin: 0 auto;
 }
 
 .flashcards-wrapper {
@@ -18,9 +22,12 @@
 }
 
 .flashcards-container {
-    width: 100vw;
-    height: 70vh;
-    display: flex;
+    width: 80vw;
+    padding-left: 20%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 4rem;
     justify-content: center;
     align-items: center;
 }
@@ -32,4 +39,5 @@
 .card-list-titles {
     padding-left: 5%;
     width: 100%;
+    margin-bottom: 5%;
 }

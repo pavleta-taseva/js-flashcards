@@ -10,11 +10,12 @@
   font-family: "Roboto Mono", monospace;
 }
 
+html,
 body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: auto;
 }
 
 .card {
