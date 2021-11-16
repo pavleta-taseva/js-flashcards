@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import CategoryIntro from './components/CategoryIntro/CategoryIntro.js';
@@ -34,10 +34,10 @@ function App() {
           <Route path='/flashcards-advanced' element={ <FlashcardsAdvanced /> } />
           <Route path='/flashcards-web' element={ <FlashcardsWeb /> } />
           <Route path='/flashcards/create' element={ <Create /> } />
-          <Route path="/details/:id" element={ <Details /> } />
+          <Route path='/details/:id' element={ <Details /> } />
           <Route path='/my-cards/:userId' element={ <MyCards /> } />
           <Route path='/practice/:userId' element={ <Practice /> } />
-          <Route path="/edit/:id" element={ <Edit /> } />
+          <Route path='/edit/:id' element={ <Edit /> } />
         </Routes>
       </main>
       <Footer />

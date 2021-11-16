@@ -1,32 +1,63 @@
-import React, { useState } from 'react';
-import FlashcardList from '../FlashcardList/FlashcardList.js';
+import React, { useState, useEffect, Suspense } from "react";
+import Parse from '../../../node_modules/parse/dist/parse.js';
+import Flashcard from '../Flashcard/Flashcard.js';
+import '../FlashcardsWeb/FlashcardsWeb.css';
 
+let finalArray = [];
+
+async function getWebCards() {
+    let webCards = [];
+    const Flashcard = Parse.Object.extend('Flashcard');
+    const query = new Parse.Query(Flashcard);
+    query.equalTo('category', 'JS Web');
+    try {
+        const results = await query.find();
+        for (const object of results) {
+            const category = object.get('category')
+            const question = object.get('question')
+            const answer = object.get('answer')
+            const owner = object.get('owner')
+            const currentCard = {
+                category,
+                question,
+                answer,
+                owner
+            }
+            if (!webCards.includes(currentCard)) {
+                webCards.push(currentCard);
+                finalArray = webCards;
+            }
+        };
+    } catch (error) {
+        console.log(`Error: ${JSON.stringify(error)}`);
+    }
+    return finalArray;
+}
 function FlashcardsWeb() {
-    const [flashcards, setFlashcards] = useState(SAMPLE_FLASHCARDS);
+    let [web, setWebCards] = useState(finalArray);
+    
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const res = await getWebCards();
+                setWebCards(res);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        fetchData();
+    }, []);
+
     return (
-        <FlashcardList flashcards={flashcards} />
+        <div className="my-list-container">
+            <h2 className="my-cards-title">JS Web Flashcards List</h2><br />
+            <div className="flashcards-container">
+                {web.map((flashcard, index) => {
+                    return <Flashcard flashcard={flashcard} key={index} />
+                })}
+            </div>
+        </div>
     )
 }
-
-const SAMPLE_FLASHCARDS = [
-    {
-        id: 1,
-        category: "JS Basics",
-        question: "What is CSS",
-        answer: "CSS stands for Cascading Style Sheets · CSS describes how HTML elements are to be displayed on screen, paper, or in other media."
-    },
-    {
-        id: 2,
-        category: "JS Basics",
-        question: "What is HTTP",
-        answer: "CSS stands for Cascading Style Sheets · CSS describes how HTML elements are to be displayed on screen, paper, or in other media."
-    },
-    {
-        id: 3,
-        category: "JS Basics",
-        question: "What is Java",
-        answer: "CSS stands for Cascading Style Sheets · CSS describes how HTML elements are to be displayed on screen, paper, or in other media."
-    }
-]
 
 export default FlashcardsWeb;

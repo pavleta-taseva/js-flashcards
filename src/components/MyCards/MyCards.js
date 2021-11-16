@@ -24,8 +24,9 @@ async function getMyCards() {
 
 function MyCards() {
     let [cards, setCards] = useState(myCards);
+    
     useEffect(() => {
-        async function fetchData() {
+        async function fetchWebData() {
             try {
                 const res = await getMyCards();
                 setCards(res);
@@ -33,7 +34,7 @@ function MyCards() {
                 console.log(err);
             }
         }
-        fetchData();
+        fetchWebData();
     }, []);
 
 
