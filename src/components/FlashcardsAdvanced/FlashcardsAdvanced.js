@@ -9,8 +9,6 @@ async function getAdvancedCards() {
     const Flashcard = Parse.Object.extend('Flashcard');
     const query = new Parse.Query(Flashcard);
     query.equalTo('category', 'JS Advanced');
-
-    // Returns unique emails
     try {
         const results = await query.find();
             results.forEach(object => {
@@ -61,7 +59,7 @@ async function getAdvancedCards() {
                         return <Flashcard flashcard={flashcard} key={index} />
                     })}
                 </div>
-                : <h3>You have no own flashcards. Why don't you try to <Link to="/flashcards/create">create</Link> one?</h3>
+                : <h3>There are no flashcards in this category yet.</h3>
             }
         </div>
     )
