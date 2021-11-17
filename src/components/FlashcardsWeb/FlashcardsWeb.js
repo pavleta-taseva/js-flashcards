@@ -7,23 +7,27 @@ let finalArray = [];
 
 async function getWebCards() {
     let webCards = [];
-    const Flashcard = Parse.Object.extend('Flashcard');
-    const query = new Parse.Query(Flashcard);
-    query.equalTo('category', 'JS Web');
+    const query = new Parse.Query('Flashcard');
+    query.containedIn('category', ['JS Web']);
+    
     try {
         const results = await query.find();
-        for (const object of results) {
-            const category = object.get('category')
-            const question = object.get('question')
-            const answer = object.get('answer')
-            const owner = object.get('owner')
+        for (let object of results) {
+            const id = object.id;
+            const category = object.get('category');
+            const question = object.get('question');
+            const answer = object.get('answer');
+            const owner = object.get('owner');
+
             const currentCard = {
+                id,
                 category,
                 question,
                 answer,
                 owner
             }
-            if (!webCards.includes(currentCard)) {
+            const check = webCards.includes(currentCard);
+            if (!check) {
                 webCards.push(currentCard);
                 finalArray = webCards;
             }

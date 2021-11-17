@@ -6,23 +6,27 @@ let finalArray = [];
 
 async function getBasicsCards() {
     let basicsCards = [];
-    const Flashcard = Parse.Object.extend('Flashcard');
-    const query = new Parse.Query(Flashcard);
-    query.equalTo('category', 'JS Basics');
+    const query = new Parse.Query('Flashcard');
+    query.containedIn('category', ['JS Basics']);
+    
     try {
         const results = await query.find();
-        for (const object of results) {
+        for (let object of results) {
+            const id = object.id;
             const category = object.get('category');
             const question = object.get('question');
             const answer = object.get('answer');
             const owner = object.get('owner');
+
             const currentCard = {
+                id,
                 category,
                 question,
                 answer,
                 owner
             }
-            if (!basicsCards.includes(currentCard)) {
+            const check = basicsCards.includes(currentCard);
+            if (!check) {
                 basicsCards.push(currentCard);
                 finalArray = basicsCards;
             }
