@@ -1,7 +1,7 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import Parse from '../../../node_modules/parse/dist/parse.js';
-import Flashcard from '../Flashcard/Flashcard.js';
 import '../FlashcardsWeb/FlashcardsWeb.css';
+import FlashcardList from '../FlashcardList/FlashcardList.js';
 
 let finalArray = [];
 
@@ -35,7 +35,7 @@ async function getWebCards() {
 }
 function FlashcardsWeb() {
     let [web, setWebCards] = useState(finalArray);
-    
+
     useEffect(() => {
         async function fetchData() {
             try {
@@ -48,14 +48,10 @@ function FlashcardsWeb() {
         fetchData();
     }, []);
 
+    console.log(web);
     return (
-        <div className="my-list-container">
-            <h2 className="my-cards-title">JS Web Flashcards List</h2><br />
-            <div className="flashcards-container">
-                {web.map((flashcard, index) => {
-                    return <Flashcard flashcard={flashcard} key={index} />
-                })}
-            </div>
+        <div>
+            <FlashcardList flashcards={web} />
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Parse from '../../../node_modules/parse/dist/parse.js';
-import Flashcard from '../Flashcard/Flashcard.js';
 import '../FlashcardsAdvanced/FlashcardsAdvanced.css';
+import FlashcardList from '../FlashcardList/FlashcardList.js';
 
 let finalArray = [];
 
@@ -53,15 +53,11 @@ function FlashcardsAdvanced() {
         }
         fetchAdData();
     }, []);
-
+    
+    console.log(advanced);
     return (
-        <div className="my-list-container">
-            <h2 className="my-cards-title">JS Advanced Flashcards List</h2><br />
-            <div className="flashcards-container">
-                {advanced.map((flashcard, index) => {
-                    return <Flashcard flashcard={flashcard} key={index}></Flashcard>
-                })}
-            </div>
+        <div>
+            <FlashcardList flashcards={advanced} />
         </div>
     )
 }

@@ -8,7 +8,6 @@ function Create() {
     const [answer, setAnswer] = useState();
     const [category, setCategory] = useState();
     const owner = localStorage.getItem('userId');
-    const [error, setError] = useState(false);
     const navigate = useNavigate();
     const [checkedOne, setCheckedOne] = useState(false);
     const [checkedTwo, setCheckedTwo] = useState(false);
@@ -59,9 +58,7 @@ function Create() {
                     const result = await newFlashcard.save();
                     const response = await currentUser.save();
                     console.log('User updated ', response);
-                    setError(false);
                     navigate(`/my-cards/${owner}`, { replace: true });
-                    // Access the Parse Object attributes using the .GET method
                     console.log('Flashcard created', result);
                 } catch (error) {
                     console.error('Error while creating Flashcard: ', error);

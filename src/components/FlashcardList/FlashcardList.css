@@ -1,9 +1,8 @@
-
 .flashcards-list-container {
     width: 100vw;
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
     height: auto;
     margin: 0 auto;
@@ -21,6 +20,10 @@
     margin-bottom: 1%;
 }
 
+.flashcards-wrapper h3 ion-icon {
+    font-size: 18px;
+}
+
 .flashcards-container {
     width: 80vw;
     padding-left: 20%;
@@ -32,12 +35,31 @@
     align-items: center;
 }
 
-.flashcards-wrapper h3 ion-icon {
-    font-size: 18px;
-}
-
 .card-list-titles {
     padding-left: 5%;
     width: 100%;
     margin-bottom: 5%;
+    margin-top: 3%;
+}
+
+.card-list-titles h1 {
+   color:#ca90e0;
+}
+
+.flashcards-list-menu {
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    background: #ca90e0;
+    padding: 15px 0;
+    margin: 0;
+    list-style: none;
+    font-size: 23px;
+}
+
+.flashcards-list-menu a {
+    text-decoration: none;
+    color: #fff;
 }
