@@ -26,8 +26,8 @@ async function practice(e) {
 function Flashcard({ flashcard }) {
     const flashcardInfo = flashcard;
     const id = flashcard.id;
-    console.log(id);
-    const notListed = <div className="listed-container"><Link onClick={practice} className="listed-link" to={`/practice-list/${flashcardInfo.id}`}><ion-icon name="add-circle-outline"></ion-icon>Add to Practice List</Link></div>;
+    let owner = JSON.stringify(flashcardInfo.owner);
+    const notListed = <div className="listed-container"><Link onClick={practice} className="listed-link" to={`/practice-list/${id}`}><ion-icon name="add-circle-outline"></ion-icon>Add to Practice List</Link></div>;
 
     const listed = <div className="listed-container"><ion-icon name="add-circle-outline"></ion-icon><h3>Added to Practice List</h3></div>;
     const questionElement = <span>
@@ -41,7 +41,17 @@ function Flashcard({ flashcard }) {
     const answerElement = <span>
         <h2 className="question">Answer:</h2>
         <p className="answer">{flashcardInfo.answer}</p>
-        <Link className="details-button" to={`/details/${flashcardInfo.id}`}>Read More</Link>
+        <Link 
+            className="details-button" 
+            to={`/details/${id}`}
+            state={{
+                id: id,
+                question: flashcardInfo.question,
+                answer: flashcardInfo.answer,
+                owner: owner
+            }}
+            >Read More
+        </Link>
 
         <div>
             {isFavorite ? listed : notListed}
@@ -54,9 +64,9 @@ function Flashcard({ flashcard }) {
     const details = <div className="details">
         {answerElement}
     </div>
-
+    console.log(id);
     return (
-        <div id={`${flashcardInfo.id}`} className="card">
+        <div id={`${id}`} className="card">
             {cover}
             {details}
         </div>

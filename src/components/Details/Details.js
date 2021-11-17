@@ -1,51 +1,55 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useLocation } from 'react-router-dom';
 import Parse from '../../../node_modules/parse/dist/parse.js';
 import '../Details/Details.css';
-
-async function getMyCard() {
-    let isOwner = false;
-    const Flashcard = Parse.Object.extend('Flashcard');
-    const query = new Parse.Query(Flashcard);
-    const getCurrentUser = localStorage.getItem('userId');
-    try {
-        const results = await query.find();
-    } catch (error) {
-        console.error('Error while fetching Flashcard', error);
-    }
-    return isOwner;
-}
+import { Link } from 'react-router-dom';
 
 function Details() {
-    let [card, setCard] = useState();
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const res = await getMyCard();
-                setCard(res);
-            } catch (err) {
-                console.log(err);
+    const location = useLocation();
+    const { id } = location.state;
+    const { question } = location.state;
+    const { answer } = location.state;
+    
+    (async function getOwner() {
+        const Flashcard = Parse.Object.extend('Flashcard');
+        const query = new Parse.Query(Flashcard);
+        query.equalTo('objectId', id);
+        const userId = localStorage.getItem('userId');
+        const username = localStorage.getItem('username');
+        try {
+            const results = await query.find();
+            for (const object of results) {
+                const owner = object.get('owner');
+                const ownerId = owner.id;
+                const isOwner = ownerId === userId;
+            if (isOwner) {
+                let ownerName = username;
+                localStorage.setItem('owner', ownerName);
             }
+          }
+        } catch (error) {
+          console.error('Error while fetching Flashcard', error);
         }
-        fetchData();
-    }, []);
+    })();
+    const owner = localStorage.getItem('owner');
 
     return (
         <div>
-            {/* <h2>Flashcard id: {`${flashcard.id}`}</h2>
-            <h2>Flashcard id: {`${flashcard.question}`}</h2>
-            <h2>Flashcard id: {`${flashcard.answer}`}</h2>
-            <h2>Flashcard id: {`${owner}`}</h2> */}
-            {/* <div className="buttons">
-                <Link className="flashcard-buttons" to={`/delete/${flashcard.id}`}>Delete</Link>
+            <h2>Flashcard id: {`${id}`}</h2>
+            <h2>Flashcard Question: {`${question}`}</h2>
+            <h2>Flashcard Answer: {`${answer}`}</h2>
+            <h2>Flashcard Owner: {`${owner}`}</h2>
+            <div className="buttons">
+                <Link className="flashcard-buttons" to={`/delete/${id}`}>Delete</Link>
                 <Link className="flashcard-buttons"
-                    to={{
-                        pathname: `/edit/${flashcard.id}`,
-                        state: {
-                            flashcard: flashcard
-                        }
-                    }}>
-                    Edit</Link>
-            </div> */}
+                    to={`/edit/${id}`}
+                    state={{
+                        id,
+                        question,
+                        answer,
+                    }}
+                    >Edit</Link>
+            </div>
         </div>
     )
 }
