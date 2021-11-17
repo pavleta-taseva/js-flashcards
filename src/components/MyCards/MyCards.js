@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { Link } from 'react-router-dom';
 import Parse from '../../../node_modules/parse/dist/parse.js';
 import Flashcard from '../Flashcard/Flashcard.js';
+import FlashcardList from '../FlashcardList/FlashcardList.js';
 import '../MyCards/MyCards.css';
 
 let myCards = [];
@@ -15,7 +16,7 @@ async function getMyCards() {
         const attributes = user.attributes;
         const array = Object.entries(attributes);
         const userArray = array[6];
-        myCards = userArray[1];  
+        myCards = userArray[1];
     } catch (error) {
         console.log(`Error: ${JSON.stringify(error)}`);
     }
@@ -24,7 +25,7 @@ async function getMyCards() {
 
 function MyCards() {
     let [cards, setCards] = useState(myCards);
-    
+
     useEffect(() => {
         async function fetchWebData() {
             try {
@@ -36,25 +37,10 @@ function MyCards() {
         }
         fetchWebData();
     }, []);
-
-
-    let isEmpty = false;
-    const length = cards.length === undefined;
-    if (length) {
-        isEmpty = true;
-    }
-
+    
     return (
-        <div className="my-list-container">
-            <h2 className="my-cards-title">My Flashcards</h2><br />
-            {!isEmpty
-                ? <div className="flashcards-container">
-                    {cards.map((flashcard, index) => {
-                        return <Flashcard flashcard={flashcard} key={index} />
-                    })}
-                </div>
-                : <h3>You have no own flashcards. Why don't you try to <Link to="/flashcards/create">create</Link> one?</h3>
-            }
+        <div>
+            <FlashcardList flashcards={cards} />
         </div>
     )
 }
