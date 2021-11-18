@@ -73,7 +73,7 @@ function Details() {
     const owner = localStorage.getItem('owner');
 
     return (
-        <div className="details-container">
+        <div className="details-container animate__animated animate__slideInRight">
             <div className="cube">
             <div className="top"></div>
                 <div>
