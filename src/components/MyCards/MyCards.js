@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Link } from 'react-router-dom';
 import Parse from '../../../node_modules/parse/dist/parse.js';
-import Flashcard from '../Flashcard/Flashcard.js';
 import FlashcardList from '../FlashcardList/FlashcardList.js';
 import '../MyCards/MyCards.css';
 

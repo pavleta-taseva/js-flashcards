@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation } from 'react-router-dom';
 import Parse from '../../../node_modules/parse/dist/parse.js';
 import '../Details/Details.css';
@@ -10,6 +10,26 @@ function Details() {
     const { question } = location.state;
     const { answer } = location.state;
     const navigate = useNavigate();
+    let [currentQuestion, setCurrentQuestion] = useState(question);
+    let [currentAnswer, setCurrentAnswer] = useState(answer);
+
+    (async () => {
+        const Flashcard = Parse.Object.extend('Flashcard');
+        const query = new Parse.Query(Flashcard);
+        query.equalTo('objectId', id);
+        try {
+            const results = await query.find();
+            for (const object of results) {
+                // Access the Parse Object attributes using the .GET method
+                const question = object.get('question');
+                const answer = object.get('answer');
+                setCurrentQuestion(question);
+                setCurrentAnswer(answer);
+            }
+        } catch (error) {
+            console.error('Error while fetching Flashcard', error);
+        }
+    })();
 
     (async function getOwner() {
         const Flashcard = Parse.Object.extend('Flashcard');
@@ -23,30 +43,30 @@ function Details() {
                 const owner = object.get('owner');
                 const ownerId = owner.id;
                 const isOwner = ownerId === userId;
-            if (isOwner) {
-                let ownerName = username;
-                localStorage.setItem('owner', ownerName);
+                if (isOwner) {
+                    let ownerName = username;
+                    localStorage.setItem('owner', ownerName);
+                }
             }
-          }
         } catch (error) {
             console.error('Error while fetching Flashcard', error);
         }
     })();
-    
+
     async function onDelete() {
         const query = new Parse.Query('Flashcard');
         try {
-          // here you put the objectId that you want to delete
-          const object = await query.get(id);
-          try {
-            const response = await object.destroy();
-            navigate('/', { replace: true })
-            console.log('Deleted ParseObject', response);
-          } catch (error) {
-            console.error('Error while deleting ParseObject', error);
-          }
+            // here you put the objectId that you want to delete
+            const object = await query.get(id);
+            try {
+                const response = await object.destroy();
+                navigate('/', { replace: true })
+                console.log('Deleted ParseObject', response);
+            } catch (error) {
+                console.error('Error while deleting ParseObject', error);
+            }
         } catch (error) {
-          console.error('Error while retrieving ParseObject', error);
+            console.error('Error while retrieving ParseObject', error);
         }
     };
 
@@ -54,23 +74,24 @@ function Details() {
 
     return (
         <div>
-            <h2>Flashcard id: {`${id}`}</h2>
-            <h2>Flashcard Question: {`${question}`}</h2>
-            <h2>Flashcard Answer: {`${answer}`}</h2>
-            <h2>Flashcard Owner: {`${owner}`}</h2>
-            <div className="buttons">
-                <Link onClick={onDelete} 
-                className="flashcard-buttons" 
-                to={`/delete/${id}`}
-                >Delete</Link>
-                <Link className="flashcard-buttons"
-                    to={`/edit/${id}`}
-                    state={{
-                        id,
-                        question,
-                        answer,
-                    }}
-                    >Edit</Link>
+            <div className="details-container">
+                <div className="details-card">
+                    <h2 className="details-heading"><span className="details-title">id:</span> {`${id}`}</h2>
+                    <h2 className="details-heading"><span className="details-title">Question:</span> {`${currentQuestion}`}</h2>
+                    <h2 className="details-heading"><span className="details-title">Answer:</span> {`${currentAnswer}`}</h2>
+                    <h2 className="details-heading"><span className="details-title">Creator:</span> {`${owner}`}</h2>
+                    <div className="buttons">
+                        <Link onClick={onDelete} className="flashcard-buttons" to={`/delete/${id}`}>Delete</Link>
+                        <Link className="flashcard-buttons"
+                            to={`/edit/${id}`}
+                            state={{
+                                id: id,
+                                question: question,
+                                answer: answer
+                            }}
+                        >Edit</Link>
+                    </div>
+                </div>
             </div>
         </div>
     )

@@ -1,4 +1,29 @@
-.buttons {
+  .details-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100vw;
+    height: 100vh;
+    padding: 40px;
+  }
+  
+  .details-card {
+    grid-column: 2;
+    padding: 5% 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: justify;
+  }
+
+  .details-heading {
+    font-size: 18px;
+  }
+
+  .details-title {
+    color: #ca90e0;
+  }
+
+  .buttons {
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 20px;
@@ -8,11 +33,13 @@
     display: inline-block;
     width: 15%;
     padding: 6px 30px;
-    background: #00ccff;
+    background: #ca90e0;
     color: #000;
     letter-spacing: 1px;
     text-decoration: none;
     border-radius: 15px;
     font-weight: 500;
     margin: 17% 0;
+    text-align: center;
   }
+

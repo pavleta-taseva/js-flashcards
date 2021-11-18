@@ -1,33 +1,61 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import { useLocation } from 'react-router-dom'
+import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import Parse from '../../../node_modules/parse/dist/parse.js';
 import '../Edit/Edit.css';
 
 
 function Edit() {
+    const [error, setError] = useState(false);
+    const [questionEdit, setQuestionEdit] = useState();
+    const [answerEdit, setAnswerEdit] = useState();
+    const navigate = useNavigate();
     const location = useLocation();
-    const { category, question, answer } = location.state.flashcard;
-    const { id } = useParams();
+    const { id } = location.state;
+    const { question } = location.state;
+    const { answer } = location.state;
+    async function onEdit(e) {
+        e.preventDefault();
+        const data = { questionEdit, answerEdit };
+
+        const query = new Parse.Query('Flashcard');
+        try {
+            const object = await query.get(id);
+            object.set('question', data.questionEdit);
+            object.set('answer', data.answerEdit);
+            try {
+                const response = await object.save();          
+                console.log('Flashcard updated', response);
+                navigate(-1, 
+                    { state: {
+                        id: id,
+                        question: questionEdit,
+                        answer: answerEdit,
+
+                    }}
+                );
+            } catch (error) {
+                console.error('Error while updating Flashcard', error);
+            }
+        } catch (error) {
+            console.error('Error while retrieving object Flashcard', error);
+        }
+    }
 
     return (
         <div className="edit">
-            <form className="edit-form" action={`/edit/${id}`} method="POST">
+            <form className="edit-form" onSubmit={e => onEdit(e)}>
+                        {error && (
+                            <div>Error: Missing data. Please edit all fields!</div>
+                        )}
                 <h1>Edit your Flashcard</h1>
                 <div>
-                    <label htmlFor={category}>Choose category:</label><br></br>
-                    <select className="category" name="category">
-                        <option value="js-basics">JS Basics</option>
-                        <option value="js-advanced">JS Advanced</option>
-                        <option value="js-web">JS Web</option>
-                    </select>
-                </div>
-                <div>
                     <label htmlFor={question}>Question:</label><br></br>
-                    <textarea placeholder="Edit question" name="question" defaultValue={question}></textarea>
+                    <textarea placeholder="Edit question" name="question" defaultValue={question} onChange={e => setQuestionEdit(e.target.value)}></textarea>
                 </div>
                 <div>
                     <label htmlFor={answer}>Answer:</label><br></br>
-                    <textarea placeholder="Edit answer" name="answer" defaultValue={answer}></textarea>
+                    <textarea placeholder="Edit answer" name="answer" defaultValue={answer} onChange={e => setAnswerEdit(e.target.value)}></textarea>
                 </div>
                 <button className="editBtn" type="submit">Edit</button>
             </form>
