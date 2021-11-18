@@ -73,24 +73,32 @@ function Details() {
     const owner = localStorage.getItem('owner');
 
     return (
-        <div>
-            <div className="details-container">
-                <div className="details-card">
-                    <h2 className="details-heading"><span className="details-title">id:</span> {`${id}`}</h2>
-                    <h2 className="details-heading"><span className="details-title">Question:</span> {`${currentQuestion}`}</h2>
-                    <h2 className="details-heading"><span className="details-title">Answer:</span> {`${currentAnswer}`}</h2>
-                    <h2 className="details-heading"><span className="details-title">Creator:</span> {`${owner}`}</h2>
-                    <div className="buttons">
-                        <Link onClick={onDelete} className="flashcard-buttons" to={`/delete/${id}`}>Delete</Link>
-                        <Link className="flashcard-buttons"
-                            to={`/edit/${id}`}
-                            state={{
-                                id: id,
-                                question: question,
-                                answer: answer
-                            }}
-                        >Edit</Link>
-                    </div>
+        <div className="details-container">
+            <div className="cube">
+            <div className="top"></div>
+                <div>
+                    <span className="spanOne">{`${currentQuestion}`}</span>
+                    <span className="spanTwo">{`${currentQuestion}`}</span>
+                    <span className="spanThree">{`${currentQuestion}`}</span>
+                    <span className="spanFour">{`${currentQuestion}`}</span>
+                </div>
+            </div>
+            <div className="details-card">
+                <h2 className="details"><span className="details-title">Flashcard Details:</span></h2>
+                <h2 className="details-heading"><span className="details-title">id:</span> {`${id}`}</h2>
+                <h2 className="details-heading"><span className="details-title">Question:</span> {`${currentQuestion}`}</h2>
+                <h2 className="details-heading"><span className="details-title">Answer:</span> {`${currentAnswer}`}</h2>
+                <h2 className="details-heading"><span className="details-title">Creator:</span> {`${owner}`}</h2>
+                <div className="buttons">
+                    <Link onClick={onDelete} className="flashcard-buttons" to={`/delete/${id}`}>Delete</Link>
+                    <Link className="flashcard-buttons"
+                        to={`/edit/${id}`}
+                        state={{
+                            id: id,
+                            question: question,
+                            answer: answer
+                        }}
+                    >Edit</Link>
                 </div>
             </div>
         </div>

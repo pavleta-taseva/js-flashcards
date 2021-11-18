@@ -1,7 +1,16 @@
+:root {
+  --main-color: #3c2846;
+  --light-pink: #ca90e0;
+  --dark-purple: #1c1320;
+}
+
+* {
+  box-sizing: border-box;
+}
 
 body {
+  min-height: 100vh;
+  background: var(--main-color);
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  height: auto;
 }
