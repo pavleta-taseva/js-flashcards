@@ -34,6 +34,7 @@ function Edit() {
 
                     }}
                 );
+                setError(false);
             } catch (error) {
                 console.error('Error while updating Flashcard', error);
             }
