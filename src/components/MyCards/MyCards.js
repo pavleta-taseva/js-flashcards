@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react"
 import Parse from '../../../node_modules/parse/dist/parse.js';
 import FlashcardList from '../FlashcardList/FlashcardList.js';
+import { Link } from 'react-router-dom';
 import '../MyCards/MyCards.css';
 
 let myCards = [];
+let result = [];
 
 async function getMyCards() {
     const User = new Parse.User();
@@ -15,10 +17,26 @@ async function getMyCards() {
         const array = Object.entries(attributes);
         const userArray = array[6];
         myCards = userArray[1];
+        for (const object of myCards) {
+            // Access the Parse Object attributes using the .GET method
+            const localId = object.get('localId');
+            const category = object.get('category');
+            const question = object.get('question');
+            const answer = object.get('answer');
+            const owner = object.get('owner');
+            const myCardsResult = {
+                id: localId,
+                category,
+                question,
+                answer,
+                owner
+            }
+            result.push(myCardsResult);
+        }
     } catch (error) {
         console.log(`Error: ${JSON.stringify(error)}`);
     }
-    return myCards;
+    return result;
 }
 
 function MyCards() {
@@ -35,10 +53,20 @@ function MyCards() {
         }
         fetchWebData();
     }, []);
-    
+
     return (
         <div>
-            <FlashcardList flashcards={cards} />
+            {cards.length > 0
+                ? <FlashcardList flashcards={cards} />
+                : <div className="no-cards">
+                    <div>
+                        <h1 className="no-cards-heading">No Flashcards in this category yet.</h1>
+                    </div>
+                    <div>
+                        <h1 className="no-cards-heading">Be the first one! <Link className="links" to='/flashcards/create'>Create</Link> a flashcard yourself!</h1>
+                    </div>
+                </div>
+            }
         </div>
     )
 }

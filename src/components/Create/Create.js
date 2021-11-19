@@ -1,7 +1,31 @@
 import React, { useState } from 'react';
 import Parse from '../../../node_modules/parse/dist/parse.js';
+import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
 import '../Create/Create.css';
+
+async function getSingleCard() {
+    const Flashcard = Parse.Object.extend('Flashcard');
+    const query = new Parse.Query(Flashcard);
+    // You can also query by using a parameter of an object
+    // query.equalTo('objectId', 'xKue915KBG');
+    try {
+      const results = await query.find();
+      for (const object of results) {
+        // Access the Parse Object attributes using the .GET method
+        const category = object.get('category')
+        const question = object.get('question')
+        const answer = object.get('answer')
+        const owner = object.get('owner')
+        console.log(category);
+        console.log(question);
+        console.log(answer);
+        console.log(owner);
+      }
+    } catch (error) {
+      console.error('Error while fetching Flashcard', error);
+    }
+}
 
 function Create() {
     const [question, setQuestion] = useState();
@@ -50,6 +74,7 @@ function Create() {
                 const newFlashcard = new Parse.Object('Flashcard');
                 const currentUser = Parse.User.current();
                 currentUser.add('myCards', data);
+                newFlashcard.set('localId', uuidv4());
                 newFlashcard.set('category', category);
                 newFlashcard.set('question', question);
                 newFlashcard.set('answer', answer);

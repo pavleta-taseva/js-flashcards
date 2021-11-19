@@ -4,7 +4,6 @@ import '../FlashcardList/FlashcardList.css';
 import { Link } from 'react-router-dom';
 
 function FlashcardList({ flashcards }) {
-    console.log(flashcards);
     return (
         <div>
             <ul className="flashcards-list-menu">

@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import Parse from '../../../node_modules/parse/dist/parse.js';
 import '../Details/Details.css';
 import { Link, useNavigate } from 'react-router-dom';
+let isFavorite = false;
 
 function Details() {
     const location = useLocation();
@@ -69,7 +70,25 @@ function Details() {
             console.error('Error while retrieving ParseObject', error);
         }
     };
-
+    
+    async function practice(e) {
+        e.preventDefault();
+        const Flashcard = Parse.Object.extend('Flashcard');
+        const query = new Parse.Query(Flashcard);
+        query.equalTo('objectId', id);
+        try {
+            isFavorite = true;
+            const currentCard = await query.get(id);
+            const currentUser = Parse.User.current();
+            const practiceList = currentUser.get('practiceList');
+            console.log(practiceList);
+            currentUser.add('practiceCards', currentCard);
+            console.log('Card added to the Practice list');
+            await currentUser.save();
+        } catch(err) {
+            console.log(err.message)
+        }
+    }
     const owner = localStorage.getItem('owner');
 
     return (
@@ -85,7 +104,7 @@ function Details() {
             </div>
             <div className="details-card">
                 <h2 className="details"><span className="details-title">Flashcard Details:</span></h2>
-                <h2 className="details-heading"><span className="details-title">id:</span> {`${id}`}</h2>
+                <h2 className="details-heading"><span className="details-title">Flashcard id:</span> {`${id}`}</h2>
                 <h2 className="details-heading"><span className="details-title">Question:</span> {`${currentQuestion}`}</h2>
                 <h2 className="details-heading"><span className="details-title">Answer:</span> {`${currentAnswer}`}</h2>
                 <h2 className="details-heading"><span className="details-title">Creator:</span> {`${owner}`}</h2>
@@ -99,6 +118,7 @@ function Details() {
                             answer: answer
                         }}
                     >Edit</Link>
+                    <Link onClick={practice} className="flashcard-buttons" to={`/practice-list/${id}`}>Practice</Link>
                 </div>
             </div>
         </div>

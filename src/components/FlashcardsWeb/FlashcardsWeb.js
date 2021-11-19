@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import Parse from '../../../node_modules/parse/dist/parse.js';
 import '../FlashcardsWeb/FlashcardsWeb.css';
 import FlashcardList from '../FlashcardList/FlashcardList.js';
@@ -55,7 +56,17 @@ function FlashcardsWeb() {
     console.log(web);
     return (
         <div>
-            <FlashcardList flashcards={web} />
+            {web.length > 0
+                ? <FlashcardList flashcards={web} />
+                : <div className="no-cards">
+                <div>
+                   <h1 className="no-cards-heading">No Flashcards in this category yet.</h1>
+               </div>
+               <div>
+                   <h1 className="no-cards-heading">Be the first one! <Link className="links" to='/flashcards/create'>Create</Link> a flashcard yourself!</h1>
+               </div>
+           </div>
+            }
         </div>
     )
 }

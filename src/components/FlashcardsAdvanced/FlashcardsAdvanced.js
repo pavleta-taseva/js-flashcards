@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import Parse from '../../../node_modules/parse/dist/parse.js';
 import '../FlashcardsAdvanced/FlashcardsAdvanced.css';
 import FlashcardList from '../FlashcardList/FlashcardList.js';
@@ -9,7 +10,6 @@ async function getAdvancedCards() {
     let advancedCards = [];
     const query = new Parse.Query('Flashcard');
     query.containedIn('category', ['JS Advanced']);
-
     try {
         const results = await query.find();
         for (let object of results) {
@@ -41,7 +41,7 @@ async function getAdvancedCards() {
 
 function FlashcardsAdvanced() {
     let [advanced, setAdvancedCards] = useState(finalArray);
-    
+
     useEffect(() => {
         async function fetchAdData() {
             try {
@@ -53,11 +53,20 @@ function FlashcardsAdvanced() {
         }
         fetchAdData();
     }, []);
-    
-    console.log(advanced);
+
     return (
         <div>
-            <FlashcardList flashcards={advanced} />
+            {advanced.length > 0
+                ? <FlashcardList flashcards={advanced} />
+                : <div className="no-cards">
+                    <div>
+                        <h1 className="no-cards-heading">No Flashcards in this category yet.</h1>
+                    </div>
+                    <div>
+                        <h1 className="no-cards-heading">Be the first one! <Link className="links" to='/flashcards/create'>Create</Link> a flashcard yourself!</h1>
+                    </div>
+                </div>
+            }
         </div>
     )
 }
