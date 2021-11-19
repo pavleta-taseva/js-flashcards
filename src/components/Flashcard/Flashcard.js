@@ -1,60 +1,66 @@
-import React from 'react';
-import Parse from '../../../node_modules/parse/dist/parse.js';
+import React, { useState } from 'react';
 import '../Flashcard/Flashcard.css';
 import { Link } from 'react-router-dom';
-let isFavorite = false;
+import Parse from '../../../node_modules/parse/dist/parse.js';
+
 let id = '';
 
 function Flashcard({ flashcard }) {
-    const flashcardInfo = flashcard;
-    id = flashcard.id;
+    console.log(flashcard);
+
+    const [ownerName, setOwnerName] = useState();
+    const owner = flashcard.owner;
+    const ownerId = owner.id;
+    console.log(ownerId);
     const localId = flashcard.localId;
+    id = flashcard.id;
     if (id === undefined) {
         id = localId;
     }
-    let owner = JSON.stringify(flashcardInfo.owner);
 
-    const notListed = <div className="listed-container"><Link className="listed-link" to={`/practice-list/${id}`}><ion-icon name="add-circle-outline"></ion-icon>Add to Practice List</Link></div>;
+    (async () => {
+        const User = new Parse.User();
+        const query = new Parse.Query(User);
+        try {
+          let user = await query.get(ownerId);
+          const nameResult = user.get('username');
+          setOwnerName(nameResult);
+        } catch (error) {
+          console.error('Error while fetching user', error);
+        }
+      })();
 
-    const listed = <div className="listed-container"><ion-icon name="add-circle-outline"></ion-icon><h3>Added to Practice List</h3></div>;
     const questionElement = <span>
         <h2 className="question">Question:</h2>
-        <h2>{flashcardInfo.question}</h2>
-        <div>
-            {isFavorite ? listed : notListed}
-        </div>
+        <h2>{flashcard.question}</h2>
     </span>;
 
     const answerElement = <span>
         <h2 className="question">Answer:</h2>
-        <p className="answer">{flashcardInfo.answer}</p>
-        <Link 
-            className="details-button" 
+        <p className="answer">{flashcard.answer}</p>
+        <Link
+            className="details-button"
             to={`/details/${id}`}
             state={{
                 id: id,
                 localId: localId,
-                question: flashcardInfo.question,
-                answer: flashcardInfo.answer,
-                owner: owner
+                question: flashcard.question,
+                answer: flashcard.answer,
+                owner: ownerName
             }}
-            >Read More
+        >Details
         </Link>
-
-        <div>
-            {isFavorite ? listed : notListed}
-        </div>
     </span>
-    
+
     const cover = <div className="cover">
         {questionElement}
     </div>;
     const details = <div className="details">
         {answerElement}
     </div>
-    
+
     return (
-        <div id={`${id}`} className="card">
+        <div id={`${id}`} className="card" >
             {cover}
             {details}
         </div>

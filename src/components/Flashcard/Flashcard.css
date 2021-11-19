@@ -145,8 +145,8 @@ body {
 .details-button {
   display: inline-block;
   position: absolute;
-  top: 75%;
-  right: 8%;
+  top: 85%;
+  right: 15%;
   padding: 6px 30px;
   background:#d400d4;
   color: #fff;

@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import '../MyCards/MyCards.css';
 
 let myCards = [];
-let localId = '';
 
 async function getMyCards() {
     const User = new Parse.User();

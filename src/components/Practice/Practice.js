@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
 import Parse from '../../../node_modules/parse/dist/parse.js';
 import FlashcardList from '../FlashcardList/FlashcardList.js';
 import '../Practice/Practice.css';
@@ -61,7 +60,7 @@ function Practice() {
                         <h1 className="no-cards-heading">No Flashcards in this category yet.</h1>
                     </div>
                     <div>
-                        <h1 className="no-cards-heading">Be the first one! <Link className="links" to='/flashcards/create'>Create</Link> a flashcard yourself!</h1>
+                        <h1 className="no-cards-heading">You need to add flashcards to this list by pressing "Practice" button on the flashcard's details page.</h1>
                     </div>
                 </div>
             }
