@@ -6,12 +6,9 @@ import Parse from '../../../node_modules/parse/dist/parse.js';
 let id = '';
 
 function Flashcard({ flashcard }) {
-    console.log(flashcard);
-
     const [ownerName, setOwnerName] = useState();
     const owner = flashcard.owner;
     const ownerId = owner.id;
-    console.log(ownerId);
     const localId = flashcard.localId;
     id = flashcard.id;
     if (id === undefined) {

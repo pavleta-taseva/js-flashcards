@@ -6,17 +6,22 @@
 }
 
 .edit {
-    width: 35vw;
+    width: 30vw;
     background: #2a1d30;
     font-family: "Roboto Mono", monospace;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5%;
+    margin: 5% auto;
     border-radius: 25px;
     box-shadow: 0px 3px 56px 23px rgba(196,146,217,0.75);
     -webkit-box-shadow: 0px 3px 56px 23px rgba(196,146,217,0.75);
     -moz-box-shadow: 0px 3px 56px 23px rgba(196,146,217,0.75);
+}
+
+.edit-form {
+    padding: 5% 3%;
+    width: 90%;
 }
 
 .edit-form h1 {
@@ -40,27 +45,30 @@
     margin-bottom: 30px;
 }
 
-.edit-form textarea,
-.edit-form select {
+.edit-form textarea {
     margin-top: 10px;
     color: #000;
     outline: none;
 }
 
 .edit-form textarea {
-    height: 200px;
     padding: 10px;
-    width: 95%;
-}
-
-.edit-form select {
-    height: 35px;
     width: 100%;
 }
 
+#question-area {
+    height: 100px;
+}
+
+#answer-area {
+    height: 200px;
+}
+
 .editBtn {
+    width: 45%;
     display: inline-block;
-    padding: 15px 70px;
+    padding: 10px 50px;
+    margin-right: 2%;
     background: var(--main-color);
     color: #fff;
     border: 1px solid var(--light-pink);

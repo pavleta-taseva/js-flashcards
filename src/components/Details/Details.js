@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,  useEffect } from "react";
 import { useLocation } from 'react-router-dom';
 import Parse from '../../../node_modules/parse/dist/parse.js';
 import '../Details/Details.css';
 import { Link, useNavigate } from 'react-router-dom';
 
-
 function Details() {
-    let isOwner = false;
     const location = useLocation();
     const { id } = location.state;
     const { question } = location.state;
@@ -14,20 +12,47 @@ function Details() {
     let { owner } = location.state;
     const localStorageOwner = localStorage.getItem('username');
     let check = owner === localStorageOwner;
-    const navigate = useNavigate();
     let [currentQuestion, setCurrentQuestion] = useState(question);
     let [currentAnswer, setCurrentAnswer] = useState(answer);
+    let isOwner = false;
+    const navigate = useNavigate();
 
-    (function compareUsernames() {
-       if (check) {
-           isOwner = true;
-       }
-    })();
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const res = await updateCardDetails();
+                setCurrentQuestion(res.question);
+                setCurrentAnswer(res.answer);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        fetchData();
+    }, []);
 
+    async function updateCardDetails() {
+        const Flashcard = Parse.Object.extend('Flashcard');
+        const query = new Parse.Query(Flashcard);
+        query.equalTo('objectId', id);
+        try {
+            const results = await query.find();
+            for (const object of results) {
+                const question = object.get('question');
+                const answer = object.get('answer');
+                const updatedCard = {
+                    question,
+                    answer
+                }
+                return updatedCard;
+            }
+        } catch (error) {
+            console.error('Error while fetching Flashcard', error);
+        }
+    }
+    
     async function onDelete() {
         const query = new Parse.Query('Flashcard');
         try {
-            // here you put the objectId that you want to delete
             const object = await query.get(id);
             try {
                 const response = await object.destroy();
@@ -40,7 +65,7 @@ function Details() {
             console.error('Error while retrieving ParseObject', error);
         }
     };
-
+    
     async function practice(e) {
         e.preventDefault();
         const Flashcard = Parse.Object.extend('Flashcard');
@@ -58,7 +83,12 @@ function Details() {
             console.log(err.message)
         }
     }
-
+    
+    (function compareUsernames() {
+        if (check) {
+            isOwner = true;
+        }
+    })();
     // const notListed = <div className="listed-container"><Link className="listed-link" to={`/practice-list/${id}`}><ion-icon name="add-circle-outline"></ion-icon>Add to Practice List</Link></div>;
 
     // const listed = <div className="listed-container"><ion-icon name="add-circle-outline"></ion-icon><h3>Added to Practice List</h3></div>;
@@ -86,8 +116,8 @@ function Details() {
                             to={`/edit/${id}`}
                             state={{
                                 id: id,
-                                question: question,
-                                answer: answer
+                                question: currentQuestion,
+                                answer: currentAnswer
                             }}
                         >Edit</Link>
                     </div>
