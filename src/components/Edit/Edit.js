@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Parse from '../../../node_modules/parse/dist/parse.js';
 import '../Edit/Edit.css';
 
@@ -59,7 +58,7 @@ function Edit() {
                     <textarea id="answer-area" placeholder="Edit answer" name="answer" defaultValue={answer} onChange={e => setAnswerEdit(e.target.value)}></textarea>
                 </div>
                 <button className="editBtn" type="submit">Edit</button>
-                <button onClick={() => navigate(1)} className="editBtn" type="submit">Cancel</button>
+                <button onClick={() => navigate(-1)} className="editBtn" type="submit">Cancel</button>
             </form>
         </div>
     )

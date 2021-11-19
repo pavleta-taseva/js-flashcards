@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../Flashcard/Flashcard.css';
 import { Link } from 'react-router-dom';
 import Parse from '../../../node_modules/parse/dist/parse.js';
@@ -7,25 +7,36 @@ let id = '';
 
 function Flashcard({ flashcard }) {
     const [ownerName, setOwnerName] = useState();
-    const owner = flashcard.owner;
-    const ownerId = owner.id;
+    const ownerId = flashcard.owner.id;
     const localId = flashcard.localId;
     id = flashcard.id;
     if (id === undefined) {
         id = localId;
     }
 
-    (async () => {
+    async function getName() {
         const User = new Parse.User();
         const query = new Parse.Query(User);
         try {
           let user = await query.get(ownerId);
           const nameResult = user.get('username');
-          setOwnerName(nameResult);
+          return nameResult;
         } catch (error) {
           console.error('Error while fetching user', error);
         }
-      })();
+    };
+
+      useEffect(() => {
+        async function fetchData() {
+            try {
+                const res = await getName();
+                setOwnerName(res);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        fetchData();
+    }, []);
 
     const questionElement = <span>
         <h2 className="question">Question:</h2>

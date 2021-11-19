@@ -6,9 +6,10 @@ import { Link, useNavigate } from 'react-router-dom';
 
 function Details() {
     const location = useLocation();
-    const { id } = location.state;
+    let { id } = location.state;
     const { question } = location.state;
     const { answer } = location.state;
+    const { localId } = location.state;
     let { owner } = location.state;
     const localStorageOwner = localStorage.getItem('username');
     let check = owner === localStorageOwner;
@@ -33,15 +34,22 @@ function Details() {
     async function updateCardDetails() {
         const Flashcard = Parse.Object.extend('Flashcard');
         const query = new Parse.Query(Flashcard);
-        query.equalTo('objectId', id);
+        if (id === localId) {
+            query.equalTo('localId', localId);
+        } else {
+            query.equalTo('objectId', id);
+        }
         try {
             const results = await query.find();
             for (const object of results) {
                 const question = object.get('question');
                 const answer = object.get('answer');
+                let currentOwner = object.get('owner');
+                owner = currentOwner;
                 const updatedCard = {
                     question,
-                    answer
+                    answer,
+                    owner
                 }
                 return updatedCard;
             }
@@ -56,6 +64,8 @@ function Details() {
             const object = await query.get(id);
             try {
                 const response = await object.destroy();
+                // const currentUser = Parse.User.current();
+                // currentUser.remove('myCards', object);
                 navigate('/', { replace: true })
                 console.log('Deleted ParseObject', response);
             } catch (error) {
@@ -87,11 +97,13 @@ function Details() {
     (function compareUsernames() {
         if (check) {
             isOwner = true;
+        } else if (owner === undefined) {
+            isOwner = true;
         }
     })();
     // const notListed = <div className="listed-container"><Link className="listed-link" to={`/practice-list/${id}`}><ion-icon name="add-circle-outline"></ion-icon>Add to Practice List</Link></div>;
-
     // const listed = <div className="listed-container"><ion-icon name="add-circle-outline"></ion-icon><h3>Added to Practice List</h3></div>;
+    
     return (
         <div className="details-container animate__animated animate__slideInRight">
             <div className="cube">
@@ -108,7 +120,12 @@ function Details() {
                 <h2 className="details-heading"><span className="details-title">Flashcard id:</span> {`${id}`}</h2>
                 <h2 className="details-heading"><span className="details-title">Question:</span> {`${currentQuestion}`}</h2>
                 <h2 className="details-heading"><span className="details-title">Answer:</span> {`${currentAnswer}`}</h2>
-                <h2 className="details-heading"><span className="details-title">Creator:</span> {`${owner}`}</h2>
+                {isOwner 
+                ? <div></div>
+                : <div><h2 className="details-heading"><span className="details-title">Creator:</span> {`${owner}`}</h2></div>
+                }
+                
+          
                 {isOwner
                     ? <div className="buttons">
                         <Link onClick={onDelete} className="flashcard-buttons" to={`/delete/${id}`}>Delete</Link>
