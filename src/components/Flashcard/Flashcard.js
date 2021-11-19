@@ -8,6 +8,10 @@ let id = '';
 function Flashcard({ flashcard }) {
     const flashcardInfo = flashcard;
     id = flashcard.id;
+    const localId = flashcard.localId;
+    if (id === undefined) {
+        id = localId;
+    }
     let owner = JSON.stringify(flashcardInfo.owner);
 
     const notListed = <div className="listed-container"><Link className="listed-link" to={`/practice-list/${id}`}><ion-icon name="add-circle-outline"></ion-icon>Add to Practice List</Link></div>;
@@ -29,6 +33,7 @@ function Flashcard({ flashcard }) {
             to={`/details/${id}`}
             state={{
                 id: id,
+                localId: localId,
                 question: flashcardInfo.question,
                 answer: flashcardInfo.answer,
                 owner: owner

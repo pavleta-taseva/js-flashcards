@@ -31,7 +31,7 @@ function FlashcardList({ flashcards }) {
 
                     <div className="flashcards-container">
                         {flashcards.map((flashcard, index) => {
-                            return <Flashcard flashcard={flashcard} key={index} />
+                            return <Flashcard flashcard={flashcard} key={index} localId={flashcard.localId}/>
                         })}
                     </div>
                 </div>

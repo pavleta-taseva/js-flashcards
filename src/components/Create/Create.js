@@ -67,18 +67,19 @@ function Create() {
         setQuestion(question);
         setAnswer(answer);
 
-        const data = { category, question, answer };
+        let data = { category, question, answer };
      
         if (data.category !== undefined && data.question !== undefined && data.answer !== undefined) {
             try {
                 const newFlashcard = new Parse.Object('Flashcard');
                 const currentUser = Parse.User.current();
-                currentUser.add('myCards', data);
-                newFlashcard.set('localId', uuidv4());
+                const localId = uuidv4();
+                newFlashcard.set('localId', localId);
                 newFlashcard.set('category', category);
                 newFlashcard.set('question', question);
                 newFlashcard.set('answer', answer);
                 newFlashcard.set('owner', currentUser);
+                currentUser.add('myCards', data = { localId, category, question, answer });
                 try {
                     const result = await newFlashcard.save();
                     const response = await currentUser.save();
