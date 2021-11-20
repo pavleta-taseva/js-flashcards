@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import '../CategoryIntro/CategoryIntro.css';
+import './CategoryIntro.css';
 
 function CategoryIntro() {
     const link = <Link className="links" to="/register">Register</Link>;

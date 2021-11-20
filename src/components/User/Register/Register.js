@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react';
-import { register } from '../../api/data.js';
-import '../Register/Register.css';
-import registerBackground from '../../images/register-bg.jpg';
+import { register } from '../../../api/data.js';
+import './Register.css';
+import registerBackground from '../../../images/register-bg.jpg';
 import { Link,  useNavigate } from 'react-router-dom';
-import UserContext from '../../UserContext.js';
+import UserContext from '../../../UserContext.js';
 
 function Register() {
     const [username, setUsername] = useState();

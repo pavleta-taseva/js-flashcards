@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Parse from '../../../node_modules/parse/dist/parse.js';
-import '../Edit/Edit.css';
+import Parse from 'parse/dist/parse';
+import './Edit.css';
 
 
 function Edit() {

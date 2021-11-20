@@ -1,26 +1,28 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import CategoryIntro from './components/CategoryIntro/CategoryIntro.js';
-import Category from './components/Category/Category.js';
+import CategoryIntro from './components/User/CategoryIntro/CategoryIntro.js';
+import Category from './components/User/Category/Category.js';
 import Navbar from './components/Navbar/Navbar.js';
-import Home from './components/Home/Home.js';
-import Footer from './components/Footer/Footer.js';
-import Register from './components/Register/Register.js';
-import Login from './components/Login/Login.js';
+import Home from './components/User/Home/Home.js';
+import Register from './components/User/Register/Register.js';
+import Login from './components/User/Login/Login.js';
 import FlashcardsBasic from './components/FlashcardsBasic/FlashcardsBasic.js';
 import FlashcardsAdvanced from './components/FlashcardsAdvanced/FlashcardsAdvanced.js';
 import FlashcardsWeb from './components/FlashcardsWeb/FlashcardsWeb.js';
-import Edit from './components/Edit/Edit.js';
-import Create from './components/Create/Create.js';
-import Practice from './components/Practice/Practice.js';
-import MyCards from './components/MyCards/MyCards.js';
+import Edit from './components/Owner/Edit/Edit.js';
+import Create from './components/Owner/Create/Create.js';
+import Practice from './components/Owner/Practice/Practice.js';
+import MyCards from './components/Owner/MyCards/MyCards.js';
 import Details from './components/Details/Details.js';
+import ReactNotification from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <ReactNotification></ReactNotification>
+      <Navbar></Navbar>
       <main>
         <Routes>
           <Route path='/' element={ <Home /> }>
@@ -40,7 +42,6 @@ function App() {
           <Route path='/edit/:id' element={ <Edit /> } />
         </Routes>
       </main>
-      <Footer />
     </div>
   );
 }

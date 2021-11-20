@@ -1,32 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import '../Flashcard/Flashcard.css';
+import '../Flashcard/OwnerFlashcard.css';
 import { Link } from 'react-router-dom';
-import Parse from '../../../node_modules/parse/dist/parse.js';
-
-let id = '';
+import Parse from 'parse/dist/parse';
+import 'react-loading-skeleton/dist/skeleton.css'
 
 function Flashcard({ flashcard }) {
     const [ownerName, setOwnerName] = useState();
-    const ownerId = flashcard.owner.id;
-    const localId = flashcard.localId;
-    id = flashcard.id;
-    if (id === undefined) {
-        id = localId;
-    }
+    const userId = localStorage.getItem('userId');
 
     async function getName() {
         const User = new Parse.User();
         const query = new Parse.Query(User);
         try {
-          let user = await query.get(ownerId);
-          const nameResult = user.get('username');
-          return nameResult;
+            let user = await query.get(userId);
+            const nameResult = user.get('username');
+            return nameResult;
         } catch (error) {
-          console.error('Error while fetching user', error);
+            console.error('Error while fetching user', error);
         }
     };
-
-      useEffect(() => {
+    
+    useEffect(() => {
         async function fetchData() {
             try {
                 const res = await getName();
@@ -36,8 +30,8 @@ function Flashcard({ flashcard }) {
             }
         }
         fetchData();
-    }, []);
-
+    }, []);// eslint-disable-line react-hooks/exhaustive-deps
+    
     const questionElement = <span>
         <h2 className="question">Question:</h2>
         <h2>{flashcard.question}</h2>
@@ -48,10 +42,10 @@ function Flashcard({ flashcard }) {
         <p className="answer">{flashcard.answer}</p>
         <Link
             className="details-button"
-            to={`/details/${id}`}
+            to={`/details/${flashcard.id}`}
             state={{
-                id: id,
-                localId: localId,
+                id: flashcard.id,
+                localId: flashcard.localId,
                 question: flashcard.question,
                 answer: flashcard.answer,
                 owner: ownerName
@@ -68,7 +62,7 @@ function Flashcard({ flashcard }) {
     </div>
 
     return (
-        <div id={`${id}`} className="card" >
+        <div className="card" >
             {cover}
             {details}
         </div>

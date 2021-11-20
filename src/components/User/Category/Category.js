@@ -1,5 +1,5 @@
 import React from 'react';
-import "../Category/Category.css";
+import "./Category.css";
 import { Link } from 'react-router-dom';
 
 function Category() {

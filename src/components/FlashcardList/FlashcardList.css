@@ -45,21 +45,3 @@
 .card-list-titles h1 {
    color:#ca90e0;
 }
-
-.flashcards-list-menu {
-    width: 100vw;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    text-align: center;
-    background: #ca90e0;
-    padding: 15px 0;
-    margin: 0;
-    list-style: none;
-    font-size: 23px;
-}
-
-.flashcards-list-menu a {
-    text-decoration: none;
-    color: #fff;
-}

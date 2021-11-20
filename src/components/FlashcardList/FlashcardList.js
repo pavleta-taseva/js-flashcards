@@ -1,26 +1,11 @@
 import React from 'react'
-import Flashcard from '../Flashcard/Flashcard.js';
+import Flashcard from '../User/Flashcard/Flashcard.js';
 import '../FlashcardList/FlashcardList.css';
 import { Link } from 'react-router-dom';
 
 function FlashcardList({ flashcards }) {
     return (
         <div>
-            <ul className="flashcards-list-menu">
-                <li>
-                    Current level not appropriate? Pick another. 
-                </li>
-                <li>
-                    <Link to='/flashcards-basic'>JS Basic</Link>
-                </li>
-                <li>
-                    <Link to='/flashcards-advanced'>JS Advanced</Link>
-                </li>
-                <li>
-                    <Link to='/flashcards-web'>JS Web</Link>
-                </li>
-            </ul>
-
             <div className="flashcards-list-container">
 
                 <div className="flashcards-wrapper">
@@ -36,7 +21,8 @@ function FlashcardList({ flashcards }) {
                     </div>
                 </div>
             </div>
-        </div>)
+        </div>
+        )
 }
 
 export default FlashcardList

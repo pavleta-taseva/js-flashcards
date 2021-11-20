@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Parse from '../../../node_modules/parse/dist/parse.js';
-import FlashcardList from '../FlashcardList/FlashcardList.js';
-import '../Practice/Practice.css';
+import Parse from 'parse/dist/parse';
+import FlashcardList from '../../FlashcardList/FlashcardList.js';
+import BeatLoader from "react-spinners/BeatLoader";
+import './Practice.css';
 
 let practiceList = [];
 let result = [];
@@ -38,12 +39,18 @@ async function getPracticeList() {
 
 function Practice() {
     let [practiceCards, setPracticeCards] = useState(practiceList);
+    let [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        setLoading(true);
+
         async function fetchWebData() {
             try {
                 const res = await getPracticeList();
                 setPracticeCards(res);
+                setTimeout(() => {
+                    setLoading(false);
+                }, 3000)
             } catch (err) {
                 console.log(err);
             }
@@ -53,15 +60,23 @@ function Practice() {
 
     return (
         <div>
-            {practiceCards.length > 0
-                ? <FlashcardList flashcards={practiceCards} />
-                : <div className="no-cards">
-                     <div>
-                        <h1 className="no-cards-heading">No Flashcards in this category yet.</h1>
-                    </div>
-                    <div>
-                        <h1 className="no-cards-heading">You need to add flashcards to this list by pressing "Practice" button on the flashcard's details page.</h1>
-                    </div>
+            {loading
+                ? <div className="loader">
+                    <BeatLoader className="loading-clip" color={'#E7D4F6'} loading={loading} size={30} />
+                    <h1 className="loader-heading">Loading...</h1>
+                </div>
+                : <div>
+                    {practiceCards.length > 0
+                        ? <FlashcardList flashcards={practiceCards} />
+                        : <div className="no-cards">
+                            <div>
+                                <h1 className="no-cards-heading">No Flashcards in this category yet.</h1>
+                            </div>
+                            <div>
+                                <h1 className="no-cards-heading">You need to add flashcards to this list<br></br> by pressing "Practice" button on the flashcard's details page.</h1>
+                            </div>
+                        </div>
+                    }
                 </div>
             }
         </div>

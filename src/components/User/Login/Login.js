@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { login } from '../../api/data.js';
-import '../Login/Login.css';
+import { login } from '../../../api/data.js';
+import './Login.css';
 import { Link, useNavigate } from 'react-router-dom';
-import loginBackground from '../../images/login-bg.jpg';
+import loginBackground from '../../../images/login-bg.jpg';
 
 function Login() {
     const [username, setUsername] = useState();

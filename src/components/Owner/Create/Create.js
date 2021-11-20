@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Parse from '../../../node_modules/parse/dist/parse.js';
+import Parse from 'parse/dist/parse';
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
-import '../Create/Create.css';
+import './Create.css';
 
 function Create() {
     const [question, setQuestion] = useState();
