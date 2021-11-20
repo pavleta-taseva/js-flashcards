@@ -19,7 +19,7 @@ function Login() {
                 await login(username, password);
                 setUsername(username);
                 setError(false);
-                navigate('/', { replace: true });
+                navigate('/home', { replace: true });
             } catch(err) {
                 console.log(err.message)
             }

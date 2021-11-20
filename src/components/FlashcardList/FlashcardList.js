@@ -1,7 +1,6 @@
 import React from 'react'
 import Flashcard from '../User/Flashcard/Flashcard.js';
 import '../FlashcardList/FlashcardList.css';
-import { Link } from 'react-router-dom';
 
 function FlashcardList({ flashcards }) {
     return (

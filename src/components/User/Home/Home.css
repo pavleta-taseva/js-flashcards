@@ -9,36 +9,31 @@
   background-position: top;
   background-attachment: fixed;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   clip-path: circle(180vh at 50% -80vh);
 }
 
 .header-content {
   width: 100vw;
+  height: 90vh;
   text-align: center;
-}
-
-.header-content a {
-  padding-left: 10%;
 }
 
 .header-content h6 {
   color: #6b2e67;
   margin-top: 0;
+  padding-top: 0;
   font-size: 45px;
   padding-left: 50%;
 }
 
-.header-content a {
-  position: absolute;
-  top: 8vh;
-  left: 10%;
+.header-content h1 {
   font-size: 5em;
   color: #6b2e67;
   font-weight: 700;
-  text-decoration: none;
-  cursor: pointer;
+  padding-left: 10%;
+  padding-bottom: 0;
 }
 
 .header-content ion-icon {

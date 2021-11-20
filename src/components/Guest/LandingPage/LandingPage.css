@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+.main-info {
+    margin-top: 5%;
+    background: linear-gradient(to bottom, #3c2846, #533861, #614171, #8b5da2);
+    height: auto;
+    width: 100vw;
+    padding: 5%;
+}
+
+.website-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 0 2rem;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    height: auto;
+    margin: 0 auto 0 10%;
+    background: #382541;
+    padding: 3%;
+    line-height: 1.5;
+    -webkit-box-shadow: 10px 10px 48px 10px rgba(202,144,224,1);
+    -moz-box-shadow: 10px 10px 48px 10px rgba(202,144,224,1);
+    box-shadow: 10px 10px 48px 10px rgba(202,144,224,1);
+}
+
+.one {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0 auto;
+    height: 100%;
+    padding: 0;
+}
+
+.two {
+    grid-column: 2;
+    grid-row: 1;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background: url('../../../images/confused.jpg') left center no-repeat;
+    border-radius: 25px;
+}
+
+.three {
+    grid-column: 1;
+    grid-row: 2;
+    margin: 0 auto;
+    padding-bottom: 15%;
+}
+
+.three h2 {
+    margin-bottom: 50px;
+}
+
+.four {
+    grid-column: 2;
+    grid-row: 2;
+    padding: 0;
+}
+
+.category-intro-container {
+    width: 70%;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+
+.category-intro-heading {
+    text-align: center;
+    color: #ca90e0;
+    font-size: 20px;
+    padding: 10px 6%;
+}
+
+.links {
+    color: #ca90e0;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.category-intro {
+    color: #fff;
+    font-family: 'Roboto Mono', monospace;
+    text-align: justify;
+    font-size: 16px;
+    padding: 10px 50px;
+}

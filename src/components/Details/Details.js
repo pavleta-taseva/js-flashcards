@@ -145,7 +145,6 @@ function Details() {
                     : <div><h2 className="details-heading"><span className="details-title">Creator:</span> {`${owner}`}</h2></div>
                 }
 
-
                 {isOwner
                     ? <div className="buttons">
                         <Link onClick={onDelete} className="flashcard-buttons" to={`/delete/${id}`}>Delete</Link>

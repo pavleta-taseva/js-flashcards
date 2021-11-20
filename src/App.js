@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import CategoryIntro from './components/User/CategoryIntro/CategoryIntro.js';
 import Category from './components/User/Category/Category.js';
 import Navbar from './components/Navbar/Navbar.js';
 import Home from './components/User/Home/Home.js';
+import LandingPage from './components/Guest/LandingPage/LandingPage.js';
 import Register from './components/User/Register/Register.js';
 import Login from './components/User/Login/Login.js';
 import FlashcardsBasic from './components/FlashcardsBasic/FlashcardsBasic.js';
@@ -21,14 +21,14 @@ import 'react-notifications-component/dist/theme.css';
 function App() {
   return (
     <div className="App">
-      <ReactNotification></ReactNotification>
-      <Navbar></Navbar>
+      <ReactNotification />
+      <Navbar />
       <main>
         <Routes>
-          <Route path='/' element={ <Home /> }>
-              <Route path='/' element={ <CategoryIntro /> } >
-                <Route path='/' element={ <Category /> } />
-              </Route>
+          <Route path='/' element={ <LandingPage /> }>
+          </Route>
+          <Route path='/home' element={ <Home /> }>
+            <Route path='/home/categories' element={ <Category /> } />
           </Route>
           <Route path='/register' element={ <Register /> } />
           <Route path='/login' element={ <Login /> } />

@@ -22,7 +22,7 @@
 .login-container {
   grid-column: 2;
   margin: 0 auto;
-  width: 70%;
+  width: 75%;
   display: flex;
   flex-direction: row;
 }
@@ -44,7 +44,7 @@
 
 .loginForm-container {
   background: transparent;
-  padding: 5%;
+  padding: 3%;
   border: 10px solid #ca90e0;
   color: #0f1224;
   border-radius: 30px;
