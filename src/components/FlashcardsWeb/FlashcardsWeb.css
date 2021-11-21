@@ -1,4 +1,3 @@
-
 .flashcards-list-container {
     width: 100vw;
     display: flex;
@@ -11,6 +10,7 @@
 
 .flashcards-wrapper {
     width: 100%; 
+    min-height: 100vh;
 }
 
 .flashcards-wrapper h1 {

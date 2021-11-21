@@ -1,10 +1,43 @@
 @import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
 
+.categories-container {
+  width: 100vw;
+  height: auto;
+  padding-top: 30%;
+  margin-top: 5%;
+  background: url('../../../images/welcome-user.jpg') no-repeat top center;
+}
+
 .category-title {
   font-family: "Audiowide", cursive;
   letter-spacing: 2px;
   font-size: 2.3rem;
   color: #fff;
-  margin-bottom: 10px;
+  margin-bottom: 3%;
+  margin-top: 8%;
+}
+
+.welcome-user {
+  position: absolute;
+  top: 38%;
+  left: 35%;
+  font-size: 20px;
+  text-align: center;
+}
+
+.current-user {
+  color: #1c1320;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.info {
+  text-align: justify;
+  width: 50vw;
+  margin: 0 auto;
+}
+
+.continue {
+  
 }
