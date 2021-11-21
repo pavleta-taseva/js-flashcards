@@ -11,8 +11,6 @@ function Footer() {
             Credits to <a className="links" href="https://www.youtube.com/channel/UCbwXnUipZsLfUckBPsC7Jog" target="_blanc"> Online Tutorials - YouTube Channel</a>
             <br></br>
             Credits to <a className="links" href="http://www.freepik.com"> vectorjuice / Freepik</a>
-            <br></br>
-            Credits to <a className="links" href="https://www.mockofun.com">Design created with MockoFUN</a>
             </small>
         </footer>
     )
