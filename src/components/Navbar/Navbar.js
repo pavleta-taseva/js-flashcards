@@ -26,14 +26,15 @@ function Navbar() {
     return (
         <div className="nav">
             <ul>
-                <li className={pathname === "/home" ? "active" : ""}>
-                    <NavLink to="/home" end={true}>
-                        <span className="nav-icon"><ion-icon name="home-outline"></ion-icon></span>
-                        <span className="nav-item-title">Home</span>
-                    </NavLink>
-                </li>
                 {isLogged
-                    ? <div className="user">
+                    ?
+                    <div className="user">
+                        <li className={pathname === "/home" ? "active" : ""}>
+                            <NavLink to="/home" end={true}>
+                                <span className="nav-icon"><ion-icon name="home-outline"></ion-icon></span>
+                                <span className="nav-item-title">Home</span>
+                            </NavLink>
+                        </li>
                         <li className={splitLocation[1] === "profile" ? "active" : ""}>
                             <NavLink to={`/profile/${userId}`}>
                                 <span className="nav-icon"><ion-icon name="person-outline"></ion-icon></span>
@@ -66,6 +67,12 @@ function Navbar() {
                         </li>
                     </div>
                     : <div className="guest">
+                        <li className={pathname === "/" ? "active" : ""}>
+                            <NavLink to="/" end={true}>
+                                <span className="nav-icon"><ion-icon name="home-outline"></ion-icon></span>
+                                <span className="nav-item-title">Home</span>
+                            </NavLink>
+                        </li>
                         <li className={splitLocation[1] === "collections" ? "active" : ""}>
                             <NavLink to="/collections">
                                 <span className="nav-icon"><ion-icon name="library-outline"></ion-icon></span>
