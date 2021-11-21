@@ -5,7 +5,7 @@ import { Link, Outlet } from 'react-router-dom';
 import DemoFlashcard from '../../DemoFlashcard/DemoFlashcard.js';
 
 function LandingPage() {
-    const link = <Link className="links" to="/register">Register</Link>;
+    const link = <Link alt="register" className="links" to="/register">Register</Link>;
 
     return (
         <div>
@@ -51,7 +51,7 @@ function LandingPage() {
                             We suggest you try the learning system via our flash cards. It may not seem serious and motivating at first, but then you will notice how useful the cards will be as you try to improve your knowledge. We have prepared and will constantly update the collections of flashcards. But if you want to add a pinch of personality, then why not {link} as our user and start creating your own flashcards?
                         </p>
                         <p className="category-intro">
-                            Currently, you can see all flashcards <Link to="/collections" className="links">here</Link> but it is without clear categorization. When you register, they will be sorted by categories, you will be able to create your own cards in your list, and you will also be able to even save flashcards created by other users in your Practice list.
+                            Currently, you can see all flashcards <Link alt="collections" to="/collections" className="links">here</Link> but it is without clear categorization. When you register, they will be sorted by categories, you will be able to create your own cards in your list, and you will also be able to even save flashcards created by other users in your Practice list.
                         </p>
                         <p className="category-intro">
                             And why not create your own collection of questions that were asked to you in an interview, but you did not answer correctly back then? Now you get the chance to master them to perfection.

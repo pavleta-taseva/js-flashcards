@@ -48,6 +48,7 @@ function Flashcard({ flashcard }) {
         <Link
             className="details-button"
             to={`/details/${id}`}
+            alt="details"
             state={{
                 id: id,
                 localId: localId,

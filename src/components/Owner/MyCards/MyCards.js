@@ -59,7 +59,7 @@ function MyCards() {
                                 <h1 className="no-cards-heading">No Flashcards in this category yet.</h1>
                             </div>
                             <div>
-                                <h1 className="no-cards-heading">Be the first one! <Link className="links" to='/flashcards/create'>Create</Link> a flashcard yourself!</h1>
+                                <h1 className="no-cards-heading">Be the first one! <Link className="links" to='/flashcards/create' alt="flashcards-create">Create</Link> a flashcard yourself!</h1>
                             </div>
                         </div>
                     }

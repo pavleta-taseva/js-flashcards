@@ -147,9 +147,10 @@ function Details() {
 
                 {isOwner
                     ? <div className="buttons">
-                        <Link onClick={onDelete} className="flashcard-buttons" to={`/delete/${id}`}>Delete</Link>
+                        <Link onClick={onDelete} alt="delete-page" className="flashcard-buttons" to={`/delete/${id}`}>Delete</Link>
                         <Link className="flashcard-buttons"
                             to={`/edit/${id}`}
+                            alt="edit-page"
                             state={{
                                 id: id,
                                 question: currentQuestion,
@@ -159,6 +160,7 @@ function Details() {
                     </div>
                     : <div className="buttons">
                         <Link to={`/practice/${userId}`}
+                        alt="practice"
                             onClick={() => {
                                 practice();
                                 createNotification();
