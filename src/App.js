@@ -15,6 +15,7 @@ import Create from './components/Owner/Create/Create.js';
 import Practice from './components/Owner/Practice/Practice.js';
 import MyCards from './components/Owner/MyCards/MyCards.js';
 import Details from './components/Details/Details.js';
+import Footer from './components/Footer/Footer.js';
 import ReactNotification from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 
@@ -42,6 +43,7 @@ function App() {
           <Route path='/edit/:id' element={ <Edit /> } />
         </Routes>
       </main>
+      <Footer />
     </div>
   );
 }

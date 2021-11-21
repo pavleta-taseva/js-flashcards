@@ -124,23 +124,3 @@ body {
   padding-top: 140px;
   text-align: center;
 }
-
-.category-title {
-  font-family: "Audiowide", cursive;
-  letter-spacing: 2px;
-  font-size: 2.3rem;
-  color: #fff;
-  margin-bottom: 10px;
-}
-
-.category-description {
-  color: #fff;
-  font-family: 'Roboto Mono', monospace;
-  line-height: 1.5em;
-  padding: 0 20px;
-  text-align: justify;
-}
-
-.category-link {
-  text-decoration: none;
-}

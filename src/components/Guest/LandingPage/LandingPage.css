@@ -6,6 +6,7 @@
     height: auto;
     width: 100vw;
     padding: 5%;
+    padding-bottom: 10%;
 }
 
 .website-info {
@@ -87,4 +88,46 @@
     text-align: justify;
     font-size: 16px;
     padding: 10px 50px;
+}
+
+.header {
+  font-family: "Audiowide", cursive;
+  position: relative;
+  height: 100vh;
+  background-size: cover;
+  background-position: top;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  clip-path: circle(180vh at 50% -80vh);
+}
+
+.header-content {
+  width: 100vw;
+  height: 90vh;
+  text-align: center;
+}
+
+.header-content h6 {
+  color: #6b2e67;
+  margin-top: 0;
+  padding-top: 0;
+  font-size: 45px;
+  padding-left: 50%;
+}
+
+.header-content h1 {
+  font-size: 5em;
+  color: #6b2e67;
+  font-weight: 700;
+  padding-left: 10%;
+  padding-bottom: 0;
+}
+
+.header-content ion-icon {
+  position: relative;
+  font-size: 45px;
+  z-index: 1;
+  color: #6b2e67;
 }
