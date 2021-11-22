@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import Parse from 'parse/dist/parse';
-import FlashcardList from '../../FlashcardList/FlashcardList.js';
+import OwnerFlashcardList from '../OwnerFlashcardList/OwnerFlashcardList.js';
 import { Link } from 'react-router-dom';
 import BeatLoader from "react-spinners/BeatLoader";
 import './MyCards.css';
@@ -26,7 +26,7 @@ async function getMyCards() {
 function MyCards() {
     let [cards, setCards] = useState(myCards);
     let [loading, setLoading] = useState(false);
-
+    
     useEffect(() => {
         setLoading(true);
 
@@ -37,6 +37,7 @@ function MyCards() {
                 setTimeout(() => {
                     setLoading(false);
                 }, 3000)
+                return () => { setLoading(false) };
             } catch (err) {
                 console.log(err);
             }
@@ -53,7 +54,7 @@ function MyCards() {
                 </div>
                 : <div>
                     {cards.length > 0
-                        ? <FlashcardList flashcards={cards} />
+                        ? <OwnerFlashcardList flashcards={cards} />
                         : <div className="no-cards">
                             <div>
                                 <h1 className="no-cards-heading">No Flashcards in this category yet.</h1>

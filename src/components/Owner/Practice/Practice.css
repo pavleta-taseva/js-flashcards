@@ -1,18 +1,19 @@
 .loader {
-    width: 90vw;
-    height: 100vh;
+    width: 100vw;
+    height: 85vh;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    background: url('../../../images/loading.png') no-repeat 50% 15%;
+    background: url('../../../images/loading2.png') no-repeat 50% 25%;
     padding-bottom: 10%;
 }
 
 .loading-clip {
     display: block;
     position: absolute;
-    top: 40%;
+    top: 25%;
     left: 50%;
 }
 

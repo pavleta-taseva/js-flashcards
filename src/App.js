@@ -19,6 +19,7 @@ import Details from './components/Details/Details.js';
 import Footer from './components/Footer/Footer.js';
 import ReactNotification from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
+import OwnerDetails from './components/Owner/OwnerDetails/OwnerDetails.js';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route path='/flashcards-web' element={ <FlashcardsWeb /> } />
           <Route path='/flashcards/create' element={ <Create /> } />
           <Route path='/details/:id' element={ <Details /> } />
+          <Route path='/details/owner/:ownerId' element={ <OwnerDetails /> } />
           <Route path='/my-cards/:userId' element={ <MyCards /> } />
           <Route path='/practice/:userId' element={ <Practice /> } />
           <Route path='/edit/:id' element={ <Edit /> } />

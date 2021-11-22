@@ -1,55 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import '../Flashcard/OwnerFlashcard.css';
+import React from 'react';
+import '../OwnerFlashcard/OwnerFlashcard.css';
 import { Link } from 'react-router-dom';
-import Parse from 'parse/dist/parse';
-import 'react-loading-skeleton/dist/skeleton.css'
 
-function Flashcard({ flashcard }) {
-    const [ownerName, setOwnerName] = useState();
-    const userId = localStorage.getItem('userId');
-
-    async function getName() {
-        const User = new Parse.User();
-        const query = new Parse.Query(User);
-        try {
-            let user = await query.get(userId);
-            const nameResult = user.get('username');
-            return nameResult;
-        } catch (error) {
-            console.error('Error while fetching user', error);
-        }
-    };
-    
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const res = await getName();
-                setOwnerName(res);
-            } catch (err) {
-                console.log(err);
-            }
-        }
-        fetchData();
-    }, []);// eslint-disable-line react-hooks/exhaustive-deps
-    
+function OwnerFlashcard({ ownerFlashcard }) {
+    console.log(ownerFlashcard);
     const questionElement = <span>
         <h2 className="question">Question:</h2>
-        <h2>{flashcard.question}</h2>
+        <h2>{ownerFlashcard.question}</h2>
     </span>;
 
     const answerElement = <span>
         <h2 className="question">Answer:</h2>
-        <p className="answer">{flashcard.answer}</p>
+        <p className="answer">{ownerFlashcard.answer}</p>
         <Link
             className="details-button"
-            to={`/details/${flashcard.id}`}
+            to={`/details/owner/${ownerFlashcard.id}`}
             alt="details"
             state={{
-                id: flashcard.id,
-                localId: flashcard.localId,
-                question: flashcard.question,
-                answer: flashcard.answer,
-                owner: ownerName
+                id: ownerFlashcard.id,
+                localId: ownerFlashcard.localId,
+                question: ownerFlashcard.question,
+                answer: ownerFlashcard.answer,
             }}
         >Details
         </Link>
@@ -70,4 +41,4 @@ function Flashcard({ flashcard }) {
     );
 }
 
-export default Flashcard;
+export default OwnerFlashcard;
