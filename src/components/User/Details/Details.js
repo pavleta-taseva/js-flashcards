@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useParams } from 'react-router-dom';
 import Parse from '../../../../node_modules/parse/dist/parse.js';
 import '../Details/Details.css';
-import { Link, useNavigate } from 'react-router-dom';
-import { store } from 'react-notifications-component';
 
 
 function Details() {
@@ -12,16 +10,11 @@ function Details() {
     const { question } = location.state;
     const { answer } = location.state;
     let { owner } = location.state;
-    let userId = '';
     const localStorageOwner = localStorage.getItem('username');
     let check = owner === localStorageOwner;
     let [currentQuestion, setCurrentQuestion] = useState(question);
     let [currentAnswer, setCurrentAnswer] = useState(answer);
     let isOwner = false;
-    const username = localStorage.getItem('username');
-    const password = localStorage.getItem('password');
-
-    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchData() {
@@ -56,40 +49,6 @@ function Details() {
         } catch (error) {
             console.error('Error while fetching Flashcard', error);
         }
-    }
-
-    async function onDelete() {
-        const query = new Parse.Query('Flashcard');
-        try {
-            const object = await query.get(id);
-            try {
-                const response = await object.destroy();
-                // const currentUser = Parse.User.current();
-                // currentUser.remove('myCards', object);
-                navigate('/', { replace: true });
-                console.log('Deleted ParseObject', response);
-            } catch (error) {
-                console.error('Error while deleting ParseObject', error);
-            }
-        } catch (error) {
-            console.error('Error while retrieving ParseObject', error);
-        }
-    };
-
-    function createNotification() {
-        store.addNotification({
-            title: "Success!",
-            message: "Flashcard added to your Practice List",
-            type: "info",
-            insert: "top",
-            container: "top",
-            animationIn: ["animate__animated", "animate__zoomIn"],
-            animationOut: ["animate__animated", "animate__zoomOut"],
-            dismiss: {
-                duration: 5000,
-                onScreen: true
-            }
-        });
     }
 
     (function compareUsernames() {
