@@ -50,13 +50,11 @@ function Create() {
             try {
                 const newFlashcard = new Parse.Object('Flashcard');
                 const currentUser = Parse.User.current();
-                const localId = uuidv4();
-                newFlashcard.set('localId', localId);
                 newFlashcard.set('category', category);
                 newFlashcard.set('question', question);
                 newFlashcard.set('answer', answer);
                 newFlashcard.set('owner', currentUser);
-                currentUser.add('myCards', data = { localId, category, question, answer, owner });
+                currentUser.add('myCards', data = { category, question, answer, owner });
                 try {
                     const result = await newFlashcard.save();
                     const response = await currentUser.save();

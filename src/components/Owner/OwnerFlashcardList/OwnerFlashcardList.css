@@ -1,5 +1,7 @@
 .flashcards-list-container {
     width: 100vw;
+    min-height: 90vh;
+    padding-top: 5%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -35,13 +37,46 @@
     align-items: center;
 }
 
-.card-list-titles {
-    padding-left: 5%;
-    width: 100%;
-    margin-bottom: 5%;
-    margin-top: 3%;
+.loader {
+    width: 100vw;
+    height: 85vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    background: url('../../../images/loading2.png') no-repeat 50% 25%;
+    padding-bottom: 10%;
 }
 
-.card-list-titles h1 {
-   color:#ca90e0;
+.loading-clip {
+    display: block;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+}
+
+.loader-heading {
+    color: #E7D4F6;
+}
+
+.no-cards {
+    background: url('../../../images/no-cards.png') right center no-repeat;
+}
+
+.left-container {
+    width: 40%;
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    background: transparent;
+    padding: 5%;
+    border-radius: 25px;
+    -webkit-box-shadow: 10px 10px 78px 10px rgba(202,144,224,1);
+    -moz-box-shadow: 10px 10px 78px 10px rgba(202,144,224,1);
+    box-shadow: 10px 10px 78px 10px rgba(202,144,224,1);
+}
+
+.no-cards-heading {
+    font-size: 24px;
 }

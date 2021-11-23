@@ -10,7 +10,7 @@ function Flashcard() {
 
     const answerElement = <span>
         <h2 className="question">Answer:</h2>
-        <p className="answer">Programming language with first-class functions. Main characteristics:
+        <div className="answer">Programming language with first-class functions. Main characteristics:
             <ul>
                 <li>prototype-based</li>
                 <li>multi-paradigm</li>
@@ -18,7 +18,7 @@ function Flashcard() {
                 <li>dynamic language</li>
                 <li>supporting object-oriented, imperative, and declarative styles</li>
             </ul>
-        </p>
+        </div>
         <Link
             className="details-button"
             to="#"

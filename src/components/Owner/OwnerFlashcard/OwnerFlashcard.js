@@ -3,7 +3,6 @@ import '../OwnerFlashcard/OwnerFlashcard.css';
 import { Link } from 'react-router-dom';
 
 function OwnerFlashcard({ ownerFlashcard }) {
-    console.log(ownerFlashcard);
     const questionElement = <span>
         <h2 className="question">Question:</h2>
         <h2>{ownerFlashcard.question}</h2>
@@ -18,7 +17,6 @@ function OwnerFlashcard({ ownerFlashcard }) {
             alt="details"
             state={{
                 id: ownerFlashcard.id,
-                localId: ownerFlashcard.localId,
                 question: ownerFlashcard.question,
                 answer: ownerFlashcard.answer,
             }}

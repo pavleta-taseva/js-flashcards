@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from 'react-router-dom';
-import Parse from '../../../node_modules/parse/dist/parse.js';
+import { useLocation, useParams } from 'react-router-dom';
+import Parse from '../../../../node_modules/parse/dist/parse.js';
 import '../Details/Details.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { store } from 'react-notifications-component';
 
+
 function Details() {
     const location = useLocation();
-    let { id } = location.state;
+    let { id } = useParams();
     const { question } = location.state;
     const { answer } = location.state;
-    const { localId } = location.state;
     let { owner } = location.state;
     let userId = '';
     const localStorageOwner = localStorage.getItem('username');
@@ -18,6 +18,9 @@ function Details() {
     let [currentQuestion, setCurrentQuestion] = useState(question);
     let [currentAnswer, setCurrentAnswer] = useState(answer);
     let isOwner = false;
+    const username = localStorage.getItem('username');
+    const password = localStorage.getItem('password');
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -36,11 +39,6 @@ function Details() {
     async function updateCardDetails() {
         const Flashcard = Parse.Object.extend('Flashcard');
         const query = new Parse.Query(Flashcard);
-        if (id === localId) {
-            query.equalTo('localId', localId);
-        } else {
-            query.equalTo('objectId', id);
-        }
         try {
             const results = await query.find();
             for (const object of results) {
@@ -78,26 +76,6 @@ function Details() {
         }
     };
 
-    async function practice() {
-        const Flashcard = Parse.Object.extend('Flashcard');
-        const query = new Parse.Query(Flashcard);
-        query.equalTo('objectId', id);
-        try {
-            const currentCard = await query.get(id);
-            const currentUser = Parse.User.current();
-            userId = currentUser.id;
-            console.log(userId);
-            const practiceList = currentUser.get('practiceList');
-            console.log(practiceList);
-            currentUser.add('practiceCards', currentCard);
-            navigate(`/practice/${userId}`, { replace: true });
-            console.log('Card added to the Practice list');
-            await currentUser.save();
-        } catch (err) {
-            console.log(err.message)
-        }
-    }
-    
     function createNotification() {
         store.addNotification({
             title: "Success!",
@@ -121,8 +99,6 @@ function Details() {
             isOwner = true;
         }
     })();
-    // const notListed = <div className="listed-container"><Link className="listed-link" to={`/practice-list/${id}`}><ion-icon name="add-circle-outline"></ion-icon>Add to Practice List</Link></div>;
-    // const listed = <div className="listed-container"><ion-icon name="add-circle-outline"></ion-icon><h3>Added to Practice List</h3></div>;
 
     return (
         <div className="details-container animate__animated animate__slideInRight">
@@ -143,32 +119,6 @@ function Details() {
                 {isOwner
                     ? <div></div>
                     : <div><h2 className="details-heading"><span className="details-title">Creator:</span> {`${owner}`}</h2></div>
-                }
-
-                {isOwner
-                    ? <div className="buttons">
-                        <Link onClick={onDelete} alt="delete-page" className="flashcard-buttons" to={`/delete/${id}`}>Delete</Link>
-                        <Link className="flashcard-buttons"
-                            to={`/edit/${id}`}
-                            alt="edit-page"
-                            state={{
-                                id: id,
-                                question: currentQuestion,
-                                answer: currentAnswer
-                            }}
-                        >Edit</Link>
-                    </div>
-                    : <div className="buttons">
-                        <Link to={`/practice/${userId}`}
-                        alt="practice"
-                            onClick={() => {
-                                practice();
-                                createNotification();
-                            }}
-                            className="flashcard-buttons"
-                        >Practice
-                        </Link>
-                    </div>
                 }
             </div>
         </div>

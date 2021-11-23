@@ -9,7 +9,6 @@ function OwnerDetails() {
     let { id } = location.state;
     const { question } = location.state;
     const { answer } = location.state;
-    const { localId } = location.state;
     let { owner } = location.state;
     let [currentQuestion, setCurrentQuestion] = useState(question);
     let [currentAnswer, setCurrentAnswer] = useState(answer);
@@ -32,11 +31,6 @@ function OwnerDetails() {
     async function updateCardDetails() {
         const Flashcard = Parse.Object.extend('Flashcard');
         const query = new Parse.Query(Flashcard);
-        if (id === localId) {
-            query.equalTo('localId', localId);
-        } else {
-            query.equalTo('objectId', id);
-        }
         try {
             const results = await query.find();
             for (const object of results) {

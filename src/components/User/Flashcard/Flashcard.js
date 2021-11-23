@@ -7,12 +7,8 @@ import 'react-loading-skeleton/dist/skeleton.css'
 function Flashcard({ flashcard }) {
     const [ownerName, setOwnerName] = useState();
     let ownerId = flashcard.owner.id;
-    const localId = flashcard.localId;
     let id = flashcard.id;
-    if (id === undefined) {
-        id = localId;
-    }
-    
+
     async function getName() {
         const User = new Parse.User();
         const query = new Parse.Query(User);
@@ -51,7 +47,6 @@ function Flashcard({ flashcard }) {
             alt="details"
             state={{
                 id: id,
-                localId: localId,
                 question: flashcard.question,
                 answer: flashcard.answer,
                 owner: ownerName

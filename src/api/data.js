@@ -16,11 +16,6 @@ export const register = api.register;
 export const logout = api.logout;
 
 // Implement application specific requests
-export async function getCurrentUser(id) {
-  return await api.getRequest(host + '/practice/' + id);
-}
-
-// Implement application specific requests
 export async function getAll() {
   return await api.getRequest(host + '/classes/Flashcard');
 }

@@ -74,6 +74,7 @@ export async function login(username, password) {
             localStorage.setItem('authToken', sessionToken);
             localStorage.setItem('userId', currentUser.id);
             localStorage.setItem('email', email);
+            localStorage.setItem('password', password);
         }
     } catch (error) {
         Parse.User.logOut();
@@ -107,6 +108,7 @@ export async function logout() {
         localStorage.removeItem('authToken');
         localStorage.removeItem('userId');
         localStorage.removeItem('email');
+        localStorage.removeItem('password');
     } catch (error) {
         alert('Ops, something went wrong. Try again, please!');
         console.error(error);

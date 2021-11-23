@@ -71,13 +71,11 @@ function FlashcardsBasic() {
                 {basics.length > 0
                     ? <FlashcardList flashcards={basics} />
                     : <div className="no-cards">
-                        <div>
-                            <h1 className="no-cards-heading">No Flashcards in this category yet.</h1>
-                        </div>
-                        <div>
-                            <h1 className="no-cards-heading">You need to add flashcards to this list<br></br> by pressing "Practice" button on the flashcard's details page.</h1>
-                        </div>
+                    <div className="left-container">
+                        <h1 className="no-cards-heading">No Flashcards in this category yet.</h1>
+                        <h1 className="no-cards-heading">Why don't you create your own flashcards to practice with?</h1>
                     </div>
+                </div>
                 }
             </div>
         }
