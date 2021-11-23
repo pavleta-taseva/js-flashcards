@@ -69,10 +69,8 @@ function Practice() {
                     {practiceCards.length > 0
                         ? <FlashcardList flashcards={practiceCards} />
                         : <div className="no-cards">
-                            <div>
+                            <div className="left-container">
                                 <h1 className="no-cards-heading">No Flashcards in this category yet.</h1>
-                            </div>
-                            <div>
                                 <h1 className="no-cards-heading">You need to add flashcards to this list<br></br> by pressing "Practice" button on the flashcard's details page.</h1>
                             </div>
                         </div>
