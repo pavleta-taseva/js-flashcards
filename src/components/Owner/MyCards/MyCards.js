@@ -1,38 +1,20 @@
 import React, { useState, useEffect } from "react"
-import Parse from 'parse/dist/parse';
 import OwnerFlashcardList from '../OwnerFlashcardList/OwnerFlashcardList.js';
-import { Link } from 'react-router-dom';
+import * as cardService from '../../../services/cardService.js';
 import BeatLoader from "react-spinners/BeatLoader";
 import './MyCards.css';
 
-let myCards = [];
-
-async function getMyCards() {
-    const User = new Parse.User();
-    const query = new Parse.Query(User);
-    const userId = localStorage.getItem('userId');
-    try {
-        let user = await query.get(userId);
-        const attributes = user.attributes;
-        const array = Object.entries(attributes);
-        const userArray = array[6];
-        myCards = userArray[1];
-    } catch (error) {
-        console.log(`Error: ${JSON.stringify(error)}`);
-    }
-    return myCards;
-}
-
 function MyCards() {
-    let [cards, setCards] = useState(myCards);
+    let [cards, setCards] = useState([]);
     let [loading, setLoading] = useState(false);
-    
+    const userId = localStorage.getItem('userId');
+
     useEffect(() => {
         setLoading(true);
 
         async function fetchWebData() {
             try {
-                const res = await getMyCards();
+                const res = await cardService.getMyCards(userId);
                 setCards(res);
                 setTimeout(() => {
                     setLoading(false);
@@ -43,7 +25,7 @@ function MyCards() {
             }
         }
         fetchWebData();
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div>
@@ -56,13 +38,11 @@ function MyCards() {
                     {cards.length > 0
                         ? <OwnerFlashcardList flashcards={cards} />
                         : <div className="no-cards">
-                            <div>
-                                <h1 className="no-cards-heading">No Flashcards in this category yet.</h1>
-                            </div>
-                            <div>
-                                <h1 className="no-cards-heading">Be the first one! <Link className="links" to='/flashcards/create' alt="flashcards-create">Create</Link> a flashcard yourself!</h1>
-                            </div>
+                        <div className="left-container">
+                            <h1 className="no-cards-heading">No Flashcards in this category yet.</h1>
+                            <h1 className="no-cards-heading">Why don't you create your own flashcards to practice with?</h1>
                         </div>
+                    </div>
                     }
                 </div>
             }

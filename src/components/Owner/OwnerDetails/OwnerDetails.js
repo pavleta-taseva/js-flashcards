@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from 'react-router-dom';
-import Parse from '../../../../node_modules/parse/dist/parse.js';
+import { useLocation, useParams } from 'react-router-dom';
+import * as cardService from '../../../services/cardService.js';
 import './OwnerDetails.css';
 import { Link, useNavigate } from 'react-router-dom';
 
 function OwnerDetails() {
     const location = useLocation();
-    let { id } = location.state;
     const { question } = location.state;
     const { answer } = location.state;
     let { owner } = location.state;
+    let { id } = useParams();
     let [currentQuestion, setCurrentQuestion] = useState(question);
     let [currentAnswer, setCurrentAnswer] = useState(answer);
     const navigate = useNavigate();
@@ -17,8 +17,7 @@ function OwnerDetails() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await updateCardDetails();
-                console.log(res);
+                const res = await cardService.updateCardDetails(id, owner);
                 setCurrentQuestion(res.question);
                 setCurrentAnswer(res.answer);
             } catch (err) {
@@ -28,45 +27,13 @@ function OwnerDetails() {
         fetchData();
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    async function updateCardDetails() {
-        const Flashcard = Parse.Object.extend('Flashcard');
-        const query = new Parse.Query(Flashcard);
-        try {
-            const results = await query.find();
-            for (const object of results) {
-                const question = object.get('question');
-                const answer = object.get('answer');
-                let currentOwner = object.get('owner');
-                owner = currentOwner;
-                const updatedCard = {
-                    question,
-                    answer,
-                    owner
-                }
-                return updatedCard;
-            }
-        } catch (error) {
-            console.error('Error while fetching Flashcard', error);
-        }
+    async function onDelete(e) {
+        e.preventDefault();
+        cardService.deleteCard(id)
+        .then(result => {
+            navigate(-1);
+        })
     }
-
-    async function onDelete() {
-        const query = new Parse.Query('Flashcard');
-        try {
-            const object = await query.get(id);
-            try {
-                const response = await object.destroy();
-                // const currentUser = Parse.User.current();
-                // currentUser.remove('myCards', object);
-                navigate('/', { replace: true });
-                console.log('Deleted ParseObject', response);
-            } catch (error) {
-                console.error('Error while deleting ParseObject', error);
-            }
-        } catch (error) {
-            console.error('Error while retrieving ParseObject', error);
-        }
-    };
 
     return (
         <div className="details-container animate__animated animate__slideInRight">
@@ -84,6 +51,7 @@ function OwnerDetails() {
                 <h2 className="details-heading"><span className="details-title">Flashcard id:</span> {`${id}`}</h2>
                 <h2 className="details-heading"><span className="details-title">Question:</span> {`${currentQuestion}`}</h2>
                 <h2 className="details-heading"><span className="details-title">Answer:</span> {`${currentAnswer}`}</h2>
+                <h2 className="details-heading"><span className="details-title">Creator:</span> {`${owner}`}</h2>
 
                 <div className="buttons">
                     <Link onClick={onDelete} alt="delete-page" className="flashcard-buttons" to={`/delete/${id}`}>Delete</Link>

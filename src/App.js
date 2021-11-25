@@ -40,7 +40,7 @@ function App() {
           <Route path='/flashcards-web' element={ <FlashcardsWeb /> } />
           <Route path='/flashcards/create' element={ <Create /> } />
           <Route path='/details/:id' element={ <Details /> } />
-          <Route path='/details/owner/:id' element={ <OwnerDetails /> } />
+          <Route path='/details/:ownerId/:id' element={ <OwnerDetails /> } />
           <Route path='/my-cards/:userId' element={ <MyCards /> } />
           <Route path='/edit/:id' element={ <Edit /> } />
         </Routes>

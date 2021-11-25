@@ -1,25 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useParams } from 'react-router-dom';
-import Parse from '../../../../node_modules/parse/dist/parse.js';
+import * as cardService from '../../../services/cardService.js';
 import '../Details/Details.css';
-
 
 function Details() {
     const location = useLocation();
-    let { id } = useParams();
     const { question } = location.state;
     const { answer } = location.state;
     let { owner } = location.state;
-    const localStorageOwner = localStorage.getItem('username');
-    let check = owner === localStorageOwner;
+    let { id } = useParams();
     let [currentQuestion, setCurrentQuestion] = useState(question);
     let [currentAnswer, setCurrentAnswer] = useState(answer);
+    const localStorageOwner = localStorage.getItem('username');
+    let check = owner === localStorageOwner;
     let isOwner = false;
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await updateCardDetails();
+                const res = await cardService.updateCardDetails(id, owner);
                 setCurrentQuestion(res.question);
                 setCurrentAnswer(res.answer);
             } catch (err) {
@@ -28,28 +27,6 @@ function Details() {
         }
         fetchData();
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-    async function updateCardDetails() {
-        const Flashcard = Parse.Object.extend('Flashcard');
-        const query = new Parse.Query(Flashcard);
-        try {
-            const results = await query.find();
-            for (const object of results) {
-                const question = object.get('question');
-                const answer = object.get('answer');
-                let currentOwner = object.get('owner');
-                owner = currentOwner;
-                const updatedCard = {
-                    question,
-                    answer,
-                    owner
-                }
-                return updatedCard;
-            }
-        } catch (error) {
-            console.error('Error while fetching Flashcard', error);
-        }
-    }
 
     (function compareUsernames() {
         if (check) {

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import Parse from 'parse/dist/parse';
-import { v4 as uuidv4 } from 'uuid';
+import * as cardService from '../../../services/cardService.js';
 import { useNavigate } from 'react-router-dom';
 import './Create.css';
 
@@ -8,12 +7,12 @@ function Create() {
     const [question, setQuestion] = useState();
     const [answer, setAnswer] = useState();
     const [category, setCategory] = useState();
-    const owner = localStorage.getItem('userId');
-    const navigate = useNavigate();
     const [checkedOne, setCheckedOne] = useState(false);
     const [checkedTwo, setCheckedTwo] = useState(false);
     const [checkedThree, setCheckedThree] = useState(false);
     const categories = ['JS Basics', 'JS Advanced', 'JS Web'];
+    const owner = localStorage.getItem('userId');
+    const navigate = useNavigate();
 
     const handleChangeOne = (e) => {
         setCheckedOne(!checkedOne);
@@ -44,30 +43,11 @@ function Create() {
         setQuestion(question);
         setAnswer(answer);
 
-        let data = { category, question, answer };
-     
-        if (data.category !== undefined && data.question !== undefined && data.answer !== undefined) {
-            try {
-                const newFlashcard = new Parse.Object('Flashcard');
-                const currentUser = Parse.User.current();
-                newFlashcard.set('category', category);
-                newFlashcard.set('question', question);
-                newFlashcard.set('answer', answer);
-                newFlashcard.set('owner', currentUser);
-                currentUser.add('myCards', data = { category, question, answer, owner });
-                try {
-                    const result = await newFlashcard.save();
-                    const response = await currentUser.save();
-                    console.log('User updated ', response);
-                    navigate(`/my-cards/${owner}`, { replace: true });
-                    console.log('Flashcard created', result);
-                } catch (error) {
-                    console.error('Error while creating Flashcard: ', error);
-                }
-            } catch (err) {
-                console.log(err.message)
-            }
-        }
+        let data = { category, question, answer, owner };
+        cardService.create(data)
+        .then(result => {
+            navigate(`/my-cards/${owner}`, { replace: true });
+        })
     }
 
     return (

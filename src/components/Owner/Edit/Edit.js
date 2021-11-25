@@ -1,45 +1,34 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Parse from 'parse/dist/parse';
+import * as cardService from '../../../services/cardService.js';
 import './Edit.css';
 
 
 function Edit() {
+    const location = useLocation();
     const [error, setError] = useState(false);
     const [questionEdit, setQuestionEdit] = useState();
     const [answerEdit, setAnswerEdit] = useState();
-    const navigate = useNavigate();
-    const location = useLocation();
     const { id } = location.state;
     const { question } = location.state;
     const { answer } = location.state;
+    const navigate = useNavigate();
 
     async function onEdit(e) {
         e.preventDefault();
         const data = { questionEdit, answerEdit };
    
-        const query = new Parse.Query('Flashcard');
-        try {
-            const object = await query.get(id);
-            object.set('question', data.questionEdit);
-            object.set('answer', data.answerEdit);
-            try {
-                const response = await object.save();          
-                console.log('Flashcard updated', response);
-                navigate(-1, 
-                    { state: {
-                        id: id,
-                        question: questionEdit,
-                        answer: answerEdit,
-                    }}
-                );
-                setError(false);
-            } catch (error) {
-                console.error('Error while updating Flashcard', error);
-            }
-        } catch (error) {
-            console.error('Error while retrieving object Flashcard', error);
-        }
+        cardService.onEdit(id, data)
+        .then(result => {
+            navigate(-1, 
+                { state: {
+                    id: id,
+                    question: questionEdit,
+                    answer: answerEdit,
+                }}
+            );
+            setError(false);
+        })
     }
 
     return (
