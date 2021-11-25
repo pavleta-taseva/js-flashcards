@@ -10,6 +10,7 @@ function OwnerDetails() {
     const { answer } = location.state;
     let { owner } = location.state;
     let { id } = useParams();
+    let { ownerId } = useParams();
     let [currentQuestion, setCurrentQuestion] = useState(question);
     let [currentAnswer, setCurrentAnswer] = useState(answer);
     const navigate = useNavigate();
@@ -61,7 +62,8 @@ function OwnerDetails() {
                         state={{
                             id: id,
                             question: currentQuestion,
-                            answer: currentAnswer
+                            answer: currentAnswer,
+                            ownerId: ownerId
                         }}
                     >Edit</Link>
                 </div>

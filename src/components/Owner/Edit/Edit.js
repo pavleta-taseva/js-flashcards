@@ -31,6 +31,10 @@ function Edit() {
         })
     }
 
+    function cancel() {
+        return navigate(1);
+    }
+
     return (
         <div className="edit">
             <form className="edit-form" onSubmit={e => onEdit(e)}>
@@ -47,7 +51,7 @@ function Edit() {
                     <textarea id="answer-area" placeholder="Edit answer" name="answer" defaultValue={answer} onChange={e => setAnswerEdit(e.target.value)}></textarea>
                 </div>
                 <button className="editBtn" type="submit">Edit</button>
-                <button onClick={() => navigate(-1)} className="editBtn" type="submit">Cancel</button>
+                <button onClick={cancel} className="editBtn">Cancel</button>
             </form>
         </div>
     )
