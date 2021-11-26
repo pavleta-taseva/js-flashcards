@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { register } from '../../../api/data.js';
+import * as authService from '../../../services/authService.js';
 import './Register.css';
 import registerBackground from '../../../images/register-bg.jpg';
 import { Link,  useNavigate } from 'react-router-dom';
@@ -25,7 +25,7 @@ function Register() {
 
         if (data.username !== undefined && data.email !== undefined && data.password !== undefined) {
             try {
-                await register(username, email, password);
+                await authService.register(username, email, password);
                 user.setUsername(username);
                 navigate('/login', { replace: true });
             } catch (error) {

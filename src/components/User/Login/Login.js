@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { login } from '../../../api/data.js';
+import * as authService from '../../../services/authService.js';
 import './Login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import loginBackground from '../../../images/login-bg.jpg';
@@ -16,7 +16,7 @@ function Login() {
 
         if (data.username !== undefined && data.password !== undefined) {
             try {
-                await login(username, password);
+                await authService.login(username, password);
                 setUsername(username);
                 setError(false);
                 navigate('/home', { replace: true });
