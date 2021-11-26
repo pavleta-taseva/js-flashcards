@@ -58,7 +58,6 @@ function FlashcardsWeb() {
         fetchData();
     }, []);
 
-    console.log(web);
     return (
         <div>
         {loading

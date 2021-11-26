@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useParams } from 'react-router-dom';
 import * as cardService from '../../../services/cardService.js';
+import { Link, useNavigate } from 'react-router-dom';
 import '../Details/Details.css';
 
 function Details() {
@@ -8,12 +9,13 @@ function Details() {
     const { question } = location.state;
     const { answer } = location.state;
     let { owner } = location.state;
+    let { ownerId } = location.state;
     let { id } = useParams();
     let [currentQuestion, setCurrentQuestion] = useState(question);
     let [currentAnswer, setCurrentAnswer] = useState(answer);
-    const localStorageOwner = localStorage.getItem('username');
-    let check = owner === localStorageOwner;
-    let isOwner = false;
+    const localStorageOwnerId = localStorage.getItem('userId');
+    let check = ownerId === localStorageOwnerId;
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchData() {
@@ -28,13 +30,13 @@ function Details() {
         fetchData();
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    (function compareUsernames() {
-        if (check) {
-            isOwner = true;
-        } else if (owner === undefined) {
-            isOwner = true;
-        }
-    })();
+    async function onDelete(e) {
+        e.preventDefault();
+        cardService.deleteCard(id)
+            .then(result => {
+                navigate(-1);
+            })
+    }
 
     return (
         <div className="details-container animate__animated animate__slideInRight">
@@ -52,9 +54,22 @@ function Details() {
                 <h2 className="details-heading"><span className="details-title">Flashcard id:</span> {`${id}`}</h2>
                 <h2 className="details-heading"><span className="details-title">Question:</span> {`${currentQuestion}`}</h2>
                 <h2 className="details-heading"><span className="details-title">Answer:</span> {`${currentAnswer}`}</h2>
-                {isOwner
-                    ? <div></div>
-                    : <div><h2 className="details-heading"><span className="details-title">Creator:</span> {`${owner}`}</h2></div>
+                <div><h2 className="details-heading"><span className="details-title">Creator:</span> {`${owner}`}</h2></div>
+                {check
+                    ? <div className="buttons">
+                        <Link onClick={onDelete} alt="delete-page" className="flashcard-buttons" to={`/delete/${id}`}>Delete</Link>
+                        <Link className="flashcard-buttons"
+                            to={`/edit/${id}`}
+                            alt="edit-page"
+                            state={{
+                                id: id,
+                                question: currentQuestion,
+                                answer: currentAnswer,
+                                ownerId: ownerId
+                            }}
+                        >Edit</Link>
+                    </div>
+                    : <div></div>
                 }
             </div>
         </div>

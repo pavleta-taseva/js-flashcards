@@ -49,7 +49,8 @@ function Flashcard({ flashcard }) {
                 id: id,
                 question: flashcard.question,
                 answer: flashcard.answer,
-                owner: ownerName
+                owner: ownerName,
+                ownerId: ownerId
             }}
         >Details
         </Link>
