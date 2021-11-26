@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Parse from '../../../node_modules/parse/dist/parse.js';
 import FlashcardList from '../FlashcardList/FlashcardList.js';
 import BeatLoader from "react-spinners/BeatLoader";
+import '../Collections/Collections.css';
 
 let finalArray = [];
 
@@ -66,6 +67,8 @@ function Collections() {
                     <h1 className="loader-heading">Loading...</h1>
                 </div>
                 : <div>
+                    <h1 className="library-title">Flashcards Library</h1>
+                    <h3 className="library-info">The library contains all flashcards created by us or our users. No categorization is attached to the library. Please register as a user to view the flashcards by category or to create your own cards.</h3>
                     {all.length > 0
                         ? <FlashcardList flashcards={all} />
                         : <div className="no-cards">

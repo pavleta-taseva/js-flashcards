@@ -31,6 +31,7 @@ body {
   cursor: pointer;
   transform: perspective(2000px);
   transition: 1s;
+  font-weight: 300;
 }
 
 .card:hover {
@@ -114,6 +115,7 @@ body {
   text-align: center;
   padding: 5%;
   color: #d400d4;
+  font-weight: 300;
 }
 
 .answer {
@@ -123,6 +125,7 @@ body {
   padding: 1% 7%;
   text-align: justify;
   letter-spacing: 1px;
+  font-weight: 300;
 }
 
 .listed-container {

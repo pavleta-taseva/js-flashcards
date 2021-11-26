@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
+.library-title {
+    font-family: "Audiowide", cursive;
+    padding-top: 3%;
+    font-weight: 400;
+}
+
+.library-info {
+    width: 60%;
+    text-align: justify;
+    margin: 0 auto;
+    line-height: 1.5;
+    font-weight: 300;
+}

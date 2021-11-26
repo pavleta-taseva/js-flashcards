@@ -12,10 +12,11 @@
 .category-title {
   font-family: "Audiowide", cursive;
   letter-spacing: 2px;
-  font-size: 2.3rem;
+  font-size: 2rem;
   color: #fff;
   margin-bottom: 3%;
   margin-top: 8%;
+  font-weight: 300;
 }
 
 .welcome-user {
@@ -38,6 +39,23 @@
   margin: 0 auto;
 }
 
-.continue {
-  
+.category-link {
+  text-decoration: none;
+}
+
+.continue-link {
+  display: block;
+  background: #ff735c;
+  color: #fff;
+  position: absolute;
+  top: 48%;
+  left: 34.5%;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 30px;
+  padding: 14px 30px;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
 }

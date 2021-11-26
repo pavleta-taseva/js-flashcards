@@ -23,13 +23,14 @@
 
 .flashcards-container {
     width: 80vw;
-    padding-left: 20%;
+    padding-left: 10%;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 4rem;
     justify-content: center;
     align-items: center;
+    padding-bottom: 5%;
 }
 
 .flashcards-wrapper h3 ion-icon {
