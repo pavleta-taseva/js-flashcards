@@ -7,6 +7,7 @@ import Home from './components/User/Home/Home.js';
 import LandingPage from './components/Guest/LandingPage/LandingPage.js';
 import Register from './components/User/Register/Register.js';
 import Login from './components/User/Login/Login.js';
+import Profile from './components/User/Profile/Profile.js';
 import Collections from './components/Collections/Collections.js';
 import FlashcardsBasic from './components/FlashcardsBasic/FlashcardsBasic.js';
 import FlashcardsAdvanced from './components/FlashcardsAdvanced/FlashcardsAdvanced.js';
@@ -34,6 +35,7 @@ function App() {
           </Route>
           <Route path='/register' element={ <Register /> } />
           <Route path='/login' element={ <Login /> } />
+          <Route path='/profile/:userId' element={ <Profile /> } />
           <Route path='/collections' element={ <Collections /> } />
           <Route path='/flashcards-basic' element={ <FlashcardsBasic /> } />
           <Route path='/flashcards-advanced' element={ <FlashcardsAdvanced /> } />

@@ -1,4 +1,4 @@
-import Parse from '../../node_modules/parse/dist/parse.js'
+import Parse from '../../node_modules/parse/dist/parse.js';
 
 export async function login(username, password) {
     try {
@@ -61,3 +61,27 @@ export const getUser = () => {
 export const isAuthenticated = () => {
     return Boolean(getUser())
 };
+
+export const onDelete = async () => {
+    const userId = localStorage.getItem('userId');
+    const User = new Parse.User();
+    const query = new Parse.Query(User);
+    try {
+        // Finds the user by its ID
+        let user = await query.get(userId);
+        try {
+            // Invokes the "destroy" method to delete the user
+            let response = await user.destroy();
+            localStorage.removeItem('username');
+            localStorage.removeItem('authToken');
+            localStorage.removeItem('userId');
+            localStorage.removeItem('email');
+            localStorage.removeItem('password');
+            console.log('Deleted user', response);
+        } catch (error) {
+            console.error('Error while deleting user', error);
+        }
+    } catch (error) {
+        console.error('Error while retrieving user', error);
+    }
+}

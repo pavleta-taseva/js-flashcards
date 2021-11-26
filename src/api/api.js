@@ -1,3 +1,5 @@
+import Parse from '../../node_modules/parse/dist/parse.js';
+
 export const settings = {
     host: '',
 };
@@ -61,3 +63,16 @@ export async function deleteRequest(url) {
     return await request(url, getOptions('delete'));
 }
 
+export async function logout() {
+    try {
+        Parse.User.logOut();
+        localStorage.removeItem('username');
+        localStorage.removeItem('authToken');
+        localStorage.removeItem('userId');
+        localStorage.removeItem('email');
+        localStorage.removeItem('password');
+    } catch (error) {
+        alert('Ops, something went wrong. Try again, please!');
+        console.error(error);
+    }
+}

@@ -1,0 +1,87 @@
+.profile-container {
+    width: 90vw;
+    height: 130vh;
+    padding: 5% 5% 5% 15%;
+    background: url('../../../images/profile.png') no-repeat right center;
+}
+
+.user-profile {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    position: relative;
+    width: 95%;
+    height: 100%;
+    margin: 0 15%;
+    padding-bottom: 5%;
+    background: transparent;
+    border-radius: 25px;
+    -webkit-box-shadow: 10px 10px 78px 10px rgba(202,144,224,1);
+    -moz-box-shadow: 10px 10px 78px 10px rgba(202,144,224,1);
+    box-shadow: 10px 10px 78px 10px rgba(202,144,224,1);
+}
+
+.user-image {
+    position: absolute;
+    top: 5%;
+    left: -10%;
+    display: block;
+    width: 300px;
+    height: 300px;
+    border: 5px solid rgba(202,144,224,1);
+    border-radius: 50%;
+    background: url('../../../images/woman.jpg') no-repeat center/cover;
+    transition-property: all;
+    transition-property: transform;
+    transition: all 1s 1s;
+}
+
+.user-image:hover {
+    transform: scale(1.1);
+}
+
+.user-details {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: start;
+    padding-bottom: 5%;
+}
+
+.user-details h1 {
+    color: rgba(202,144,224,1);
+    font-size: 35px;
+}
+
+.user-details h3 {
+    text-align: start;
+    justify-content: flex-start;
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid #ca90e0;
+}
+
+.user-details-span {
+    color: #ca90e0;
+}
+
+.deleteAccount {
+    display: block;
+  cursor: pointer;
+  background: rgba(202,144,224,1);
+  color: #3c2846;
+  border: none;
+  font-size: 1.3rem;
+  padding: 10px 30%;
+  border-radius: 40px;
+  border: 1px solid #fff;
+  margin: 15px auto;
+  letter-spacing: 1px;
+}
+
+.user-details p {
+    text-align: justify;
+}

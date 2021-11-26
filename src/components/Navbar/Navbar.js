@@ -1,5 +1,5 @@
 import React from 'react';
-import * as authService from '../../services/authService.js';
+import { logout } from '../../api/data.js';
 import '../Navbar/Navbar.css';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
@@ -16,7 +16,7 @@ function Navbar() {
     const splitLocation = pathname.split("/");
     async function onLogout() {
         try {
-            await authService.logout();
+            await logout();
             navigate('/login', { replace: true });
         } catch (err) {
             console.log(err.message)
