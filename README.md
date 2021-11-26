@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+# JS Flashcards
+Обучителна система, базирана на създаване и управление на флаш карти, съдържащи терминология и дефиниции от областта на JavaScript.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Функционалност при потребители със свободен достъп
+* Регистрация на потребители след верификация на техния електронен адрес
+* Възможност за разглеждане на всички флаш карти от всеки потребител, със свободен достъп
+* Различни теми, свързани с тестовете
+* Възможност за филтриране по тема и търсене по заглавие
+* Водене статистика за всеки потребител и тест
+* Интерактивен редактор за тестове
+* Интерактивен, гъвкав UX
 
-## Available Scripts
+## Функционалност при потребители след регистрация в база данни
+* Регистрация на потребители след верификация на техния електронен адрес
+* Възможност за разглеждане на всички флаш карти от всеки потребител, със свободен достъп
+* Различни теми, свързани с тестовете
+* Възможност за филтриране по тема и търсене по заглавие
+* Водене статистика за всеки потребител и тест
+* Интерактивен редактор за тестове
+* Интерактивен, гъвкав UX
 
-In the project directory, you can run:
+## Технологии
+* HTML, CSS, JavaScript
+* lit-html, page
+* GitHub Pages, Back4app
 
-### `npm start`
+## Екрани (Страници)
+* **Welcome Screen** (landing page)
+* **Login/Regsiter** - регистрация с мейл, потребителско име, парола
+* **Quiz Browser** - списък с тестове и възможност за търсене по заглавие и филтрация по тема
+* **Quiz Details** - допълнително описание, статистика за теста, информация за автора и възможност за стартиране на теста
+* **Quiz Contest Mode** - отговаряне на въпроси, всеки въпрос е в отделен изглед, възможност за свободно преминаване от въпрос на въпрос, възможност за рестартиране на теста
+* **Quiz Results** - обобщение на резултатите, възможност за преглеждане на сгрешените въпроси
+* **Profile Page** - информация за създадени тестове и всички решени тестове
+* **Quiz Editor** - интегриран редактор за тестове, въпроси и отговори
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## План за изпълнение
+### Part 1
+* Създаване и настройване на приложение в Back4app
+* Деплойване на приложение в GitHub Pages
+* Login/Register страница
+* Quiz Editor функционалност
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Part 2
+* Довършване на структура и стилизация
+* Welcome Screen
+* Quiz Browser
+* Quiz Details
+* Quiz Contest Mode
+* Quiz Results
+* Profile Page
 
-### `npm test`
+## Реализация
+### Структура на данните
+#### Колекции
+* Sessions (служебна)
+* Users (служебна)
+```javascript
+{
+    email: String,
+    username: String,
+    password: String
+}
+```
+* Quizes
+```javascript
+{
+    title: String,
+    topic: String,
+    questionCount: Number
+}
+```
+* Questions
+```javascript
+{
+    text: String,
+    answers: Array<String>,
+    correctIndex: Number,
+    quiz:  Pointer<Quiz>
+}
+```
+* Solutions
+```javascript
+{
+    quiz: Pointer<Quiz>,
+    correct: Number
+}
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### Контрол на достъпа
+* Гостите могат да се регистрират, да преглеждат каталога, детайлите на тестовете и профилните страници на потребителите
+* Регистрираните потребители могат да решават тестове, да преглеждат резултатите си и да създават и редактират тестове
+* Само създателя на един тест може да го редактира и изтрива
+* Всеки регистриран потребител може да решава чужд тест
