@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './Flashcard.css';
 import { Link } from 'react-router-dom';
 import Parse from 'parse/dist/parse';
-import 'react-loading-skeleton/dist/skeleton.css'
 
 function Flashcard({ flashcard }) {
     const [ownerName, setOwnerName] = useState();

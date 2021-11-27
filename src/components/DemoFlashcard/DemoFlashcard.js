@@ -1,6 +1,5 @@
 import '../DemoFlashcard/DemoFlashcard.css';
 import { Link } from 'react-router-dom';
-import 'react-loading-skeleton/dist/skeleton.css'
 
 function Flashcard() {
     const questionElement = <span>
