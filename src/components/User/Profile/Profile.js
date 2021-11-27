@@ -1,13 +1,25 @@
+import React, { useState } from 'react';
 import '../Profile/Profile.css';
 import * as authService from '../../../services/authService.js';
-import React from "react";
 import { useNavigate } from 'react-router-dom';
+import Backdrop from '../../Backdrop/Backdrop.js';
+import Modal from './../../Modal/Modal.js';
 
-function Profile() {
+function Profile(props) {
+    const [showModal, setShowModal] = useState();
     const userId = localStorage.getItem('userId');
     const username = localStorage.getItem('username');
     const email = localStorage.getItem('email');
     const navigate = useNavigate();
+
+    function showModalHandler() {
+        setShowModal(true);
+    }
+
+    function closeModalHandler() {
+        setShowModal(false);
+        deleteAccount();
+    }
 
     async function deleteAccount() {
         try {
@@ -31,9 +43,11 @@ function Profile() {
                     <h3><i class="fas fa-check-double"></i> Delete account:</h3>
                     <p>If you don't want to be part of our community anymore, click the button below. Please note that once deleted,
                         your account information cannot be recovered and you will need to re-register.</p>
-                    <button onClick={deleteAccount} type="button" className="deleteAccount" name="deleteAccount">Delete account</button>
+                    <button onClick={showModalHandler} type="button" className="deleteAccount" name="deleteAccount">Delete account</button>
                 </div>
             </div>
+            {showModal && <Backdrop onClick={closeModalHandler} />}
+            {showModal && <Modal text='Are you sure?' onClose={closeModalHandler} />}
         </div>
     )
 }
