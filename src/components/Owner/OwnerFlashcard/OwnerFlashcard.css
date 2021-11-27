@@ -111,6 +111,13 @@ body {
   cursor: pointer;
 }
 
+.front-category-info {
+  text-align: center;
+  padding: 5%;
+  color: #fff;
+  font-weight: 300;
+}
+
 .question {
   text-align: center;
   padding: 5%;
