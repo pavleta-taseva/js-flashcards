@@ -37,6 +37,9 @@ function Details() {
                 navigate(-1);
             })
     }
+    if (owner === undefined) {
+        owner = 'Unknown';
+    }
 
     return (
         <div className="details-container animate__animated animate__slideInRight">

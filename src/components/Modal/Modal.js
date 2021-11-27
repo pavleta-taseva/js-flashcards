@@ -1,18 +1,31 @@
 import '../Modal/Modal.css';
+import * as authService from '../../services/authService.js';
+import { useNavigate } from 'react-router-dom';
 
 function Modal(props) {
+  const navigate = useNavigate();
+  const userId = localStorage.getItem('userId');
 
-    return (
-      <div className='modal'>
-        <p>{props.text}</p>
-        <button className='btn btn--alt' onClick={props.onClose}>
-          Cancel
-        </button>
-        <button className='btn' onClick={props.onClose}>
-          Confirm
-        </button>
-      </div>
-    );
+  async function deleteAccount() {
+    try {
+      await authService.onDelete(userId);
+      navigate('/');
+    } catch (err) {
+      console.log(err);
+    }
   }
-  
-  export default Modal;
+
+  return (
+    <div className='modal'>
+      <p>{props.text}</p>
+      <button className='btn btn--alt' onClick={props.onClose}>
+        Cancel
+      </button>
+      <button className='btn' onClick={deleteAccount}>
+        Confirm
+      </button>
+    </div>
+  );
+}
+
+export default Modal;

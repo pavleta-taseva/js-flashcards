@@ -25,6 +25,7 @@
     -webkit-box-shadow: 10px 10px 48px 10px rgba(202,144,224,1);
     -moz-box-shadow: 10px 10px 48px 10px rgba(202,144,224,1);
     box-shadow: 10px 10px 48px 10px rgba(202,144,224,1);
+    border-radius: 10px;
 }
 
 .one {

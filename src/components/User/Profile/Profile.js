@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 import '../Profile/Profile.css';
-import * as authService from '../../../services/authService.js';
-import { useNavigate } from 'react-router-dom';
 import Backdrop from '../../Backdrop/Backdrop.js';
 import Modal from './../../Modal/Modal.js';
 
-function Profile(props) {
+function Profile() {
     const [showModal, setShowModal] = useState();
     const userId = localStorage.getItem('userId');
     const username = localStorage.getItem('username');
     const email = localStorage.getItem('email');
-    const navigate = useNavigate();
 
     function showModalHandler() {
         setShowModal(true);
@@ -18,16 +15,6 @@ function Profile(props) {
 
     function closeModalHandler() {
         setShowModal(false);
-        deleteAccount();
-    }
-
-    async function deleteAccount() {
-        try {
-            await authService.onDelete(userId);
-            navigate('/');
-        } catch (err) {
-            console.log(err);
-        }
     }
 
     return (

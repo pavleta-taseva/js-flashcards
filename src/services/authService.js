@@ -29,7 +29,6 @@ export async function register(username, email, password) {
     try {
         await user.signUp();
         Parse.User.logOut();
-        localStorage.setItem('email', email);
         alert("Email must be verified. Please, visit your mail inbox for further instructions.");
         window.location.replace('/login');
     } catch (error) {
