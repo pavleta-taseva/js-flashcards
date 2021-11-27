@@ -125,9 +125,8 @@ Web application representing a training system based on creating and managing fl
 * * * Option to edit or delete current flashcard, visible buttons only for the creator of the page
 * * * * Edit button - gives the functionality to change current flashcard's parameters - question and/or answer
 * * * * Category cannot be changed once the flashcard has been created
-* * * * Delete button removes the current flashcard from the database
+* * * * Delete button removes the current flashcard from the database - both from the main library, visible to all unregistered users, and from the list of personal flashcards of the registered user
 
-, the user's offers in a bid system, the user's posts in a blog system, the user's photos in a photo-sharing system, the user's contacts in a social network, etc.
 2.	General Requirements
 Your Web application should use the following technologies, frameworks, and development techniques:
 •	At least 3 different dynamic pages (pages like about, contacts, etc. do not count towards that figure)

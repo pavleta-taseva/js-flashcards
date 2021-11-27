@@ -19,6 +19,7 @@ import Details from './components/User/Details/Details.js';
 import OwnerDetails from './components/Owner/OwnerDetails/OwnerDetails.js';
 import Footer from './components/Footer/Footer.js';
 import ReactNotification from 'react-notifications-component';
+import NotFoundPage from './components/NotFoundPage/NotFoundPage.js';
 import 'react-notifications-component/dist/theme.css';
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
           <Route path='/details/:ownerId/:id' element={ <OwnerDetails /> } />
           <Route path='/my-cards/:userId' element={ <MyCards /> } />
           <Route path='/edit/:id' element={ <Edit /> } />
+          <Route path='*' element={ <NotFoundPage /> } />
         </Routes>
       </main>
       <Footer />

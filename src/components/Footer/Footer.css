@@ -6,15 +6,15 @@ footer {
   border-top: 0.5px solid #ca90e0;
   background: #2a1c31;
   display: flex;
-  padding: 50px 0;
-  height: 150px;
+  padding: 20px 0;
+  height: 210px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-size: 14px;
 }
 
 footer small {
+  font-size: 14px;
   text-align: center;
   color: #eee;
   font-family: "Roboto Mono", monospace;
@@ -23,4 +23,24 @@ footer small {
 footer small a {
   font-size: 14px;
   font-family: "Roboto Mono", monospace;
+}
+
+footer small p {
+  font-size: 14px;
+  font-family: "Roboto Mono", monospace;
+}
+
+.fa-facebook,
+.fa-twitter,
+.fa-instagram {
+    color: #fff;
+    margin-right: 20px;
+    padding: 20px 0;
+}
+
+.fa-facebook:hover,
+.fa-twitter:hover,
+.fa-instagram:hover {
+    color: #ca90e0;
+    margin-right: 20px;
 }
