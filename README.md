@@ -1,4 +1,5 @@
 # JS Flashcards
+===============
 Web application representing a training system based on creating and managing flashcards containing terminology and definitions in the field of JavaScript.
 
 ## Public Part (Accessible without authentication)
@@ -13,17 +14,17 @@ Web application representing a training system based on creating and managing fl
 ## Private Part (Available for Registered Users)
 * Registration of users comes into effect after successful verification of their e-mail address
 * Registered users have personal areas in the web application accessible after their successful login:
-* * - Home page giving access to the three main categories of flashcards - JS Basics, JS Advanced and JS Web
-* * Personalized welcoming screen showing current user's name and a "Continue" button that takes them below to the categorization section
-* * - Profile page containing information about the current user:
-* * * Identification number, username, email, contributions count, current level information, based on the contribution to the total number of cards created
-* * * Functionality to delete the personal account from the database
-* * - Access to user's personal library of flashcards created by them, sorted by category
-* * * Access to flashcard's details page
-* * * Option to edit or delete current flashcard, visible buttons only for the creator of the page
-* * * * Edit button - gives the functionality to change current flashcard's parameters - question and/or answer
-* * * * Category cannot be changed once the flashcard has been created
-* * * * Delete button removes the current flashcard from the database - both from the main library, visible to all unregistered users, and from the list of personal flashcards of the registered user
+1. Home page giving access to the three main categories of flashcards - JS Basics, JS Advanced and JS Web
+    - Personalized welcoming screen showing current user's name and a "Continue" button that takes them below to the categorization section
+2. Profile page containing information about the current user:
+    - Identification number, username, email, contributions count, current level information, based on the contribution to the total number of cards created
+    - Functionality to delete the personal account from the database
+3. Access to user's personal library of flashcards created by them, sorted by category
+4. Access to flashcard's details page
+* Option to edit or delete current flashcard, visible buttons only for the creator of the page
+    - Edit button - gives the functionality to change current flashcard's parameters - question and/or answer
+    - Category cannot be changed once the flashcard has been created
+    - Delete button removes the current flashcard from the database - both from the main library, visible to all unregistered users, and from the list of personal flashcards of the registered user
 
 ## Application details
 Your Web application should use the following technologies, frameworks, and development techniques:
@@ -70,7 +71,8 @@ o	A Guest should have access to basic website information (catalog, details), bu
 
 ~~***************************************************~~
 
-# JS Flashcards
+# JavaScript флашкарти
+===============
 Обучителна система, базирана на създаване и управление на флаш карти, съдържащи терминология и дефиниции от областта на JavaScript.
 
 ## Функционалност при потребители със свободен достъп
