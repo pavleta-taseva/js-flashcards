@@ -20,10 +20,12 @@ import OwnerDetails from './components/Owner/OwnerDetails/OwnerDetails.js';
 import Footer from './components/Footer/Footer.js';
 import ReactNotification from 'react-notifications-component';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage.js';
+import { AuthProvider } from './contexts/AuthContext.js';
 import 'react-notifications-component/dist/theme.css';
 
 function App() {
   return (
+    <AuthProvider>
     <div className="App">
       <ReactNotification />
       <Navbar />
@@ -51,6 +53,7 @@ function App() {
       </main>
       <Footer />
     </div>
+    </AuthProvider>
   );
 }
 

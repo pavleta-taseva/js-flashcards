@@ -58,7 +58,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 2rem;
-  width: 60vw;
+  width: 70vw;
   margin: 0 auto;
   padding: 2%;
   margin-bottom: 5%;
@@ -94,4 +94,15 @@
   box-shadow: 10px 10px 38px 10px rgba(202,144,224,1);
   border-radius: 5px;
   padding: 2%;
+}
+
+.js-advanced {
+  padding: 0 25px;
+  border-left: 0.5px solid rgba(202,144,224,1);
+  border-right: 0.5px solid rgba(202,144,224,1);
+}
+
+.js-basics,
+.js-web {
+  padding: 0 20px;
 }
