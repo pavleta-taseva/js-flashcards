@@ -1,23 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import * as authService from '../../../services/authService.js';
 import './Login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import loginBackground from '../../../images/login-bg.jpg';
+import { AuthContext } from '../../../contexts/AuthContext.js';
 
 function Login() {
-    const [username, setUsername] = useState();
-    const [password, setPassword] = useState();
+    const { login } = useContext(AuthContext);
     const [error, setError] = useState(false);
     const navigate = useNavigate();
 
     async function loginUser(e) {
         e.preventDefault();
-        const data = { username, password };
+        const { username, password } = Object.fromEntries(new FormData(e.currentTarget));
+        console.log(username, password);
+        login(username, password);
 
-        if (data.username !== undefined && data.password !== undefined) {
+        if (username !== undefined && password !== undefined) {
             try {
                 await authService.login(username, password);
-                setUsername(username);
                 setError(false);
                 navigate('/home', { replace: true });
             } catch(err) {
@@ -38,12 +39,12 @@ function Login() {
                         <label>Username</label><br></br>
                         <div className="icon">
                             <i className="fas fa-envelope-open-text"></i>
-                            <input name="username" type="text" autoComplete="username" value={username} onChange={e => setUsername(e.target.value)}></input><br></br>
+                            <input name="username" type="text" autoComplete="username"></input><br></br>
                         </div>
                         <label>Password</label><br></br>
                         <div className="icon">
                             <i className="fas fa-unlock"></i>
-                            <input className="login-password" type="password" autoComplete="current-password" name="password" value={password} onChange={e => setPassword(e.target.value)}></input>
+                            <input className="login-password" type="password" autoComplete="current-password" name="password"></input>
                             <i id="eye-three" className="fas fa-eye"></i>
                             <br></br>
                         </div>

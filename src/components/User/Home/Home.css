@@ -73,6 +73,10 @@
   font-size: 20px;
 }
 
+.info-container span {
+  color: rgba(202,144,224,1);
+}
+
 .info {
   text-align: justify;
   width: 100%;
