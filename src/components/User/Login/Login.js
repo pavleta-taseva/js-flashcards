@@ -4,6 +4,7 @@ import './Login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import loginBackground from '../../../images/login-bg.jpg';
 import { AuthContext } from '../../../contexts/AuthContext.js';
+import { store } from 'react-notifications-component';
 
 function Login() {
     const { login } = useContext(AuthContext);
@@ -13,16 +14,52 @@ function Login() {
     async function loginUser(e) {
         e.preventDefault();
         const { username, password } = Object.fromEntries(new FormData(e.currentTarget));
-        console.log(username, password);
-        login(username, password);
 
-        if (username !== undefined && password !== undefined) {
+        login(username, password);
+        if (username === '' || password === '') {
+            store.addNotification({
+                title: "Please, fill in all fields!",
+                message: "Empty input",
+                type: "info",
+                insert: "bottom-center",
+                container: "top-center",
+                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationOut: ["animate__animated", "animate__fadeOut"],
+                dismiss: {
+                  duration: 5000,
+                  onScreen: true
+                }
+            });
+            return;
+        }
+
+        if (username !== undefined 
+            && password !== undefined 
+            && username !== null 
+            && password !== null) {
             try {
-                await authService.login(username, password);
+                const result = await authService.login(username, password);
                 setError(false);
+                if (result === null) {
+                    store.addNotification({
+                        title: "User doesn't exist!",
+                        message: "Please register first",
+                        type: "info",
+                        insert: "bottom-center",
+                        container: "top-center",
+                        animationIn: ["animate__animated", "animate__fadeIn"],
+                        animationOut: ["animate__animated", "animate__fadeOut"],
+                        dismiss: {
+                          duration: 5000,
+                          onScreen: true
+                        }
+                    });
+                    navigate('/login', { replace: true });
+                    return null;
+                }
                 navigate('/home', { replace: true });
             } catch(err) {
-                console.log(err.message)
+                console.error(err.message);
             }
         }
     }

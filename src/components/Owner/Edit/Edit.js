@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import * as cardService from '../../../services/cardService.js';
+import { useAuth } from '../../../contexts/AuthContext.js';
+import { isAuth } from '../../../hoc/isAuth.js';
 import './Edit.css';
 
 
 function Edit() {
+    const { user } = useAuth();
     const location = useLocation();
     const [error, setError] = useState(false);
     const [questionEdit, setQuestionEdit] = useState();
@@ -35,6 +38,10 @@ function Edit() {
         return navigate(1);
     }
 
+    if (user.username === '') {
+        return navigate('/login');
+    }
+
     return (
         <div className="edit">
             <form className="edit-form" onSubmit={e => onEdit(e)}>
@@ -56,5 +63,6 @@ function Edit() {
         </div>
     )
 }
+const EnhancedComponent = isAuth(Edit);
 
-export default Edit;
+export default EnhancedComponent;

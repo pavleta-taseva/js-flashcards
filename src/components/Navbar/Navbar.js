@@ -5,7 +5,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext.js';
 
 function Navbar() {
-    const { username, email } = useAuth();
+    const { user } = useAuth();
     const userId = localStorage.getItem('userId');
     const isLogged = userId !== null;
     const navigate = useNavigate();

@@ -1,4 +1,3 @@
-import { Password } from '@mui/icons-material';
 import { createContext, useState, useContext } from 'react';
 
 export const AuthContext = createContext();
@@ -18,7 +17,7 @@ export const AuthProvider = ({
     const login = (username, password) => {
         setUser(username, password);
     }
-    return <AuthContext.Provider value={{user, login}}>
+    return <AuthContext.Provider value={{user, login, isAuthenticated: Boolean(user.username)}}>
         { children }
     </AuthContext.Provider>
 };

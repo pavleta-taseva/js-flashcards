@@ -3,6 +3,7 @@ import Parse from '../../node_modules/parse/dist/parse.js';
 export async function login(username, password) {
     try {
         let user = await Parse.User.logIn(username, password);
+        console.log(user);
         const email = user.get('email');
         if (user.get('emailVerified')) {
             const currentUser = Parse.User.current();
@@ -15,7 +16,8 @@ export async function login(username, password) {
         }
     } catch (error) {
         Parse.User.logOut();
-        console.log('User logged in. Please verify your email first');
+        console.log('Please register first');
+        return null;
         // return notify(error);
     }
 }
