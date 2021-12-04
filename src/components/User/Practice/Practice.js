@@ -21,6 +21,7 @@ async function getPracticeList() {
             const answer = card.get('answer');
             const owner = card.get('owner');
             const queryResult = {
+                index: index,
                 id: card.id,
                 category,
                 question,
@@ -69,7 +70,7 @@ function Practice() {
                         : <div className="no-cards">
                             <div className="left-container">
                                 <h1 className="no-cards-heading">There are currently no Flashcards in your Practice List yet.</h1>
-                                <h1 className="no-cards-heading">Why don't you browse our library of flashcards to to start adding them to your list?</h1>
+                                <h1 className="no-cards-heading">Why don't you browse our library of flashcards to start adding them to your list?</h1>
                             </div>
                         </div>
                     }
