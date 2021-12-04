@@ -88,6 +88,7 @@ function Login() {
                         <div>
                             <button type="submit" className="loginBtn">Login</button>
                         </div>
+                        <div className="g-signin2" data-onsuccess="onSignIn"></div>
                     </form>
                     <div className="second">
                         <Link className="link" to="/register" alt="register">Create new account</Link>

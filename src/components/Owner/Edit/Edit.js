@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import * as cardService from '../../../services/cardService.js';
 import { useAuth } from '../../../contexts/AuthContext.js';
-import { isAuth } from '../../../hoc/isAuth.js';
 import './Edit.css';
 
 
@@ -38,7 +37,7 @@ function Edit() {
         return navigate(1);
     }
 
-    if (user.username === '') {
+    if (user === '') {
         return navigate('/login');
     }
 
@@ -63,6 +62,5 @@ function Edit() {
         </div>
     )
 }
-const EnhancedComponent = isAuth(Edit);
 
-export default EnhancedComponent;
+export default Edit;
