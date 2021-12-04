@@ -16,11 +16,16 @@ function Details() {
     const localStorageOwnerId = localStorage.getItem('userId');
     let check = ownerId === localStorageOwnerId;
     const navigate = useNavigate();
+    const [add, setAdd] = useState(false);
 
     useEffect(() => {
         async function fetchData() {
             try {
                 const res = await cardService.updateCardDetails(id, owner);
+                let foundCard = await cardService.checkIfInPracticeList(id, owner);
+                if (foundCard) {
+                    setAdd(true);
+                }
                 setCurrentQuestion(res.question);
                 setCurrentAnswer(res.answer);
             } catch (err) {
@@ -72,16 +77,35 @@ function Details() {
                             }}
                         >Edit</Link>
                     </div>
-                    : <div className="buttons">
-                    <Link to={`/practice/${localStorageOwnerId}`}
-                    alt="practice"
-                        onClick={() => {
-                            cardService.practice();
+                    : <div></div>                    
+                }
+                {add
+                    ? <div className="buttons">
+                    <Link
+                        to={`/details/${id}`}
+                        alt="details"
+                        disabled={true}
+                        className="button-disabled"
+                        state={{
+                            id: id,
+                            question: currentQuestion,
+                            answer: currentAnswer,
+                            ownerId: ownerId
                         }}
-                        className="flashcard-buttons"
-                    >Practice
+                    >Card already added to the List
                     </Link>
                 </div>
+                    : <div className="buttons">
+                        <Link
+                            to={`/practice/${localStorageOwnerId}`}
+                            alt="practice"
+                            onClick={() => {
+                                cardService.practice(id);
+                            }}
+                            className="flashcard-buttons"
+                        >Practice
+                        </Link>
+                    </div>
                 }
             </div>
         </div>

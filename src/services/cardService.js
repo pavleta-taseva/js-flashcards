@@ -1,4 +1,5 @@
 import Parse from 'parse/dist/parse';
+import { store } from 'react-notifications-component';
 const baseUrl = 'https://parseapi.back4app.com/classes/Flashcard';
 
 export const getCard = async (id) => {
@@ -143,13 +144,67 @@ export async function practice(id) {
     try {
         const currentCard = await query.get(id);
         const currentUser = Parse.User.current();
-        let userId = currentUser.id;
-        console.log(userId);
-        const practiceList = currentUser.get('practiceList');
-        console.log(practiceList);
-        currentUser.add('practiceCards', currentCard);
-        console.log('Card added to the Practice list');
-        await currentUser.save();
+        const cardIds = [];
+        const practiceList = currentUser.get('practiceCards');
+        for (let card of practiceList) {
+            cardIds.push(card.id);
+
+        }
+        const length = cardIds.length;
+        const check = cardIds.includes(currentCard.id);
+        if (!check) {
+            currentUser.add('practiceCards', currentCard);
+            await currentUser.save();
+            store.addNotification({
+                title: "Card added to your Practice List!",
+                message: `You have a total of ${length} cards on your practice list.`,
+                type: "info",
+                insert: "bottom-center",
+                container: "center",
+                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationOut: ["animate__animated", "animate__fadeOut"],
+                dismiss: {
+                  duration: 5000,
+                  onScreen: true
+                }
+            });
+        } else {
+            console.log('This card is already added to the Practice list.');
+            store.addNotification({
+                title: "This action cannot be executed!",
+                message: "This card is already added to your Practice list.",
+                type: "info",
+                insert: "bottom-center",
+                container: "center",
+                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationOut: ["animate__animated", "animate__fadeOut"],
+                dismiss: {
+                  duration: 5000,
+                  onScreen: true
+                }
+            });
+            return null;
+        }
+    } catch (err) {
+        console.log(err.message)
+    }
+}
+
+export async function checkIfInPracticeList(id, ownerId) {
+    const Flashcard = Parse.Object.extend('Flashcard');
+    const query = new Parse.Query(Flashcard);
+    query.equalTo('objectId', id);
+    try {
+        const currentCard = await query.get(id);
+        const currentUser = Parse.User.current();
+        const cardIds = [];
+        const practiceList = currentUser.get('practiceCards');
+        for (let card of practiceList) {
+            cardIds.push(card.id);
+
+        }
+        const check = cardIds.includes(currentCard.id);        
+        return check;
     } catch (err) {
         console.log(err.message)
     }
