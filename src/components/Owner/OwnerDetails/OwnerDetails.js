@@ -5,6 +5,7 @@ import './OwnerDetails.css';
 import { Link, useNavigate } from 'react-router-dom';
 
 function OwnerDetails() {
+
     const location = useLocation();
     const { question } = location.state;
     const { answer } = location.state;

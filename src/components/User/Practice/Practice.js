@@ -5,12 +5,12 @@ import BeatLoader from "react-spinners/BeatLoader";
 import './Practice.css';
 
 let practiceList = [];
-let result = [];
+const userId = localStorage.getItem('userId');
 
 async function getPracticeList() {
+    let result = [];
     const User = new Parse.User();
     const query = new Parse.Query(User);
-    const userId = localStorage.getItem('userId');
     try {
         let user = await query.get(userId);
         const list = user.get('practiceCards');
@@ -28,12 +28,17 @@ async function getPracticeList() {
                 answer,
                 owner
             }
-            result.push(queryResult);
+            const check = result.includes(queryResult);
+            if (!check) {
+                result.push(queryResult);
+                practiceList = result;
+            }
         }
     } catch (error) {
         console.log(`Error: ${JSON.stringify(error)}`);
     }
-    return result;
+    
+    return practiceList;
 }
 
 function Practice() {
@@ -50,6 +55,7 @@ function Practice() {
                 setTimeout(() => {
                     setLoading(false);
                 }, 3000)
+                return () => { setLoading(false) };
             } catch (err) {
                 console.log(err);
             }

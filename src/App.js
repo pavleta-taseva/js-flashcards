@@ -15,18 +15,20 @@ import FlashcardsWeb from './components/FlashcardsWeb/FlashcardsWeb.js';
 import Edit from './components/Owner/Edit/Edit.js';
 import Create from './components/Owner/Create/Create.js';
 import MyCards from './components/Owner/MyCards/MyCards.js';
+import Practice from './components/User/Practice/Practice.js';
 import Details from './components/User/Details/Details.js';
 import OwnerDetails from './components/Owner/OwnerDetails/OwnerDetails.js';
 import Footer from './components/Footer/Footer.js';
 import ReactNotification from 'react-notifications-component';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage.js';
 import { AuthProvider } from './contexts/AuthContext.js';
-import Practice from './components/User/Practice/Practice.js';
+import { CardProvider } from './contexts/CardContext.js';
 import 'react-notifications-component/dist/theme.css';
 
 function App() {
   return (
-      <AuthProvider>
+    <AuthProvider>
+      <CardProvider>
         <div className="App">
           <ReactNotification />
           <Navbar />
@@ -48,14 +50,15 @@ function App() {
               <Route path='/details/:id' element={<Details />} />
               <Route path='/details/:ownerId/:id' element={<OwnerDetails />} />
               <Route path='/my-cards/:userId' element={<MyCards />} />
-              <Route path='/practice/:userId' element={ <Practice /> } />
+              <Route path='/practice/:userId' element={<Practice />} />
               <Route path='/edit/:id' element={<Edit />} />
               <Route path='*' element={<NotFoundPage />} />
             </Routes>
           </main>
           <Footer />
         </div>
-      </AuthProvider>
+      </CardProvider>
+    </AuthProvider>
   );
 }
 

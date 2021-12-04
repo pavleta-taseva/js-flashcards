@@ -2,10 +2,9 @@ import React from 'react';
 import { Link } from 'react-scroll'
 import './Home.css';
 import Category from '../Category/Category.js';
-import { useAuth } from '../../../contexts/AuthContext.js';
 
 function Home() {
-    const { user } = useAuth();
+    const user = localStorage.getItem('username');
 
     return (
         <div className="categories-container">

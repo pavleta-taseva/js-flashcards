@@ -147,24 +147,24 @@ export async function practice(id) {
         const cardIds = [];
         const practiceList = currentUser.get('practiceCards');
         for (let card of practiceList) {
-            cardIds.push(card.id);
-
+            if (!currentCard.id === card.id) {
+                cardIds.push(card.id);
+            }
         }
-        const length = cardIds.length;
         const check = cardIds.includes(currentCard.id);
         if (!check) {
             currentUser.add('practiceCards', currentCard);
             await currentUser.save();
             store.addNotification({
                 title: "Card added to your Practice List!",
-                message: `You have a total of ${length} cards on your practice list.`,
+                message: 'Redirecting you to practice page...',
                 type: "info",
                 insert: "bottom-center",
                 container: "center",
                 animationIn: ["animate__animated", "animate__fadeIn"],
                 animationOut: ["animate__animated", "animate__fadeOut"],
                 dismiss: {
-                  duration: 5000,
+                  duration: 3000,
                   onScreen: true
                 }
             });
@@ -208,4 +208,31 @@ export async function checkIfInPracticeList(id, ownerId) {
     } catch (err) {
         console.log(err.message)
     }
+}
+
+export async function removeCardFromPractice(id, userId) {
+    const User = new Parse.User();
+    const query = new Parse.Query(User);
+    const Flashcard = Parse.Object.extend('Flashcard');
+    const queryCard = new Parse.Query(Flashcard);
+    const currentCard = queryCard.equalTo('objectId', id);
+
+    try {
+        let user = await query.get(userId);
+        const practiceList = user.get('practiceCards');
+        console.log(practiceList[1]);
+        for (let card of practiceList) {
+            if (card.id === currentCard.id) {
+                let index = practiceList.indexOf(card);
+                console.log(index);
+                practiceList.splice(index, 1);
+            }  
+        }
+        const response = await user.save();
+        console.log(response);
+        return response;
+    } catch (err) {
+        console.log(err.message)
+    }
+
 }

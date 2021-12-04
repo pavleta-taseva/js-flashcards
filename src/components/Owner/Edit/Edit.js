@@ -34,7 +34,7 @@ function Edit() {
     }
 
     function cancel() {
-        return navigate(1);
+        return navigate(-1);
     }
 
     if (user === '') {

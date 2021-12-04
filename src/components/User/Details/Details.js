@@ -37,11 +37,21 @@ function Details() {
 
     async function onDelete(e) {
         e.preventDefault();
-        cardService.deleteCard(id)
+        await cardService.deleteCard(id)
             .then(result => {
                 navigate(-1);
             })
     }
+
+    async function onRemove(e) {
+        e.preventDefault();
+
+        await cardService.removeCardFromPractice(id, localStorageOwnerId)
+            .then(result => {
+                navigate(-1);
+            })
+    }
+
     if (owner === undefined) {
         owner = 'Unknown';
     }
@@ -65,8 +75,15 @@ function Details() {
                 <div><h2 className="details-heading"><span className="details-title">Creator:</span> {`${owner}`}</h2></div>
                 {check
                     ? <div className="buttons">
-                        <Link onClick={onDelete} alt="delete-page" className="flashcard-buttons" to={`/delete/${id}`}>Delete</Link>
-                        <Link className="flashcard-buttons"
+                        <Link 
+                            onClick={onDelete} 
+                            alt="delete-page" 
+                            className="flashcard-buttons" 
+                            to={`/delete/${id}`}
+                            >Delete
+                        </Link>
+                        <Link 
+                            className="flashcard-buttons"
                             to={`/edit/${id}`}
                             alt="edit-page"
                             state={{
@@ -77,34 +94,42 @@ function Details() {
                             }}
                         >Edit</Link>
                     </div>
-                    : <div></div>                    
-                }
-                {add
-                    ? <div className="buttons">
-                    <Link
-                        to={`/details/${id}`}
-                        alt="details"
-                        disabled={true}
-                        className="button-disabled"
-                        state={{
-                            id: id,
-                            question: currentQuestion,
-                            answer: currentAnswer,
-                            ownerId: ownerId
-                        }}
-                    >Card already added to the List
-                    </Link>
-                </div>
-                    : <div className="buttons">
-                        <Link
-                            to={`/practice/${localStorageOwnerId}`}
-                            alt="practice"
-                            onClick={() => {
-                                cardService.practice(id);
-                            }}
-                            className="flashcard-buttons"
-                        >Practice
-                        </Link>
+                    : <div>
+                        {add
+                            ? <div className="buttons">
+                                <Link
+                                    className="button-disabled"
+                                    to={`/details/${id}`}
+                                    alt="details"
+                                    disabled={true}
+                                    state={{
+                                        id: id,
+                                        question: currentQuestion,
+                                        answer: currentAnswer,
+                                        ownerId: ownerId
+                                    }}
+                                >Card already in the List
+                                </Link>
+                                <Link
+                                onClick={onRemove}
+                                    className="button-remove"
+                                    to={`/practice/${ownerId}`}
+                                    alt="practice-list"
+                                >Remove card from practice
+                                </Link>
+                            </div>
+                            : <div className="buttons">
+                                <Link
+                                    className="flashcard-buttons"
+                                    to={`/practice/${localStorageOwnerId}`}
+                                    alt="practice"
+                                    onClick={() => {
+                                        cardService.practice(id);
+                                    }}
+                                >Practice
+                                </Link>
+                            </div>
+                        }
                     </div>
                 }
             </div>
