@@ -1,6 +1,4 @@
 import React from 'react';
-import { Provider } from "react-redux";
-import store from "./redux/store";
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Category from './components/User/Category/Category.js';
@@ -27,7 +25,6 @@ import 'react-notifications-component/dist/theme.css';
 
 function App() {
   return (
-    <Provider store={store}>
       <AuthProvider>
         <div className="App">
           <ReactNotification />
@@ -57,7 +54,6 @@ function App() {
           <Footer />
         </div>
       </AuthProvider>
-    </Provider>
   );
 }
 
