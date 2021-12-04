@@ -58,6 +58,12 @@ function Navbar() {
                                 <span className="nav-item-title">Create</span>
                             </NavLink>
                         </li>
+                        <li className={splitLocation[1] === "practice" ? "active" : ""}>
+                            <NavLink to={`/practice/${userId}`} alt="practice">
+                                <span className="nav-icon"><ion-icon name="bulb-outline"></ion-icon></span>
+                                <span className="nav-item-title">Practice</span>
+                            </NavLink>
+                        </li>
                         <li className={splitLocation[1] === "logout" ? "active" : ""}>
                             <NavLink to={`#`} alt="logout">
                                 <span className="nav-icon"><ion-icon name="log-out-outline"></ion-icon></span>

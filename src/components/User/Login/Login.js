@@ -5,22 +5,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import loginBackground from '../../../images/login-bg.jpg';
 import { AuthContext } from '../../../contexts/AuthContext.js';
 import { store } from 'react-notifications-component';
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
 
-import { loginGoogle } from "../../../redux/actions/auth.js";
-
-function Login({ loginGoogle, oauth }) {
+function Login() {
     const { login } = useContext(AuthContext);
     const [error, setError] = useState(false);
     const navigate = useNavigate();
-    const handleGoogleSignIn = () => {
-        loginGoogle();
-    };
-
-    if (oauth) {
-        window.location.href = oauth;
-    }
 
     async function loginUser(e) {
         e.preventDefault();
@@ -37,16 +26,16 @@ function Login({ loginGoogle, oauth }) {
                 animationIn: ["animate__animated", "animate__fadeIn"],
                 animationOut: ["animate__animated", "animate__fadeOut"],
                 dismiss: {
-                    duration: 5000,
-                    onScreen: true
+                  duration: 5000,
+                  onScreen: true
                 }
             });
             return;
         }
 
-        if (username !== undefined
-            && password !== undefined
-            && username !== null
+        if (username !== undefined 
+            && password !== undefined 
+            && username !== null 
             && password !== null) {
             try {
                 const result = await authService.login(username, password);
@@ -61,20 +50,19 @@ function Login({ loginGoogle, oauth }) {
                         animationIn: ["animate__animated", "animate__fadeIn"],
                         animationOut: ["animate__animated", "animate__fadeOut"],
                         dismiss: {
-                            duration: 5000,
-                            onScreen: true
+                          duration: 5000,
+                          onScreen: true
                         }
                     });
                     navigate('/login', { replace: true });
                     return null;
                 }
                 navigate('/home', { replace: true });
-            } catch (err) {
+            } catch(err) {
                 console.error(err.message);
             }
         }
     }
-
     return (
         <section className="login-section">
             <div className="login-container">
@@ -101,7 +89,6 @@ function Login({ loginGoogle, oauth }) {
                             <button type="submit" className="loginBtn">Login</button>
                         </div>
                     </form>
-                        <button className="g-signin2" data-onsuccess="onSignIn" onClick={handleGoogleSignIn}>Sign In with Google</button>
                     <div className="second">
                         <Link className="link" to="/register" alt="register">Create new account</Link>
                     </div>
@@ -112,16 +99,4 @@ function Login({ loginGoogle, oauth }) {
         </section>
     )
 }
-
-Login.propTypes = {
-    loginGoogle: PropTypes.func.isRequired,
-    oauth: PropTypes.string,
-};
-
-const mapStateToProps = (state) => ({
-    oauth: state.auth.oauth,
-});
-
-export default connect(mapStateToProps, { loginGoogle })(Login);
-
-
+export default Login;

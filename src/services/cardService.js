@@ -135,3 +135,22 @@ export async function deleteCard(id) {
         console.error('Error while retrieving ParseObject', error);
     }
 };
+
+export async function practice(id) {
+    const Flashcard = Parse.Object.extend('Flashcard');
+    const query = new Parse.Query(Flashcard);
+    query.equalTo('objectId', id);
+    try {
+        const currentCard = await query.get(id);
+        const currentUser = Parse.User.current();
+        let userId = currentUser.id;
+        console.log(userId);
+        const practiceList = currentUser.get('practiceList');
+        console.log(practiceList);
+        currentUser.add('practiceCards', currentCard);
+        console.log('Card added to the Practice list');
+        await currentUser.save();
+    } catch (err) {
+        console.log(err.message)
+    }
+}

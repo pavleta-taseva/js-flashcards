@@ -72,7 +72,16 @@ function Details() {
                             }}
                         >Edit</Link>
                     </div>
-                    : <div></div>
+                    : <div className="buttons">
+                    <Link to={`/practice/${localStorageOwnerId}`}
+                    alt="practice"
+                        onClick={() => {
+                            cardService.practice();
+                        }}
+                        className="flashcard-buttons"
+                    >Practice
+                    </Link>
+                </div>
                 }
             </div>
         </div>
