@@ -14,17 +14,20 @@
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "googleapis": "^61.0.0",
     "parse": "^3.4.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-notifications": "^1.7.2",
     "react-notifications-component": "^3.1.0",
+    "react-redux": "^7.2.6",
     "react-router-dom": "^6.0.2",
     "react-scripts": "^4.0.3",
     "react-scroll": "^1.8.4",
     "react-spinners": "^0.11.0",
-    "web-vitals": "^1.1.2",
-    "googleapis": "^61.0.0"
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.1",
+    "web-vitals": "^1.1.2"
   },
   "scripts": {
     "start": "react-scripts start",

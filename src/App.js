@@ -1,4 +1,6 @@
 import React from 'react';
+import { Provider } from "react-redux";
+import store from "./redux/store";
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Category from './components/User/Category/Category.js';
@@ -25,35 +27,37 @@ import 'react-notifications-component/dist/theme.css';
 
 function App() {
   return (
-    <AuthProvider>
-    <div className="App">
-      <ReactNotification />
-      <Navbar />
-      <main>
-        <Routes>
-          <Route path='/' element={ <LandingPage /> }>
-          </Route>
-          <Route path='/home' element={ <Home /> }>
-            <Route path='/home/categories' element={ <Category /> } />
-          </Route>
-          <Route path='/register' element={ <Register /> } />
-          <Route path='/login' element={ <Login /> } />
-          <Route path='/profile/:userId' element={ <Profile /> } />
-          <Route path='/collections' element={ <Collections /> } />
-          <Route path='/flashcards-basic' element={ <FlashcardsBasic /> } />
-          <Route path='/flashcards-advanced' element={ <FlashcardsAdvanced /> } />
-          <Route path='/flashcards-web' element={ <FlashcardsWeb /> } />
-          <Route path='/flashcards/create' element={ <Create /> } />
-          <Route path='/details/:id' element={ <Details /> } />
-          <Route path='/details/:ownerId/:id' element={ <OwnerDetails /> } />
-          <Route path='/my-cards/:userId' element={ <MyCards /> } />
-          <Route path='/edit/:id' element={ <Edit /> } />
-          <Route path='*' element={ <NotFoundPage /> } />
-        </Routes>
-      </main>
-      <Footer />
-    </div>
-    </AuthProvider>
+    <Provider store={store}>
+      <AuthProvider>
+        <div className="App">
+          <ReactNotification />
+          <Navbar />
+          <main>
+            <Routes>
+              <Route path='/' element={<LandingPage />}>
+              </Route>
+              <Route path='/home' element={<Home />}>
+                <Route path='/home/categories' element={<Category />} />
+              </Route>
+              <Route path='/register' element={<Register />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/profile/:userId' element={<Profile />} />
+              <Route path='/collections' element={<Collections />} />
+              <Route path='/flashcards-basic' element={<FlashcardsBasic />} />
+              <Route path='/flashcards-advanced' element={<FlashcardsAdvanced />} />
+              <Route path='/flashcards-web' element={<FlashcardsWeb />} />
+              <Route path='/flashcards/create' element={<Create />} />
+              <Route path='/details/:id' element={<Details />} />
+              <Route path='/details/:ownerId/:id' element={<OwnerDetails />} />
+              <Route path='/my-cards/:userId' element={<MyCards />} />
+              <Route path='/edit/:id' element={<Edit />} />
+              <Route path='*' element={<NotFoundPage />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </AuthProvider>
+    </Provider>
   );
 }
 
