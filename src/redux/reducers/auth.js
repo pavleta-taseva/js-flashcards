@@ -6,7 +6,7 @@ const initialState = {
   errors: [],
 };
 
-export default function (state = initialState, action) {
+export default function googleAuth(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
