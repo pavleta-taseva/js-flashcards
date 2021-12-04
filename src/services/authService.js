@@ -1,9 +1,8 @@
 import Parse from '../../node_modules/parse/dist/parse.js';
 
-export async function login(username, password, googleUser) {
+export async function login(username, password) {
     try {
         let user = await Parse.User.logIn(username, password);
-        // await user.linkWith('google', { authData: myAuthData });
         const email = user.get('email');
         if (user.get('emailVerified')) {
             const currentUser = Parse.User.current();

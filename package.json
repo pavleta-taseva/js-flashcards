@@ -14,7 +14,6 @@
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-    "googleapis": "^61.0.0",
     "parse": "^3.4.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -52,5 +51,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "googleapis": "^92.0.0"
   }
 }
