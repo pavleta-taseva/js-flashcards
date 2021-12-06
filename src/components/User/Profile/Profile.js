@@ -7,7 +7,7 @@ import * as cardService from '../../../services/cardService.js';
 function Profile() {
     const [showModal, setShowModal] = useState();
     const [count, setCount] = useState(0);
-    const [level, setLevel] = useState('Disciple');
+    const [level, setLevel] = useState('');
     const [created, setCreated] = useState();
     const userId = localStorage.getItem('userId');
     const username = localStorage.getItem('username');
