@@ -1,9 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import * as authService from '../../../services/authService.js';
 import './Register.css';
 import registerBackground from '../../../images/register-bg.jpg';
 import { Link,  useNavigate } from 'react-router-dom';
-import UserContext from '../../../UserContext.js';
 
 function Register() {
     const [username, setUsername] = useState();
@@ -11,7 +10,6 @@ function Register() {
     const [password, setPassword] = useState();
     const [rePass, setRePass] = useState();
     const navigate = useNavigate();
-    const user = useContext(UserContext);
 
     async function registerUser(e) {
         e.preventDefault();
@@ -26,7 +24,7 @@ function Register() {
         if (data.username !== undefined && data.email !== undefined && data.password !== undefined) {
             try {
                 await authService.register(username, email, password);
-                user.setUsername(username);
+                setUsername(username);
                 navigate('/login', { replace: true });
             } catch (error) {
                 console.log(error);

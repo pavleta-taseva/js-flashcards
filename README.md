@@ -8,6 +8,7 @@ Web application representing a training system based on creating and managing fl
 * Ability to view the entire library of flashcards, but without their explicit categorization
 * Access to detailed information about each card - identification number, question, answer and card creator
 * No access to edit and delete buttons
+* No access to practice button 
 
 ## Private Part (Available for Registered Users) - access control
 * Registration of users comes into effect after successful verification of their e-mail address
@@ -15,7 +16,7 @@ Web application representing a training system based on creating and managing fl
 1. Home page giving access to the three main categories of flashcards - JS Basics, JS Advanced and JS Web
     - Personalized welcoming screen showing current user's name and a "Continue" button that takes them below to the categorization section
 2. Profile page containing information about the current user:
-    - Identification number, username, email, contributions count, current level information, based on the contribution to the total number of cards created
+    - Identification number, username, email, contributions count - the total number of cards created
     - Functionality to delete the personal account from the database
 3. Access to user's personal library of flashcards created by them, sorted by category
 4. Access to flashcard's details page
@@ -31,7 +32,7 @@ Web application representing a training system based on creating and managing fl
 
 ## Satisfaction of requirements
 Web application uses the following technologies, frameworks, and development techniques:
-* It has at least 3 different dynamic pages - My cards, Profile page, Create, Edit, etc.
+* It has at least 3 different dynamic pages - My cards, Profile page, Practice List, Create, Edit, etc.
 * Has the required views:
     - Catalog – list of all created records (Flashcards Library)
     - Details – information about a specific record (Flashcard details)
@@ -40,7 +41,7 @@ Web application uses the following technologies, frameworks, and development tec
 * Logged in user (owner) is able to Edit / Delete their records
 * A Guest has access to basic website information (library, details), but not to the functional activities
 * React.js is used for the client-side
-* Communicate to a remote service (via REST, sockets, GraphQL, or a similar client-server technique)
+* Communicate to a remote service (Back4App)
 * Implemented authentication
 * Implemented client-side routing
 * Demonstrates use of programming concepts, specific to the React library: stateless and state full components, bound forms, synthetic events, Component Styling, etc.
@@ -54,6 +55,7 @@ Web application uses the following technologies, frameworks, and development tec
 * **Profile Page** - information about the current user, with the possibility to delete the profile
 * **My Cards** - a library of flashcards created by the current user
 * **Details Page** - a page giving information about a specific flashcard, with the ability to edit and delete
+* **Practice List Page** - a page where the user can find all the cards created by other users, but he himself wants to practice
 * **Create Page** - page for creating flashcards
 * **Edit Page** - edit created flashcards, their questions and answers
 
@@ -70,6 +72,7 @@ Web application uses the following technologies, frameworks, and development tec
 * Flashcard Details
 * Flashcards library
 * My Cards page
+* Practice page
 * Create Page
 * Edit Page
 * Delete functionality
@@ -87,6 +90,7 @@ Web application uses the following technologies, frameworks, and development tec
     username: String,
     password: String,
     myCards: Array<String>,
+    practiceCards: Array<String>
 }
 ```
 * Flashcard

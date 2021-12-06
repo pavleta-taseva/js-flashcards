@@ -1,11 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import * as cardService from '../../../services/cardService.js';
 import { useNavigate } from 'react-router-dom';
-import { CardContext } from '../../../contexts/CardContext.js';
 import './Create.css';
 
 function Create() {
-    const { create } = useContext(CardContext);
     const [question, setQuestion] = useState();
     const [answer, setAnswer] = useState();
     const [category, setCategory] = useState();
@@ -46,7 +44,6 @@ function Create() {
         setAnswer(answer);
 
         let data = { category, question, answer, owner };
-        create(category, question, answer, owner)
         cardService.create(data)
         .then(result => {
             navigate(`/my-cards/${owner}`, { replace: true });

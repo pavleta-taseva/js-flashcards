@@ -1,29 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import './Flashcard.css';
-import { Link } from 'react-router-dom';
-import Parse from 'parse/dist/parse';
+import { Link, useParams } from 'react-router-dom';
+import * as cardService from '../../../services/cardService.js';
 
 function Flashcard({ flashcard }) {
     const [ownerName, setOwnerName] = useState();
-    let ownerId = flashcard.owner.id;
+    let { ownerId } = useParams();
     let id = flashcard.id;
 
-    async function getName() {
-        const User = new Parse.User();
-        const query = new Parse.Query(User);
-        try {
-            let user = await query.get(ownerId);
-            const nameResult = user.get('username');
-            return nameResult;
-        } catch (error) {
-            console.error('Error while fetching user', error);
-        }
-    };
-    
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await getName();
+                const res = await cardService.getName(ownerId);
                 setOwnerName(res);
             } catch (err) {
                 console.log(err);

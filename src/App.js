@@ -22,13 +22,11 @@ import Footer from './components/Footer/Footer.js';
 import ReactNotification from 'react-notifications-component';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage.js';
 import { AuthProvider } from './contexts/AuthContext.js';
-import { CardProvider } from './contexts/CardContext.js';
 import 'react-notifications-component/dist/theme.css';
 
 function App() {
   return (
     <AuthProvider>
-      <CardProvider>
         <div className="App">
           <ReactNotification />
           <Navbar />
@@ -57,7 +55,6 @@ function App() {
           </main>
           <Footer />
         </div>
-      </CardProvider>
     </AuthProvider>
   );
 }
