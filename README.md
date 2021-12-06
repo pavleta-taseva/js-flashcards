@@ -16,7 +16,8 @@ Web application representing a training system based on creating and managing fl
 1. Home page giving access to the three main categories of flashcards - JS Basics, JS Advanced and JS Web
     - Personalized welcoming screen showing current user's name and a "Continue" button that takes them below to the categorization section
 2. Profile page containing information about the current user:
-    - Identification number, username, email, contributions count - the total number of cards created
+    - Identification number, username, email, contributions count - the total number of cards created, level of the user based on his contribution to the total number of cards in the database, information about the date of account creation
+    - Implantation of personal titles according to the user level - maximum level 100
     - Functionality to delete the personal account from the database
 3. Access to user's personal library of flashcards created by them, sorted by category
 4. Access to flashcard's details page

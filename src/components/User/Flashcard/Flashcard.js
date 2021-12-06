@@ -21,8 +21,9 @@ function Flashcard({ flashcard }) {
     }, []);// eslint-disable-line react-hooks/exhaustive-deps
     
     const questionElement = <span>
+         <h2 className="front-category-info">{flashcard.category}</h2>
         <h2 className="question">Question:</h2>
-        <h2>{flashcard.question}</h2>
+        <h2 className="question-text">{flashcard.question}</h2>
     </span>;
 
     const answerElement = <span>

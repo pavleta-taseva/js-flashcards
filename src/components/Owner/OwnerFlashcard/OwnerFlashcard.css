@@ -125,6 +125,11 @@ body {
   font-weight: 300;
 }
 
+.question-text {
+  padding: 0 10%;
+  text-align: center;
+} 
+
 .answer {
   margin: 0 auto;
   height: 40%;

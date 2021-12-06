@@ -164,8 +164,8 @@ export async function practice(id) {
                 animationIn: ["animate__animated", "animate__fadeIn"],
                 animationOut: ["animate__animated", "animate__fadeOut"],
                 dismiss: {
-                  duration: 3000,
-                  onScreen: true
+                    duration: 3000,
+                    onScreen: true
                 }
             });
         } else {
@@ -179,8 +179,8 @@ export async function practice(id) {
                 animationIn: ["animate__animated", "animate__fadeIn"],
                 animationOut: ["animate__animated", "animate__fadeOut"],
                 dismiss: {
-                  duration: 5000,
-                  onScreen: true
+                    duration: 5000,
+                    onScreen: true
                 }
             });
             return null;
@@ -203,7 +203,7 @@ export async function checkIfInPracticeList(id, ownerId) {
             cardIds.push(card.id);
 
         }
-        const check = cardIds.includes(currentCard.id);        
+        const check = cardIds.includes(currentCard.id);
         return check;
     } catch (err) {
         console.log(err.message)
@@ -217,12 +217,11 @@ export async function removeCardFromPractice(id, userId) {
         let user = await query.get(userId);
         const practiceList = user.get('practiceCards');
         for (let card of practiceList) {
-            console.log(card.id === id);
             if (card.id === id) {
                 let index = practiceList.indexOf(card);
                 practiceList.splice(index, 1);
                 user.set('practiceCards', [practiceList]);
-            }  
+            }
         }
         await user.save();
         return practiceList;
@@ -242,3 +241,92 @@ export async function getName(ownerId) {
         console.error('Error while fetching user', error);
     }
 };
+
+export async function countMyCards(userId) {
+    const Flashcard = Parse.Object.extend('Flashcard');
+    const query = new Parse.Query(Flashcard);
+    let myCards = 0;
+
+    try {
+        const result = await query.find();
+        const cards = JSON.parse(JSON.stringify(result));
+      
+        for (let current of cards) {
+            const owner = current.owner.objectId;
+            if (owner === userId) {
+                myCards++;
+            }
+        }
+        return myCards;
+
+    } catch (error) {
+        console.error('Error while fetching Flashcard', error);
+    }
+}
+
+export async function getUserLevel(userId) {
+    const User = new Parse.User();
+    const query = new Parse.Query(User);
+    try {
+        let user = await query.get(userId);
+        let level = user.attributes.userLevel;
+        const contribution = await countMyCards(userId);
+        if (contribution <= 0 && contribution <= 5 ) {
+            level = "Disciple";
+        } else if (contribution > 5 && contribution <= 10) {
+            level = "Pilgrim";
+        } else if (contribution > 11 && contribution <= 15) {
+            level = "Junior Apprentice";
+        } else if (contribution > 16 && contribution <= 20) {
+            level = "Apprentice";
+        } else if (contribution > 21 && contribution <= 25) {
+            level = "Strategos";
+        } else if (contribution > 26 && contribution <= 30) {
+            level = "Royal Strategos";
+        } else if (contribution > 31 && contribution <= 35) {
+            level = "Scholar";
+        } else if (contribution > 36 && contribution <= 40) {
+            level = "Royal Scholar";
+        } else if (contribution > 41 && contribution <= 45) {
+            level = "Protector";
+        } else if (contribution > 46 && contribution <= 50) {
+            level = "Advisor";
+        } else if (contribution > 51 && contribution <= 55) {
+            level = "Cleric";
+        } else if (contribution > 56 && contribution <= 60) {
+            level = "King’s Advisor";
+        } else if (contribution > 61 && contribution <= 65) {
+            level = "Prime Justicar";
+        } else if (contribution > 66 && contribution <= 70) {
+            level = "Archduke";
+        } else if (contribution > 71 && contribution <= 75) {
+            level = "High Templar";
+        } else if (contribution > 76 && contribution <= 80) {
+            level = "Grand Admiral";
+        } else if (contribution > 81 && contribution <= 85) {
+            level = "Royal Inquisitor";
+        } else if (contribution > 86 && contribution <= 90) {
+            level = "Magister";
+        } else if (contribution > 91 && contribution <= 95) {
+            level = "High Prince";
+        } else if (contribution > 96 && contribution <= 100) {
+            level = "High Emperor";
+        }
+        return level;
+    } catch (err) {
+        console.log(err.message)
+    }
+}
+
+export async function createdAt(userId) {
+    const User = new Parse.User();
+    const query = new Parse.Query(User);
+    try {
+        let user = await query.get(userId);
+        let created = JSON.stringify(user.attributes.createdAt);
+        const date = created.slice(1,11);
+        return date;
+    } catch (err) {
+        console.log(err.message)
+    }
+}

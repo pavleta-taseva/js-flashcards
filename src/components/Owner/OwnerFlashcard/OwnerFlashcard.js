@@ -3,11 +3,10 @@ import '../OwnerFlashcard/OwnerFlashcard.css';
 import { Link } from 'react-router-dom';
 
 function OwnerFlashcard({ ownerFlashcard }) {
-    console.log(ownerFlashcard);
     const questionElement = <span>
         <h2 className="front-category-info">{ownerFlashcard.category}</h2>
         <h2 className="question">Question:</h2>
-        <h2>{ownerFlashcard.question}</h2>
+        <h2 className="question-text">{ownerFlashcard.question}</h2>
     </span>;
 
     const answerElement = <span>

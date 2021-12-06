@@ -23,7 +23,7 @@
 
 .user-image {
     position: absolute;
-    top: 5%;
+    top: 3%;
     left: -10%;
     display: block;
     width: 300px;
@@ -42,7 +42,7 @@
 
 .user-details {
     position: absolute;
-    top: 30%;
+    top: 26%;
     left: 10%;
     width: 40%;
     display: flex;
@@ -69,7 +69,7 @@
 }
 
 .deleteAccount {
-    display: block;
+  display: block;
   cursor: pointer;
   background: rgba(202,144,224,1);
   color: #3c2846;

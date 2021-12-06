@@ -60,6 +60,12 @@ function Details() {
                     className="button-remove"
                     to={`/practice/${ownerId}`}
                     alt="practice-list"
+                    state={{
+                        id: id,
+                        question: currentQuestion,
+                        answer: currentAnswer,
+                        ownerId: ownerId
+                    }}
                 >Remove card from practice
                 </Link>
             </div>
@@ -133,11 +139,11 @@ function Details() {
                 <h2 className="details-heading"><span className="details-title">Answer:</span> {`${currentAnswer}`}</h2>
                 <div><h2 className="details-heading"><span className="details-title">Creator:</span> {`${owner}`}</h2></div>
                 {localStorageOwnerId
-                ? <div>{check
-                    ? editDeleteBtns
-                    : practiceBtns
-                }</div>
-                : <div></div>
+                    ? <div>{check
+                        ? editDeleteBtns
+                        : practiceBtns
+                    }</div>
+                    : <div></div>
                 }
             </div>
         </div>
