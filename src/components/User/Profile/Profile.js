@@ -121,7 +121,7 @@ function Profile() {
                         <button className="submit-image" type="submit">Save image</button>
                     </form>
                     {image && (
-                        <img className="user-image" onError={(event) => event.target.style.display = 'none'} src={image}></img>
+                        <img className="user-image" alt="user" onError={(event) => event.target.style.display = 'none'} src={image}></img>
                     )}
                 </div>
                 <div className="user-details">

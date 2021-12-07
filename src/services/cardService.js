@@ -211,20 +211,25 @@ export async function checkIfInPracticeList(id, ownerId) {
 }
 
 export async function removeCardFromPractice(id, userId) {
-    const User = new Parse.User();
-    const query = new Parse.Query(User);
+    let user = Parse.User.current();
     try {
-        let user = await query.get(userId);
         const practiceList = user.get('practiceCards');
+        console.log(practiceList);
         for (let card of practiceList) {
             if (card.id === id) {
                 let index = practiceList.indexOf(card);
                 practiceList.splice(index, 1);
-                user.set('practiceCards', [practiceList]);
+                console.log(practiceList);
+                user.set('practiceCards', practiceList);
             }
         }
-        await user.save();
-        return practiceList;
+        try {
+            // Saves the user with the updated data
+            let response = await user.save();
+            console.log('Updated user', response);
+          } catch (error) {
+            console.error('Error while updating user', error);
+        }
     } catch (err) {
         console.log(err.message)
     }
