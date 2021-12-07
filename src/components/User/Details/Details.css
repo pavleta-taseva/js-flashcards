@@ -173,6 +173,10 @@
     padding: 0;
   }
   
+  .buttons ion-icon {
+    font-size: 16px;
+  }
+
   .flashcard-buttons {
     display: inline-block;
     width: 25%;
@@ -223,6 +227,7 @@
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
     outline: none;
+    pointer-events: none;
   }
 
   .button-remove {

@@ -85,3 +85,28 @@ export const onDelete = async () => {
         console.error('Error while retrieving user', error);
     }
 }
+
+export async function getUserImage(userId) {
+    const User = new Parse.User();
+    const query = new Parse.Query(User);
+    try {
+        let user = await query.get(userId);
+        const currentUserImage = await user.get('image');
+        if (currentUserImage === undefined || currentUserImage === null) {
+            currentUserImage.src = "../images/user.png";
+        } else if (currentUserImage._url) {
+            currentUserImage.src = currentUserImage.url();
+        }
+        currentUserImage.src = refreshImage('user-image', currentUserImage.url());
+
+        function refreshImage(imgElement, imgURL) {
+            let timestamp = new Date().getTime();
+            let queryString = "?t=" + timestamp;
+            currentUserImage.src = imgURL + queryString;
+            return currentUserImage.src;
+        }
+        return currentUserImage.src;
+    } catch (error) {
+        console.error('Error while retrieving image', error);
+    }
+}

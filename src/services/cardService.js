@@ -250,7 +250,7 @@ export async function countMyCards(userId) {
     try {
         const result = await query.find();
         const cards = JSON.parse(JSON.stringify(result));
-      
+
         for (let current of cards) {
             const owner = current.owner.objectId;
             if (owner === userId) {
@@ -271,7 +271,7 @@ export async function getUserLevel(userId) {
         let user = await query.get(userId);
         let level = user.attributes.userLevel;
         const contribution = await countMyCards(userId);
-        if (contribution <= 0 && contribution <= 5 ) {
+        if (contribution <= 0 && contribution <= 5) {
             level = "Disciple";
         } else if (contribution > 5 && contribution <= 10) {
             level = "Pilgrim";
@@ -312,6 +312,8 @@ export async function getUserLevel(userId) {
         } else if (contribution > 96 && contribution <= 100) {
             level = "High Emperor";
         }
+        await user.set('userLevel', level);
+        await user.save();
         return level;
     } catch (err) {
         console.log(err.message)
@@ -324,7 +326,7 @@ export async function createdAt(userId) {
     try {
         let user = await query.get(userId);
         let created = JSON.stringify(user.attributes.createdAt);
-        const date = created.slice(1,11);
+        const date = created.slice(1, 11);
         return date;
     } catch (err) {
         console.log(err.message)

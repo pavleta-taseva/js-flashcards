@@ -30,10 +30,11 @@
     height: 300px;
     border: 5px solid rgba(202,144,224,1);
     border-radius: 50%;
-    background: url('../../../images/woman.jpg') no-repeat center/cover;
     transition-property: all;
     transition-property: transform;
     transition: all 1s 1s;
+    background: url('../../../images/user.png');
+    overflow: none;
 }
 
 .user-image:hover {
@@ -84,4 +85,44 @@
 
 .user-details p {
     text-align: justify;
+}
+
+.upload {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    cursor: pointer;
+    position: absolute;
+    color: #ccc;
+    z-index: 5;
+    background: #3c2846;
+    border: 1px solid ;
+    padding: 10px 5px;
+    border-radius: 10px;
+}
+
+.submit-image {
+    display: block;
+    position: absolute;
+    top: 20%;
+    left: 15%;
+    background-color: #ca90e0;
+    color:#3c2846;
+    padding: 10px 15px;
+    border: 1px solid #ca90e0;
+    border-radius: 10px;
+}
+
+.picture-paragraph {
+    position: absolute;
+    top: 10%;
+    left: 15%;
+}
+
+.fa-camera:hover {
+    opacity: 0.95;
+}
+
+.user-image-container {
+    width: 100%;
 }

@@ -11,12 +11,12 @@ function Details() {
     let { owner } = location?.state;
     let { ownerId } = location?.state;
     let { id } = useParams();
+    const [add, setAdd] = useState(false);
     let [currentQuestion, setCurrentQuestion] = useState(question);
     let [currentAnswer, setCurrentAnswer] = useState(answer);
     const localStorageOwnerId = localStorage.getItem('userId');
     let check = ownerId === localStorageOwnerId;
     const navigate = useNavigate();
-    const [add, setAdd] = useState(false);
 
     const editDeleteBtns = <div className="buttons">
         <Link
@@ -40,20 +40,25 @@ function Details() {
     </div>;
 
     const practiceBtns = <div>
-        {add
+        {!add
             ? <div className="buttons">
+                <Link
+                    className="flashcard-buttons"
+                    to={`/practice/${localStorageOwnerId}`}
+                    alt="practice"
+                    onClick={() => {
+                        cardService.practice(id);
+                    }}
+                >Practice
+                </Link>
+            </div>
+            : <div className="buttons">
                 <Link
                     className="button-disabled"
                     to={`/details/${id}`}
                     alt="details"
-                    disabled={true}
-                    state={{
-                        id: id,
-                        question: currentQuestion,
-                        answer: currentAnswer,
-                        ownerId: ownerId
-                    }}
-                >Card already in the List
+                    onClick={(event) => event.preventDefault()}
+                ><ion-icon name="alert-circle-outline"></ion-icon> Card already in your List
                 </Link>
                 <Link
                     onClick={onRemove}
@@ -67,17 +72,6 @@ function Details() {
                         ownerId: ownerId
                     }}
                 >Remove card from practice
-                </Link>
-            </div>
-            : <div className="buttons">
-                <Link
-                    className="flashcard-buttons"
-                    to={`/practice/${localStorageOwnerId}`}
-                    alt="practice"
-                    onClick={() => {
-                        cardService.practice(id);
-                    }}
-                >Practice
                 </Link>
             </div>
         }
@@ -126,18 +120,18 @@ function Details() {
             <div className="cube">
                 <div className="top"></div>
                 <div>
-                    <span className="spanOne">{`${currentQuestion}`}</span>
-                    <span className="spanTwo">{`${currentQuestion}`}</span>
-                    <span className="spanThree">{`${currentQuestion}`}</span>
-                    <span className="spanFour">{`${currentQuestion}`}</span>
+                    <span className="spanOne">{currentQuestion}</span>
+                    <span className="spanTwo">{currentQuestion}</span>
+                    <span className="spanThree">{currentQuestion}</span>
+                    <span className="spanFour">{currentQuestion}</span>
                 </div>
             </div>
             <div className="details-card">
                 <h2 className="details"><span className="details-title">Flashcard Details:</span></h2>
-                <h2 className="details-heading"><span className="details-title">Flashcard id:</span> {`${id}`}</h2>
-                <h2 className="details-heading"><span className="details-title">Question:</span> {`${currentQuestion}`}</h2>
-                <h2 className="details-heading"><span className="details-title">Answer:</span> {`${currentAnswer}`}</h2>
-                <div><h2 className="details-heading"><span className="details-title">Creator:</span> {`${owner}`}</h2></div>
+                <h2 className="details-heading"><span className="details-title">Flashcard id:</span> {id}</h2>
+                <h2 className="details-heading"><span className="details-title">Question:</span> {currentQuestion}</h2>
+                <h2 className="details-heading"><span className="details-title">Answer:</span> {currentAnswer}</h2>
+                <div><h2 className="details-heading"><span className="details-title">Creator:</span> {owner}</h2></div>
                 {localStorageOwnerId
                     ? <div>{check
                         ? editDeleteBtns
