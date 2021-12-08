@@ -1,0 +1,33 @@
+.pagination-nav {
+    width: 40vw;
+    margin: 2% auto;
+}
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+}
+
+.page-item {
+    border: 1px solid #00ccff;
+    padding: 8px 16px;
+    float: left;
+    list-style: none;
+    margin: 0 4px;
+    border-radius: 5px;
+}
+
+.page-link {
+    text-decoration: none;
+    transition: #00ccff .3s;
+}
+
+.minus, 
+.plus {
+    display: flex;
+    text-decoration: none;
+    margin: 0 4px;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}

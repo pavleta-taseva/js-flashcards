@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import OwnerFlashcardList from '../OwnerFlashcardList/OwnerFlashcardList.js';
+import PaginationElement from "../../PaginationElement/PaginationElement.js";
 import * as cardService from '../../../services/cardService.js';
 import BeatLoader from "react-spinners/BeatLoader";
 import './MyCards.css';
@@ -7,6 +8,8 @@ import './MyCards.css';
 function MyCards() {
     let [cards, setCards] = useState([]);
     let [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [cardsPerPage] = useState(6);
     const userId = localStorage.getItem('userId');
 
     useEffect(() => {
@@ -27,8 +30,18 @@ function MyCards() {
         fetchWebData();
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+    // Get current flashcards
+    const indexOfLastCard = currentPage * cardsPerPage;
+    const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+    const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
+    console.log(currentCards);
+    // Change page 
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    }
+
     return (
-        <div>
+        <div className="my-cards-container">
             {loading
                 ? <div className="loader">
                     <BeatLoader className="loading-clip" color={'#E7D4F6'} loading={loading} size={30} />
@@ -36,13 +49,16 @@ function MyCards() {
                 </div>
                 : <div>
                     {cards.length > 0
-                        ? <OwnerFlashcardList flashcards={cards} />
-                        : <div className="no-cards">
-                        <div className="left-container">
-                            <h1 className="no-cards-heading">No Flashcards in this category yet.</h1>
-                            <h1 className="no-cards-heading">Why don't you create your own flashcards to practice with?</h1>
+                        ? <div>
+                            <OwnerFlashcardList flashcards={currentCards} />
+                            <PaginationElement cardsPerPage={cardsPerPage} totalCards={cards.length} paginate={paginate} />
                         </div>
-                    </div>
+                        : <div className="no-cards">
+                            <div className="left-container">
+                                <h1 className="no-cards-heading">No Flashcards in this category yet.</h1>
+                                <h1 className="no-cards-heading">Why don't you create your own flashcards to practice with?</h1>
+                            </div>
+                        </div>
                     }
                 </div>
             }
