@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react";
 import OwnerFlashcardList from '../OwnerFlashcardList/OwnerFlashcardList.js';
 import PaginationElement from "../../PaginationElement/PaginationElement.js";
 import * as cardService from '../../../services/cardService.js';
@@ -34,11 +34,28 @@ function MyCards() {
     const indexOfLastCard = currentPage * cardsPerPage;
     const indexOfFirstCard = indexOfLastCard - cardsPerPage;
     const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
-    console.log(currentCards);
+
     // Change page 
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber);
     }
+
+    function previousPage() {
+        let previous = currentPage - 1;
+        if(previous < 1 || previous <= 0) {
+            previous = 1;
+        }
+        setCurrentPage(previous);
+    }
+
+    function nextPage() {
+        let nextPage = currentPage + 1;
+        if (nextPage > cards.length) {
+            nextPage = cards.length;
+        }
+        setCurrentPage(nextPage);
+    }
+
 
     return (
         <div className="my-cards-container">
@@ -51,7 +68,7 @@ function MyCards() {
                     {cards.length > 0
                         ? <div>
                             <OwnerFlashcardList flashcards={currentCards} />
-                            <PaginationElement cardsPerPage={cardsPerPage} totalCards={cards.length} paginate={paginate} />
+                            <PaginationElement cardsPerPage={cardsPerPage} totalCards={cards.length} paginate={paginate} previousPage={previousPage} nextPage={nextPage}/>
                         </div>
                         : <div className="no-cards">
                             <div className="left-container">
