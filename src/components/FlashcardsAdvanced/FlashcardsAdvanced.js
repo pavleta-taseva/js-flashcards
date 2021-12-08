@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Parse from '../../../node_modules/parse/dist/parse.js';
+import PaginationElement from "../PaginationElement/PaginationElement.js";
 import '../FlashcardsAdvanced/FlashcardsAdvanced.css';
 import FlashcardList from '../FlashcardList/FlashcardList.js';
 import BeatLoader from "react-spinners/BeatLoader";
@@ -42,6 +43,8 @@ async function getAdvancedCards() {
 function FlashcardsAdvanced() {
     let [advanced, setAdvancedCards] = useState(finalArray);
     let [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [cardsPerPage] = useState(6);
 
     useEffect(() => {
         setLoading(true);
@@ -59,6 +62,33 @@ function FlashcardsAdvanced() {
         fetchAdData();
     }, []);
 
+    // Get current flashcards
+    const indexOfLastCard = currentPage * cardsPerPage;
+    const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+    const currentCards = advanced.slice(indexOfFirstCard, indexOfLastCard);
+    const totalPages = Math.ceil(advanced.length / cardsPerPage);
+
+    // Change page 
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    }
+
+    function previousPage() {
+        let previous = currentPage - 1;
+        if (previous < 1 || previous <= 0) {
+            previous = 1;
+        }
+        setCurrentPage(previous);
+    }
+
+    function nextPage() {
+        let nextPage = currentPage + 1;
+        if (currentPage + 1 > totalPages) {
+            nextPage = currentPage;
+        }
+        setCurrentPage(nextPage);
+    }
+
     return (
         <div>
             {loading
@@ -68,13 +98,16 @@ function FlashcardsAdvanced() {
                 </div>
                 : <div>
                     {advanced.length > 0
-                        ? <FlashcardList flashcards={advanced} />
-                        : <div className="no-cards">
-                        <div className="left-container">
-                            <h1 className="no-cards-heading">No Flashcards in this category yet.</h1>
-                            <h1 className="no-cards-heading">Why don't you create your own flashcards to practice with?</h1>
+                        ? <div>
+                            <FlashcardList flashcards={currentCards} />
+                            <PaginationElement cardsPerPage={cardsPerPage} totalCards={advanced.length} paginate={paginate} previousPage={previousPage} nextPage={nextPage} />
                         </div>
-                    </div>
+                        : <div className="no-cards">
+                            <div className="left-container">
+                                <h1 className="no-cards-heading">No Flashcards in this category yet.</h1>
+                                <h1 className="no-cards-heading">Why don't you create your own flashcards to practice with?</h1>
+                            </div>
+                        </div>
                     }
                 </div>
             }

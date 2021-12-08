@@ -34,7 +34,8 @@ function MyCards() {
     const indexOfLastCard = currentPage * cardsPerPage;
     const indexOfFirstCard = indexOfLastCard - cardsPerPage;
     const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
-
+    const totalPages = Math.ceil(cards.length / cardsPerPage);
+    
     // Change page 
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -50,12 +51,11 @@ function MyCards() {
 
     function nextPage() {
         let nextPage = currentPage + 1;
-        if (nextPage > cards.length) {
-            nextPage = cards.length;
+        if (currentPage + 1 > totalPages) {
+            nextPage = currentPage;
         }
         setCurrentPage(nextPage);
     }
-
 
     return (
         <div className="my-cards-container">

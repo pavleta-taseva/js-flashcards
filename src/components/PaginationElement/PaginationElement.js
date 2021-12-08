@@ -11,7 +11,7 @@ function PaginationElement({ cardsPerPage, totalCards, paginate, previousPage, n
     return (
         <nav className="pagination-nav">
             <ul className="pagination">
-                <a href="!#" onClick={() => previousPage()} className="minus">« </a>
+                <button onClick={() => previousPage()} className="minus">« </button>
                 {pageNumbers.map(number => (
                         <li key={number} className="page-item">
                             <a href="!#" onClick={() => paginate(number)} className="page-link">
@@ -19,7 +19,7 @@ function PaginationElement({ cardsPerPage, totalCards, paginate, previousPage, n
                             </a>
                         </li>
                 ))}
-                <a href="!#" onClick={() => nextPage()} className="plus"> »</a>
+                <button onClick={() => nextPage()} className="plus"> »</button>
             </ul>
         </nav>
     )

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Parse from 'parse/dist/parse';
 import FlashcardList from '../../FlashcardList/FlashcardList.js';
+import PaginationElement from "../../PaginationElement/PaginationElement.js";
 import BeatLoader from "react-spinners/BeatLoader";
 import './Practice.css';
 
@@ -37,13 +38,41 @@ async function getPracticeList() {
     } catch (error) {
         console.log(`Error: ${JSON.stringify(error)}`);
     }
-    
+
     return practiceList;
 }
 
 function Practice() {
     let [practiceCards, setPracticeCards] = useState(practiceList);
     let [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [cardsPerPage] = useState(6);
+    // Get current flashcards
+    const indexOfLastCard = currentPage * cardsPerPage;
+    const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+    const currentCards = practiceCards.slice(indexOfFirstCard, indexOfLastCard);
+    const totalPages = Math.ceil(practiceCards.length / cardsPerPage);
+
+    // Change page 
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    }
+
+    function previousPage() {
+        let previous = currentPage - 1;
+        if (previous < 1 || previous <= 0) {
+            previous = 1;
+        }
+        setCurrentPage(previous);
+    }
+
+    function nextPage() {
+        let nextPage = currentPage + 1;
+        if (currentPage + 1 > totalPages) {
+            nextPage = currentPage;
+        }
+        setCurrentPage(nextPage);
+    }
 
     useEffect(() => {
         setLoading(true);
@@ -72,7 +101,10 @@ function Practice() {
                 </div>
                 : <div>
                     {practiceCards.length > 0
-                        ? <FlashcardList flashcards={practiceCards} />
+                        ? <div>
+                            <FlashcardList flashcards={currentCards} />
+                            <PaginationElement cardsPerPage={cardsPerPage} totalCards={practiceCards.length} paginate={paginate} previousPage={previousPage} nextPage={nextPage} />
+                        </div>
                         : <div className="no-cards">
                             <div className="left-container">
                                 <h1 className="no-cards-heading">There are currently no Flashcards in your Practice List yet.</h1>

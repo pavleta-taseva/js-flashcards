@@ -24,10 +24,14 @@
 
 .minus, 
 .plus {
-    display: flex;
+    display: inline-block;
     text-decoration: none;
     margin: 0 4px;
     align-items: center;
     justify-content: center;
     font-size: 22px;
+    background: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
 }
