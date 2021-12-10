@@ -83,7 +83,7 @@ function Practice() {
                 setPracticeCards(res);
                 setTimeout(() => {
                     setLoading(false);
-                }, 3000)
+                }, 3000);
                 return () => { setLoading(false) };
             } catch (err) {
                 console.log(err);
