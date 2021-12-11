@@ -14,7 +14,7 @@ function Login() {
     async function loginUser(e) {
         e.preventDefault();
         const { username, password } = Object.fromEntries(new FormData(e.currentTarget));
-
+    
         login(username, password);
         if (username === '' || password === '') {
             store.addNotification({
@@ -100,4 +100,5 @@ function Login() {
         </section>
     )
 }
+
 export default Login;
