@@ -10,6 +10,7 @@ function Create() {
     const [checkedOne, setCheckedOne] = useState(false);
     const [checkedTwo, setCheckedTwo] = useState(false);
     const [checkedThree, setCheckedThree] = useState(false);
+    const [length, setLength] = useState(150);
     const categories = ['JS Basics', 'JS Advanced', 'JS Web'];
     const owner = localStorage.getItem('userId');
     const navigate = useNavigate();
@@ -38,6 +39,12 @@ function Create() {
         );
     };
     
+    const handleWordCount = (event) => {
+        const charCount = event.target.value.length;
+        const charLeft = 140 - charCount;
+        setLength({ charLeft: charLeft});
+    }
+
     async function onCreate(e) {
         e.preventDefault();
         setQuestion(question);
