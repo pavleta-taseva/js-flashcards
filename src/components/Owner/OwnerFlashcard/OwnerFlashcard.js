@@ -22,7 +22,7 @@ function OwnerFlashcard({ ownerFlashcard }) {
                 answer: ownerFlashcard.answer,
                 owner: ownerFlashcard.owner.username
             }}
-        >Details
+        >Read More
         </Link>
     </span>
 

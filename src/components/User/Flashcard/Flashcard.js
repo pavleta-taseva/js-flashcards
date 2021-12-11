@@ -41,7 +41,7 @@ function Flashcard({ flashcard }) {
                     owner: ownerName,
                     ownerId: ownerId
                 }}
-            >Details
+            >Read More
             </Link>
         </span>
 
