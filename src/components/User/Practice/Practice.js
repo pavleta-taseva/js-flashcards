@@ -76,7 +76,7 @@ function Practice() {
 
     useEffect(() => {
         setLoading(true);
-
+        window.scrollTo(0, 0);
         async function fetchWebData() {
             try {
                 const res = await getPracticeList();

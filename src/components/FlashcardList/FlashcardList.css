@@ -81,3 +81,32 @@
 .no-cards-heading {
     font-size: 24px;
 }
+
+.main-categories-links {
+    margin: 1% 0 3% 0;
+    padding-bottom: 40px;
+    width: 50%;
+}
+
+.active-main {
+    color: #ca90e0;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 22px;
+    margin: 0 1%;
+    padding-bottom: 5px;
+    border-bottom: 4px solid #ca90e0;
+}
+
+.category-normal-link {
+    color: #ca90e0;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 22px;
+    margin: 0 1%;
+}
+
+.category-normal-link:hover,
+.active-main:hover {
+    color: #E7D4F6;
+}
