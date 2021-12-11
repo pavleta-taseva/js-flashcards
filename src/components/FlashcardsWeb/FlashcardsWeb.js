@@ -54,7 +54,7 @@ function FlashcardsWeb() {
                 setWebCards(res);
                 setTimeout(() => {
                     setLoading(false);
-                }, 3000)
+                }, 2000)
             } catch (err) {
                 console.log(err);
             }
