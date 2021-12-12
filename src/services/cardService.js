@@ -103,6 +103,7 @@ export async function updateCardDetails(id, owner) {
 export async function getMyCards() {
     const Flashcard = Parse.Object.extend('Flashcard');
     const query = new Parse.Query(Flashcard);
+    query.ascending('category');
     const userId = localStorage.getItem('userId');
     const myCards = [];
 

@@ -78,6 +78,15 @@
     box-shadow: 10px 10px 78px 10px rgba(202,144,224,1);
 }
 
+.card-list-titles {
+    line-height: 1.5;
+    font-weight: 300;
+}
+
 .no-cards-heading {
     font-size: 24px;
+}
+
+.card-list-titles h1 {
+    color: rgba(202,144,224,1);
 }

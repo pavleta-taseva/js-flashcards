@@ -1,88 +1,96 @@
 import React, { useState } from 'react';
+import { store } from 'react-notifications-component';
 import * as cardService from '../../../services/cardService.js';
 import { useNavigate } from 'react-router-dom';
+import levelPicture from '../../../images/create.png';
 import './Create.css';
 
+const options = [
+    { value: 'JS Basics', text: 'JS Basics' },
+    { value: 'JS Advanced', text: 'JS Advanced' },
+    { value: 'JS Web', text: 'JS Web' },
+]
+
 function Create() {
-    const [question, setQuestion] = useState();
-    const [answer, setAnswer] = useState();
-    const [category, setCategory] = useState();
-    const [checkedOne, setCheckedOne] = useState(false);
-    const [checkedTwo, setCheckedTwo] = useState(false);
-    const [checkedThree, setCheckedThree] = useState(false);
-    const categories = ['JS Basics', 'JS Advanced', 'JS Web'];
+    const [error, setError] = useState(false);
+    const [validate, setValidate] = useState(false);
     const owner = localStorage.getItem('userId');
     const navigate = useNavigate();
 
-    const handleChangeOne = (e) => {
-        setCheckedOne(!checkedOne);
-        setCategory(categories[0]);
-    };
-
-    const handleChangeTwo = (e) => {
-        setCheckedTwo(!checkedTwo);
-        setCategory(categories[1]);
-    };
-
-    const handleChangeThree = (e) => {
-        setCheckedThree(!checkedThree);
-        setCategory(categories[2]);
-    };
-
-    const Checkbox = ({ label, value, onChange }) => {
-        return (
-            <label>
-                <input id="checkbox" type="checkbox" checked={value} onChange={onChange}/>
-                {label}
-            </label>
-        );
-    };
-    
-      async function onCreate(e) {
+    async function onCreate(e) {
         e.preventDefault();
-        setQuestion(question);
-        setAnswer(answer);
+        let formData = new FormData(e.currentTarget);
+        let category = formData.get('category');
+        let question = formData.get('question');
+        let answer = formData.get('answer');
 
         let data = { category, question, answer, owner };
-        cardService.create(data)
-        .then(result => {
-            navigate(`/my-cards/${owner}`, { replace: true });
-        })
-    }
+
+        if (category !== '' || question !== '' || answer !== '') {
+            setValidate(true);
+            setError(false);
+        } else {
+            setValidate(false);
+            setError(true);
+            return;
+        }
+
+        if (validate === true) {
+            cardService.create(data)
+                .then(result => {
+                    navigate(`/my-cards/${owner}`, { replace: true });
+                })
+            setError(false);
+        } else {
+            store.addNotification({
+                title: "Error!",
+                message: "Flashcard fields cannot be empty.",
+                type: "info",
+                insert: "bottom-center",
+                container: "top-center",
+                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationOut: ["animate__animated", "animate__fadeOut"],
+                dismiss: {
+                    duration: 5000,
+                    onScreen: true
+                }
+            });
+            setError(true);
+        }
+    }    
 
     return (
         <div className="create-container">
             <div className="create">
                 <form onSubmit={e => onCreate(e)} className="create-form">
                     <h1>Create your own Flashcard</h1>
-                    <label className="create-form-label">Choose category:</label><br></br>
+                    <label className="create-form-label" htmlFor="category">Select category:</label><br />
+                    <span className="category-select">
+                        <select name="category" id="category" defaultValue={options[1]}>
+                            {options.map(x => <option key={x.value} value={x.value}>{x.text}</option>)}
+                        </select>
+                    </span>
                     <div>
-                        <Checkbox
-                        label="JS Basics"
-                        value={checkedOne}
-                        onChange={handleChangeOne}
-                        />
-                        <Checkbox
-                        label="JS Advanced"
-                        value={checkedTwo}
-                        onChange={handleChangeTwo}
-                        />
-                        <Checkbox
-                        label="JS Web"
-                        value={checkedThree}
-                        onChange={handleChangeThree}
-                        />
+                        <label className="create-form-label">Write a question: </label><br></br>
+                        <textarea id="question" placeholder="Enter question" name="question"></textarea>
                     </div>
                     <div>
-                    <label className="create-form-label">Question: </label><br></br>
-                    <textarea id="question" placeholder="Enter question" name="question" onChange={e => setQuestion(e.target.value)}>{question}</textarea>
+                        <label className="create-form-label">Provide an answer: </label><br></br>
+                        <textarea id="answer" placeholder="Enter answer" name="answer"></textarea>
                     </div>
-                    <div>
-                    <label className="create-form-label">Answer: </label><br></br>
-                    <textarea id="answer" placeholder="Enter answer" name="answer" onChange={e => setAnswer(e.target.value)}>{answer}</textarea>
-                    </div>
-                    <button className="createBtn" type ="submit">Create</button>
+                    <button className="createBtn" type="submit">Create</button>
                 </form>
+            </div>
+            <div className='level-info'>
+                <h2>Flashcard Creation</h2>
+                <ul>
+                    <li>Please create new flashcards with care and responsibility. Remember that other people will see their content as well as the name of their creator...</li>
+                    <li>Create more and more cards and see how your personal level grows.</li>
+                    <li> For every 5 cards created, your title will change.</li>
+                    <li>You can see the current level you have been awarded on your personal profile page.</li>
+                    <li>Current maximum level is 100 - High Emperor - the one who rules our World of JavaScript! <i class="fas fa-crown"></i></li>
+                </ul>
+                <img className="create-image" src={levelPicture} alt="create" />
             </div>
         </div>
     )

@@ -10,6 +10,7 @@ function OwnerFlashcardList({ flashcards }) {
                 <div className="flashcards-wrapper">
                     <div className="card-list-titles">
                         <h1>Ready to Test your JavaScript knowledge?</h1>
+                        <h4>Your cards are sorted alphabetically by category.</h4>
                     </div>
 
                     <div className="flashcards-container">

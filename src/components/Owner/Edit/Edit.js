@@ -54,19 +54,9 @@ function Edit() {
         }
     }
 
-    function questionValidation(e) {
-        let currentQuestion = e.target.value;
-        console.log(currentQuestion);
-        if (currentQuestion === '') {
-            setValidate(true);
-        } else {
-            setValidate(false)
-        }
-    }
-
-    function answerValidation(e) {
-        let currentQuestion = e.target.value;
-        if (currentQuestion === '') {
+    function fieldValidation(e) {
+        let currentField = e.target.value;
+        if (currentField === '') {
             setValidate(true);
         } else {
             setValidate(false)
@@ -90,11 +80,11 @@ function Edit() {
                 <h1>Edit your Flashcard</h1>
                 <div>
                     <label htmlFor={question}>Question:</label><br></br>
-                    <textarea id="question-area" placeholder="Edit question" name="question" defaultValue={question} onChange={e => setQuestionEdit(e.target.value)} onBlur={questionValidation} style={{ borderColor: validate.question ? '#ff2ae0' : 'inherit' }}></textarea>
+                    <textarea id="question-area" placeholder="Edit question" name="question" defaultValue={question} onChange={e => setQuestionEdit(e.target.value)} onBlur={fieldValidation} style={{ borderColor: validate.question ? '#ff2ae0' : 'inherit' }}></textarea>
                 </div>
                 <div>
                     <label htmlFor={answer}>Answer:</label><br></br>
-                    <textarea id="answer-area" placeholder="Edit answer" name="answer" defaultValue={answer} onChange={e => setAnswerEdit(e.target.value)} onBlur={answerValidation} style={{ borderColor: validate.question ? '#ff2ae0' : 'inherit' }}></textarea>
+                    <textarea id="answer-area" placeholder="Edit answer" name="answer" defaultValue={answer} onChange={e => setAnswerEdit(e.target.value)} onBlur={fieldValidation} style={{ borderColor: validate.answer ? '#ff2ae0' : 'inherit' }}></textarea>
                 </div>
                 <button className="editBtn" type="submit">Edit</button>
                 <button onClick={cancel} className="editBtn">Cancel</button>
