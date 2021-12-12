@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FacebookLogin from 'react-facebook-login';
+import { Redirect } from 'react-router-dom';
 
 export default class Facebook extends Component {
     state = {
@@ -27,7 +28,7 @@ export default class Facebook extends Component {
         let fbContent;
         console.log(this.state.userId);
         if (this.state.isLoggedIn) {
-            fbContent = null;
+            <Redirect from='/login' to="/home/" />
         } else {
             fbContent = (<FacebookLogin
                 appId="371633031397919"
@@ -38,7 +39,7 @@ export default class Facebook extends Component {
         }
 
         if (this.state.userId !== undefined || this.state.userId !== null) {
-            localStorage.setItem('userId', this.state.userID);
+            localStorage.setItem('userId', this.state.userId);
             localStorage.setItem('name', this.state.name);
             localStorage.setItem('email', this.state.email);
         }
