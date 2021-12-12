@@ -30,7 +30,6 @@ export default class Facebook extends Component {
             localStorage.setItem('userId', this.state.userId);
             localStorage.setItem('name', this.state.name);
             localStorage.setItem('email', this.state.email);
-            fbContent = (<Home />);
         } else {
             fbContent = (<FacebookLogin
                 appId="371633031397919"
