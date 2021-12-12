@@ -13,7 +13,7 @@ export default class Facebook extends Component {
         console.log(response);
         this.setState({
             isLoggedIn: true,
-            userId: response.userId,
+            userId: response.userID,
             name: response.name,
             email: response.email,
         });
@@ -34,8 +34,8 @@ export default class Facebook extends Component {
                 autoLoad={true}
                 fields="name,email,picture"
                 onClick={this.componentClicked}
-                callback={this.responseFacebook} />);
-                localStorage.setItem('userId', this.state.userId);
+                callback={this.responseFacebook} />)
+                localStorage.setItem('userId', this.state.userID);
                 localStorage.setItem('name', this.state.name);
                 localStorage.setItem('email', this.state.email);
         }
