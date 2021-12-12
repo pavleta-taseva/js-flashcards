@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import Facebook from '../../Facebook.js';
 import * as authService from '../../../services/authService.js';
 import './Login.css';
 import { Link, useNavigate } from 'react-router-dom';
@@ -90,9 +89,7 @@ function Login() {
                         <div>
                             <button type="submit" className="loginBtn">Login</button>
                         </div>
-                    </form>
-                    <h4>Or you can authenticate with your Facebook profile:</h4>
-                    <Facebook />
+                    </form>    
                     <div className="second">
                         <Link className="link" to="/register" alt="register">Create new account</Link>
                     </div>
