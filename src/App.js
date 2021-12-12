@@ -21,6 +21,7 @@ import OwnerDetails from './components/Owner/OwnerDetails/OwnerDetails.js';
 import Footer from './components/Footer/Footer.js';
 import ReactNotification from 'react-notifications-component';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage.js';
+import PrivacyPolicy from './components/Footer/PrivacyPolicy.js';
 import { AuthProvider } from './contexts/AuthContext.js';
 import 'react-notifications-component/dist/theme.css';
 
@@ -51,6 +52,7 @@ function App() {
               <Route path='/my-cards/:userId' element={<MyCards />} />
               <Route path='/practice/:userId' element={<Practice />} />
               <Route path='/edit/:id' element={<Edit />} />
+              <Route path='/privacy-policy' element={<PrivacyPolicy />} />
               <Route path='*' element={<NotFoundPage />} />
             </Routes>
           </main>
