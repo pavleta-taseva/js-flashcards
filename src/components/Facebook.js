@@ -8,7 +8,6 @@ export default class Facebook extends Component {
         userId: '',
         name: '',
         email: '',
-        picture: ''
     }
 
     responseFacebook = response => {
@@ -17,7 +16,6 @@ export default class Facebook extends Component {
             userId: response.userId,
             name: response.name,
             email: response.email,
-            picture: response.picture.data.url,
         });
     }
 
@@ -27,7 +25,7 @@ export default class Facebook extends Component {
 
     render() {
         let fbContent;
-
+        console.log(this.state.userId);
         if (this.state.isLoggedIn) {
             localStorage.setItem('userId', this.state.userId);
             localStorage.setItem('name', this.state.name);
