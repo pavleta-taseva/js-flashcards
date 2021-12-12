@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import Facebook from '../../Facebook.js';
 import * as authService from '../../../services/authService.js';
 import './Login.css';
 import { Link, useNavigate } from 'react-router-dom';
@@ -14,7 +15,7 @@ function Login() {
     async function loginUser(e) {
         e.preventDefault();
         const { username, password } = Object.fromEntries(new FormData(e.currentTarget));
-    
+
         login(username, password);
         if (username === '' || password === '') {
             store.addNotification({
@@ -26,16 +27,16 @@ function Login() {
                 animationIn: ["animate__animated", "animate__fadeIn"],
                 animationOut: ["animate__animated", "animate__fadeOut"],
                 dismiss: {
-                  duration: 5000,
-                  onScreen: true
+                    duration: 5000,
+                    onScreen: true
                 }
             });
             return;
         }
 
-        if (username !== undefined 
-            && password !== undefined 
-            && username !== null 
+        if (username !== undefined
+            && password !== undefined
+            && username !== null
             && password !== null) {
             try {
                 const result = await authService.login(username, password);
@@ -50,15 +51,15 @@ function Login() {
                         animationIn: ["animate__animated", "animate__fadeIn"],
                         animationOut: ["animate__animated", "animate__fadeOut"],
                         dismiss: {
-                          duration: 5000,
-                          onScreen: true
+                            duration: 5000,
+                            onScreen: true
                         }
                     });
                     navigate('/login', { replace: true });
                     return null;
                 }
                 navigate('/home', { replace: true });
-            } catch(err) {
+            } catch (err) {
                 console.error(err.message);
             }
         }
@@ -90,6 +91,8 @@ function Login() {
                             <button type="submit" className="loginBtn">Login</button>
                         </div>
                     </form>
+                    <h4>Or you can authenticate with your Facebook profile:</h4>
+                    <Facebook />
                     <div className="second">
                         <Link className="link" to="/register" alt="register">Create new account</Link>
                     </div>

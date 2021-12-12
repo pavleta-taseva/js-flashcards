@@ -25,6 +25,7 @@ import { AuthProvider } from './contexts/AuthContext.js';
 import 'react-notifications-component/dist/theme.css';
 
 function App() {
+
   return (
     <AuthProvider>
         <div className="App">
