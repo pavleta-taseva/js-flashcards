@@ -71,6 +71,7 @@ export async function logout() {
         localStorage.removeItem('userId');
         localStorage.removeItem('email');
         localStorage.removeItem('password');
+        localStorage.removeItem('name');
     } catch (error) {
         alert('Ops, something went wrong. Try again, please!');
         console.error(error);

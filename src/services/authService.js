@@ -46,6 +46,7 @@ export async function logout() {
         localStorage.removeItem('userId');
         localStorage.removeItem('email');
         localStorage.removeItem('password');
+        localStorage.removeItem('name');
     } catch (error) {
         alert('Ops, something went wrong. Try again, please!');
         console.error(error);
@@ -77,6 +78,7 @@ export const onDelete = async () => {
             localStorage.removeItem('userId');
             localStorage.removeItem('email');
             localStorage.removeItem('password');
+            localStorage.removeItem('name');
             console.log('Deleted user', response);
         } catch (error) {
             console.error('Error while deleting user', error);
