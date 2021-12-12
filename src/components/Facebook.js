@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FacebookLogin from 'react-facebook-login';
+import Home from './User/Home/Home.js';
 
 export default class Facebook extends Component {
     state = {
@@ -11,7 +12,13 @@ export default class Facebook extends Component {
     }
 
     responseFacebook = response => {
-        console.log(response);
+        this.setState({
+            isLoggedIn: true,
+            userId: response.userId,
+            name: response.name,
+            email: response.email,
+            picture: response.picture.data.url,
+        });
     }
 
     componentClicked = () => {
@@ -22,7 +29,7 @@ export default class Facebook extends Component {
         let fbContent;
 
         if (this.state.isLoggedIn) {
-            fbContent = null;
+            fbContent = (<Home />);
         } else {
             fbContent = (<FacebookLogin
                 appId="371633031397919"
