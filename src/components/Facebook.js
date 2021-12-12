@@ -35,9 +35,12 @@ export default class Facebook extends Component {
                 fields="name,email,picture"
                 onClick={this.componentClicked}
                 callback={this.responseFacebook} />)
-                localStorage.setItem('userId', this.state.userID);
-                localStorage.setItem('name', this.state.name);
-                localStorage.setItem('email', this.state.email);
+        }
+
+        if (this.state.userId !== undefined || this.state.userId !== null) {
+            localStorage.setItem('userId', this.state.userID);
+            localStorage.setItem('name', this.state.name);
+            localStorage.setItem('email', this.state.email);
         }
 
         return (
