@@ -13,6 +13,7 @@ const options = [
 
 function Create() {
     const [error, setError] = useState(false);
+    console.log(error);
     const [validate, setValidate] = useState(false);
     const owner = localStorage.getItem('userId');
     const navigate = useNavigate();

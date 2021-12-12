@@ -9,14 +9,17 @@ export const getCard = async (id) => {
     try {
         const results = await query.find();
         for (const object of results) {
-            const category = object.get('category')
-            const question = object.get('question')
-            const answer = object.get('answer')
-            const owner = object.get('owner')
-            console.log(category);
-            console.log(question);
-            console.log(answer);
-            console.log(owner);
+            const category = object.get('category');
+            const question = object.get('question');
+            const answer = object.get('answer');
+            const owner = object.get('owner');
+            const currentCard = {
+                category,
+                question,
+                answer,
+                owner
+            }
+            return currentCard;
         }
     } catch (error) {
         console.error('Error while fetching Flashcard', error);
