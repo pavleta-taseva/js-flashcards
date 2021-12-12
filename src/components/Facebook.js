@@ -29,6 +29,9 @@ export default class Facebook extends Component {
         let fbContent;
 
         if (this.state.isLoggedIn) {
+            localStorage.setItem('userId', this.state.userId);
+            localStorage.setItem('name', this.state.name);
+            localStorage.setItem('email', this.state.email);
             fbContent = (<Home />);
         } else {
             fbContent = (<FacebookLogin
