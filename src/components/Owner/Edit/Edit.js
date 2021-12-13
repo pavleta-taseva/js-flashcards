@@ -23,8 +23,6 @@ function Edit() {
     const { id } = location.state;
     const { question } = location.state;
     const { answer } = location.state;
-    const { category } = location.state;
-    console.log(categoryEdit);
     const navigate = useNavigate();
 
     async function onEdit(e) {
