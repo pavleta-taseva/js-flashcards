@@ -10,6 +10,7 @@ function OwnerDetails() {
     let [currentQuestion, setCurrentQuestion] = useState('');
     let [currentAnswer, setCurrentAnswer] = useState('');
     let [currentOwner, setCurrentOwner] = useState('');
+    let [currentCategory, setCurrentCategory] = useState('');
 
     const navigate = useNavigate();
 
@@ -22,6 +23,7 @@ function OwnerDetails() {
                 setCurrentQuestion(currentCard.question);
                 setCurrentAnswer(currentCard.answer);
                 setCurrentOwner(ownerName);
+                setCurrentCategory(currentCard.category);
                 const res = await cardService.updateCardDetails(id, ownerId);
                 setCurrentQuestion(res.question);
                 setCurrentAnswer(res.answer);
@@ -54,6 +56,7 @@ function OwnerDetails() {
             <div className="details-card">
                 <h2 className="details"><span className="details-title">Flashcard Details:</span></h2>
                 <h2 className="details-heading"><span className="details-title">Flashcard id:</span> {`${id}`}</h2>
+                <h2 className="details-heading"><span className="details-title">Category:</span> {`${currentCategory}`}</h2>
                 <h2 className="details-heading"><span className="details-title">Question:</span> {`${currentQuestion}`}</h2>
                 <h2 className="details-heading"><span className="details-title">Answer:</span> {`${currentAnswer}`}</h2>
                 <h2 className="details-heading"><span className="details-title">Creator:</span> {`${currentOwner}`}</h2>
@@ -67,7 +70,8 @@ function OwnerDetails() {
                             id: id,
                             question: currentQuestion,
                             answer: currentAnswer,
-                            ownerId: ownerId
+                            ownerId: ownerId,
+                            category: currentCategory,
                         }}
                     >Edit</Link>
                 </div>

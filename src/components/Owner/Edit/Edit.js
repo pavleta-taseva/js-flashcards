@@ -6,6 +6,11 @@ import * as cardService from '../../../services/cardService.js';
 import { useAuth } from '../../../contexts/AuthContext.js';
 import './Edit.css';
 
+const options = [
+    { value: 'JS Basics', text: 'JS Basics' },
+    { value: 'JS Advanced', text: 'JS Advanced' },
+    { value: 'JS Web', text: 'JS Web' },
+]
 
 function Edit() {
     const { user } = useAuth();
@@ -14,14 +19,17 @@ function Edit() {
     const [validate, setValidate] = useState(false);
     const [questionEdit, setQuestionEdit] = useState();
     const [answerEdit, setAnswerEdit] = useState();
+    const [categoryEdit, setCategoryEdit] = useState();
     const { id } = location.state;
     const { question } = location.state;
     const { answer } = location.state;
+    const { category } = location.state;
+    console.log(categoryEdit);
     const navigate = useNavigate();
 
     async function onEdit(e) {
         e.preventDefault();
-        const data = { questionEdit, answerEdit };
+        const data = { questionEdit, answerEdit, categoryEdit };
 
         if (validate === false) {
             cardService.onEdit(id, data)
@@ -32,6 +40,7 @@ function Edit() {
                                 id: id,
                                 question: questionEdit,
                                 answer: answerEdit,
+                                category: categoryEdit
                             }
                         }
                     );
@@ -78,12 +87,18 @@ function Edit() {
                     <div>Error: Missing data. Please edit all fields!</div>
                 )}
                 <h1>Edit your Flashcard</h1>
+                <label className="create-form-label" htmlFor="category">Edit Category:</label><br />
+                <span className="category-select">
+                    <select name="category" id="category" defaultValue={options[1]} onChange={e => setCategoryEdit(e.target.value)} >
+                        {options.map(x => <option key={x.value} value={x.value}>{x.text}</option>)}
+                    </select>
+                </span>
                 <div>
-                    <label htmlFor={question}>Question:</label><br></br>
+                    <label className="create-form-label" htmlFor={question}>Update Question:</label><br></br>
                     <textarea id="question-area" placeholder="Edit question" name="question" defaultValue={question} onChange={e => setQuestionEdit(e.target.value)} onBlur={fieldValidation} style={{ borderColor: validate.question ? '#ff2ae0' : 'inherit' }}></textarea>
                 </div>
                 <div>
-                    <label htmlFor={answer}>Answer:</label><br></br>
+                    <label className="create-form-label" htmlFor={answer}>Update Answer:</label><br></br>
                     <textarea id="answer-area" placeholder="Edit answer" name="answer" defaultValue={answer} onChange={e => setAnswerEdit(e.target.value)} onBlur={fieldValidation} style={{ borderColor: validate.answer ? '#ff2ae0' : 'inherit' }}></textarea>
                 </div>
                 <button className="editBtn" type="submit">Edit</button>

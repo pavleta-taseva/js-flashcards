@@ -69,6 +69,7 @@ export const onEdit = async (id, data) => {
         const object = await query.get(id);
         object.set('question', data.questionEdit);
         object.set('answer', data.answerEdit);
+        object.set('category', data.categoryEdit);
         try {
             const response = await object.save();
             console.log('Flashcard updated', response);
