@@ -35,3 +35,10 @@
     border: none;
     cursor: pointer;
 }
+
+.active-pagination {
+    background: #00ccff;
+    text-decoration: none;
+    padding: 6px 14px;
+    margin: 0;
+}

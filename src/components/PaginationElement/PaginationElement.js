@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import { NavLink } from 'react-router-dom';
 import './PaginationElement.css';
 
-function PaginationElement({ cardsPerPage, totalCards, paginate, previousPage, nextPage }) {
+function PaginationElement({ cardsPerPage, totalCards, paginate, previousPage, nextPage, currentPageName }) {
     const pageNumbers = [];
 
     for (let index = 1; index <= Math.ceil(totalCards / cardsPerPage); index++) {
@@ -14,9 +15,9 @@ function PaginationElement({ cardsPerPage, totalCards, paginate, previousPage, n
                 <button onClick={() => previousPage()} className="minus">« </button>
                 {pageNumbers.map(number => (
                         <li key={number} className="page-item">
-                            <a href="!#" onClick={() => paginate(number)} className="page-link">
+                            <NavLink className={(navData) => navData.isActive ? 'active-pagination' : 'page-link'} to={`/${currentPageName}/${number}`} onClick={() => paginate(number)}>
                                 {number}
-                            </a>
+                            </NavLink>
                         </li>
                 ))}
                 <button onClick={() => nextPage()} className="plus"> »</button>

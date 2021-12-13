@@ -44,7 +44,9 @@ function FlashcardsBasic() {
     let [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [cardsPerPage] = useState(6);
-
+    const url = window.location.href;
+    const currentPageName = url.split('http://localhost:3000/')[1].split('/')[0];
+    
     useEffect(() => {
         setLoading(true);
 
@@ -100,7 +102,7 @@ function FlashcardsBasic() {
                     {basics.length > 0
                         ? <div>
                             <FlashcardList flashcards={currentCards} />
-                            <PaginationElement cardsPerPage={cardsPerPage} totalCards={basics.length} paginate={paginate} previousPage={previousPage} nextPage={nextPage} />
+                            <PaginationElement cardsPerPage={cardsPerPage} totalCards={basics.length} paginate={paginate} previousPage={previousPage} nextPage={nextPage} currentPageName={currentPageName}/>
                         </div>
                         : <div className="no-cards">
                             <div className="left-container">

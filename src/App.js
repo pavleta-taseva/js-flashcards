@@ -21,7 +21,6 @@ import OwnerDetails from './components/Owner/OwnerDetails/OwnerDetails.js';
 import Footer from './components/Footer/Footer.js';
 import ReactNotification from 'react-notifications-component';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage.js';
-import PrivacyPolicy from './components/Footer/PrivacyPolicy.js';
 import { AuthProvider } from './contexts/AuthContext.js';
 import 'react-notifications-component/dist/theme.css';
 
@@ -43,16 +42,21 @@ function App() {
               <Route path='/login' element={<Login />} />
               <Route path='/profile/:userId' element={<Profile />} />
               <Route path='/collections' element={<Collections />} />
+              <Route path='/collections/:number' element={<Collections />} />
               <Route path='/flashcards-basic' element={<FlashcardsBasic />} />
+              <Route path='/flashcards-basic/:number' element={<FlashcardsBasic />} />
               <Route path='/flashcards-advanced' element={<FlashcardsAdvanced />} />
+              <Route path='/flashcards-advanced/:number' element={<FlashcardsAdvanced />} />
               <Route path='/flashcards-web' element={<FlashcardsWeb />} />
+              <Route path='/flashcards-web/:number' element={<FlashcardsWeb />} />
               <Route path='/flashcards/create' element={<Create />} />
               <Route path='/details/:id' element={<Details />} />
               <Route path='/details/:ownerId/:id' element={<OwnerDetails />} />
               <Route path='/my-cards/:userId' element={<MyCards />} />
+              <Route path='/my-cards/:number' element={<MyCards />} />
               <Route path='/practice/:userId' element={<Practice />} />
+              <Route path='/practice/:number' element={<Practice />} />
               <Route path='/edit/:id' element={<Edit />} />
-              <Route path='/privacy-policy' element={<PrivacyPolicy />} />
               <Route path='*' element={<NotFoundPage />} />
             </Routes>
           </main>

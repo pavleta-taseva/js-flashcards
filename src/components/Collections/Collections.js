@@ -41,11 +41,13 @@ async function getAllCards() {
 }
 
 function Collections() {
-    let [all, setAll] = useState(finalArray);
+    let [all, setAll] = useState([]);
     let [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [cardsPerPage] = useState(6);
-
+    const url = window.location.href;
+    const currentPageName = url.split('http://localhost:3000/')[1].split('/')[0];
+ 
     useEffect(() => {
         setLoading(true);
         window.scrollTo(0, 0);
@@ -105,14 +107,11 @@ function Collections() {
                     {all.length > 0
                         ? <div >
                             <FlashcardList flashcards={currentCards} />
-                            <PaginationElement cardsPerPage={cardsPerPage} totalCards={all.length} paginate={paginate} previousPage={previousPage} nextPage={nextPage} />
+                            <PaginationElement cardsPerPage={cardsPerPage} totalCards={all.length} paginate={paginate} previousPage={previousPage} nextPage={nextPage} currentPageName={currentPageName}/>
                         </div>
                         : <div className="no-cards">
                             <div>
                                 <h1 className="no-cards-heading">No Flashcards in this category yet.</h1>
-                            </div>
-                            <div>
-                                <h1 className="no-cards-heading">You need to add flashcards to this list<br></br> by pressing "Practice" button on the flashcard's details page.</h1>
                             </div>
                         </div>
                     }
