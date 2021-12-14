@@ -1,5 +1,5 @@
 import Parse from '../../node_modules/parse/dist/parse.js';
-import * as validator from '../helpers/validator.js';
+import notification from '../helpers/notification.js';
 
 export async function login(username, password) {
     try {
@@ -31,10 +31,9 @@ export async function register(username, email, password) {
     try {
         await user.signUp();
         Parse.User.logOut();
-        alert("Email must be verified. Please, visit your mail inbox for further instructions.");
-        window.location.replace('/login');
+        notification('Almost done!', "Email must be verified. Please, visit your mail inbox for further instructions.");
     } catch (error) {
-        alert("Ops, something went wrong: " + error);
+        notification('Ops', `Something went wrong: + ${error}`);
         console.error(error);
     }
 }
@@ -49,7 +48,7 @@ export async function logout() {
         localStorage.removeItem('password');
         localStorage.removeItem('name');
     } catch (error) {
-        alert('Ops, something went wrong. Try again, please!');
+        notification('Ops','Something went wrong. Try again, please!');
         console.error(error);
     }
 }

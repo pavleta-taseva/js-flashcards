@@ -1,21 +1,28 @@
 import * as authService from "../services/authService.js";
+import notification from "./notification.js";
 
 export async function validateInput(username, email, password, repass) {
-    if (username === '' || username === null || email === '' || email === null || password === '' || password === null || repass === null || repass === '') {
-        console.log('All fields are required!');
+    if (username === '' 
+    || username === undefined 
+    || email === '' 
+    || email === undefined 
+    || password === '' 
+    || password === undefined 
+    || repass === '' 
+    || repass === undefined) {
+        return notification('Missing information', 'All fields are required!');
     }
 
     if (username === 'admin') {
-        console.log('Username cannot be "admin"');
+        return notification('Problem found', 'Username cannot be "admin"');
     }
 
     if (password === 'password') {
-        console.log('Password must be different! Try more unique one! :(')
+        return notification('Problem found', 'Password too easy! Try more unique one')
     }
 
     if (password !== repass) {
-        console.log('Two passwords don\'t match!');
-        return;
+        return notification('Problem found', 'Two passwords don\'t match!');
     }
 
     if (typeof username !== 'string' || !username instanceof String) {
@@ -57,15 +64,15 @@ export async function validateInput(username, email, password, repass) {
     }
 
     if (isValid === false) {
-        console.log('Password must be between 6 and 10 characters.');
+        return notification('Problem found', 'Password must be between 6 and 10 characters.');
     }
 
     if (isInvSymbol === true) {
-        console.log('Password must consist only of letters and digits.');
+        return notification('Problem found','Password must consist only of letters and digits.');
     }
 
     if (hasDigits === false) {
-        console.log('Password must have at least 2 digits.');
+        return notification('Problem found', 'Password must have at least 2 digits.');
     }
 
     let cleanedUser = '';
@@ -80,9 +87,10 @@ export async function validateInput(username, email, password, repass) {
                 cleanedUser += username[i];
             }
         };
-        console.log(`Your username is set to ${cleanedUser}, according to our requirements!`)
+        notification('We are sorry!', `Your username is set to ${cleanedUser}, according to our requirements!`);
         await authService.register(cleanedUser, email, password);
     } else {
         await authService.register(username, email, password);
+        
     }
 }
