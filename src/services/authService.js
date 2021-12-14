@@ -1,4 +1,5 @@
 import Parse from '../../node_modules/parse/dist/parse.js';
+import * as validator from '../helpers/validator.js';
 
 export async function login(username, password) {
     try {
@@ -26,7 +27,7 @@ export async function register(username, email, password) {
     user.set('username', username);
     user.set('email', email);
     user.set('password', password);
-
+    
     try {
         await user.signUp();
         Parse.User.logOut();

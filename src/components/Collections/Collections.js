@@ -93,7 +93,6 @@ function Collections() {
         setCurrentPage(nextPage);
     }
 
-
     return (
         <div>
             {loading
@@ -107,7 +106,14 @@ function Collections() {
                     {all.length > 0
                         ? <div >
                             <FlashcardList flashcards={currentCards} />
-                            <PaginationElement cardsPerPage={cardsPerPage} totalCards={all.length} paginate={paginate} previousPage={previousPage} nextPage={nextPage} currentPageName={currentPageName}/>
+                            <PaginationElement 
+                                cardsPerPage={cardsPerPage} 
+                                totalCards={all.length} 
+                                paginate={paginate} 
+                                previousPage={previousPage} 
+                                nextPage={nextPage} 
+                                currentPageName={currentPageName}
+                            />
                         </div>
                         : <div className="no-cards">
                             <div>

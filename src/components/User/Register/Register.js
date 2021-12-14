@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import * as authService from '../../../services/authService.js';
 import './Register.css';
 import registerBackground from '../../../images/register-bg.jpg';
+import { validateInput } from '../../../helpers/validator.js';
 import { Link,  useNavigate } from 'react-router-dom';
 
 function Register() {
@@ -10,20 +11,15 @@ function Register() {
     const [password, setPassword] = useState();
     const [rePass, setRePass] = useState();
     const navigate = useNavigate();
-
+   
     async function registerUser(e) {
         e.preventDefault();
 
-        if (password !== rePass) {
-            alert('Two passwords don\'t match!');
-            return;
-        }
-
-        const data = { username, email, password };
+        const data = { username, email, password, rePass };
 
         if (data.username !== undefined && data.email !== undefined && data.password !== undefined) {
             try {
-                await authService.register(username, email, password);
+                validateInput(data.username, data.email, data.password, data.rePass);
                 setUsername(username);
                 navigate('/login', { replace: true });
             } catch (error) {
