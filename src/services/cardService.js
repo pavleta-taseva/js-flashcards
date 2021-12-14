@@ -220,7 +220,6 @@ export async function removeCardFromPractice(id, userId) {
     const practiceList = user.get('practiceCards');
     try {
         for (let card of practiceList) {
-            console.log(card);
             if (card.id === id) {
                 let index = practiceList.indexOf(card);
                 practiceList.splice(index, 1);
@@ -373,6 +372,109 @@ export async function getWebCards() {
         };
     } catch (error) {
         console.log(`Error: ${JSON.stringify(error)}`);
+    }
+    return finalArray;
+}
+
+export async function getBasicsCards() {
+    let finalArray = [];
+    let basicsCards = [];
+    const query = new Parse.Query('Flashcard');
+    query.containedIn('category', ['JS Basics']);
+
+    try {
+        const results = await query.find();
+        for (let object of results) {
+            const id = object.id;
+            const category = object.get('category');
+            const question = object.get('question');
+            const answer = object.get('answer');
+            const owner = object.get('owner');
+
+            const currentCard = {
+                id,
+                category,
+                question,
+                answer,
+                owner
+            }
+            const check = basicsCards.includes(currentCard);
+            if (!check) {
+                basicsCards.push(currentCard);
+                finalArray = basicsCards;
+            }
+        };
+    } catch (error) {
+        console.log(`Error: ${JSON.stringify(error)}`);
+    }
+    return finalArray;
+}
+
+export async function getAdvancedCards() {
+    let finalArray = [];
+    let advancedCards = [];
+    const query = new Parse.Query('Flashcard');
+    query.containedIn('category', ['JS Advanced']);
+    try {
+        const results = await query.find();
+        for (let object of results) {
+            const id = object.id;
+            const category = object.get('category');
+            const question = object.get('question');
+            const answer = object.get('answer');
+            const owner = object.get('owner');
+
+            const currentCard = {
+                id,
+                category,
+                question,
+                answer,
+                owner
+            }
+            const check = advancedCards.includes(currentCard);
+            if (!check) {
+                advancedCards.push(currentCard);
+                finalArray = advancedCards;
+            }
+        }
+    } catch (err) {
+        console.log(err.message)
+    }
+
+    return finalArray;
+}
+
+export async function filterCards(category) {
+    let finalArray = [];
+    let filteredCards = [];
+    const userId = localStorage.getItem('userId');
+    const query = new Parse.Query('Flashcard');
+    query.containedIn('category', [category]);
+    query.containedIn('owner', [userId]);
+    try {
+        const results = await query.find();
+        for (let object of results) {
+            const id = object.id;
+            const category = object.get('category');
+            const question = object.get('question');
+            const answer = object.get('answer');
+            const owner = object.get('owner');
+
+            const currentCard = {
+                id,
+                category,
+                question,
+                answer,
+                owner
+            }
+            const check = filteredCards.includes(currentCard);
+            if (!check) {
+                filteredCards.push(currentCard);
+                finalArray = filteredCards;
+            }
+        }
+    } catch (err) {
+        console.log(err.message)
     }
     return finalArray;
 }

@@ -38,29 +38,6 @@
     padding-bottom: 5%;
 }
 
-.loader {
-    width: 100vw;
-    height: 85vh;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    background: url('../../images/loading.png') no-repeat 50% 25%;
-    padding-bottom: 10%;
-}
-
-.loading-clip {
-    display: block;
-    position: absolute;
-    top: 25%;
-    left: 50%;
-}
-
-.loader-heading {
-    color: #E7D4F6;
-}
-
 .no-cards {
     background: url('../../images/no-cards.png') right center no-repeat;
 }

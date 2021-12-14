@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import Parse from 'parse/dist/parse';
 import FlashcardList from '../../FlashcardList/FlashcardList.js';
 import PaginationElement from "../../PaginationElement/PaginationElement.js";
-import BeatLoader from "react-spinners/BeatLoader";
-import './Practice.css';
+import Loader from '../../Loader/Loader.js';
 
 let practiceList = [];
 const userId = localStorage.getItem('userId');
@@ -49,7 +48,7 @@ function Practice() {
     const [currentPage, setCurrentPage] = useState(1);
     const [cardsPerPage] = useState(6);
     const url = window.location.href;
-    const currentPageName = url.split('https://js-flashcards.herokuapp.com/')[1].split('/')[0];
+    const currentPageName = url.split('http://localhost:3000/')[1].split('/')[0];
     
     // Get current flashcards
     const indexOfLastCard = currentPage * cardsPerPage;
@@ -99,10 +98,7 @@ function Practice() {
     return (
         <div>
             {loading
-                ? <div className="loader">
-                    <BeatLoader className="loading-clip" color={'#E7D4F6'} loading={loading} size={30} />
-                    <h1 className="loader-heading">Loading...</h1>
-                </div>
+                ? <Loader />
                 : <div>
                     {practiceCards.length > 0
                         ? <div>

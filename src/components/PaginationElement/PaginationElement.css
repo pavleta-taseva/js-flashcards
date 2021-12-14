@@ -1,6 +1,7 @@
 .pagination-nav {
     width: 40vw;
-    margin: 2% auto;
+    margin: 0 auto;
+    padding-bottom: 5%;
 }
 
 .pagination {

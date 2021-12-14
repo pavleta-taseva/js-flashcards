@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import Parse from '../../../node_modules/parse/dist/parse.js';
 import FlashcardList from '../FlashcardList/FlashcardList.js';
 import PaginationElement from "../PaginationElement/PaginationElement.js";
-import BeatLoader from "react-spinners/BeatLoader";
 import '../Collections/Collections.css';
+import Loader from '../Loader/Loader.js';
 
 let finalArray = [];
 
@@ -46,7 +46,7 @@ function Collections() {
     const [currentPage, setCurrentPage] = useState(1);
     const [cardsPerPage] = useState(6);
     const url = window.location.href;
-    const currentPageName = url.split('https://js-flashcards.herokuapp.com/')[1].split('/')[0];
+    const currentPageName = url.split('http://localhost:3000/')[1].split('/')[0];
  
     useEffect(() => {
         setLoading(true);
@@ -58,7 +58,7 @@ function Collections() {
                 setAll(res);
                 setTimeout(() => {
                     setLoading(false);
-                }, 2000)
+                }, 4000)
             } catch (err) {
                 console.log(err);
             }
@@ -96,10 +96,7 @@ function Collections() {
     return (
         <div>
             {loading
-                ? <div className="loader">
-                    <BeatLoader className="loading-clip" color={'#E7D4F6'} loading={loading} size={30} />
-                    <h1 className="loader-heading">Loading...</h1>
-                </div>
+                ? <Loader />
                 : <div>
                     <h1 className="library-title">Flashcards Library</h1>
                     <h3 className="library-info">The library contains all flashcards created by us or our users. No categorization is attached to the library. Please register as a user to view the flashcards by category or to create your own cards.</h3>

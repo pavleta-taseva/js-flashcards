@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import '../FlashcardsWeb/FlashcardsWeb.css';
 import PaginationElement from "../PaginationElement/PaginationElement.js";
 import FlashcardList from '../FlashcardList/FlashcardList.js';
-import BeatLoader from "react-spinners/BeatLoader";
+import Loader from '../Loader/Loader.js';
 import * as cardService from '../../services/cardService.js';
 
 function FlashcardsWeb() {
@@ -11,7 +11,7 @@ function FlashcardsWeb() {
     const [currentPage, setCurrentPage] = useState(1);
     const [cardsPerPage] = useState(6);
     const url = window.location.href;
-    const currentPageName = url.split('https://js-flashcards.herokuapp.com/')[1].split('/')[0];
+    const currentPageName = url.split('http://localhost:3000/')[1].split('/')[0];
 
     useEffect(() => {
         setLoading(true);
@@ -59,10 +59,7 @@ function FlashcardsWeb() {
     return (
         <div>
             {loading
-                ? <div className="loader">
-                    <BeatLoader className="loading-clip" color={'#E7D4F6'} loading={loading} size={30} />
-                    <h1 className="loader-heading">Loading...</h1>
-                </div>
+                ? <Loader />
                 : <div>
                     {web.length > 0
                         ? <div>

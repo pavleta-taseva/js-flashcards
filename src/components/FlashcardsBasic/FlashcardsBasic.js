@@ -1,43 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Parse from '../../../node_modules/parse/dist/parse.js';
 import FlashcardList from '../FlashcardList/FlashcardList.js';
-import BeatLoader from "react-spinners/BeatLoader";
+import Loader from '../Loader/Loader.js';
 import PaginationElement from "../PaginationElement/PaginationElement.js";
+import * as cardService from '../../services/cardService.js';
 
 let finalArray = [];
-
-async function getBasicsCards() {
-    let basicsCards = [];
-    const query = new Parse.Query('Flashcard');
-    query.containedIn('category', ['JS Basics']);
-
-    try {
-        const results = await query.find();
-        for (let object of results) {
-            const id = object.id;
-            const category = object.get('category');
-            const question = object.get('question');
-            const answer = object.get('answer');
-            const owner = object.get('owner');
-
-            const currentCard = {
-                id,
-                category,
-                question,
-                answer,
-                owner
-            }
-            const check = basicsCards.includes(currentCard);
-            if (!check) {
-                basicsCards.push(currentCard);
-                finalArray = basicsCards;
-            }
-        };
-    } catch (error) {
-        console.log(`Error: ${JSON.stringify(error)}`);
-    }
-    return finalArray;
-}
 
 function FlashcardsBasic() {
     let [basics, setBasicsCards] = useState(finalArray);
@@ -45,14 +12,14 @@ function FlashcardsBasic() {
     const [currentPage, setCurrentPage] = useState(1);
     const [cardsPerPage] = useState(6);
     const url = window.location.href;
-    const currentPageName = url.split('https://js-flashcards.herokuapp.com/')[1].split('/')[0];
+    const currentPageName = url.split('http://localhost:3000/')[1].split('/')[0];
     
     useEffect(() => {
         setLoading(true);
 
         async function fetchData() {
             try {
-                const res = await getBasicsCards();
+                const res = await cardService.getBasicsCards();
                 setBasicsCards(res);
                 setTimeout(() => {
                     setLoading(false);
@@ -94,10 +61,7 @@ function FlashcardsBasic() {
     return (
         <div>
             {loading
-                ? <div className="loader">
-                    <BeatLoader className="loading-clip" color={'#E7D4F6'} loading={loading} size={30} />
-                    <h1 className="loader-heading">Loading...</h1>
-                </div>
+                ? <Loader />
                 : <div>
                     {basics.length > 0
                         ? <div>

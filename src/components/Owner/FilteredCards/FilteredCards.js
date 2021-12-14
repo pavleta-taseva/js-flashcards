@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
+import * as cardService from '../../../services/cardService.js';
 import OwnerFlashcardList from '../OwnerFlashcardList/OwnerFlashcardList.js';
 import PaginationElement from "../../PaginationElement/PaginationElement.js";
-import * as cardService from '../../../services/cardService.js';
 import Loader from '../../Loader/Loader.js';
 
 const options = [
@@ -10,55 +10,36 @@ const options = [
     { value: 'JS Web', text: 'JS Web' },
 ]
 
-function MyCards() {
-    let [cards, setCards] = useState([]);
-    let [filteredCards, setFilteredCards] = useState([]);
+function FilteredCards() {
     let [loading, setLoading] = useState(false);
-    let [isFiltered, setIsFiltered] = useState(false);
+    const [filteredCards, setFilteredCards] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [cardsPerPage] = useState(6);
-    const userId = localStorage.getItem('userId');
     const url = window.location.href;
     const currentPageName = url.split('http://localhost:3000/')[1].split('/')[0];
-    let categoryName = '';
 
     useEffect(() => {
         setLoading(true);
-        window.scrollTo(0, 0);
-
-        async function fetchWebData() {
+        async function fetchData() {
             try {
-                const res = await cardService.getMyCards(userId);
-                setCards(res);
-                setIsFiltered(false);
+                const res = await cardService.filterCards();
+                setFilteredCards(res);
                 setTimeout(() => {
                     setLoading(false);
                 }, 2000)
-                return () => { setLoading(false) };
             } catch (err) {
                 console.log(err);
             }
         }
-        fetchWebData();
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+        fetchData();
+    }, []);
 
     // Get current flashcards
     const indexOfLastCard = currentPage * cardsPerPage;
     const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-    let currentCards = [];
-    let totalPages = 0;
-    let totalCards = 0;
-
-    if (isFiltered === false) {
-        currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
-        totalPages = Math.ceil(cards.length / cardsPerPage);
-        totalCards = cards.length;
-    } else {
-        currentCards = filteredCards.slice(indexOfFirstCard, indexOfLastCard);
-        totalPages = Math.ceil(filteredCards.length / cardsPerPage);
-        totalCards = filteredCards.length;
-    }
-
+    const currentCards = filteredCards.slice(indexOfFirstCard, indexOfLastCard);
+    const totalPages = Math.ceil(filteredCards.length / cardsPerPage);
+    
     // Change page 
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -66,7 +47,7 @@ function MyCards() {
 
     function previousPage() {
         let previous = currentPage - 1;
-        if (previous < 1 || previous <= 0) {
+        if(previous < 1 || previous <= 0) {
             previous = 1;
         }
         setCurrentPage(previous);
@@ -80,14 +61,12 @@ function MyCards() {
         setCurrentPage(nextPage);
     }
 
-    async function onFilter(e) {
+    function onFilter(e) {
         e.preventDefault();
         let formData = new FormData(e.currentTarget);
         let category = formData.get('category');
-        categoryName = category;
-        const filtered = await cardService.filterCards(categoryName);
-        setFilteredCards(filtered);
-        setIsFiltered(true);
+        console.log(category);
+        return category;
     }
 
     return (
@@ -95,7 +74,7 @@ function MyCards() {
             {loading
                 ? <Loader />
                 : <div>
-                    {cards.length > 0
+                    {filteredCards.length > 0
                         ? <div>
                             <div className="card-list-titles">
                             <h1>Ready to Test your JavaScript knowledge?</h1>
@@ -110,11 +89,11 @@ function MyCards() {
                                 <button className="filterBtn" type="submit">Filter</button>
                             </form>
                             <OwnerFlashcardList flashcards={currentCards} />
-                            <PaginationElement
-                                cardsPerPage={cardsPerPage}
-                                totalCards={totalCards}
-                                paginate={paginate}
-                                previousPage={previousPage}
+                            <PaginationElement 
+                                cardsPerPage={cardsPerPage} 
+                                totalCards={filteredCards.length} 
+                                paginate={paginate} 
+                                previousPage={previousPage} 
                                 nextPage={nextPage}
                                 currentPageName={currentPageName}
                             />
@@ -132,4 +111,4 @@ function MyCards() {
     )
 }
 
-export default MyCards;
+export default FilteredCards;

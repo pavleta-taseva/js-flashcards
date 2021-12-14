@@ -80,6 +80,7 @@ Web application uses the following technologies, frameworks, and development tec
 * Delete functionality
 * Profile page
 * Context API
+* Implement pagination for all collections on the page
 
 ## Implementation
 ### Data structure
@@ -110,9 +111,8 @@ Web application uses the following technologies, frameworks, and development tec
 * Demonstrates use of programming concepts - React Hooks, Context API
 
 ## Additional improvements attempt
-* Use a state management solution (React Redux) instead of Context API
 * Good UI and UX
-* Connect to an external API, like Google Maps, AccuWeather, etc.
+* Connect to an external API - sign in with GitHub profile
 * The application is deployed in the cloud - Heroku
 
 
