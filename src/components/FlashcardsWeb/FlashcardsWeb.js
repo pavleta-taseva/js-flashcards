@@ -1,47 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Parse from '../../../node_modules/parse/dist/parse.js';
 import '../FlashcardsWeb/FlashcardsWeb.css';
 import PaginationElement from "../PaginationElement/PaginationElement.js";
 import FlashcardList from '../FlashcardList/FlashcardList.js';
 import BeatLoader from "react-spinners/BeatLoader";
-
-let finalArray = [];
-
-async function getWebCards() {
-    let webCards = [];
-    const query = new Parse.Query('Flashcard');
-    query.containedIn('category', ['JS Web']);
-
-    try {
-        const results = await query.find();
-        for (let object of results) {
-            const id = object.id;
-            const category = object.get('category');
-            const question = object.get('question');
-            const answer = object.get('answer');
-            const owner = object.get('owner');
-
-            const currentCard = {
-                id,
-                category,
-                question,
-                answer,
-                owner
-            }
-            const check = webCards.includes(currentCard);
-            if (!check) {
-                webCards.push(currentCard);
-                finalArray = webCards;
-            }
-        };
-    } catch (error) {
-        console.log(`Error: ${JSON.stringify(error)}`);
-    }
-    return finalArray;
-}
+import * as cardService from '../../services/cardService.js';
 
 function FlashcardsWeb() {
-    let [web, setWebCards] = useState(finalArray);
+    let [web, setWebCards] = useState([]);
     let [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [cardsPerPage] = useState(6);
@@ -52,7 +17,7 @@ function FlashcardsWeb() {
         setLoading(true);
         async function fetchData() {
             try {
-                const res = await getWebCards();
+                const res = await cardService.getWebCards();
                 setWebCards(res);
                 setTimeout(() => {
                     setLoading(false);
