@@ -2,22 +2,15 @@ import { createContext, useState, useContext } from 'react';
 
 export const AuthContext = createContext();
 
-const initialState = {
-    username: '',
-    email: '',
-    authToken: '',
-    userId: ''
-}
-
 export const AuthProvider = ({
     children
 }) => {
     
-    const [user, setUser] = useState(initialState);
+    const [user, setUser] = useState(null);
     const login = (username, password) => {
         setUser(username, password);
     }
-    return <AuthContext.Provider value={{user, login, isAuthenticated: Boolean(user.username)}}>
+    return <AuthContext.Provider value={{user, login, isAuthenticated: user}}>
         { children }
     </AuthContext.Provider>
 };

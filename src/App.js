@@ -22,6 +22,7 @@ import Footer from './components/Footer/Footer.js';
 import ReactNotification from 'react-notifications-component';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage.js';
 import { AuthProvider } from './contexts/AuthContext.js';
+import PrivateRoutes from './helpers/PrivateRoutes.js';
 import 'react-notifications-component/dist/theme.css';
 
 function App() {
@@ -35,28 +36,30 @@ function App() {
             <Routes>
               <Route path='/' element={<LandingPage />}>
               </Route>
+              <Route path='/register' element={<Register />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/collections' element={<Collections />} />
+              <Route path='/collections/:number' element={<Collections />} />
+              <Route path='/details/:id' element={<Details />} />
+              <Route element={<PrivateRoutes />}>
               <Route path='/home' element={<Home />}>
                 <Route path='/home/categories' element={<Category />} />
               </Route>
-              <Route path='/register' element={<Register />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/profile/:userId' element={<Profile />} />
-              <Route path='/collections' element={<Collections />} />
-              <Route path='/collections/:number' element={<Collections />} />
-              <Route path='/flashcards-basic' element={<FlashcardsBasic />} />
-              <Route path='/flashcards-basic/:number' element={<FlashcardsBasic />} />
-              <Route path='/flashcards-advanced' element={<FlashcardsAdvanced />} />
-              <Route path='/flashcards-advanced/:number' element={<FlashcardsAdvanced />} />
-              <Route path='/flashcards-web' element={<FlashcardsWeb />} />
-              <Route path='/flashcards-web/:number' element={<FlashcardsWeb />} />
-              <Route path='/flashcards/create' element={<Create />} />
-              <Route path='/details/:id' element={<Details />} />
-              <Route path='/details/:ownerId/:id' element={<OwnerDetails />} />
-              <Route path='/my-cards/:userId' element={<MyCards />} />
-              <Route path='/my-cards/:number' element={<MyCards />} />
-              <Route path='/practice/:userId' element={<Practice />} />
-              <Route path='/practice/:number' element={<Practice />} />
-              <Route path='/edit/:id' element={<Edit />} />
+                <Route path='/profile/:userId' element={<Profile />} />
+                <Route path='/flashcards-basic' element={<FlashcardsBasic />} />
+                <Route path='/flashcards-basic/:number' element={<FlashcardsBasic />} />
+                <Route path='/flashcards-advanced' element={<FlashcardsAdvanced />} />
+                <Route path='/flashcards-advanced/:number' element={<FlashcardsAdvanced />} />
+                <Route path='/flashcards-web' element={<FlashcardsWeb />} />
+                <Route path='/flashcards-web/:number' element={<FlashcardsWeb />} />
+                <Route path='/flashcards/create' element={<Create />} />
+                <Route path='/details/:ownerId/:id' element={<OwnerDetails />} />
+                <Route path='/my-cards/:userId' element={<MyCards />} />
+                <Route path='/my-cards/:number' element={<MyCards />} />
+                <Route path='/practice/:userId' element={<Practice />} />
+                <Route path='/practice/:number' element={<Practice />} />
+                <Route path='/edit/:id' element={<Edit />} />
+              </Route>
               <Route path='*' element={<NotFoundPage />} />
             </Routes>
           </main>

@@ -34,6 +34,7 @@ async function getPracticeList() {
                 result.push(queryResult);
                 practiceList = result;
             }
+            return practiceList;
         }
     } catch (error) {
         console.log(`Error: ${JSON.stringify(error)}`);
