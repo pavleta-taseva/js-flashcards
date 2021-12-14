@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { store } from 'react-notifications-component';
 import * as cardService from '../../../services/cardService.js';
 import { Link, useNavigate } from 'react-router-dom';
 import '../Details/Details.css';
 
 function Details() {
-    const location = useLocation();
-    const { question } = location?.state;
-    const { answer } = location?.state;
-    let { owner } = location?.state;
-    let { ownerId } = location?.state;
     let { id } = useParams();
+    let [currentQuestion, setCurrentQuestion] = useState('');
+    let [currentAnswer, setCurrentAnswer] = useState('');
+    let [currentOwner, setCurrentOwner] = useState('');
+    let [currentCategory, setCurrentCategory] = useState('');
+    let [check, setCheck] = useState(false);
     const [add, setAdd] = useState(false);
-    let [currentQuestion, setCurrentQuestion] = useState(question);
-    let [currentAnswer, setCurrentAnswer] = useState(answer);
     const localStorageOwnerId = localStorage.getItem('userId');
-    let check = ownerId === localStorageOwnerId;
+    let currentCardOwnerId = '';
     const navigate = useNavigate();
 
     const editDeleteBtns = <div className="buttons">
@@ -35,7 +33,7 @@ function Details() {
                 id: id,
                 question: currentQuestion,
                 answer: currentAnswer,
-                ownerId: ownerId
+                ownerId: currentCardOwnerId
             }}
         >Edit</Link>
     </div>;
@@ -64,13 +62,13 @@ function Details() {
                 <Link
                     onClick={onRemove}
                     className="button-remove"
-                    to={`/practice/${ownerId}`}
+                    to={`/practice/${localStorageOwnerId}`}
                     alt="practice-list"
                     state={{
                         id: id,
                         question: currentQuestion,
                         answer: currentAnswer,
-                        ownerId: ownerId
+                        ownerId: currentCardOwnerId
                     }}
                 >Remove card from practice
                 </Link>
@@ -81,13 +79,21 @@ function Details() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await cardService.updateCardDetails(id, owner);
-                let foundCard = await cardService.checkIfInPracticeList(id, owner);
+                const currentCard = await cardService.getCard(id);
+                const currentCardOwnerId = currentCard.owner.id;
+                const ownerName = await cardService.getName(currentCardOwnerId);
+                setCurrentQuestion(currentCard.question);
+                setCurrentAnswer(currentCard.answer);
+                setCurrentOwner(ownerName);
+                setCurrentCategory(currentCard.category);
+                setCheck(currentCardOwnerId === localStorageOwnerId);
+                const res = await cardService.updateCardDetails(id, currentCardOwnerId);
+                setCurrentQuestion(res.question);
+                setCurrentAnswer(res.answer);
+                let foundCard = await cardService.checkIfInPracticeList(id, currentOwner);
                 if (foundCard) {
                     setAdd(true);
                 }
-                setCurrentQuestion(res.question);
-                setCurrentAnswer(res.answer);
             } catch (err) {
                 console.log(err);
             }
@@ -126,8 +132,8 @@ function Details() {
             })
     }
 
-    if (owner === undefined) {
-        owner = 'Unknown';
+    if (currentOwner === undefined || currentOwner === null) {
+        currentOwner = 'Unknown';
     }
 
     return (
@@ -144,9 +150,10 @@ function Details() {
             <div className="details-card">
                 <h2 className="details"><span className="details-title">Flashcard Details:</span></h2>
                 <h2 className="details-heading"><span className="details-title">Flashcard id:</span> {id}</h2>
+                <h2 className="details-heading"><span className="details-title">Category:</span> {`${currentCategory}`}</h2>
                 <h2 className="details-heading"><span className="details-title">Question:</span> {currentQuestion}</h2>
                 <h2 className="details-heading"><span className="details-title">Answer:</span> {currentAnswer}</h2>
-                <div><h2 className="details-heading"><span className="details-title">Creator:</span> {owner}</h2></div>
+                <div><h2 className="details-heading"><span className="details-title">Creator:</span> {currentOwner}</h2></div>
                 {localStorageOwnerId
                     ? <div>{check
                         ? editDeleteBtns

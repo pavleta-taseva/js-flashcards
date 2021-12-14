@@ -6,9 +6,7 @@ import './FlashcardList.css';
 
 function FlashcardList({ flashcards }) {
     const { user } = useAuth();
-    console.log(user);
-    const check = user !== null;
-    console.log(check);
+    const check = user.username !== '';
 
     useEffect(() => {
         window.scrollTo(0, 0);
