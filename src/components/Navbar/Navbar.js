@@ -1,5 +1,5 @@
 import React from 'react';
-import { logout } from '../../services/authService.js';
+import { logout } from '../../api/data.js';
 import '../Navbar/Navbar.css';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 

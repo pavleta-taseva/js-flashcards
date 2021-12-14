@@ -2,11 +2,13 @@ import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import Flashcard from '../User/Flashcard/Flashcard.js';
 import { useAuth } from '../../contexts/AuthContext.js';
-import '../FlashcardList/FlashcardList.css';
+import './FlashcardList.css';
 
 function FlashcardList({ flashcards }) {
     const { user } = useAuth();
-    const check = user.username !== '';
+    console.log(user);
+    const check = user !== null;
+    console.log(check);
 
     useEffect(() => {
         window.scrollTo(0, 0);
