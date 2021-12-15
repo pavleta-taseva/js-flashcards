@@ -43,3 +43,42 @@
     padding: 6px 14px;
     margin: 0;
 }
+
+@media (max-width: 1280px) {
+
+    }
+    /* end: 1280px */
+    
+    /* start: 1024px */
+    @media (max-width: 1024px) {
+    
+    }
+    /* end: 1024px */
+    
+    /* Start: 993px*/
+    @media (min-width: 993px) and (max-width: 1024px) {
+      
+    }
+    
+    /* start: 992px */
+    @media (min-width: 769px) and (max-width: 992px) {
+      
+    }
+    /* end 992px */
+    
+    /*start 768px */
+    @media (max-width: 768px) {
+      
+    }
+    /* end: 768px */
+    
+    /* start: 500px */
+    @media (max-width: 500px) {
+      
+    }
+    
+    /* Start: 375px */
+    @media (max-width: 375px) {
+    
+    }
+    

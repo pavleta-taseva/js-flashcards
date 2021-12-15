@@ -76,3 +76,72 @@ footer small p {
   text-decoration: none;
   font-size: 14px;
 }
+
+@media (max-width: 1280px) {
+  footer {
+    width: 70vw;
+  }
+  }
+  /* end: 1280px */
+  
+  /* start: 1024px */
+  @media (max-width: 1024px) {
+    footer {
+      width: 70vw;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: auto;
+    }
+
+    .left-footer,
+    .right-footer {
+      padding: 0;
+    }
+  }
+  /* end: 1024px */
+  
+  /* Start: 993px*/
+  @media (min-width: 993px) and (max-width: 1024px) {
+    footer {
+      width: 65vw;
+    }
+  }
+  
+  /* start: 992px */
+  @media (min-width: 769px) and (max-width: 992px) {
+    footer {
+      width: 60vw;
+    }
+  }
+  /* end 992px */
+  
+  /*start 768px */
+  @media (max-width: 768px) {
+    footer {
+      width: 55vw;
+    }
+  }
+  /* end: 768px */
+  
+  /* start: 500px */
+  @media (max-width: 500px) {
+    footer {
+      width: 70vw;
+      float: right;
+      margin-right: 2%;
+    }
+  }
+  
+  /* Start: 375px */
+  @media (max-width: 375px) {
+    footer {
+      width: 60vw;
+      float: right;
+      margin-right: 2%;
+      padding: 2%;
+    }
+  }
+  
