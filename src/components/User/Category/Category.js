@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Category() {
   return (
-    <div id={"categories"} className="category-container">
+    <div id="categories" className="category-container">
 
       <div className="category-card">
         <div className="category-icon">

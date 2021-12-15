@@ -136,36 +136,31 @@ body {
   }
   /* end: 1280px */
   
-  /* start: 1024px */
-  @media (max-width: 1024px) {
-  
-  }
-  /* end: 1024px */
-  
-  /* Start: 993px*/
-  @media (min-width: 993px) and (max-width: 1024px) {
-    
-  }
-  
-  /* start: 992px */
-  @media (min-width: 769px) and (max-width: 992px) {
-    
-  }
-  /* end 992px */
-  
-  /*start 768px */
-  @media (max-width: 768px) {
-    
-  }
-  /* end: 768px */
-  
   /* start: 500px */
   @media (max-width: 500px) {
-    
+     .category-card {
+      position: relative;
+      width: 260px;
+      height: 390px;
+      margin: 30px;
+    }
   }
   
   /* Start: 375px */
   @media (max-width: 375px) {
-  
+    .category-card {
+      position: relative;
+      width: 210px;
+      height: 340px;
+      margin-bottom: 25%;
+    }
+
+    .category-description {
+      font-size: 14px;
+    }
+
+    footer small {
+      font-size: 10px;
+    }
   }
   
