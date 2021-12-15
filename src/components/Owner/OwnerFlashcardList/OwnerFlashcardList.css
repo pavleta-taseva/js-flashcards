@@ -72,27 +72,11 @@
 }
 
 #category {
-    width: 20vw;
-    margin: 1% 0;
+    width: 90%;
 }
 
 .filter-form-label {
     padding-bottom: 1%;
     font-size: 18px;
     color: #ca90e0;
-}
-
-.filterBtn {
-    display: inline-block;
-    width: 20%;
-    padding: 10px 70px;
-    background: var(--main-color);
-    color: #fff;
-    border: 1px solid var(--light-pink);
-    outline: none;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 15px;
-    letter-spacing: 1px;
-    cursor: pointer;
 }

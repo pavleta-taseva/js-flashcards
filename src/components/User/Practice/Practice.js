@@ -3,6 +3,7 @@ import Parse from 'parse/dist/parse';
 import FlashcardList from '../../FlashcardList/FlashcardList.js';
 import PaginationElement from "../../PaginationElement/PaginationElement.js";
 import Loader from '../../Loader/Loader.js';
+import '../Practice/Practice.css';
 
 let practiceList = [];
 const userId = localStorage.getItem('userId');
@@ -102,6 +103,7 @@ function Practice() {
                 : <div>
                     {practiceCards.length > 0
                         ? <div>
+                            <h2 className="practice-title">Your Practice List</h2>
                             <FlashcardList flashcards={currentCards} />
                             <PaginationElement cardsPerPage={cardsPerPage} totalCards={practiceCards.length} paginate={paginate} previousPage={previousPage} nextPage={nextPage} currentPageName={currentPageName} />
                         </div>

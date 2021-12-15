@@ -3,6 +3,7 @@ import OwnerFlashcardList from '../OwnerFlashcardList/OwnerFlashcardList.js';
 import PaginationElement from "../../PaginationElement/PaginationElement.js";
 import * as cardService from '../../../services/cardService.js';
 import Loader from '../../Loader/Loader.js';
+import '../MyCards/MyCards.css';
 
 const options = [
     { value: 'JS Basics', text: 'JS Basics' },
@@ -95,7 +96,7 @@ function MyCards() {
             {loading
                 ? <Loader />
                 : <div>
-                    {cards.length > 0
+                    {currentCards.length > 0
                         ? <div>
                             <div className="card-list-titles">
                             <h1>Ready to Test your JavaScript knowledge?</h1>
@@ -103,7 +104,7 @@ function MyCards() {
                             <form onSubmit={e => onFilter(e)}>
                                 <label className="filter-form-label" htmlFor="category">Filter flashcards by category:</label><br />
                                 <span className="category-choose">
-                                    <select name="category" id="category" defaultValue={options[1]} >
+                                    <select name="category" className="category-choose-select" defaultValue={options[1]} >
                                         {options.map(x => <option key={x.value} value={x.value}>{x.text}</option>)}
                                     </select>
                                 </span><br />

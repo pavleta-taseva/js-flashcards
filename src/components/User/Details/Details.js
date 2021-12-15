@@ -17,65 +17,6 @@ function Details() {
     let currentCardOwnerId = '';
     const navigate = useNavigate();
 
-    const editDeleteBtns = <div className="buttons">
-        <Link
-            onClick={onDelete}
-            alt="delete-page"
-            className="flashcard-buttons"
-            to={`/delete/${id}`}
-        >Delete
-        </Link>
-        <Link
-            className="flashcard-buttons"
-            to={`/edit/${id}`}
-            alt="edit-page"
-            state={{
-                id: id,
-                question: currentQuestion,
-                answer: currentAnswer,
-                ownerId: currentCardOwnerId
-            }}
-        >Edit</Link>
-    </div>;
-
-    const practiceBtns = <div>
-        {!add
-            ? <div className="buttons">
-                <Link
-                    className="flashcard-buttons"
-                    to={`/practice/${localStorageOwnerId}`}
-                    alt="practice"
-                    onClick={() => {
-                        cardService.practice(id);
-                    }}
-                >Practice
-                </Link>
-            </div>
-            : <div className="buttons">
-                <Link
-                    className="button-disabled"
-                    to={`/details/${id}`}
-                    alt="details"
-                    onClick={(event) => event.preventDefault()}
-                ><ion-icon name="alert-circle-outline"></ion-icon> Card already in your List
-                </Link>
-                <Link
-                    onClick={onRemove}
-                    className="button-remove"
-                    to={`/practice/${localStorageOwnerId}`}
-                    alt="practice-list"
-                    state={{
-                        id: id,
-                        question: currentQuestion,
-                        answer: currentAnswer,
-                        ownerId: currentCardOwnerId
-                    }}
-                >Remove card from practice
-                </Link>
-            </div>
-        }
-    </div>
-
     useEffect(() => {
         async function fetchData() {
             try {
@@ -101,6 +42,89 @@ function Details() {
         fetchData();
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+
+    const ownerElement = <div className="details-card">
+        <h2 className="details"><span className="details-title">Flashcard Details:</span></h2>
+        <h2 className="details-heading"><span className="details-title">Flashcard id:</span> {id}</h2>
+        <h2 className="details-heading"><span className="details-title">Category:</span> {`${currentCategory}`}</h2>
+        <h2 className="details-heading"><span className="details-title">Question:</span> {currentQuestion}</h2>
+        <h2 className="details-heading"><span className="details-title">Answer:</span> {currentAnswer}</h2>
+        <div><h2 className="details-heading"><span className="details-title">Creator:</span> {currentOwner}</h2></div>
+        {localStorageOwnerId
+            ?
+            <div className="buttons">
+                <Link
+                    onClick={onDelete}
+                    alt="delete-page"
+                    className="flashcard-buttons"
+                    to={`/delete/${id}`}
+                >Delete
+                </Link>
+                <Link
+                    className="flashcard-buttons"
+                    to={`/edit/${id}`}
+                    alt="edit-page"
+                    state={{
+                        id: id,
+                        question: currentQuestion,
+                        answer: currentAnswer,
+                        ownerId: currentCardOwnerId
+                    }}
+                >Edit</Link>
+            </div>
+            : <div></div>
+        }
+    </div>
+
+    const userElement = <div className="details-card">
+        <h2 className="details"><span className="details-title">Flashcard Details:</span></h2>
+        <h2 className="details-heading"><span className="details-title">Flashcard id:</span> {id}</h2>
+        <h2 className="details-heading"><span className="details-title">Category:</span> {`${currentCategory}`}</h2>
+        <h2 className="details-heading"><span className="details-title">Question:</span> {currentQuestion}</h2>
+        <h2 className="details-heading"><span className="details-title">Answer:</span> {currentAnswer}</h2>
+        <div><h2 className="details-heading"><span className="details-title">Creator:</span> {currentOwner}</h2></div>
+        {localStorageOwnerId
+            ? <div>
+                {!add
+                    ? <div className="buttons">
+                        <Link
+                            className="flashcard-buttons"
+                            to={`/practice/${localStorageOwnerId}`}
+                            alt="practice"
+                            onClick={() => {
+                                cardService.practice(id);
+                            }}
+                        >Practice
+                        </Link>
+                    </div>
+                    : <div className="buttons">
+                        <Link
+                            className="button-disabled"
+                            to={`/details/${id}`}
+                            alt="details"
+                            onClick={(event) => event.preventDefault()}
+                        ><ion-icon name="alert-circle-outline"></ion-icon> Card already in your List
+                        </Link>
+                        <Link
+                            onClick={onRemove}
+                            className="button-remove"
+                            to={`/practice/${localStorageOwnerId}`}
+                            alt="practice-list"
+                            state={{
+                                id: id,
+                                question: currentQuestion,
+                                answer: currentAnswer,
+                                ownerId: currentCardOwnerId
+                            }}
+                        >Remove card from practice
+                        </Link>
+                    </div>
+                }
+            </div>
+            : <div></div>
+        }
+    </div>
+
     async function onDelete(e) {
         e.preventDefault();
         await cardService.deleteCard(id)
@@ -116,7 +140,7 @@ function Details() {
             .then(result => {
                 setTimeout(() => {
                     notification("Success!", "Card removed from your practice list");
-            }, 3000);
+                }, 3000);
             })
     }
 
@@ -135,21 +159,10 @@ function Details() {
                     <span className="spanFour">{currentQuestion}</span>
                 </div>
             </div>
-            <div className="details-card">
-                <h2 className="details"><span className="details-title">Flashcard Details:</span></h2>
-                <h2 className="details-heading"><span className="details-title">Flashcard id:</span> {id}</h2>
-                <h2 className="details-heading"><span className="details-title">Category:</span> {`${currentCategory}`}</h2>
-                <h2 className="details-heading"><span className="details-title">Question:</span> {currentQuestion}</h2>
-                <h2 className="details-heading"><span className="details-title">Answer:</span> {currentAnswer}</h2>
-                <div><h2 className="details-heading"><span className="details-title">Creator:</span> {currentOwner}</h2></div>
-                {localStorageOwnerId
-                    ? <div>{check
-                        ? editDeleteBtns
-                        : practiceBtns
-                    }</div>
-                    : <div></div>
-                }
-            </div>
+            {check
+                ? ownerElement
+                : userElement
+            }
         </div>
     )
 }

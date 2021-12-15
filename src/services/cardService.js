@@ -219,6 +219,7 @@ export async function getName(ownerId) {
     const query = new Parse.Query(User);
     try {
         let user = await query.get(ownerId);
+        console.log(user);
         const nameResult = user.get('username');
         return nameResult;
     } catch (error) {

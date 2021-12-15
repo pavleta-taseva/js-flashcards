@@ -1,0 +1,32 @@
+.category-choose-select {
+    background-color: #eee;
+    border: none;
+    padding: 5px;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+    outline: none;
+    color: #1c1320;
+    margin: 1% 0;
+    width: 20vw;
+}
+
+option {
+    color: #1c1320;
+}
+
+.filterBtn {
+    display: inline-block;
+    width: 20%;
+    padding: 10px 70px;
+    background: var(--main-color);
+    color: #fff;
+    border: 1px solid var(--light-pink);
+    outline: none;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 15px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
