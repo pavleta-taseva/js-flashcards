@@ -4,7 +4,7 @@ import './Login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import loginBackground from '../../../images/login-bg.jpg';
 import { AuthContext } from '../../../contexts/AuthContext.js';
-import { store } from 'react-notifications-component';
+import notification from '../../../helpers/notification.js';
 
 function Login() {
     const { login } = useContext(AuthContext);
@@ -17,19 +17,7 @@ function Login() {
 
         login(username, password);
         if (username === '' || password === '') {
-            store.addNotification({
-                title: "Please, fill in all fields!",
-                message: "Empty input",
-                type: "info",
-                insert: "bottom-center",
-                container: "top-center",
-                animationIn: ["animate__animated", "animate__fadeIn"],
-                animationOut: ["animate__animated", "animate__fadeOut"],
-                dismiss: {
-                    duration: 5000,
-                    onScreen: true
-                }
-            });
+            notification("Empty input", "Please, fill in all fields!");
             return;
         }
 
@@ -41,19 +29,7 @@ function Login() {
                 const result = await authService.login(username, password);
                 setError(false);
                 if (result === null) {
-                    store.addNotification({
-                        title: "User doesn't exist!",
-                        message: "Please register first",
-                        type: "info",
-                        insert: "bottom-center",
-                        container: "top-center",
-                        animationIn: ["animate__animated", "animate__fadeIn"],
-                        animationOut: ["animate__animated", "animate__fadeOut"],
-                        dismiss: {
-                            duration: 5000,
-                            onScreen: true
-                        }
-                    });
+                    notification("User doesn't exist!", "Please register first");
                     navigate('/login', { replace: true });
                     return null;
                 }

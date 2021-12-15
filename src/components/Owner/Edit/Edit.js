@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { store } from 'react-notifications-component';
-
+import notification from '../../../helpers/notification.js';
 import * as cardService from '../../../services/cardService.js';
 import { useAuth } from '../../../contexts/AuthContext.js';
 import './Edit.css';
@@ -45,19 +44,7 @@ function Edit() {
                     setError(false);
                 })
         } else {
-            store.addNotification({
-                title: "Error!",
-                message: "Please fill in all fields first.",
-                type: "info",
-                insert: "bottom-center",
-                container: "top-center",
-                animationIn: ["animate__animated", "animate__fadeIn"],
-                animationOut: ["animate__animated", "animate__fadeOut"],
-                dismiss: {
-                    duration: 5000,
-                    onScreen: true
-                }
-            });
+            notification("Error!", "Please fill in all fields first");
         }
     }
 

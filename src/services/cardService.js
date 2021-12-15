@@ -1,5 +1,5 @@
 import Parse from 'parse/dist/parse';
-import { store } from 'react-notifications-component';
+import notification from '../helpers/notification.js';
 const baseUrl = 'https://parseapi.back4app.com/classes/Flashcard';
 
 export const getCard = async (id) => {
@@ -160,34 +160,9 @@ export async function practice(id) {
         if (!check) {
             currentUser.add('practiceCards', currentCard);
             await currentUser.save();
-            store.addNotification({
-                title: "Card added to your Practice List!",
-                message: 'Redirecting you to practice page...',
-                type: "info",
-                insert: "bottom-center",
-                container: "center",
-                animationIn: ["animate__animated", "animate__fadeIn"],
-                animationOut: ["animate__animated", "animate__fadeOut"],
-                dismiss: {
-                    duration: 3000,
-                    onScreen: true
-                }
-            });
+            notification("Success!", "Card added to your Practice List!");
         } else {
-            console.log('This card is already added to the Practice list.');
-            store.addNotification({
-                title: "This action cannot be executed!",
-                message: "This card is already added to your Practice list.",
-                type: "info",
-                insert: "bottom-center",
-                container: "center",
-                animationIn: ["animate__animated", "animate__fadeIn"],
-                animationOut: ["animate__animated", "animate__fadeOut"],
-                dismiss: {
-                    duration: 5000,
-                    onScreen: true
-                }
-            });
+            notification("Error!", "This card is already added to your Practice list");
             return null;
         }
     } catch (err) {

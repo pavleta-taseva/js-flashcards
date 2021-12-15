@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { store } from 'react-notifications-component';
 import * as cardService from '../../../services/cardService.js';
 import { useNavigate } from 'react-router-dom';
 import levelPicture from '../../../images/create.png';
+import notification from '../../../helpers/notification.js';
 import './Create.css';
 
 const options = [
@@ -43,19 +43,7 @@ function Create() {
                 })
             setError(false);
         } else {
-            store.addNotification({
-                title: "Error!",
-                message: "Flashcard fields cannot be empty.",
-                type: "info",
-                insert: "bottom-center",
-                container: "top-center",
-                animationIn: ["animate__animated", "animate__fadeIn"],
-                animationOut: ["animate__animated", "animate__fadeOut"],
-                dismiss: {
-                    duration: 5000,
-                    onScreen: true
-                }
-            });
+            notification("Error!", "Flashcard fields cannot be empty");
             setError(true);
         }
     }    

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
-import { store } from 'react-notifications-component';
 import * as cardService from '../../../services/cardService.js';
 import { Link, useNavigate } from 'react-router-dom';
+import notification from '../../../helpers/notification.js';
 import '../Details/Details.css';
 
 function Details() {
@@ -115,19 +115,7 @@ function Details() {
         await cardService.removeCardFromPractice(id, localStorageOwnerId)
             .then(result => {
                 setTimeout(() => {
-                store.addNotification({
-                    title: "Success!",
-                    message: "Card removed from your practice list.",
-                    type: "info",
-                    insert: "bottom-center",
-                    container: "top-center",
-                    animationIn: ["animate__animated", "animate__fadeIn"],
-                    animationOut: ["animate__animated", "animate__fadeOut"],
-                    dismiss: {
-                      duration: 5000,
-                      onScreen: true
-                    }
-                });
+                    notification("Success!", "Card removed from your practice list");
             }, 3000);
             })
     }
