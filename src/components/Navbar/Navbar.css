@@ -114,9 +114,18 @@
     cursor: pointer;
 }
 
+/* Start: 500px */
+@media (max-width: 500px) {
+    .nav {
+        height: 110vh;
+        width: 100px;
+    }
+  }
+
 /* Start: 375px */
 @media (max-width: 375px) {
     .nav {
         height: 140vh;
+        width: 90px;
     }
   }

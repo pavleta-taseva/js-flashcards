@@ -17,7 +17,7 @@
   align-items: center;
   width: 80vw;
   height: auto;
-  margin: 0 auto;
+  margin: 2% auto;
   background: #382541;
   padding-top: 3%;
   padding-right: 3%;
@@ -165,7 +165,7 @@
   }
 
   .main-info {
-    margin-top: 0;
+    margin-top: 2%;
     padding: 5%;
   }
 
@@ -174,7 +174,7 @@
     flex-direction: column;
     width: 70vw;
     height: auto;
-    margin: 0 10%;
+    margin: 2% 10%;
     padding: 5%;
     line-height: 1.5;
   }
@@ -201,6 +201,10 @@
   .four {
     width: 90%;
     padding: 0;
+  }
+
+  .category-intro {
+    padding: 10px 20px;
   }
 }
 /* end: 1280px */

@@ -13,7 +13,6 @@
     width: 100vw;
     height: 110vh;
     padding-top: 1%;
-    /* background: url('../../../images/create.png') center right no-repeat; */
 }
 
 .nav {
@@ -149,40 +148,103 @@ ul li {
 }
 
 @media (max-width: 1280px) {
+    .create-container {
+        grid-template-columns: 0.5fr 1fr 1fr;
+    }
 
+    .level-info {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        grid-column: 3;
+        width: 90%;
+        height: 60vh;
+        padding: 1%;
+    }
     }
     /* end: 1280px */
     
     /* start: 1024px */
     @media (max-width: 1024px) {
-    
+        .create-container {
+           grid-template-columns: 0.5fr 1fr 1fr;
+           padding-top: 3%;
+        }
+
+        .create {
+            width: 100%;
+            padding: 5% 0;
+        }
+
+        .create-form h1 {
+            font-size: 20px;
+        }
+
+        .level-info ul li {
+            font-size: 14px;
+        }
+
+        .level-info img {
+            width: 70%;
+            height: 70%;
+            margin-top: 5%;
+        }
     }
     /* end: 1024px */
     
-    /* Start: 993px*/
-    @media (min-width: 993px) and (max-width: 1024px) {
-      
-    }
-    
-    /* start: 992px */
-    @media (min-width: 769px) and (max-width: 992px) {
-      
-    }
-    /* end 992px */
-    
     /*start 768px */
     @media (max-width: 768px) {
-      
+      .level-info h2 {
+          font-size: 20px;
+      }
+
+      .create-form h1 {
+        font-size: 18px;
+    }
     }
     /* end: 768px */
     
     /* start: 500px */
     @media (max-width: 500px) {
-      
+        .create-container {
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            height: auto;
+            padding-top: 3%;
+            padding-right: 3%;
+        }
+
+        .create {
+            width: 70%;
+            margin: 0 4% 0 30%;
+        }
+
+        .create-form {
+            width: 100%;
+        }
+
+        .createBtn {
+            padding: 5px 40px;           
+            font-size: 18px;
+        }
+
+        .level-info {
+            width: 70%;
+            margin: 0 4% 0 25%;
+        }
+
+        .level-info img {
+            display: none;
+        }
     }
     
     /* Start: 375px */
     @media (max-width: 375px) {
-    
+        .create-container {
+           margin: 0 auto;
+           height: 160vh;
+        }
     }
     
