@@ -39,3 +39,43 @@
     color: #E7D4F6;
     text-align:end;
 }
+
+/* start: 1024px */
+@media (max-width: 1024px) {
+    .blob {
+        position: absolute;
+        width: 450px;
+        height: 450px;
+    }
+}
+/* end: 1024px */
+
+/*start 768px */
+@media (max-width: 768px) {
+    .blob {
+        position: absolute;
+        width: 400px;
+        height: 400px;
+    }
+}
+/* end: 768px */
+
+/* start: 500px */
+@media (max-width: 500px) {
+    .blob {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        margin-left: 20%;
+    }
+
+    .loader-heading {
+        font-size: 20px;
+        margin-left: 20%;
+    }
+}
+
+/* Start: 375px */
+@media (max-width: 375px) {
+
+}

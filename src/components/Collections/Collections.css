@@ -38,17 +38,44 @@
     
     /*start 768px */
     @media (max-width: 768px) {
-      
+        .library-info {
+            font-size: 14px;
+            margin-top: 3% 0;
+        }
+
+        .library-title {
+            margin-bottom: 2%;
+        }
     }
     /* end: 768px */
     
     /* start: 500px */
     @media (max-width: 500px) {
-      
+        .library-info {
+            font-size: 12px;
+            margin: 6% 0 6% 26%;
+            width: 60%;
+        }
+
+        .library-title {
+            margin-bottom: 2%;
+            margin: 6% 0 6% 15%;
+            font-size: 25px;
+        }
     }
     
     /* Start: 375px */
     @media (max-width: 375px) {
-    
+        .library-info {
+            font-size: 12px;
+            margin: 6% 0 6% 36%;
+            width: 60%;
+        }
+
+        .library-title {
+            margin-bottom: 2%;
+            margin: 6% 0 6% 25%;
+            font-size: 20px;
+        }
     }
     

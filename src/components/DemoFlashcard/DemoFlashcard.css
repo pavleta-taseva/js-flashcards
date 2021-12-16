@@ -181,7 +181,18 @@ body {
   
   /*start 768px */
   @media (max-width: 768px) {
-    
+    .card {
+      width: 250px;
+      height: 350px;
+    }
+
+    .cover h2 {
+      font-size: 20px;
+    }
+
+    .details .answer {
+      font-size: 15px;
+    }
   }
   /* end: 768px */
   
@@ -192,6 +203,9 @@ body {
   
   /* Start: 375px */
   @media (max-width: 375px) {
-  
+    .card {
+      width: 150px;
+      height: 150px;
+    }
   }
   

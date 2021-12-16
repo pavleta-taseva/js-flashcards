@@ -1,47 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Parse from 'parse/dist/parse';
 import FlashcardList from '../../FlashcardList/FlashcardList.js';
 import PaginationElement from "../../PaginationElement/PaginationElement.js";
 import Loader from '../../Loader/Loader.js';
 import '../Practice/Practice.css';
-
+import * as cardService from '../../../services/cardService.js';
 let practiceList = [];
 const userId = localStorage.getItem('userId');
 
-async function getPracticeList() {
-    let result = [];
-    const User = new Parse.User();
-    const query = new Parse.Query(User);
-    try {
-        let user = await query.get(userId);
-        const list = user.get('practiceCards');
-        const array = Object.entries(list);
-        for (let [index, card] of array) {
-            const category = card.get('category');
-            const question = card.get('question');
-            const answer = card.get('answer');
-            const owner = card.get('owner');
-            const queryResult = {
-                index: index,
-                id: card.id,
-                category,
-                question,
-                answer,
-                owner
-            }
-            const check = result.includes(queryResult);
-            if (!check) {
-                result.push(queryResult);
-                practiceList = result;
-            }
-            return practiceList;
-        }
-    } catch (error) {
-        console.log(`Error: ${JSON.stringify(error)}`);
-    }
-
-    return practiceList;
-}
 
 function Practice() {
     let [practiceCards, setPracticeCards] = useState(practiceList);
@@ -83,7 +48,7 @@ function Practice() {
         window.scrollTo(0, 0);
         async function fetchWebData() {
             try {
-                const res = await getPracticeList();
+                const res = await cardService.getPracticeList(userId);
                 setPracticeCards(res);
                 setTimeout(() => {
                     setLoading(false);

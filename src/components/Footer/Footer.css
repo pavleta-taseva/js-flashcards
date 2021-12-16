@@ -117,8 +117,8 @@ footer small p {
 /* start: 500px */
 @media (max-width: 500px) {
   footer {
-    width: 48vw;
-    margin: 0 auto;
+    width: 60%;
+    margin-left: 25%;
   }
 }
 

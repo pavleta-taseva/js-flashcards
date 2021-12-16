@@ -114,6 +114,14 @@
     cursor: pointer;
 }
 
+/* Start: 768px */
+@media (max-width: 768px) {
+    .nav {
+        height: 110vh;
+        width: 80px;
+    }
+  }
+
 /* Start: 500px */
 @media (max-width: 500px) {
     .nav {

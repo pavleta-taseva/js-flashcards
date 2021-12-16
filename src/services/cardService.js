@@ -181,7 +181,6 @@ export async function checkIfInPracticeList(id, ownerId) {
         const practiceList = currentUser.get('practiceCards');
         for (let card of practiceList) {
             cardIds.push(card.id);
-
         }
         const check = cardIds.includes(currentCard.id);
         return check;
@@ -453,4 +452,40 @@ export async function filterCards(category) {
         console.log(err.message)
     }
     return finalArray;
+}
+
+export async function getPracticeList(userId) {
+    let practiceList = [];
+    let result = [];
+    const User = new Parse.User();
+    const query = new Parse.Query(User);
+    try {
+        let user = await query.get(userId);
+        const list = user.get('practiceCards');
+        const array = Object.entries(list);
+        for (let [index, card] of array) {
+            const category = card.get('category');
+            const question = card.get('question');
+            const answer = card.get('answer');
+            const owner = card.get('owner');
+            const queryResult = {
+                index: index,
+                id: card.id,
+                category,
+                question,
+                answer,
+                owner
+            }
+
+            const check = result.includes(queryResult);
+            if (!check) {
+                result.push(queryResult);
+                practiceList = result;
+            }
+        }
+    } catch (error) {
+        console.log(`Error: ${JSON.stringify(error)}`);
+    }
+
+    return practiceList;
 }

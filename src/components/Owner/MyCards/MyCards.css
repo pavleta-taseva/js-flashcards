@@ -8,7 +8,7 @@
     line-height: inherit;
     outline: none;
     color: #1c1320;
-    margin: 1% 0;
+    margin: 2% 0;
     width: 20vw;
 }
 
@@ -18,7 +18,7 @@ option {
 
 .filterBtn {
     display: inline-block;
-    width: 20%;
+    width: 30%;
     padding: 10px 70px;
     background: var(--main-color);
     color: #fff;
@@ -29,16 +29,11 @@ option {
     font-size: 15px;
     letter-spacing: 1px;
     cursor: pointer;
+    margin: 1% 0;
 }
 
-@media (max-width: 1280px) {
-
-    }
-    /* end: 1280px */
-    
     /* start: 1024px */
     @media (max-width: 1024px) {
-    
     }
     /* end: 1024px */
     
@@ -61,7 +56,16 @@ option {
     
     /* start: 500px */
     @media (max-width: 500px) {
-      
+        .category-choose-select {
+            width: 50%;
+            margin-left: 20%;
+        }
+
+        .filterBtn {
+            width: 50%;
+            padding: 10px 40px;
+            margin-left: 20%;
+        }
     }
     
     /* Start: 375px */

@@ -112,7 +112,9 @@
     
     /*start 768px */
     @media (max-width: 768px) {
-      
+        .flashcards-wrapper {
+            width: 90%; 
+        }
     }
     /* end: 768px */
     
