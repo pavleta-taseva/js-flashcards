@@ -19,7 +19,7 @@
 .loader {
     position: absolute;
     top: 50%;
-    left: 20%;
+    left: 25%;
     width: 30vw;
     height: 30vh;
     margin: 0 auto;
@@ -37,4 +37,5 @@
 
 .loader-heading {
     color: #E7D4F6;
+    text-align:end;
 }
