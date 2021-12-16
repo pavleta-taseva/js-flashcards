@@ -10,7 +10,7 @@
   grid-template-columns: 1fr 1fr;
   grid-gap: 0;
   position: relative;
-  width: 95%;
+  width: 85%;
   height: 100%;
   margin: 0 15%;
   padding-bottom: 3%;
@@ -24,7 +24,7 @@
 .user-image {
   position: absolute;
   top: 3%;
-  left: -10%;
+  left: -12%;
   display: block;
   width: 300px;
   height: 300px;
@@ -147,6 +147,11 @@
     left: 10%;
     width: 55%;
     padding-bottom: 3%;
+  }
+
+  .deleteAccount {
+    font-size: 1.2rem;
+    padding: 10px 20%;
   }
 }
 /* end: 1280px */

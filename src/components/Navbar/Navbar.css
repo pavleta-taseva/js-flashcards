@@ -113,3 +113,10 @@
     border: none;
     cursor: pointer;
 }
+
+/* Start: 375px */
+@media (max-width: 375px) {
+    .nav {
+        height: 140vh;
+    }
+  }

@@ -155,20 +155,22 @@ body {
   border-radius: 15px;
   font-weight: 500;
 }
-
-@media (max-width: 1280px) {
-  }
-  /* end: 1280px */
-  
+ 
   /* start: 1024px */
   @media (max-width: 1024px) {
-  
+    .card {
+      width: 300px;
+      height: 400px;
+    }
   }
   /* end: 1024px */
   
   /* Start: 993px*/
   @media (min-width: 993px) and (max-width: 1024px) {
-    
+    .card {
+      width: 250px;
+      height: 350px;
+    }
   }
   
   /* start: 992px */
