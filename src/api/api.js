@@ -36,6 +36,7 @@ function getOptions(method = 'get', body) {
             'X-Parse-REST-API-Key': 'olOWe8T6CIAopabzFFs06fBqVMWQNu2C5eo8I35m',
             'X-Parse-Revocable-Session': '1',
             'X-Parse-Session-Token': token,
+            'Access-Control-Allow-Origin' : '*'
         }
     };
 

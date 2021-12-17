@@ -8,7 +8,7 @@ function Home() {
     const user = localStorage.getItem('username');
     const { state, dispatch } = useContext(GithubContext);
     const { name } = state.user;
-
+    console.log(dispatch);
     return (
         <div className="categories-container">
             <h2 className="welcome-user">
