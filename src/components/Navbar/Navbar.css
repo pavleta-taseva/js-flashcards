@@ -3,7 +3,6 @@
 
 * {
     font-family: "Audiowide", cursive;
-    /* font-family: 'Roboto Mono', monospace; */
 }
 
 .nav {
@@ -114,7 +113,6 @@
     cursor: pointer;
 }
 
-/* Start: 768px */
 @media (max-width: 768px) {
     .nav {
         height: 110vh;
@@ -122,7 +120,6 @@
     }
   }
 
-/* Start: 500px */
 @media (max-width: 500px) {
     .nav {
         height: 110vh;
@@ -130,7 +127,6 @@
     }
   }
 
-/* Start: 375px */
 @media (max-width: 375px) {
     .nav {
         height: 140vh;

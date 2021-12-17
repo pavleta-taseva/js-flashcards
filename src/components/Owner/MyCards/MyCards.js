@@ -43,7 +43,6 @@ function MyCards() {
         fetchWebData();
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    // Get current flashcards
     const indexOfLastCard = currentPage * cardsPerPage;
     const indexOfFirstCard = indexOfLastCard - cardsPerPage;
     let currentCards = [];
@@ -60,7 +59,6 @@ function MyCards() {
         totalCards = filteredCards.length;
     }
 
-    // Change page 
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber);
     }

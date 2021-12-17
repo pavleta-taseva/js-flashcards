@@ -35,7 +35,6 @@ export async function validateInput(username, email, password, repass) {
     let isInvSymbol = false;
     let hasDigits = false;
 
-    // Checks if the char is a num and if it has 2 digits at least
     for (let i = 0; i < chars.length; i++) {
         let current = Number(chars[i]);
         if (Number.isInteger(current)) {
@@ -46,7 +45,6 @@ export async function validateInput(username, email, password, repass) {
         }
     }
 
-    // Checks if a char is letter or digit only
     for (let j = 0; j < chars.length; j++) {
         let currChar = chars[j];
         if ((currChar.charCodeAt() >= 48 && currChar.charCodeAt() <= 57) || (currChar.charCodeAt() >= 65 && currChar.charCodeAt() <= 90) || (currChar.charCodeAt() >= 97 && currChar.charCodeAt() <= 122)) {

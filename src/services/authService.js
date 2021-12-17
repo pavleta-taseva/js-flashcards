@@ -18,7 +18,6 @@ export async function login(username, password) {
         Parse.User.logOut();
         console.log('Please register first');
         return null;
-        // return notify(error);
     }
 }
 
@@ -67,10 +66,8 @@ export const onDelete = async () => {
     const User = new Parse.User();
     const query = new Parse.Query(User);
     try {
-        // Finds the user by its ID
         let user = await query.get(userId);
         try {
-            // Invokes the "destroy" method to delete the user
             let response = await user.destroy();
             localStorage.removeItem('username');
             localStorage.removeItem('authToken');

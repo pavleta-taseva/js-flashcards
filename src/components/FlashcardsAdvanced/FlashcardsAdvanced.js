@@ -31,13 +31,11 @@ function FlashcardsAdvanced() {
         fetchAdData();
     }, []);
 
-    // Get current flashcards
     const indexOfLastCard = currentPage * cardsPerPage;
     const indexOfFirstCard = indexOfLastCard - cardsPerPage;
     const currentCards = advanced.slice(indexOfFirstCard, indexOfLastCard);
     const totalPages = Math.ceil(advanced.length / cardsPerPage);
-
-    // Change page 
+    
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber);
     }

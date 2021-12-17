@@ -16,13 +16,11 @@ function Practice() {
     const url = window.location.href;
     const currentPageName = url.split('https://js-flashcards.herokuapp.com/')[1].split('/')[0];
     
-    // Get current flashcards
     const indexOfLastCard = currentPage * cardsPerPage;
     const indexOfFirstCard = indexOfLastCard - cardsPerPage;
     const currentCards = practiceCards.slice(indexOfFirstCard, indexOfLastCard);
     const totalPages = Math.ceil(practiceCards.length / cardsPerPage);
 
-    // Change page 
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber);
     }

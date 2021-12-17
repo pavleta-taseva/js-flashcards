@@ -27,45 +27,31 @@ function Profile() {
     async function saveImage(e) {
         e.preventDefault();
         
-        //define the width to resize e.g 600px
-        let resizeWidth = 300;//without px
-    
-        //create a FileReader
+        let resizeWidth = 300;
         let reader = new FileReader();
-    
-        //image turned to base64-encoded Data URI.
         reader.readAsDataURL(image);
-        reader.name = image.name;//get the image's name
-        reader.size = image.size; //get the image's size
+        reader.name = image.name;
+        reader.size = image.size;
         reader.onload = function (event) {
-          let img = new Image();//create a image
-          img.src = event.target.result;//result is base64-encoded Data URI
-          img.name = event.target.name;//set name (optional)
-          img.size = event.target.size;//set size (optional)
+          let img = new Image();
+          img.src = event.target.result;
+          img.name = event.target.name;
+          img.size = event.target.size;
           img.onload = async function (el) {
-            let elem = document.createElement('canvas');//create a canvas
+            let elem = document.createElement('canvas');
             elem.width = resizeWidth;
             elem.height = resizeWidth;
-    
-            //draw in canvas
             let ctx = elem.getContext('2d');
             ctx.drawImage(el.target, 0, 0, elem.width, elem.height);
-    
-            //get the base64-encoded Data URI from the resize image
             let srcEncoded = ctx.canvas.toDataURL('image/png', 1);
-    
-            //assign it to thumb src
             image.src = srcEncoded;
-            /*Now you can send "srcEncoded" to the server and
-            convert it to a png o jpg. Also can send
-            "el.target.name" that is the file's name.*/
+
             try {
                 let user = Parse.User.current();
                 let file = new Parse.File(image.name, { base64: srcEncoded });
                 file.save();
                 user.set('image', file);
                 try {
-                    // Saves the user with the updated data
                     await user.save();
                     window.location.replace(`/profile/${userId}`);
                     console.log('New image saved successfully!');
