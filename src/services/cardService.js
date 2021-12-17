@@ -489,3 +489,37 @@ export async function getPracticeList(userId) {
 
     return practiceList;
 }
+
+export async function getAllCards() {
+    let finalArray = [];
+    let advancedCards = [];
+    const query = new Parse.Query('Flashcard');
+
+    try {
+        const results = await query.find();
+        for (let object of results) {
+            const id = object.id;
+            const category = object.get('category');
+            const question = object.get('question');
+            const answer = object.get('answer');
+            const owner = object.get('owner');
+
+            const currentCard = {
+                id,
+                category,
+                question,
+                answer,
+                owner
+            }
+            const check = advancedCards.includes(currentCard);
+            if (!check) {
+                advancedCards.push(currentCard);
+                finalArray = advancedCards;
+            }
+        }
+    } catch (err) {
+        console.log(err.message)
+    }
+
+    return finalArray;
+}

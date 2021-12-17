@@ -91,6 +91,10 @@ function MyCards() {
         setIsFiltered(true);
     }
 
+    function reload() {
+        window.location.reload();
+    }
+
     return (
         <div className="my-cards-container">
             {loading
@@ -108,8 +112,9 @@ function MyCards() {
                                         {options.map(x => <option key={x.value} value={x.value}>{x.text}</option>)}
                                     </select>
                                 </span><br />
-                                <button className="filterBtn" type="submit">Filter</button>
+                                <button className="filterBtn" type="submit">Filter</button><br />
                             </form>
+                                <button onClick={reload} className="filterBtn" type="submit">Refresh to load all cards</button>
                             <OwnerFlashcardList flashcards={currentCards} />
                             <PaginationElement
                                 cardsPerPage={cardsPerPage}

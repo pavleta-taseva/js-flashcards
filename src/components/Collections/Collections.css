@@ -1,81 +1,59 @@
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
 
 .library-title {
-    font-family: "Audiowide", cursive;
-    padding-top: 3%;
-    font-weight: 400;
+  font-family: "Audiowide", cursive;
+  padding-top: 3%;
+  font-weight: 400;
+  margin-bottom: 2%;
 }
 
 .library-info {
-    width: 60%;
-    text-align: justify;
-    margin: 0 auto;
-    line-height: 1.5;
-    font-weight: 300;
+  width: 60%;
+  text-align: justify;
+  margin: 0 auto;
+  line-height: 1.5;
+  font-weight: 300;
 }
 
-@media (max-width: 1280px) {
+/*start 768px */
+@media (max-width: 768px) {
+  .library-info {
+    font-size: 14px;
+    margin-top: 3% 0;
+  }
 
-    }
-    /* end: 1280px */
-    
-    /* start: 1024px */
-    @media (max-width: 1024px) {
-    
-    }
-    /* end: 1024px */
-    
-    /* Start: 993px*/
-    @media (min-width: 993px) and (max-width: 1024px) {
-      
-    }
-    
-    /* start: 992px */
-    @media (min-width: 769px) and (max-width: 992px) {
-      
-    }
-    /* end 992px */
-    
-    /*start 768px */
-    @media (max-width: 768px) {
-        .library-info {
-            font-size: 14px;
-            margin-top: 3% 0;
-        }
+  .library-title {
+    margin-bottom: 2%;
+  }
+}
+/* end: 768px */
 
-        .library-title {
-            margin-bottom: 2%;
-        }
-    }
-    /* end: 768px */
-    
-    /* start: 500px */
-    @media (max-width: 500px) {
-        .library-info {
-            font-size: 12px;
-            margin: 6% 0 6% 26%;
-            width: 60%;
-        }
+/* start: 500px */
+@media (max-width: 500px) {
+  .library-info {
+    font-size: 12px;
+    margin: 6% 0 6% 26%;
+    width: 60%;
+  }
 
-        .library-title {
-            margin-bottom: 2%;
-            margin: 6% 0 6% 15%;
-            font-size: 25px;
-        }
-    }
-    
-    /* Start: 375px */
-    @media (max-width: 375px) {
-        .library-info {
-            font-size: 12px;
-            margin: 6% 0 6% 36%;
-            width: 60%;
-        }
+  .library-title {
+    margin-bottom: 2%;
+    margin: 6% 0 6% 15%;
+    font-size: 25px;
+  }
+}
 
-        .library-title {
-            margin-bottom: 2%;
-            margin: 6% 0 6% 25%;
-            font-size: 20px;
-        }
-    }
-    
+/* Start: 375px */
+@media (max-width: 375px) {
+  .library-info {
+    font-size: 12px;
+    margin: 6% 0 6% 36%;
+    width: 60%;
+  }
+
+  .library-title {
+    margin-bottom: 2%;
+    margin: 6% 0 6% 25%;
+    font-size: 20px;
+  }
+}

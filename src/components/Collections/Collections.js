@@ -1,44 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Parse from '../../../node_modules/parse/dist/parse.js';
 import FlashcardList from '../FlashcardList/FlashcardList.js';
 import PaginationElement from "../PaginationElement/PaginationElement.js";
 import '../Collections/Collections.css';
 import Loader from '../Loader/Loader.js';
-
-let finalArray = [];
-
-async function getAllCards() {
-    let advancedCards = [];
-    const query = new Parse.Query('Flashcard');
-
-    try {
-        const results = await query.find();
-        for (let object of results) {
-            const id = object.id;
-            const category = object.get('category');
-            const question = object.get('question');
-            const answer = object.get('answer');
-            const owner = object.get('owner');
-
-            const currentCard = {
-                id,
-                category,
-                question,
-                answer,
-                owner
-            }
-            const check = advancedCards.includes(currentCard);
-            if (!check) {
-                advancedCards.push(currentCard);
-                finalArray = advancedCards;
-            }
-        }
-    } catch (err) {
-        console.log(err.message)
-    }
-
-    return finalArray;
-}
+import * as cardService from '../../services/cardService.js';
 
 function Collections() {
     let [all, setAll] = useState([]);
@@ -47,14 +12,14 @@ function Collections() {
     const [cardsPerPage] = useState(6);
     const url = window.location.href;
     const currentPageName = url.split('http://localhost:3000/')[1].split('/')[0];
- 
+
     useEffect(() => {
         setLoading(true);
         window.scrollTo(0, 0);
 
         async function fetchAdData() {
             try {
-                const res = await getAllCards();
+                const res = await cardService.getAllCards();
                 setAll(res);
                 setTimeout(() => {
                     setLoading(false);
@@ -103,12 +68,12 @@ function Collections() {
                     {all.length > 0
                         ? <div >
                             <FlashcardList flashcards={currentCards} />
-                            <PaginationElement 
-                                cardsPerPage={cardsPerPage} 
-                                totalCards={all.length} 
-                                paginate={paginate} 
-                                previousPage={previousPage} 
-                                nextPage={nextPage} 
+                            <PaginationElement
+                                cardsPerPage={cardsPerPage}
+                                totalCards={all.length}
+                                paginate={paginate}
+                                previousPage={previousPage}
+                                nextPage={nextPage}
                                 currentPageName={currentPageName}
                             />
                         </div>

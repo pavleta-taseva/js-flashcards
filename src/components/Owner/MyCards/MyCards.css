@@ -18,7 +18,7 @@ option {
 
 .filterBtn {
     display: inline-block;
-    width: 30%;
+    width: 20%;
     padding: 10px 70px;
     background: var(--main-color);
     color: #fff;
@@ -29,7 +29,7 @@ option {
     font-size: 15px;
     letter-spacing: 1px;
     cursor: pointer;
-    margin: 1% 0;
+    margin-bottom: 1%;
 }
 
     /* start: 1024px */
