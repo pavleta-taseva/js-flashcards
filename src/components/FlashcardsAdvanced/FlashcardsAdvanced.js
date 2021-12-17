@@ -13,7 +13,7 @@ function FlashcardsAdvanced() {
     const [currentPage, setCurrentPage] = useState(1);
     const [cardsPerPage] = useState(6);
     const url = window.location.href;
-    const currentPageName = url.split('http://localhost:3000/')[1].split('/')[0];
+    const currentPageName = url.split('https://js-flashcards.herokuapp.com/')[1].split('/')[0];
 
     useEffect(() => {
         setLoading(true);
