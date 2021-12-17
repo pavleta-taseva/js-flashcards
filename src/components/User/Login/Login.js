@@ -9,7 +9,12 @@ import notification from '../../../helpers/notification.js';
 function Login() {
     const { login } = useContext(AuthContext);
     const [error, setError] = useState(false);
+    const [passwordShown, setPasswordShown] = useState(false);
     const navigate = useNavigate();
+
+    const togglePasswordVisiblity = () => {
+        setPasswordShown(passwordShown ? false : true);
+    };
 
     async function loginUser(e) {
         e.preventDefault();
@@ -58,14 +63,19 @@ function Login() {
                         <label>Password</label><br></br>
                         <div className="icon">
                             <i className="fas fa-unlock"></i>
-                            <input className="login-password" type="password" autoComplete="current-password" name="password"></input>
-                            <i id="eye-three" className="fas fa-eye"></i>
+                            <input 
+                                className="login-password"
+                                type={passwordShown ? "text" : "password"}  autoComplete="current-password" 
+                                name="password"></input>
+                            <i id="eye-three" 
+                                className="fas fa-eye" 
+                                onClick={togglePasswordVisiblity}></i>
                             <br></br>
                         </div>
                         <div>
                             <button type="submit" className="loginBtn">Login</button>
                         </div>
-                    </form>    
+                    </form>
                     <div className="second">
                         <Link className="link" to="/register" alt="register">Create new account</Link>
                     </div>

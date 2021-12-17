@@ -9,7 +9,12 @@ function Register() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [rePass, setRePass] = useState();
+    const [passwordShown, setPasswordShown] = useState(false);
     const navigation = useNavigate();
+
+    const togglePasswordVisiblity = () => {
+        setPasswordShown(passwordShown ? false : true);
+    };
 
     async function registerUser(e) {
         e.preventDefault();
@@ -47,15 +52,33 @@ function Register() {
                         <label>Password</label><br></br>
                         <div className="icon">
                             <i className="fas fa-lock"></i>
-                            <input className="password" type="password" autoComplete="current-password" name="password" value={password} onChange={e => setPassword(e.target.value)}></input>
-                            <i id="eye-one" className="fas fa-eye"></i>
+                            <input 
+                                className="password" 
+                                type={passwordShown ? "text" : "password"} autoComplete="current-password" 
+                                name="password" 
+                                value={password} 
+                                onChange={e => setPassword(e.target.value)}>
+                            </input>
+                            <i id="eye-one" 
+                            className="fas fa-eye" 
+                            onClick={togglePasswordVisiblity}>
+                            </i>
                             <br></br>
                         </div>
                         <label>Repeat password</label><br></br>
                         <div className="icon">
                             <i className="fas fa-lock"></i>
-                            <input className="rePass" type="password" autoComplete="current-password" name="rePass" onChange={e => setRePass(e.target.value)}></input><br></br>
-                            <i id="eye-two" className="fas fa-eye"></i>
+                            <input 
+                                className="rePass" 
+                                type={passwordShown ? "text" : "password"} autoComplete="current-password" 
+                                name="rePass" 
+                                onChange={e => setRePass(e.target.value)}>
+                            </input>
+                            <br></br>
+                            <i id="eye-two" 
+                            className="fas fa-eye" 
+                            onClick={togglePasswordVisiblity}>
+                            </i>
                         </div>
                         <div>
                             <button type="submit" className="registerBtn">Register</button>
