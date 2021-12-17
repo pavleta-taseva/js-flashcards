@@ -203,40 +203,95 @@
   }
 
   @media (max-width: 1280px) {
+    .details-container {
+      grid-template-columns: 0.4fr 1fr;
+      width: 100vw;
+      height: 85vh;
+    }
 
+    .details-card {
+      top: -1%;
+      width: 75%;
+      height: 75vh;
+      margin: 2% auto;
+    }
+
+    .buttons {
+      position: relative;
+      margin-top: 5%;
+    }
+
+    .flashcard-buttons {
+      width: 30%;
+      font-weight: 400;
+    }
     }
     /* end: 1280px */
     
     /* start: 1024px */
-    @media (max-width: 1024px) {
-    
+    @media (max-width: 1024px) {    
+      .details-container {
+        padding-bottom: 3%;
+        height: 90vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .cube {
+        display: none;
+      }
+
+      .details-card {
+        position: relative;
+        margin: 3% auto;
+        width: 90%;
+        height: auto;
+      }
+
+      .details-heading {
+        font-size: 16px;
+        margin-bottom: 15px;
+        width: 80%;
+        font-weight: 300;
+      }
     }
     /* end: 1024px */
     
-    /* Start: 993px*/
-    @media (min-width: 993px) and (max-width: 1024px) {
-      
-    }
-    
-    /* start: 992px */
-    @media (min-width: 769px) and (max-width: 992px) {
-      
-    }
-    /* end 992px */
-    
     /*start 768px */
     @media (max-width: 768px) {
-      
+      .details-heading {
+        font-size: 14px;
+      }
+
+      .flashcard-buttons {
+        width: 30%;
+        padding: 15px 20px;
+        letter-spacing: 1.2px;
+        font-weight: 300;
+        font-size: 14px;
+        margin-top: 5%;
+        margin-right: 4%;
+      }
     }
     /* end: 768px */
     
     /* start: 500px */
     @media (max-width: 500px) {
-      
+      .details-card {
+        margin-left: 20%;
+      }
+
+      .flashcard-buttons {
+        width: 40%;
+        font-size: 13px;
+      }
     }
     
     /* Start: 375px */
     @media (max-width: 375px) {
-    
+      .details-container {
+        height: 110vh;
+      }
     }
     

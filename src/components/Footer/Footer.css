@@ -68,6 +68,7 @@ footer small p {
 /* start: 1024px */
 @media (max-width: 1024px) {
   footer {
+    position: relative;
     width: 60%;
     display: flex;
     flex-direction: column;
