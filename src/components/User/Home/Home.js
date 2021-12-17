@@ -1,19 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-scroll'
-import { GithubContext } from "../../../App.js";
-import Category from '../Category/Category.js';
 import './Home.css';
+import Category from '../Category/Category.js';
 
 function Home() {
     const user = localStorage.getItem('username');
-    const { state, dispatch } = useContext(GithubContext);
-    const { name } = state.user;
-    console.log(dispatch);
+
     return (
         <div className="categories-container">
             <h2 className="welcome-user">
                 <ion-icon name="finger-print-sharp"></ion-icon>
-                <span className="current-user">{`${user || name}`}</span></h2>
+                <span className="current-user">{`${user}`}</span></h2>
             <Link
                 className="continue-link"
                 to="categories"

@@ -112,7 +112,6 @@ Web application uses the following technologies, frameworks, and development tec
 
 ## Additional improvements attempt
 * Good UI and UX
-* Connect to an external API - sign in with GitHub profile
 * The application is deployed in the cloud - Heroku
 
 
