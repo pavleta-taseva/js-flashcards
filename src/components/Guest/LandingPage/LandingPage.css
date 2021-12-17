@@ -290,14 +290,8 @@
 
 /* start: 500px */
 @media (max-width: 500px) {
-  .header-content {
-    width: 90%;
-  }
-
-  .header-content h6 {
-    font-size: 30px;
-    margin-top: 5%;
-    padding-left: 30%;
+  .header {
+   display: none;
   }
 
   .website-info {
