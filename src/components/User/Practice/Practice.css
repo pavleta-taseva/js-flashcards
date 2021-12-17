@@ -1,21 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
 
 .practice-title {
-    margin-top: 2%;
-    font-size: 28px;
-    font-weight: 300;
-    font-family: "Audiowide", cursive;
-    color: #eee;
-    padding-bottom: 15px;
-    border-bottom: 1px solid rgba(202,144,224,1);
+  margin-top: 2%;
+  font-size: 28px;
+  font-weight: 300;
+  font-family: "Audiowide", cursive;
+  color: #eee;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(202, 144, 224, 1);
 }
 
-    /* start: 500px */
-    @media (max-width: 500px) {
-        .practice-title {
-            margin-top: 2%;
-            margin-left: 20%;
-            font-size: 25px;
-        }
-    }
-    
+/* start: 500px */
+@media (max-width: 500px) {
+  .practice-title {
+    margin-top: 2%;
+    margin-left: 20%;
+    font-size: 25px;
+  }
+}

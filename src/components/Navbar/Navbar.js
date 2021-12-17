@@ -7,12 +7,10 @@ function Navbar() {
     const userId = localStorage.getItem('userId');
     const isLogged = userId !== null;
     const navigate = useNavigate();
-    //assigning location variable
     const location = useLocation();
-    //destructuring pathname from location
     const { pathname } = location;
-    //Javascript split method to get the name of the path in array
     const splitLocation = pathname.split("/");
+    
     async function onLogout() {
         try {
             await logout();

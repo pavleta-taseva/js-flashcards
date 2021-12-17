@@ -114,7 +114,7 @@ function MyCards() {
                                 </span><br />
                                 <button className="filterBtn" type="submit">Filter</button><br />
                             </form>
-                                <button onClick={reload} className="filterBtn" type="submit">Refresh to load all cards</button>
+                                <button onClick={reload} className="filterBtn" type="submit">Load all cards</button>
                             <OwnerFlashcardList flashcards={currentCards} />
                             <PaginationElement
                                 cardsPerPage={cardsPerPage}

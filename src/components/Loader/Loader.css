@@ -1,81 +1,80 @@
 .blob-section {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
 .blob {
-    position: absolute;
-    width: 500px;
-    height: 500px;
+  position: absolute;
+  width: 500px;
+  height: 500px;
 }
 
 .blob:nth-child(2) {
-    filter:blur(50px);
+  filter: blur(50px);
 }
 
 .loader {
-    position: absolute;
-    top: 50%;
-    left: 25%;
-    width: 30vw;
-    height: 30vh;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding-bottom: 10%;
-    z-index: 9999;
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  width: 30vw;
+  height: 30vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 10%;
+  z-index: 9999;
 }
 
 .loading-clip {
-    display: block;
+  display: block;
 }
 
 .loader-heading {
-    color: #E7D4F6;
-    text-align:end;
+  color: #e7d4f6;
+  text-align: end;
 }
 
 /* start: 1024px */
 @media (max-width: 1024px) {
-    .blob {
-        position: absolute;
-        width: 450px;
-        height: 450px;
-    }
+  .blob {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+  }
 }
 /* end: 1024px */
 
 /*start 768px */
 @media (max-width: 768px) {
-    .blob {
-        position: absolute;
-        width: 400px;
-        height: 400px;
-    }
+  .blob {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+  }
 }
 /* end: 768px */
 
 /* start: 500px */
 @media (max-width: 500px) {
-    .blob {
-        position: absolute;
-        width: 300px;
-        height: 300px;
-        margin-left: 20%;
-    }
+  .blob {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    margin-left: 20%;
+  }
 
-    .loader-heading {
-        font-size: 20px;
-        margin-left: 20%;
-    }
+  .loader-heading {
+    font-size: 20px;
+    margin-left: 20%;
+  }
 }
 
 /* Start: 375px */
 @media (max-width: 375px) {
-
 }

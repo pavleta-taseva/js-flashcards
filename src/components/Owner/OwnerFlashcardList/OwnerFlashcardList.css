@@ -81,6 +81,16 @@
     color: #ca90e0;
 }
 
+/* start: 1280px */
+@media (max-width: 1280px) {
+    .flashcards-container {
+        width: 80vw;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 2rem;
+    }  
+}
+/* end: 1280px */
+
     /* start: 1024px */
     @media (max-width: 1024px) {
         .flashcards-container {

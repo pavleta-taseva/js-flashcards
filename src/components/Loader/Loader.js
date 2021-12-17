@@ -74,4 +74,4 @@ function loader(loading) {
     )
 }
 
-export default loader
+export default loader;

@@ -1,75 +1,55 @@
 .category-choose-select {
-    background-color: #eee;
-    border: none;
-    padding: 5px;
-    font-family: inherit;
-    font-size: inherit;
-    cursor: inherit;
-    line-height: inherit;
-    outline: none;
-    color: #1c1320;
-    margin: 2% 0;
-    width: 20vw;
+  background-color: #eee;
+  border: none;
+  padding: 5px;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  outline: none;
+  color: #1c1320;
+  margin: 2% 0;
+  width: 20vw;
 }
 
 option {
-    color: #1c1320;
+  color: #1c1320;
 }
 
 .filterBtn {
-    display: inline-block;
-    width: 20%;
-    padding: 10px 70px;
-    background: var(--main-color);
-    color: #fff;
-    border: 1px solid var(--light-pink);
-    outline: none;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 15px;
-    letter-spacing: 1px;
-    cursor: pointer;
-    margin-bottom: 1%;
+  display: inline-block;
+  width: 20%;
+  padding: 10px 70px;
+  background: var(--main-color);
+  color: #fff;
+  border: 1px solid var(--light-pink);
+  outline: none;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 15px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-bottom: 1%;
 }
 
-    /* start: 1024px */
-    @media (max-width: 1024px) {
-    }
-    /* end: 1024px */
-    
-    /* Start: 993px*/
-    @media (min-width: 993px) and (max-width: 1024px) {
-      
-    }
-    
-    /* start: 992px */
-    @media (min-width: 769px) and (max-width: 992px) {
-      
-    }
-    /* end 992px */
-    
-    /*start 768px */
-    @media (max-width: 768px) {
-      
-    }
-    /* end: 768px */
-    
-    /* start: 500px */
-    @media (max-width: 500px) {
-        .category-choose-select {
-            width: 50%;
-            margin-left: 20%;
-        }
+/* start: 1024px */
+@media (max-width: 1280px) {
+  .filterBtn {
+    width: 30%;
+  }
+}
+/* end: 1280px */
 
-        .filterBtn {
-            width: 50%;
-            padding: 10px 40px;
-            margin-left: 20%;
-        }
-    }
-    
-    /* Start: 375px */
-    @media (max-width: 375px) {
-    
-    }
-    
+/* start: 500px */
+@media (max-width: 500px) {
+  .category-choose-select {
+    width: 50%;
+    margin-left: 20%;
+  }
+
+  .filterBtn {
+    width: 50%;
+    padding: 10px 40px;
+    margin-left: 20%;
+  }
+}
