@@ -11,7 +11,8 @@ function Category() {
           <ion-icon name="logo-javascript"></ion-icon>
         </div>
         <div className="category-content">
-          <Link className="category-link" to="/flashcards-basic" alt="flashcards-basic"><h2 className="category-title">JS Basics</h2></Link>
+          <Link className="category-link" to="/flashcards-basic" alt="flashcards-basic">
+            <h2 className="category-title">JS Basics</h2></Link>
           <p className="category-description">
             Learn with ease the basics of JS Programming language through series
             of flashcards, created for beginners.

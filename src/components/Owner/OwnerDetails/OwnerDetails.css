@@ -264,6 +264,11 @@
         font-size: 14px;
       }
 
+      .buttons {
+        display: flex;
+        flex-direction: column;
+      }
+      
       .flashcard-buttons {
         width: 30%;
         padding: 15px 20px;

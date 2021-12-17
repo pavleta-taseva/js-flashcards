@@ -277,17 +277,35 @@
     
     /*start 768px */
     @media (max-width: 768px) {
-      
+      .button-disabled {
+        width: 90%;
+        padding: 15px 10px;
+        letter-spacing: 1px;
+        font-weight: 300;
+        font-size: 12px;
+        margin-top: 5%;
+        margin-right: 4%;
+      }
+    
+      .button-remove {
+        width: 90%;
+        padding: 15px 10px;
+        letter-spacing: 1px;
+        font-weight: 300;
+        font-size: 12px;
+        margin-top: 5%;
+        margin-right: 4%;
+      }
     }
     /* end: 768px */
     
     /* start: 500px */
     @media (max-width: 500px) {
-      
+
     }
     
     /* Start: 375px */
     @media (max-width: 375px) {
-    
+
     }
     
