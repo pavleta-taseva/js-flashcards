@@ -28,14 +28,13 @@ import 'react-notifications-component/dist/theme.css';
 function App() {
 
   return (
-    <AuthProvider>
+<AuthProvider>
         <div className="App">
           <ReactNotification />
           <Navbar />
           <main>
             <Routes>
-              <Route path='/' element={<LandingPage />}>
-              </Route>
+              <Route path='/' element={<LandingPage />} />
               <Route path='/register' element={<Register />} />
               <Route path='/login' element={<Login />} />
               <Route path='/collections' element={<Collections />} />

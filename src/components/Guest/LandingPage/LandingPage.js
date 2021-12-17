@@ -3,20 +3,26 @@ import './LandingPage.css';
 import background from '../../../images/bg.jpg';
 import { Link, Outlet } from 'react-router-dom';
 import DemoFlashcard from '../../DemoFlashcard/DemoFlashcard.js';
+import Home from '../../User/Home/Home.js';
 
 function LandingPage() {
     const link = <Link alt="register" className="links" to="/register">Register</Link>;
+    const user = localStorage.getItem('username');
 
     return (
         <div>
-            <section className="header" style={{ backgroundImage: `url(${background})` }}>
-                <div className="header-content">
-                    <div className="animate__animated animate__fadeInDown">
-                        <h1>JavaScript Flashcards Trainer</h1>
-                        <h6>Challenge yourself</h6>
+            {user
+                ? <Home />
+                : <section className="header" style={{ backgroundImage: `url(${background})` }}>
+                    <div className="header-content">
+                        <div className="animate__animated animate__fadeInDown">
+                            <h1>JavaScript Flashcards Trainer</h1>
+                            <h6>Challenge yourself</h6>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            }
+
 
             <section className="main-info">
                 <div className="website-info">
