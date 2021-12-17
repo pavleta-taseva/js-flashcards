@@ -29,6 +29,7 @@
 
 .welcome-user ion-icon {
   color: #1c1320;
+  margin-right: 5px;
 }
 
 .current-user {

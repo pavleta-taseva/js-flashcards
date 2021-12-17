@@ -10,7 +10,8 @@ function Home() {
         <div className="categories-container">
             <h2 className="welcome-user">
                 <ion-icon name="finger-print-sharp"></ion-icon>
-                <span className="current-user">{`${user}`}</span></h2>
+                <span className="current-user"> {`${user}`}</span>
+                </h2>
             <Link
                 className="continue-link"
                 to="categories"
