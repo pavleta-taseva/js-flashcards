@@ -16,3 +16,4 @@ app.get('/*', function (req, res) {
 app.listen(port);
 
   // "start": "react-scripts start",
+  //"start": "node server.js",
