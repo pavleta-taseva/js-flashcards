@@ -135,6 +135,58 @@
   border-bottom: 1px solid #fff;
 }
 
+.login-github {
+  background-color: #3c2846;
+  border: 1px solid rgba(202,144,224,1);
+  width: 70%;
+  border-radius: 25px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+  .login-link {
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: default;
+    display: flex;
+    align-items: center;          
+    height: 40px;
+  }
+
+    span {
+      margin-left: 5px;
+    }
+
+
+  .loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;          
+    height: 40px;
+  }
+
+  .loader-github {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    animation: spin 2s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
 @media (max-width: 1280px) {
   .loginForm-container {
     width: 100%;

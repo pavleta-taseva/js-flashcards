@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useReducer } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Category from './components/User/Category/Category.js';
@@ -23,12 +23,20 @@ import ReactNotification from 'react-notifications-component';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage.js';
 import { AuthProvider } from './contexts/AuthContext.js';
 import PrivateRoutes from './helpers/PrivateRoutes.js';
+import { initialState, reducer } from "./store/reducer";
 import 'react-notifications-component/dist/theme.css';
 
+export const GithubContext = createContext();
+
 function App() {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
-    <AuthProvider>
+    <GithubContext.Provider value={{
+      state,
+      dispatch
+    }}>
+      <AuthProvider>
         <div className="App">
           <ReactNotification />
           <Navbar />
@@ -42,9 +50,9 @@ function App() {
               <Route path='/collections/:number' element={<Collections />} />
               <Route path='/details/:id' element={<Details />} />
               <Route element={<PrivateRoutes />}>
-              <Route path='/home' element={<Home />}>
-                <Route path='/home/categories' element={<Category />} />
-              </Route>
+                <Route path='/home' element={<Home />}>
+                  <Route path='/home/categories' element={<Category />} />
+                </Route>
                 <Route path='/profile/:userId' element={<Profile />} />
                 <Route path='/flashcards-basic' element={<FlashcardsBasic />} />
                 <Route path='/flashcards-basic/:number' element={<FlashcardsBasic />} />
@@ -65,7 +73,8 @@ function App() {
           </main>
           <Footer />
         </div>
-    </AuthProvider>
+      </AuthProvider>
+    </GithubContext.Provider>
   );
 }
 
