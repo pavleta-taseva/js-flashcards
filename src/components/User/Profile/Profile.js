@@ -73,7 +73,6 @@ function Profile() {
                     await user.save();
                     window.location.replace(`/profile/${userId}`);
                     console.log('New image saved successfully!');
-                    return image;
                 } catch (error) {
                     console.error('Error while updating user', error);
                 }
