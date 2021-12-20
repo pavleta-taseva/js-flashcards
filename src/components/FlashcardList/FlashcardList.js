@@ -1,13 +1,11 @@
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import Flashcard from '../User/Flashcard/Flashcard.js';
-import { useAuth } from '../../contexts/AuthContext.js';
 import './FlashcardList.css';
 
 function FlashcardList({ flashcards }) {
-    const { user } = useAuth();
-    const check = user.username !== '';
-
+    const user = localStorage.getItem('username');
+    
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
@@ -15,7 +13,7 @@ function FlashcardList({ flashcards }) {
     return (
         <div>
             <div className="flashcards-list-container">
-                {check
+                {user
                     ? <div className='main-categories-links'>
                         <NavLink className={(navData) => navData.isActive ? 'active-main' : 'category-normal-link'} to="/flashcards-basic">
                             Flashcards Basic
