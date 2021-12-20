@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
 import Parse from '../../../../node_modules/parse/dist/parse.js';
-import '../Profile/Profile.css';
 import Backdrop from '../../Backdrop/Backdrop.js';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../Profile/Profile.css';
 import Modal from './../../Modal/Modal.js';
 import * as cardService from '../../../services/cardService.js';
 import * as authService from '../../../services/authService.js';
@@ -15,6 +16,7 @@ function Profile() {
     const userId = localStorage.getItem('userId');
     const username = localStorage.getItem('username');
     const email = localStorage.getItem('email');
+    const navigate = useNavigate();
 
     function showModalHandler() {
         setShowModal(true);
@@ -53,7 +55,7 @@ function Profile() {
                 user.set('image', file);
                 try {
                     await user.save();
-                    window.location.replace(`/profile/${userId}`);
+                    navigate(`/profile/${userId}`, { replace: true});
                     console.log('New image saved successfully!');
                     return image;
                 } catch (error) {
