@@ -23,6 +23,7 @@ import ReactNotification from 'react-notifications-component';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage.js';
 import { AuthProvider } from './contexts/AuthContext.js';
 import PrivateRoutes from './helpers/PrivateRoutes.js';
+import PublicRoutes from './helpers/PublicRoutes.js';
 import 'react-notifications-component/dist/theme.css';
 
 function App() {
@@ -34,12 +35,16 @@ function App() {
         <Navbar />
         <main>
           <Routes>
-            <Route path='/' element={<LandingPage />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/collections' element={<Collections />} />
-            <Route path='/collections/:number' element={<Collections />} />
+            <Route element={<PublicRoutes />}>
+              <Route path='/' element={<LandingPage />} />
+              <Route path='/register' element={<Register />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/collections' element={<Collections />} />
+              <Route path='/collections/:number' element={<Collections />} />
+            </Route>
+            
             <Route path='/details/:id' element={<Details />} />
+            
             <Route element={<PrivateRoutes />}>
               <Route path='/home' element={<Home />}>
                 <Route path='/home/categories' element={<Category />} />

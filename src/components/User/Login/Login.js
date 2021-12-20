@@ -34,7 +34,7 @@ function Login() {
                 const result = await authService.login(username, password);
                 setError(false);
                 if (result === null) {
-                    notification("User doesn't exist!", "Please register first");
+                    notification("Something went wrong!", "Wrong username or password");
                     navigate('/login', { replace: true });
                     return null;
                 }

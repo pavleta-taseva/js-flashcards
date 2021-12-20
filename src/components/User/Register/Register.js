@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import './Register.css';
 import registerBackground from '../../../images/register-bg.jpg';
 import { validateInput } from '../../../helpers/validator.js';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Register() {
     const [username, setUsername] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [rePass, setRePass] = useState();
+    console.log(rePass);
     const [passwordShown, setPasswordShown] = useState(false);
-    const navigation = useNavigate();
 
     const togglePasswordVisiblity = () => {
         setPasswordShown(passwordShown ? false : true);
@@ -18,17 +18,18 @@ function Register() {
 
     async function registerUser(e) {
         e.preventDefault();
-
-        const data = { username, email, password, rePass };
+        const formData = new FormData(e.target);
+        let username = formData.get('username').toString().trim();
+        let email = formData.get('email').toString().trim();
+        let password = formData.get('password').trim();
+        let rePass = formData.get('rePass').trim();
 
         try {
-            validateInput(data.username, data.email, data.password, data.rePass);
+            await validateInput(username, email, password, rePass);
             setUsername(username);
-            navigation('/login', { replace: true });
         } catch (error) {
             console.log(error);
         }
-
     }
 
     return (

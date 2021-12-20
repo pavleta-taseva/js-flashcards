@@ -16,7 +16,7 @@ export async function login(username, password) {
         }
     } catch (error) {
         Parse.User.logOut();
-        console.log('Please register first');
+        console.log('Wrong username or password');
         return null;
     }
 }
@@ -26,11 +26,12 @@ export async function register(username, email, password) {
     user.set('username', username);
     user.set('email', email);
     user.set('password', password);
-    
+    console.log(user.username);
     try {
         await user.signUp();
         Parse.User.logOut();
         notification('Almost done!', "Email must be verified. Please, visit your mail inbox for further instructions.");
+        window.location.replace('/login');
     } catch (error) {
         notification('Ops', `Something went wrong: + ${error}`);
         console.error(error);

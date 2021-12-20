@@ -2,14 +2,14 @@ import * as authService from "../services/authService.js";
 import notification from "./notification.js";
 
 export async function validateInput(username, email, password, repass) {
-    if (username === '' 
-    || username === undefined 
-    || email === '' 
-    || email === undefined 
-    || password === '' 
-    || password === undefined 
-    || repass === '' 
-    || repass === undefined) {
+    if (username === ''
+        || username === undefined
+        || email === ''
+        || email === undefined
+        || password === ''
+        || password === undefined
+        || repass === ''
+        || repass === undefined) {
         return notification('Missing information', 'All fields are required!');
     }
 
@@ -66,29 +66,15 @@ export async function validateInput(username, email, password, repass) {
     }
 
     if (isInvSymbol === true) {
-        return notification('Problem found','Password must consist only of letters and digits.');
+        return notification('Problem found', 'Password must consist only of letters and digits.');
     }
 
     if (hasDigits === false) {
         return notification('Problem found', 'Password must have at least 2 digits.');
     }
-
-    let cleanedUser = '';
-    const usernamePattern = /[/\\n\\r<>";&()^\s:*%+?${}|[\]\\@]+/gm;
-    const test = usernamePattern.test(username);
-    if (test === true) {
-        for (let i = 0; i < username.length; i++) {
-            let found = username[i].match(usernamePattern);
-            if (found !== null && found.length > 0) {
-                cleanedUser += '';
-            } else {
-                cleanedUser += username[i];
-            }
-        };
-        notification('We are sorry!', `Your username is set to ${cleanedUser}, according to our requirements!`);
-        await authService.register(cleanedUser, email, password);
-    } else {
+    try {
         await authService.register(username, email, password);
-        
+    } catch (error) {
+        console.log(error);
     }
 }
