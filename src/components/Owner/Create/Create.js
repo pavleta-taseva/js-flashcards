@@ -37,13 +37,15 @@ function Create() {
         }
 
         if (validate === true) {
-            cardService.create(data)
-                .then(result => {
-                    navigate(`/my-cards/${owner}`, { replace: true });
-                })
-            setError(false);
+            try {
+                await cardService.create(data);
+                setError(false);
+                navigate(`/my-cards/${owner}`, { replace: true });
+            } catch (error) {
+                console.log(error);
+            }    
         } else {
-            notification("Error!", "Flashcard fields cannot be empty");
+            notification("Choose category!", "Please, fill in all fields.");
             setError(true);
         }
     }    
