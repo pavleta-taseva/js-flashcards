@@ -72,7 +72,8 @@ function Profile() {
                 try {
                     await user.save();
                     console.log('New image saved successfully!');
-                    window.location.reload();
+                    const image = await authService.getUserImage(userId);
+                    setImage(image);
                 } catch (error) {
                     console.error('Error while updating user', error);
                 }
@@ -84,7 +85,7 @@ function Profile() {
     }
 
     async function handleProfileImage(event) {
-        console.log(event.target.files[0]);
+        console.log(event.target.files[0])
         setImage(event.target.files[0]);
     }
 
