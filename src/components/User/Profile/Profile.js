@@ -71,8 +71,8 @@ function Profile() {
                 user.set('image', file);
                 try {
                     await user.save();
-                    window.location.replace(`/profile/${userId}`);
                     console.log('New image saved successfully!');
+                    window.location.reload();
                 } catch (error) {
                     console.error('Error while updating user', error);
                 }
@@ -88,6 +88,7 @@ function Profile() {
         setImage(event.target.files[0]);
     }
 
+    console.log(image);
     return (
         <div className="profile-container">
             <div className="user-profile">
@@ -106,7 +107,7 @@ function Profile() {
                         <button className="submit-image" type="submit">Save image</button>
                     </form>
                     {image && (
-                        <img className="user-image" alt="user" onError={(event) => event.target.src = 'user.png'} src={image}></img>
+                        <img className="user-image" alt="user" src={image}></img>
                     )}
                 </div>
                 <div className="user-details">
