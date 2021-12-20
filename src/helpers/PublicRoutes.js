@@ -1,4 +1,4 @@
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import * as authService from '../services/authService.js';
 
 const PrivateRoute = () => {
@@ -6,6 +6,8 @@ const PrivateRoute = () => {
 
     if (isAuthenticated) {
         return <Navigate to="/home" />
+    } else {
+        return <Outlet />;
     }
 }
 
