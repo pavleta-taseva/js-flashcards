@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import * as cardService from '../../../services/cardService.js';
 import { useNavigate } from 'react-router-dom';
-import levelPicture from '../../../images/create.png';
 import notification from '../../../helpers/notification.js';
 import './Create.css';
 
@@ -81,7 +80,7 @@ function Create() {
                     <li>You can see the current level you have been awarded on your personal profile page.</li>
                     <li>Current maximum level is 100 - High Emperor - the one who rules our World of JavaScript! <i class="fas fa-crown"></i></li>
                 </ul>
-                <img className="create-image" src={require(levelPicture)} alt="Create new flashcard" />
+                <img className="create-image" src={require('../../../images/create.png')} alt="Create new flashcard" />
             </div>
         </div>
     )
