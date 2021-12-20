@@ -141,12 +141,6 @@ ul li {
     margin: 10px 0;
 }
 
-.create-image {
-    display: block;
-    padding: 0;
-    margin: 0;
-}
-
 @media (max-width: 1280px) {
     .create-container {
         grid-template-columns: 0.5fr 1fr 1fr;

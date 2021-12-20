@@ -80,7 +80,6 @@ function Create() {
                     <li>You can see the current level you have been awarded on your personal profile page.</li>
                     <li>Current maximum level is 100 - High Emperor - the one who rules our World of JavaScript! <i class="fas fa-crown"></i></li>
                 </ul>
-                <img className="create-image" src={require('../../../images/create.png').default} alt="Create new flashcard" />
             </div>
         </div>
     )
