@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import BeatLoader from "react-spinners/BeatLoader";
 import '../Loader/Loader.css';
 
-function loader(loading) {
+function Loader(loading) {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
     return (
         <div className='blob-section'>
             <div className="loader">
@@ -74,4 +79,4 @@ function loader(loading) {
     )
 }
 
-export default loader;
+export default Loader;
