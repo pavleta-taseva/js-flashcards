@@ -23,6 +23,7 @@ function Details() {
                 const currentCard = await cardService.getCard(id);
                 const currentCardOwnerId = currentCard.owner.id;
                 const ownerName = await cardService.getName(currentCardOwnerId);
+                console.log(ownerName);
                 setCurrentQuestion(currentCard.question);
                 setCurrentAnswer(currentCard.answer);
                 setCurrentOwner(ownerName);
