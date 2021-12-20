@@ -1,7 +1,6 @@
 import Parse from '../../../../node_modules/parse/dist/parse.js';
 import Backdrop from '../../Backdrop/Backdrop.js';
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import '../Profile/Profile.css';
 import Modal from './../../Modal/Modal.js';
 import * as cardService from '../../../services/cardService.js';
@@ -16,7 +15,24 @@ function Profile() {
     const userId = localStorage.getItem('userId');
     const username = localStorage.getItem('username');
     const email = localStorage.getItem('email');
-    const navigate = useNavigate();
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const res = await cardService.countMyCards(userId);
+                const currentLevel = await cardService.getUserLevel(userId);
+                const created = await cardService.createdAt(userId); 
+                const image = await authService.getUserImage(userId);
+                setImage(image);
+                setCount(res);
+                setLevel(currentLevel);
+                setCreated(created); 
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        fetchData();
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     function showModalHandler() {
         setShowModal(true);
@@ -55,7 +71,7 @@ function Profile() {
                 user.set('image', file);
                 try {
                     await user.save();
-                    navigate(`/profile/${userId}`, { replace: true});
+                    window.location.replace(`/profile/${userId}`);
                     console.log('New image saved successfully!');
                     return image;
                 } catch (error) {
@@ -72,24 +88,6 @@ function Profile() {
         console.log(event.target.files[0]);
         setImage(event.target.files[0]);
     }
-
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const res = await cardService.countMyCards(userId);
-                const currentLevel = await cardService.getUserLevel(userId);
-                const created = await cardService.createdAt(userId); 
-                const image = await authService.getUserImage(userId);
-                setImage(image);
-                setCount(res);
-                setLevel(currentLevel);
-                setCreated(created); 
-            } catch (err) {
-                console.log(err);
-            }
-        }
-        fetchData();
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div className="profile-container">
@@ -109,7 +107,7 @@ function Profile() {
                         <button className="submit-image" type="submit">Save image</button>
                     </form>
                     {image && (
-                        <img className="user-image" alt="user" onError={(event) => event.target.style.display = 'none'} src={image}></img>
+                        <img className="user-image" alt="user" onError={(event) => event.target.src = 'user.png'} src={image}></img>
                     )}
                 </div>
                 <div className="user-details">
