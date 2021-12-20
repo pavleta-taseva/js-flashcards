@@ -23,7 +23,6 @@ function Details() {
                 const currentCard = await cardService.getCard(id);
                 const currentCardOwnerId = currentCard.owner.id;
                 const ownerName = await cardService.getName(currentCardOwnerId);
-                console.log(ownerName);
                 setCurrentQuestion(currentCard.question);
                 setCurrentAnswer(currentCard.answer);
                 setCurrentOwner(ownerName);
@@ -43,6 +42,9 @@ function Details() {
         fetchData();
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+    if (currentOwner === undefined || currentOwner === null) {
+        currentOwner = 'Unknown';
+    }
 
     const ownerElement = <div className="details-card">
         <h2 className="details"><span className="details-title">Flashcard Details:</span></h2>
@@ -143,10 +145,6 @@ function Details() {
                     notification("Success!", "Card removed from your practice list");
                 }, 3000);
             })
-    }
-
-    if (currentOwner === undefined || currentOwner === null) {
-        currentOwner = 'Unknown';
     }
 
     return (
