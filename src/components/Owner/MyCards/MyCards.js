@@ -4,11 +4,13 @@ import PaginationElement from "../../PaginationElement/PaginationElement.js";
 import * as cardService from '../../../services/cardService.js';
 import Loader from '../../Loader/Loader.js';
 import '../MyCards/MyCards.css';
+import { Navigate } from "react-router-dom";
 
 const options = [
     { value: 'JS Basics', text: 'JS Basics' },
     { value: 'JS Advanced', text: 'JS Advanced' },
     { value: 'JS Web', text: 'JS Web' },
+    { value: 'All cards', text: 'All cards' },
 ]
 
 function MyCards() {
@@ -89,9 +91,11 @@ function MyCards() {
         setIsFiltered(true);
     }
 
-    function reload() {
+    async function reload() {
         setIsFiltered(false);
-        setCards(currentCards)
+        const res = await cardService.getMyCards(userId);
+        setCards(res);
+        Navigate(`/my-cards/${userId}`);
     }
 
     return (
