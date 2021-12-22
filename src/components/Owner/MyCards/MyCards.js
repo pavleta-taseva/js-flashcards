@@ -90,8 +90,8 @@ function MyCards() {
     }
 
     function reload() {
-        window.location.replace(`/my-cards/${userId}`);
         setIsFiltered(false);
+        setCards(currentCards)
     }
 
     return (
