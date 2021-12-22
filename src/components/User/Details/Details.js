@@ -146,6 +146,7 @@ function Details() {
                     notification("Success!", "Card removed from your practice list");
                 }, 3000);
             })
+            navigate(`/practice/${localStorageOwnerId}`, { replace: true });
     }
 
     return (

@@ -201,7 +201,6 @@ export async function removeCardFromPractice(id, userId) {
         }
         try {
             let response = await user.save();
-            window.location.replace(`/practice/${userId}`);
             console.log('Updated user', response);
           } catch (error) {
             console.error('Error while updating user', error);
