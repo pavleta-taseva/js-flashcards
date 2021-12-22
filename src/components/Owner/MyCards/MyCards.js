@@ -10,7 +10,6 @@ const options = [
     { value: 'JS Basics', text: 'JS Basics' },
     { value: 'JS Advanced', text: 'JS Advanced' },
     { value: 'JS Web', text: 'JS Web' },
-    { value: 'All cards', text: 'All cards' },
 ]
 
 function MyCards() {
