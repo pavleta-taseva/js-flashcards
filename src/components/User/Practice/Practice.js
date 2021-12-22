@@ -16,6 +16,24 @@ function Practice() {
     const url = window.location.href;
     const currentPageName = url.split('https://js-flashcards.herokuapp.com/')[1].split('/')[0];
     
+    useEffect(() => {
+        setLoading(true);
+        window.scrollTo(0, 0);
+        async function fetchWebData() {
+            try {
+                const res = await cardService.getPracticeList(userId);
+                setPracticeCards(res);
+                setTimeout(() => {
+                    setLoading(false);
+                }, 2000);
+                return () => { setLoading(false) };
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        fetchWebData();
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    
     const indexOfLastCard = currentPage * cardsPerPage;
     const indexOfFirstCard = indexOfLastCard - cardsPerPage;
     const currentCards = practiceCards.slice(indexOfFirstCard, indexOfLastCard);
@@ -40,24 +58,6 @@ function Practice() {
         }
         setCurrentPage(nextPage);
     }
-
-    useEffect(() => {
-        setLoading(true);
-        window.scrollTo(0, 0);
-        async function fetchWebData() {
-            try {
-                const res = await cardService.getPracticeList(userId);
-                setPracticeCards(res);
-                setTimeout(() => {
-                    setLoading(false);
-                }, 2000);
-                return () => { setLoading(false) };
-            } catch (err) {
-                console.log(err);
-            }
-        }
-        fetchWebData();
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     console.log(practiceCards);
     return (

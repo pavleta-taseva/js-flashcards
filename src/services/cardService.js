@@ -201,7 +201,7 @@ export async function removeCardFromPractice(id, userId) {
         }
         try {
             let response = await user.save();
-            window.location.reload(`/practice/${userId}`);
+            window.location.replace(`/practice/${userId}`);
             console.log('Updated user', response);
           } catch (error) {
             console.error('Error while updating user', error);
@@ -480,11 +480,10 @@ export async function getPracticeList(userId) {
                 practiceList = result;
             }
         }
+        return practiceList;
     } catch (error) {
         console.log(`Error: ${JSON.stringify(error)}`);
     }
-
-    return practiceList;
 }
 
 export async function getAllCards() {

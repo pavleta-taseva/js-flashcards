@@ -86,6 +86,7 @@ function Details() {
         <h2 className="details-heading"><span className="details-title">Question:</span> {currentQuestion}</h2>
         <h2 className="details-heading"><span className="details-title">Answer:</span> {currentAnswer}</h2>
         <div><h2 className="details-heading"><span className="details-title">Creator:</span> {currentOwner}</h2></div>
+        
         {localStorageOwnerId
             ? <div>
                 {!add
