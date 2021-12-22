@@ -33,7 +33,7 @@ function Practice() {
         }
         fetchWebData();
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
-    
+
     const indexOfLastCard = currentPage * cardsPerPage;
     const indexOfFirstCard = indexOfLastCard - cardsPerPage;
     const currentCards = practiceCards.slice(indexOfFirstCard, indexOfLastCard);
@@ -59,7 +59,6 @@ function Practice() {
         setCurrentPage(nextPage);
     }
 
-    console.log(practiceCards);
     return (
         <div>
             {loading

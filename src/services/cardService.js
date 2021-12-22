@@ -458,6 +458,7 @@ export async function getPracticeList(userId) {
     const query = new Parse.Query(User);
     try {
         let user = await query.get(userId);
+        console.log(user);
         const list = user.get('practiceCards');
         const array = Object.entries(list);
         for (let [index, card] of array) {
@@ -479,11 +480,13 @@ export async function getPracticeList(userId) {
                 result.push(queryResult);
                 practiceList = result;
             }
+            console.log(practiceList);
         }
-        return practiceList;
+        
     } catch (error) {
         console.log(`Error: ${JSON.stringify(error)}`);
     }
+    return practiceList;
 }
 
 export async function getAllCards() {

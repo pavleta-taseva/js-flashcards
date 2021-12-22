@@ -91,6 +91,7 @@ function MyCards() {
 
     function reload() {
         window.location.replace(`/my-cards/${userId}`);
+        setIsFiltered(false);
     }
 
     return (
