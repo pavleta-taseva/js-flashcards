@@ -93,7 +93,6 @@ function MyCards() {
 
     function reload() {
         window.location.reload();
-        navigate(`/my-cards/${userId}`, { replace: true });
     }
 
     return (

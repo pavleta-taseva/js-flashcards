@@ -59,6 +59,7 @@ function Practice() {
         fetchWebData();
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+    console.log(practiceCards);
     return (
         <div>
             {loading
