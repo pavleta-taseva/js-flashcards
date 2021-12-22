@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import OwnerFlashcardList from '../OwnerFlashcardList/OwnerFlashcardList.js';
 import PaginationElement from "../../PaginationElement/PaginationElement.js";
 import * as cardService from '../../../services/cardService.js';
@@ -21,6 +22,7 @@ function MyCards() {
     const userId = localStorage.getItem('userId');
     const url = window.location.href;
     const currentPageName = url.split('https://js-flashcards.herokuapp.com/')[1].split('/')[0];
+    const navigate = useNavigate();
     let categoryName = '';
 
     useEffect(() => {
@@ -90,7 +92,8 @@ function MyCards() {
     }
 
     function reload() {
-        window.location.reload();
+        // window.location.reload();
+        navigate(`/my-cards/${userId}`, { replace: true });
     }
 
     return (
