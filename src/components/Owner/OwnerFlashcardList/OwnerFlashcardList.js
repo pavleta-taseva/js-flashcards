@@ -8,8 +8,8 @@ function OwnerFlashcardList({ flashcards }) {
             <div className="flashcards-list-container">
                 <div className="flashcards-wrapper">
                     <div className="flashcards-container">
-                        {flashcards?.map((ownerFlashcard, index) => {
-                            return <OwnerFlashcard ownerFlashcard={ownerFlashcard} key={index} />
+                        {flashcards?.map((ownerFlashcard) => {
+                            return <OwnerFlashcard ownerFlashcard={ownerFlashcard} key={ownerFlashcard.id} />
                         })}
                     </div>
                 </div>

@@ -30,8 +30,8 @@ function FlashcardList({ flashcards }) {
 
                 <div className="flashcards-wrapper">
                     <div className="flashcards-container">
-                        {flashcards?.map((flashcard, index) => {
-                            return <Flashcard flashcard={flashcard} key={index} />
+                        {flashcards?.map((flashcard) => {
+                            return <Flashcard flashcard={flashcard} key={flashcard.id} />
                         })}
                     </div>
                 </div>
