@@ -21,6 +21,9 @@ function Details() {
         async function fetchData() {
             try {
                 const currentCard = await cardService.getCard(id);
+                if (currentCard === undefined) {
+                    navigate('/404', { replace: true });
+                }
                 const currentCardOwnerId = currentCard.owner.id;
                 const ownerName = await cardService.getName(currentCardOwnerId);
                 setCurrentQuestion(currentCard.question);
