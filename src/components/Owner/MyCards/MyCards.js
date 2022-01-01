@@ -21,7 +21,8 @@ function MyCards() {
     const [cardsPerPage] = useState(6);
     const userId = localStorage.getItem('userId');
     const url = window.location.href;
-    const currentPageName = url.split('https://js-flashcards.herokuapp.com/')[1].split('/')[0];
+    const pattern = /^(http|https):\/\/(?:[a-z]*[-]*)(?:[a-z]+).[a-z]+.[a-z]+[:3000]*\//gm;
+    const currentPageName = url.split(pattern)[1].split('/')[0];
     let categoryName = '';
 
     useEffect(() => {

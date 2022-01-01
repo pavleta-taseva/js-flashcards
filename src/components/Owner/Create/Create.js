@@ -25,7 +25,7 @@ function Create() {
         let answer = formData.get('answer');
 
         let data = { category, question, answer, owner };
-
+        console.log(data.category);
         if (category !== '' || question !== '' || answer !== '') {
             setValidate(true);
             setError(false);

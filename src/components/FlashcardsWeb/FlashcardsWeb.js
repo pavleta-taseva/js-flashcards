@@ -11,7 +11,8 @@ function FlashcardsWeb() {
     const [currentPage, setCurrentPage] = useState(1);
     const [cardsPerPage] = useState(6);
     const url = window.location.href;
-    const currentPageName = url.split('https://js-flashcards.herokuapp.com/')[1].split('/')[0];
+    const pattern = /^(http|https):\/\/(?:[a-z]*[-]*)(?:[a-z]+).[a-z]+.[a-z]+[:3000]*\//gm;
+    const currentPageName = url.split(pattern)[1].split('/')[0];
 
     useEffect(() => {
         setLoading(true);
