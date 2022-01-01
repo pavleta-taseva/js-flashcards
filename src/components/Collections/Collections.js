@@ -11,8 +11,7 @@ function Collections() {
     const [currentPage, setCurrentPage] = useState(1);
     const [cardsPerPage] = useState(6);
     const url = window.location.href;
-    const pattern = /^(http|https):\/\/(?:[a-z]*[-]*)(?:[a-z]+).[a-z]+.[a-z]+[:3000]*\//gm;
-    const currentPageName = url.split(pattern)[1].split('/')[0];
+    const currentPageName = url.split('//')[1].split('/')[1].split('/')[0];
 
     useEffect(() => {
         setLoading(true);

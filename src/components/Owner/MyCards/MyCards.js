@@ -21,8 +21,7 @@ function MyCards() {
     const [cardsPerPage] = useState(6);
     const userId = localStorage.getItem('userId');
     const url = window.location.href;
-    const pattern = /^(http|https):\/\/(?:[a-z]*[-]*)(?:[a-z]+).[a-z]+.[a-z]+[:3000]*\//gm;
-    const currentPageName = url.split(pattern)[1].split('/')[0];
+    const currentPageName = url.split('//')[1].split('/')[1].split('/')[0];
     let categoryName = '';
 
     useEffect(() => {

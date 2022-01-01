@@ -65,6 +65,7 @@ function App() {
               <Route path='/edit/:id' element={<Edit />} />
             </Route>
             <Route path='*' element={<NotFoundPage />} />
+            <Route path='/404' element={<NotFoundPage />} />
           </Routes>
         </main>
         <Footer />

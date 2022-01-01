@@ -89,7 +89,6 @@ function Profile() {
         setImage(event.target.files[0]);
     }
 
-    console.log(image);
     return (
         <div className="profile-container">
             <div className="user-profile">
