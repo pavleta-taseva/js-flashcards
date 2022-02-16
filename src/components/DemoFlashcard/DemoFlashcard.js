@@ -35,8 +35,10 @@ function Flashcard() {
 
     return (
         <div className="card" >
-            {cover}
-            {details}
+            <div className="inner">
+                {cover}
+                {details}
+            </div>
         </div>
     );
 }
