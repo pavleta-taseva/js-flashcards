@@ -4,20 +4,30 @@
   --dark-purple: #1c1320;
 }
 
-* {
-  color: #fff;
-  font-family: "Roboto Mono", monospace;
+.flashcard-container {
+  grid-area: flashcard;
+  width: 100%;
+  padding-left: 15%;
 }
 
-html,
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: auto;
+.flashcard-container ion-icon {
+  color: #ccc;
 }
 
-.card {
+.flashcard-title {
+  color: #d400d4;
+  padding: 25% 0 5% 0;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.flashcard-text {
+  color: #ccc;
+  padding: 0 0 25% 0;
+  line-height: 1.5;
+}
+
+.flashcard {
   width: 400px;
   height: 500px;
   background: transparent;
@@ -39,7 +49,7 @@ body {
   transform: rotateY(-180deg);
 }
 
-.card .cover {
+.flashcard .front {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -58,7 +68,7 @@ body {
   z-index: 2;
 }
 
-.card .details {
+.flashcard .back {
   position: absolute;
   top: 0;
   left: 0;
@@ -99,18 +109,17 @@ body {
   filter: blur(50px);
 }
 
-.card span {
+.flashcard span {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: var(--dark-purple);
-  z-index: 10;
   font-size: 16px;
 }
 
-.card ion-icon {
+.flashcard ion-icon {
   font-size: 40px;
   margin-right: 10px;
   cursor: pointer;
@@ -142,7 +151,6 @@ body {
 }
 
 .listed-link {
-  text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -157,49 +165,177 @@ body {
   background: #d400d4;
   color: #fff;
   letter-spacing: 1px;
-  text-decoration: none;
   border-radius: 15px;
   font-weight: 500;
 }
 
-/* start: 1024px */
+@media (max-width: 1280px) {
+  .flashcard-container {
+    width: 100%;
+    padding-left: 5%;
+  }
+}
+
 @media (max-width: 1024px) {
-  .card {
-    width: 300px;
-    height: 400px;
+  .flashcard-text {
+    color: #ccc;
+    text-align: center;
+    padding: 20px 0;
+    line-height: 1.2;
+  }
+
+  .flashcard-title {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .flashcard-container {
+    width: 100%;
+    height: auto;
+    padding: 0;
+  }
+
+  .flashcard {
+    margin: 5% auto;
+    width: 500px;
+    height: 600px;
+  }
+
+  .question {
+    font-size: 18px;
+  }
+
+  .answer {
+    height: 30%;
+    width: 80%;
+    padding: 1%;
+    text-align: justify;
+    letter-spacing: 0.5px;
+    font-size: 18px;
+  }
+
+  .front h2 {
+    font-size: 18px;
+  }
+
+  .back .answer {
+    font-size: 14px;
   }
 }
-/* end: 1024px */
 
-/* Start: 993px*/
+@media (min-width: 769px) and (max-width: 992px) {
+  .flashcard-text {
+    color: #ccc;
+    text-align: center;
+    padding: 20px 0;
+    line-height: 1.2;
+  }
+
+  .flashcard-title {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .flashcard-container {
+    width: 100%;
+    height: auto;
+    padding: 0;
+  }
+
+  .flashcard {
+    margin: 5% auto;
+    width: 350px;
+    height: 450px;
+  }
+
+  .question {
+    font-size: 18px;
+  }
+
+  .answer {
+    height: 30%;
+    width: 80%;
+    padding: 1%;
+    text-align: justify;
+    letter-spacing: 0.5px;
+    font-size: 18px;
+  }
+
+  .front h2 {
+    font-size: 18px;
+  }
+
+  .back .answer {
+    font-size: 14px;
+  }
+}
+
 @media (min-width: 993px) and (max-width: 1024px) {
-  .card {
+  .flashcard {
     width: 250px;
     height: 350px;
   }
 }
 
-/*start 768px */
 @media (max-width: 768px) {
-  .card {
+  .flashcard {
     width: 250px;
     height: 350px;
   }
 
-  .cover h2 {
-    font-size: 20px;
+  .front h2 {
+    font-size: 16px;
   }
 
-  .details .answer {
-    font-size: 15px;
+  .back .answer {
+    font-size: 12px;
   }
 }
-/* end: 768px */
 
-/* Start: 375px */
-@media (max-width: 375px) {
-  .card {
-    width: 150px;
-    height: 150px;
+@media (max-width: 500px) {
+  .flashcard-text {
+    width: 60%;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2) {
+  .flashcard {
+    width: 230px;
+    height: 320px;
+  }
+
+  .back-button {
+    padding: 4px 15px;
+    font-weight: 300;
+    font-size: 12px;
+  }
+
+  .question {
+    margin-top: 10%;
+  }
+}
+
+@media (max-width: 360px) {
+  .flashcard {
+    width: 250px;
+    height: 350px;
+  }
+
+  .back-button {
+    padding: 4px 15px;
+    font-weight: 300;
+    font-size: 12px;
+  }
+
+  .question {
+    margin-top: 10%;
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .flashcard {
+    width: 220px;
+    height: 320px;
   }
 }
