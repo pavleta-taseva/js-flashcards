@@ -140,6 +140,12 @@
   letter-spacing: 1px;
 }
 
+.answer ul li {
+  line-height: 1.1;
+  margin: 10px 0;
+  list-style-type: none;
+}
+
 .listed-container {
   position: absolute;
   bottom: 20px;
