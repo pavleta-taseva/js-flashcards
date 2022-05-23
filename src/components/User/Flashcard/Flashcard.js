@@ -20,42 +20,40 @@ function Flashcard({ flashcard }) {
         fetchData();
     }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
-    const questionElement = <span>
-        <h2 className="front-category-info">{flashcard.category}</h2>
-        <h2 className="question">Question:</h2>
-        <h2 className="question-text">{flashcard.question}</h2>
-    </span>;
-
-    const answerElement =
-        <span>
-            <h2 className="question">Answer:</h2>
-            <p className="answer">{flashcard.answer}</p>
-            <Link
-                className="details-button"
-                to={`/details/${id}`}
-                alt="details"
-                state={{
-                    id: id,
-                    question: flashcard.question,
-                    answer: flashcard.answer,
-                    owner: ownerName,
-                    ownerId: ownerId
-                }}
-            >Read More
-            </Link>
-        </span>
-
-    const cover = <div className="cover">
-        {questionElement}
-    </div>;
-    const details = <div className="details">
-        {answerElement}
-    </div>
 
     return (
-        <div id={`${id}`} className="card" >
-            {cover}
-            {details}
+        <div id={`${id}`} className="flashcard" >
+            <div className="inner">
+                <div className="front">
+                    <span>
+                        <h2 className="front-category-info">{flashcard.category}</h2>
+                        <h2 className="question">Question:</h2>
+                        <h2 className="question-text">{flashcard.question}</h2>
+                    </span>;
+                </div>
+                <div className="back">
+                    <span>
+                        <h2 className="question">Answer:</h2>
+                        <span>
+                            <h2 className="user-question">Answer:</h2>
+                            <p className="user-answer">{flashcard.answer}</p>
+                            <Link
+                                className="details-button"
+                                to={`/details/${id}`}
+                                alt="details"
+                                state={{
+                                    id: id,
+                                    question: flashcard.question,
+                                    answer: flashcard.answer,
+                                    owner: ownerName,
+                                    ownerId: ownerId
+                                }}
+                            >Read More
+                            </Link>
+                        </span>
+                    </span>
+                </div>
+            </div>
         </div>
     );
 }

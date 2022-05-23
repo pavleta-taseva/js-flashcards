@@ -18,111 +18,21 @@ body {
   height: auto;
 }
 
-.card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 400px;
-  height: 500px;
-  background: var(--light-pink);
-  transform-style: preserve-3d;
-  margin: 0 2%;
-  cursor: pointer;
-  transform: perspective(2000px);
-  transition: 1s;
-  font-weight: 300;
-}
-
-.card:hover {
-  transform: perspective(2000px) translateX(50%);
-}
-
-.card .cover {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  transform-style: preserve-3d;
-  transition: 1s ease-in-out;
-  transform-origin: left;
-}
-
-.card:hover {
-  transform: rotateY(-180deg);
-}
-
-.card .details {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  text-align: center;
-  z-index: 1;
-  transform: rotateY(180deg);
-}
-
-.card::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  transform: skewX(2deg) skewY(4deg);
-  background: linear-gradient(315deg, #00ccff, var(--dark-purple), #d400d4);
-}
-
-.card::after {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  transform: skewX(2deg) skewY(4deg);
-  background: linear-gradient(315deg, #00ccff, var(--dark-purple), #d400d4);
-  filter: blur(50px);
-}
-
-.card span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: var(--dark-purple);
-  z-index: 10;
-  font-size: 16px;
-}
-
-.card ion-icon {
-  font-size: 40px;
-  margin-right: 10px;
-  cursor: pointer;
-}
-
-.question {
+.user-question {
   text-align: center;
   padding: 5%;
   color: #d400d4;
   font-weight: 300;
 }
 
-.answer {
-  display: block; /* or inline-block */
+.user-answer {
+  display: block;
   text-overflow: ellipsis;
   word-wrap: break-word;
   overflow: hidden;
-  line-height: 1.5em;
+  line-height: 1.2em;
+  text-align: justify;
+  padding: 0 10% 0 10%;
 }
 
 .listed-container {
@@ -163,7 +73,7 @@ body {
     font-weight: 300;
   }
 
-  .card {
+  .user-card {
     width: 250px;
     height: 350px;
     margin: 0;
