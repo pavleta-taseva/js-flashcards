@@ -1,6 +1,10 @@
 # JS Flashcards
 Web application representing a training system based on creating and managing flashcards containing terminology and definitions in the field of JavaScript.
 
+## Technologies
+* Front-end: HTML, CSS / SASS, JavaScript, React.JS, TypeScript, Material UI
+* Back-end: Back4App as BAAS
+
 ## Public Part (Accessible without authentication) - access control
 * The public part of the project is visible without authentication
 * Home page containing general information for the user about the benefits of self-learning with flashcards
