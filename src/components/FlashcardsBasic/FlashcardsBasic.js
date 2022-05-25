@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import FlashcardList from '../FlashcardList/FlashcardList.js';
 import Loader from '../Loader/Loader.js';
 import PaginationElement from "../PaginationElement/PaginationElement.js";

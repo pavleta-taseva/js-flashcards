@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import PaginationElement from "../PaginationElement/PaginationElement.js";
 import * as cardService from '../../services/cardService.js';
 import '../FlashcardsAdvanced/FlashcardsAdvanced.css';
