@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+
+:root {
+    --main-color: #3c2846;
+    --light-pink: #ca90e0;
+    --dark-purple: #1c1320;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: "Roboto Mono", monospace;
+}
+
+.App {
+    text-align: center;
+}

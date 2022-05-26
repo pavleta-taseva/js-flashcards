@@ -1,13 +1,12 @@
-import React from 'react';
 import { Link } from 'react-scroll';
-import './Home.css';
 import Category from '../Category/Category.js';
+import background from '../../../images/welcome-user.jpg';
 
 function Home() {
     const user = localStorage.getItem('username');
 
     return (
-        <div className="categories-container">
+        <div className="categories-container" style={{ backgroundImage: `url(${background})` }}>
             <h2 className="welcome-user">
                 <ion-icon name="finger-print-sharp"></ion-icon>
                 <span className="current-user"> {`${user}`}</span>

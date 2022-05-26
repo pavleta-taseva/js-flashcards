@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import * as cardService from '../../../services/cardService.js';
 import { useNavigate } from 'react-router-dom';
 import notification from '../../../helpers/notification.js';
-import './Create.css';
 
 const options = [
     { value: 'JS Basics', text: 'JS Basics' },

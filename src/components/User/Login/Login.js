@@ -1,6 +1,5 @@
-import React, { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import * as authService from '../../../services/authService.js';
-import './Login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import loginBackground from '../../../images/login-bg.jpg';
 import { AuthContext } from '../../../contexts/AuthContext.js';

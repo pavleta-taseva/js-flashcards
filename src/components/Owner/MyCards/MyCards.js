@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import OwnerFlashcardList from '../OwnerFlashcardList/OwnerFlashcardList.js';
-import PaginationElement from "../../PaginationElement/PaginationElement.js";
+import PaginationElement from "../../PaginationElement.js";
 import * as cardService from '../../../services/cardService.js';
-import Loader from '../../Loader/Loader.js';
-import '../MyCards/MyCards.css';
+import Loader from '../../Loader.js';
 import { Navigate } from "react-router-dom";
 
 const options = [

@@ -1,6 +1,4 @@
-import React from 'react'
 import OwnerFlashcard from '../OwnerFlashcard/OwnerFlashcard.js';
-import './OwnerFlashcardList.css';
 
 function OwnerFlashcardList({ flashcards }) {
     return (

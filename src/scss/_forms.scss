@@ -1,0 +1,649 @@
+/* Login */
+.login-section {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    grid-gap: 0;
+    width: 100vw;
+    height: 100vh;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.nav {
+    grid-column: 1;
+}
+
+.login-container {
+    grid-column: 2;
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    height: auto;
+}
+
+.login-container h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.login-image {
+    grid-column: 3;
+    width: 100%;
+    height: 90%;
+    background-size: cover;
+    background-position: top;
+    margin: 0;
+    clip-path: polygon(25% 0%, 130% 0%, 100% 100%, 0% 100%);
+}
+
+.loginForm-container {
+    background: transparent;
+    padding: 3%;
+    border: 10px solid #ca90e0;
+    color: #0f1224;
+    border-radius: 30px;
+    width: 80%;
+    height: 90%;
+}
+
+.loginForm-container p,
+.loginForm-container label {
+    font-size: 16px;
+    margin: 30px 0;
+    font-weight: 400;
+}
+
+.loginForm-container form {
+    margin: 0 auto;
+}
+
+.loginForm-container .icon input {
+    height: 30px;
+    border: none;
+    width: 80%;
+    background: #fff;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    outline: none;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: #0f1224;
+    font-size: 18px;
+}
+
+.icon {
+    position: relative;
+}
+
+.icon input {
+    background: #eee;
+}
+
+.icon i {
+    position: absolute;
+    color: #3c2846;
+    top: 27%;
+    border-right: 1px solid rgb(163, 162, 162);
+    padding: 0 5px;
+    height: fit-content;
+}
+
+#eye-three {
+    position: absolute;
+    top: 27%;
+    right: 10%;
+    padding: 0 5px;
+    height: fit-content;
+    border-right: none;
+    cursor: pointer;
+}
+
+.second {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+}
+
+.link {
+    color: #fff;
+    cursor: pointer;
+    background-color: transparent;
+    margin: 15px auto;
+    font-weight: 400;
+    border-bottom: 1px solid #fff;
+}
+
+/* Register */
+* {
+    font-family: "Roboto Mono", monospace;
+    color: #eee;
+}
+
+.register-section {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    grid-gap: 0;
+    width: 100vw;
+    height: 100vh;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.nav {
+    grid-column: 1;
+}
+
+.register-container {
+    grid-column: 2;
+    margin: 0 auto;
+    width: 70%;
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.register-image {
+    grid-column: 3;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: top;
+    margin: 0;
+    clip-path: polygon(25% 0%, 130% 0%, 100% 100%, 0% 100%);
+}
+
+.register-container h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.form-container {
+    background: transparent;
+    padding: 5%;
+    border: 10px solid #ca90e0;
+    color: #0f1224;
+    border-radius: 30px;
+    height: 100vh;
+}
+
+.register-form label {
+    font-size: 16px;
+    margin: 30px 0;
+    font-weight: 400;
+}
+
+.form-container form {
+    margin: 0 auto;
+}
+
+.form-container .icon input {
+    height: 30px;
+    border: none;
+    width: 80%;
+    background: #fff;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    outline: none;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: #0f1224;
+    font-size: 18px;
+}
+
+
+.icon {
+    position: relative;
+}
+
+.icon input {
+    background: #eee;
+}
+
+.icon i {
+    position: absolute;
+    color: #3c2846;
+    top: 27%;
+    border-right: 1px solid rgb(163, 162, 162);
+    padding: 0 5px;
+    height: fit-content;
+}
+
+#eye-one,
+#eye-two {
+    position: absolute;
+    top: 27%;
+    right: 10%;
+    padding: 0 5px;
+    height: fit-content;
+    border-right: none;
+    cursor: pointer;
+}
+
+.second {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+}
+
+.link {
+    color: #fff;
+    cursor: pointer;
+    background-color: transparent;
+    margin: 2px auto;
+    font-weight: 400;
+    border-bottom: 1px solid #fff;
+}
+
+.register-info {
+    color: #fff;
+    text-align: justify;
+    font-size: 14px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Flashcard */
+/* Create */
+.create-container {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 0;
+    width: 100vw;
+    height: 110vh;
+    padding-top: 1%;
+}
+
+.nav {
+    grid-column: 1;
+}
+
+.create {
+    grid-column: 2;
+    width: 30vw;
+    height: 90vh;
+    background: #2a1d30;
+    font-family: "Roboto Mono", monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1%;
+    margin: 1% 0;
+    border-radius: 25px;
+    box-shadow: 0px 3px 56px 23px rgba(196, 146, 217, 0.75);
+    -webkit-box-shadow: 0px 3px 56px 23px rgba(196, 146, 217, 0.75);
+    -moz-box-shadow: 0px 3px 56px 23px rgba(196, 146, 217, 0.75);
+}
+
+.create-form h1 {
+    margin-bottom: 30px;
+    color: #fff;
+    font-size: 25px;
+}
+
+.create-form-label {
+    padding-bottom: 3%;
+    margin-bottom: 1%;
+    font-size: 20px;
+    color: #ca90e0;
+}
+
+.create-form div {
+    margin-bottom: 30px;
+}
+
+.create-form textarea {
+    margin-top: 10px;
+    color: #000;
+    outline: none;
+    width: 90%;
+}
+
+.category-select {
+    color: #1c1320;
+    font-size: 16px;
+}
+
+#category {
+    background-color: #eee;
+    border: none;
+    padding: 5px;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+    outline: none;
+    color: #1c1320;
+    margin: 3% 0;
+}
+
+#category option {
+    color: #1c1320;
+}
+
+#question {
+    height: 150px;
+    padding: 10px;
+    margin-bottom: 3%;
+}
+
+#answer {
+    height: 200px;
+    padding: 10px;
+}
+
+#checkbox {
+    margin-top: 10%;
+    margin-left: 10%;
+    margin-right: 2%;
+}
+
+.level-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    grid-column: 3;
+    width: 25vw;
+    height: 60vh;
+    padding: 1%;
+}
+
+.level-info h2 {
+    color: rgba(202, 144, 224, 1)
+}
+
+ul {
+    margin: 0 auto;
+    text-align: justify;
+}
+
+ul li {
+    line-height: 1.4;
+    margin: 10px 0;
+}
+
+/* Edit */
+.edit {
+    width: 30vw;
+    background: #2a1d30;
+    font-family: "Roboto Mono", monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5% auto;
+    border-radius: 25px;
+    box-shadow: 0px 3px 56px 23px rgba(196, 146, 217, 0.75);
+    -webkit-box-shadow: 0px 3px 56px 23px rgba(196, 146, 217, 0.75);
+    -moz-box-shadow: 0px 3px 56px 23px rgba(196, 146, 217, 0.75);
+}
+
+.edit-form {
+    padding: 5% 3%;
+    width: 90%;
+}
+
+.edit-form h1 {
+    margin-bottom: 30px;
+    color: #ca90e0;
+}
+
+.edit-form label {
+    font-size: 20px;
+}
+
+.edit-form .category {
+    color: #000;
+}
+
+.edit-form .category option {
+    color: #000;
+}
+
+.edit-form div {
+    margin-bottom: 30px;
+}
+
+.edit-form textarea {
+    margin-top: 10px;
+    color: #000;
+    outline: none;
+}
+
+.edit-form textarea {
+    padding: 10px;
+    width: 90%;
+}
+
+#question-area {
+    height: 100px;
+}
+
+#answer-area {
+    height: 200px;
+}
+
+
+@media (max-width: 1280px) {
+    .loginForm-container {
+        width: 100%;
+    }
+
+    .form-container {
+        width: 100%;
+    }
+
+    .register-container {
+        width: 90%;
+    }
+
+    .create-container {
+        grid-template-columns: 0.5fr 1fr 1fr;
+    }
+
+    .level-info {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        grid-column: 3;
+        width: 90%;
+        height: 60vh;
+        padding: 1%;
+    }
+
+    .edit {
+        width: 70%;
+    }
+
+    .edit-form {
+        width: 100%;
+    }
+
+    .edit-form h1 {
+        font-size: 24px;
+    }
+}
+
+/* end: 1280px */
+
+/* start: 1024px */
+@media (max-width: 1024px) {
+    .login-section {
+        height: 70vh;
+    }
+
+    .register-container {
+        width: 100%;
+    }
+
+    .create-container {
+        grid-template-columns: 0.5fr 1fr 1fr;
+        padding-top: 3%;
+    }
+
+    .create {
+        width: 100%;
+        padding: 5% 0;
+    }
+
+    .create-form h1 {
+        font-size: 20px;
+    }
+
+    .level-info ul li {
+        font-size: 14px;
+    }
+
+    .level-info img {
+        width: 70%;
+        height: 70%;
+        margin-top: 5%;
+    }
+
+    .edit {
+        width: 70%;
+    }
+
+    .edit-form h1 {
+        font-size: 24px;
+    }
+}
+
+/* end: 1024px */
+
+/*start 768px */
+@media (max-width: 768px) {
+    .login-section {
+        grid-template-columns: 0.5fr 2fr;
+        width: 70vw;
+        height: 70vh;
+        margin: 5% auto;
+    }
+
+    .login-image {
+        display: none;
+    }
+
+    .loginForm-container {
+        border: 6px solid #ca90e0;
+    }
+
+    .register-section {
+        grid-template-columns: 0.5fr 2fr;
+        width: 70vw;
+        height: 100vh;
+        margin: 5% auto;
+    }
+
+    .register-image {
+        display: none;
+    }
+
+    .form-container {
+        border: 6px solid #ca90e0;
+    }
+
+    .level-info h2 {
+        font-size: 20px;
+    }
+
+    .create-form h1 {
+        font-size: 18px;
+    }
+
+    .edit {
+        width: 120%;
+    }
+
+    .edit-form h1 {
+        font-size: 24px;
+    }
+}
+
+/* end: 768px */
+
+/* start: 500px */
+@media (max-width: 500px) {
+    .login-section {
+        width: 90vw;
+        margin-left: 2%;
+    }
+
+    .loginForm-container {
+        border: 3px solid #ca90e0;
+    }
+
+    .register-section {
+        width: 90vw;
+        margin-left: 2%;
+    }
+
+    .form-container {
+        border: 3px solid #ca90e0;
+    }
+
+    .create-container {
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        height: auto;
+        padding-top: 3%;
+        padding-right: 3%;
+    }
+
+    .create {
+        width: 70%;
+        margin: 0 4% 0 30%;
+    }
+
+    .create-form {
+        width: 100%;
+    }
+
+    .level-info {
+        width: 70%;
+        margin: 0 4% 0 25%;
+    }
+
+    .level-info img {
+        display: none;
+    }
+
+    .edit-form h1 {
+        font-size: 20px;
+    }
+}
+
+/* Start: 375px */
+@media (max-width: 375px) {
+    .login-section {
+        width: 95vw;
+    }
+
+    .register-section {
+        width: 90vw;
+    }
+
+    .create-container {
+        margin: 0 auto;
+        height: 160vh;
+    }
+
+    .edit {
+        width: 90%;
+        margin: 5% 5% 5% 20%;
+    }
+
+    .edit-form h1 {
+        font-size: 18px;
+    }
+}

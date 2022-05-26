@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import './Register.css';
+import { useState } from 'react';
 import registerBackground from '../../../images/register-bg.jpg';
 import { validateInput } from '../../../helpers/validator.js';
 import { Link } from 'react-router-dom';

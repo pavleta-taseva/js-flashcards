@@ -1,5 +1,3 @@
-import React from 'react';
-import '../OwnerFlashcard/OwnerFlashcard.css';
 import { Link } from 'react-router-dom';
 
 function OwnerFlashcard({ ownerFlashcard }) {

@@ -1,42 +1,37 @@
 import { useState, useEffect } from "react";
-import FlashcardList from '../../FlashcardList.js';
-import PaginationElement from "../../PaginationElement.js";
-import Loader from '../../Loader.js';
-import * as cardService from '../../../services/cardService.js';
-let practiceList = [];
-const userId = localStorage.getItem('userId');
+import PaginationElement from "./PaginationElement.js";
+import FlashcardList from './FlashcardList.js';
+import Loader from './Loader.js';
+import * as cardService from '../services/cardService.js';
 
-
-function Practice() {
-    let [practiceCards, setPracticeCards] = useState(practiceList);
+function FlashcardsWeb() {
+    let [web, setWebCards] = useState([]);
     let [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [cardsPerPage] = useState(6);
     const url = window.location.href;
     const currentPageName = url.split('//')[1].split('/')[1].split('/')[0];
-    
+
     useEffect(() => {
         setLoading(true);
-        window.scrollTo(0, 0);
-        async function fetchWebData() {
+        async function fetchData() {
             try {
-                const res = await cardService.getPracticeList(userId);
-                setPracticeCards(res);
+                const res = await cardService.getWebCards();
+                setWebCards(res);
                 setTimeout(() => {
                     setLoading(false);
-                }, 2000);
-                return () => { setLoading(false) };
+                }, 2000)
             } catch (err) {
                 console.log(err);
             }
         }
-        fetchWebData();
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+        fetchData();
+    }, []);
 
     const indexOfLastCard = currentPage * cardsPerPage;
     const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-    const currentCards = practiceCards.slice(indexOfFirstCard, indexOfLastCard);
-    const totalPages = Math.ceil(practiceCards.length / cardsPerPage);
+    const currentCards = web.slice(indexOfFirstCard, indexOfLastCard);
+    const totalPages = Math.ceil(web.length / cardsPerPage);
 
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -63,16 +58,15 @@ function Practice() {
             {loading
                 ? <Loader />
                 : <div>
-                    {practiceCards.length > 0
+                    {web.length > 0
                         ? <div>
-                            <h2 className="practice-title">Your Practice List</h2>
                             <FlashcardList flashcards={currentCards} />
-                            <PaginationElement cardsPerPage={cardsPerPage} totalCards={practiceCards.length} paginate={paginate} previousPage={previousPage} nextPage={nextPage} currentPageName={currentPageName} />
+                            <PaginationElement cardsPerPage={cardsPerPage} totalCards={web.length} paginate={paginate} previousPage={previousPage} nextPage={nextPage} currentPageName={currentPageName}/>
                         </div>
                         : <div className="no-cards">
                             <div className="left-container">
-                                <h1 className="no-cards-heading">There are currently no Flashcards in your Practice List yet.</h1>
-                                <h1 className="no-cards-heading">Why don't you browse our library of flashcards to start adding them to your list?</h1>
+                                <h1 className="no-cards-heading">No Flashcards in this category yet.</h1>
+                                <h1 className="no-cards-heading">Why don't you create your own flashcards to practice with?</h1>
                             </div>
                         </div>
                     }
@@ -82,4 +76,4 @@ function Practice() {
     )
 }
 
-export default Practice;
+export default FlashcardsWeb;

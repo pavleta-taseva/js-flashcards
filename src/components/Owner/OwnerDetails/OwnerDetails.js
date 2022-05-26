@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import * as cardService from '../../../services/cardService.js';
-import './OwnerDetails.css';
 import { Link, useNavigate } from 'react-router-dom';
 
 function OwnerDetails() {

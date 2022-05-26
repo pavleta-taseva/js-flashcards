@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import notification from '../../../helpers/notification.js';
 import * as cardService from '../../../services/cardService.js';
 import { useAuth } from '../../../contexts/AuthContext.js';
-import './Edit.css';
 
 const options = [
     { value: 'JS Basics', text: 'JS Basics' },

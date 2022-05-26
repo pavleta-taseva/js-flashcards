@@ -1,8 +1,7 @@
 import Parse from '../../../../node_modules/parse/dist/parse.js';
-import Backdrop from '../../Backdrop/Backdrop.js';
-import React, { useState, useEffect } from 'react';
-import '../Profile/Profile.css';
-import Modal from './../../Modal/Modal.js';
+import Backdrop from '../../Backdrop.js';
+import { useState, useEffect } from 'react';
+import Modal from './../../Modal.js';
 import * as cardService from '../../../services/cardService.js';
 import * as authService from '../../../services/authService.js';
 

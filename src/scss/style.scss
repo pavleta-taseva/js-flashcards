@@ -1,12 +1,7 @@
 @import 'config';
+@import 'home';
 @import 'common';
 @import 'buttons';
-
-
-* {
-    box-sizing: border-box;
-}
-
-.App {
-    text-align: center;
-}
+@import 'collections';
+@import 'flashcard';
+@import 'forms';
