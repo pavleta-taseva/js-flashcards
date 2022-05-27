@@ -5,7 +5,7 @@ const NotFoundPage = () => (
     <div className="sad-face"></div>
     <h1>404 - Page Not Found</h1>
     <h4>Ops, looks like this page is broken or doesn't exist anymore! We can't be sure what went wrong and whose fault it was for all this to happen.</h4>
-    <Link className="not-found-link" to="/">
+    <Link className="not-found-link" to="/" alt="Flashcard Trainer Not found page">
         <ion-icon name="arrow-undo-outline"></ion-icon> Go Home
     </Link>
   </div>

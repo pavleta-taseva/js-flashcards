@@ -9,7 +9,7 @@ function Category() {
           <ion-icon name="logo-javascript"></ion-icon>
         </div>
         <div className="category-content">
-          <Link className="category-link" to="/flashcards-basic" alt="flashcards-basic">
+          <Link className="category-link" to="/flashcards-basic" alt="Flashcard Trainer Basic category page">
             <h2 className="category-title">JS Basics</h2></Link>
           <p className="category-description">
             Learn with ease the basics of JS Programming language through series
@@ -23,7 +23,7 @@ function Category() {
           <ion-icon name="logo-javascript"></ion-icon>
         </div>
         <div className="category-content">
-          <Link className="category-link" to="/flashcards-advanced" alt="flashcards-advanced"><h2 className="category-title">JS Advanced</h2></Link>
+          <Link className="category-link" to="/flashcards-advanced" alt="Flashcard Trainer Advanced category page"><h2 className="category-title">JS Advanced</h2></Link>
           <p className="category-description">
             Feeling confident enough? Test your advanced knowledge in
             JavaScript.
@@ -36,7 +36,7 @@ function Category() {
           <ion-icon name="logo-javascript"></ion-icon>
         </div>
         <div className="category-content">
-          <Link className="category-link" to="/flashcards-web" alt="flashcards-web"><h2 className="category-title">JS Web</h2></Link>
+          <Link className="category-link" to="/flashcards-web" alt="Flashcard Trainer Web category page"><h2 className="category-title">JS Web</h2></Link>
           <p className="category-description">
             Already able to create JS Applications and Web servers? Prove your
             mastery!

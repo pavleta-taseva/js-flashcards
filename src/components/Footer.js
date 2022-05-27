@@ -3,10 +3,10 @@ function Footer() {
         <footer>
             <div className='left-footer'>
                 <small>Copyright &copy; 2021 |
-                    <a className="links" href="https://github.com/KumihoBG" target="_blanc"> Pavleta Taseva (KumihoBG)</a><br />
-                    Credits to <a className="links" href="https://www.youtube.com/channel/UCbwXnUipZsLfUckBPsC7Jog" target="_blanc"> Online Tutorials - YouTube Channel</a>
+                    <a className="links" href="https://github.com/KumihoBG" target="_blanc" alt="Pavleta Taseva profile GitHub Profile page"> Pavleta Taseva (KumihoBG)</a><br />
+                    Credits to <a className="links" href="https://www.youtube.com/channel/UCbwXnUipZsLfUckBPsC7Jog" target="_blanc" alt="Online Tutorials credits"> Online Tutorials - YouTube Channel</a>
                     <br></br>
-                    Credits to <a className="links" href="http://www.freepik.com"> vectorjuice / Freepik</a>
+                    Credits to <a className="links" href="http://www.freepik.com" alt="Freepik credits"> vectorjuice / Freepik</a>
                 </small>
             </div>
             <div className='right-footer'>

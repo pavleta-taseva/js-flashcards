@@ -21,7 +21,7 @@ function OwnerFlashcard({ ownerFlashcard }) {
                             <Link
                                 className="details-button"
                                 to={`/details/${ownerFlashcard.objectId}`}
-                                alt="details"
+                                alt="Flashcard Trainer Details page"
                                 state={{
                                     id: ownerFlashcard.objectId,
                                     question: ownerFlashcard.question,

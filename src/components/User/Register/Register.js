@@ -85,7 +85,7 @@ function Register() {
                         </div>
                     </form>
                     <div className="second">
-                        <Link className="link" to="/login" alt="login">Already have an account?</Link><br></br>
+                        <Link className="link" to="/login" alt="Flashcard Trainer login page">Already have an account?</Link><br></br>
                     </div>
                 </div>
             </div>

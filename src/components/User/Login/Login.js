@@ -76,7 +76,7 @@ function Login() {
                         </div>
                     </form>
                     <div className="second">
-                        <Link className="link" to="/register" alt="register">Create new account</Link>
+                        <Link className="link" to="/register" alt="Flashcard Trainer register page">Create new account</Link>
                     </div>
                 </div>
             </div>

@@ -14,13 +14,13 @@ function FlashcardList({ flashcards }) {
             <div className="flashcards-list-container">
                 {user
                     ? <div className='main-categories-links'>
-                        <NavLink className={(navData) => navData.isActive ? 'active-main' : 'category-normal-link'} to="/flashcards-basic">
+                        <NavLink className={(navData) => navData.isActive ? 'active-main' : 'category-normal-link'} to="/flashcards-basic" alt="Basic category">
                             Flashcards Basic
                         </NavLink>
-                        <NavLink className={(navData) => navData.isActive ? 'active-main' : 'category-normal-link'} to="/flashcards-advanced">
+                        <NavLink className={(navData) => navData.isActive ? 'active-main' : 'category-normal-link'} to="/flashcards-advanced" alt="Advanced category">
                             | Flashcards Advanced |
                         </NavLink>
-                        <NavLink className={(navData) => navData.isActive ? 'active-main' : 'category-normal-link'} to="/flashcards-web">
+                        <NavLink className={(navData) => navData.isActive ? 'active-main' : 'category-normal-link'} to="/flashcards-web" alt="Web category">
                             Flashcards Web
                         </NavLink>
                     </div>

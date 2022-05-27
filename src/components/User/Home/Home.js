@@ -14,7 +14,7 @@ function Home() {
             <Link
                 className="continue-link"
                 to="categories"
-                alt="categories"
+                alt="Continue button"
                 spy={true}
                 smooth={true}
                 duration={500}

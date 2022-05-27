@@ -60,7 +60,7 @@ function Details() {
             <div className="buttons">
                 <Link
                     onClick={onDelete}
-                    alt="delete-page"
+                    alt="Flashcard Trainer delete button"
                     className="flashcard-buttons"
                     to={`/delete/${id}`}
                 >Delete
@@ -68,7 +68,7 @@ function Details() {
                 <Link
                     className="flashcard-buttons"
                     to={`/edit/${id}`}
-                    alt="edit-page"
+                    alt="Flashcard Trainer edit button"
                     state={{
                         id: id,
                         question: currentQuestion,
@@ -96,7 +96,7 @@ function Details() {
                         <Link
                             className="flashcard-buttons"
                             to={`/practice/${localStorageOwnerId}`}
-                            alt="practice"
+                            alt="Flashcard Trainer practice button"
                             onClick={() => {
                                 cardService.practice(id);
                             }}
@@ -107,7 +107,7 @@ function Details() {
                         <Link
                             className="button-disabled"
                             to={`/details/${id}`}
-                            alt="details"
+                            alt="Flashcard Trainer practice button"
                             onClick={(event) => event.preventDefault()}
                         ><ion-icon name="alert-circle-outline"></ion-icon> Card already in your List
                         </Link>
@@ -115,7 +115,7 @@ function Details() {
                             onClick={onRemove}
                             className="button-remove"
                             to={`/practice/${localStorageOwnerId}`}
-                            alt="practice-list"
+                            alt="Flashcard Trainer practice list button"
                             state={{
                                 id: id,
                                 question: currentQuestion,

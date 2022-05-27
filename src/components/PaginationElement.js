@@ -15,7 +15,7 @@ function PaginationElement({ cardsPerPage, totalCards, paginate, previousPage, n
                         <li key={number} className="page-item">
                             <NavLink className={(navData) => navData.isActive ? 'active-pagination' : 'page-link'} to={`/${currentPageName}/${number}`} onClick={() => {
                                 paginate(number);
-                            }}>
+                            }} alt="Flashcard Trainer page number">
                                 {number}
                             </NavLink>
                         </li>

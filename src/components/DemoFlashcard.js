@@ -29,7 +29,7 @@ function Flashcard() {
                             <Link
                                 className="details-button"
                                 to="#"
-                                alt=""
+                                alt="Flashcard details button"
                             >Details
                             </Link>
                         </span>

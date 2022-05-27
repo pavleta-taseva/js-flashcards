@@ -64,10 +64,10 @@ function OwnerDetails() {
                 <h2 className="details-heading"><span className="details-title">Creator:</span> {`${currentOwner}`}</h2>
 
                 <div className="buttons">
-                    <Link onClick={onDelete} alt="delete-page" className="flashcard-buttons" to={`/delete/${id}`}>Delete</Link>
+                    <Link onClick={onDelete} className="flashcard-buttons" to={`/delete/${id}`} alt="Flashcard Trainer Delete button">Delete</Link>
                     <Link className="flashcard-buttons"
                         to={`/edit/${id}`}
-                        alt="edit-page"
+                        alt="Flashcard Trainer Edit button"
                         state={{
                             id: id,
                             question: currentQuestion,
