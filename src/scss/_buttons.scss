@@ -1,4 +1,4 @@
-.loginBtn {
+%loginBtn {
     display: block;
     cursor: pointer;
     background: #ca90e0;
@@ -12,52 +12,18 @@
 }
 
 .registerBtn {
-    display: block;
-    cursor: pointer;
-    background: #ca90e0;
-    color: #3c2846;
-    border: none;
-    font-size: 1.3rem;
-    padding: 10px 30%;
-    border-radius: 40px;
-    border: 1px solid #fff;
-    margin: 15px auto;
+   @extend %loginBtn;
 }
 
 .createBtn {
-    display: inline-block;
     padding: 15px 70px;
-    background: var(--main-color);
-    color: #fff;
-    border: 1px solid var(--light-pink);
-    outline: none;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 20px;
-    letter-spacing: 1px;
-    cursor: pointer;
-    box-shadow: 0px 3px 26px -1px rgba(196, 146, 217, 0.25);
-    -webkit-box-shadow: 0px 3px 26px -1px rgba(196, 146, 217, 0.25);
-    -moz-box-shadow: 0px 3px 26px -1px rgba(196, 146, 217, 0.25);
+    @include buttons();
 }
 
 .editBtn {
     width: 45%;
-    display: inline-block;
     padding: 10px 50px;
-    margin-right: 2%;
-    background: var(--main-color);
-    color: #fff;
-    border: 1px solid var(--light-pink);
-    outline: none;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 20px;
-    letter-spacing: 1px;
-    cursor: pointer;
-    box-shadow: 0px 3px 26px -1px rgba(196, 146, 217, 0.25);
-    -webkit-box-shadow: 0px 3px 26px -1px rgba(196, 146, 217, 0.25);
-    -moz-box-shadow: 0px 3px 26px -1px rgba(196, 146, 217, 0.25);
+    @include buttons();
 }
 
 .nav-logout-btn {
@@ -72,19 +38,11 @@
 }
 
 .filterBtn {
-    display: inline-block;
+    font-size: 15px;
     width: 20%;
     padding: 10px 70px;
-    background: var(--main-color);
-    color: #fff;
-    border: 1px solid var(--light-pink);
-    outline: none;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 15px;
-    letter-spacing: 1px;
-    cursor: pointer;
     margin-bottom: 1%;
+    @include buttons();
 }
 
 .btn--alt {
@@ -113,9 +71,7 @@
 }
 
 .buttons {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    @include flex(center, row);
     margin-bottom: 20px;
     width: 100%;
     padding: 0;
@@ -125,27 +81,23 @@
     font-size: 16px;
 }
 
-.flashcard-buttons {
-    display: inline-block;
+%flashcard-buttons {
     width: 25%;
     padding: 15px 30px;
-    background: #1a0016;
     opacity: 0.7;
-    color: #fff;
+    @include buttons();
+    background: #1a0016;
     letter-spacing: 1.5px;
     text-decoration: none;
     border-radius: 15px;
     font-weight: 500;
-    font-size: 18px;
     margin-top: 5%;
     margin-right: 4%;
-    text-align: center;
+    font-size: 18px;
     border: none;
     border-radius: 45px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
 }
 
 .flashcard-buttons:hover {
@@ -155,50 +107,16 @@
     transform: translateY(-7px);
 }
 
-.button-disabled {
-    display: inline-block;
+%button-disabled {
+    @extend %flashcard-buttons;
     width: 45%;
     padding: 15px 25px;
-    background: #1a0016;
-    opacity: 0.7;
-    color: #fff;
-    letter-spacing: 1.5px;
-    text-decoration: none;
-    border-radius: 15px;
-    font-weight: 500;
-    font-size: 16px;
-    margin-top: 5%;
-    margin-right: 4%;
-    text-align: center;
-    border: none;
-    border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
-    outline: none;
-    pointer-events: none;
 }
 
 .button-remove {
-    display: inline-block;
-    width: 45%;
-    padding: 15px 25px;
     background: #660057;
-    opacity: 0.7;
-    color: #fff;
-    letter-spacing: 1.5px;
-    text-decoration: none;
-    border-radius: 15px;
-    font-weight: 500;
-    font-size: 16px;
-    margin-top: 5%;
-    margin-right: 4%;
-    text-align: center;
-    border: none;
-    border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
     outline: none;
+    @extend %button-disabled;
 }
 
 @media (max-width: 1280px) {

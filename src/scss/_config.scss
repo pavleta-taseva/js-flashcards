@@ -21,4 +21,20 @@
     justify-content: center;
     align-items: $alignment;
     flex-direction: $direction;
-  }
+}
+
+@mixin buttons() {
+    display: inline-block;
+    background: var(--main-color);
+    color: #fff;
+    border: 1px solid var(--light-pink);
+    outline: none;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0px 3px 26px -1px rgba(196, 146, 217, 0.25);
+    -webkit-box-shadow: 0px 3px 26px -1px rgba(196, 146, 217, 0.25);
+    -moz-box-shadow: 0px 3px 26px -1px rgba(196, 146, 217, 0.25);
+}
