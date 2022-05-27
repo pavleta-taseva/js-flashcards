@@ -15,3 +15,10 @@
 .App {
     text-align: center;
 }
+
+@mixin flex($alignment: center, $direction: column) {
+    display: flex;
+    justify-content: center;
+    align-items: $alignment;
+    flex-direction: $direction;
+  }

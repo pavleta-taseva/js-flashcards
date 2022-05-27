@@ -190,9 +190,7 @@ footer small p {
 /* Loader */
 .blob-section {
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex();
     min-height: 100vh;
 }
 
@@ -237,10 +235,7 @@ footer small p {
     height: 90vh;
     padding: 5%;
     margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    @include flex();
 }
 
 .sad-face {
@@ -484,10 +479,7 @@ footer small p {
     footer {
         position: relative;
         width: 60%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        @include flex();
         height: auto;
         margin: 0 auto;
     }
