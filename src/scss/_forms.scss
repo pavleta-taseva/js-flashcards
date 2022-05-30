@@ -1,5 +1,5 @@
 /* Login */
-.login-section {
+%login-section {
     overflow: hidden;
     display: grid;
     grid-template-columns: 1fr 2fr 2fr;
@@ -8,104 +8,83 @@
     height: 100vh;
     margin-top: 3%;
     margin-bottom: 3%;
+
+    %login-container {
+        width: 90%;
+        grid-column: 2;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        height: auto;
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .loginForm-container {
+            background: transparent;
+            padding: 3%;
+            border: 10px solid #ca90e0;
+            color: #0f1224;
+            border-radius: 30px;
+            width: 80%;
+            height: 90%;
+
+            p,
+            label {
+                font-size: 16px;
+                margin: 30px 0;
+                font-weight: 400;
+            }
+
+            form {
+                margin: 0 auto;
+            }
+
+            .icon input {
+                height: 30px;
+                border: none;
+                width: 80%;
+                background: #fff;
+                margin-top: 10px;
+                margin-bottom: 20px;
+                outline: none;
+                padding: 10px;
+                text-align: center;
+                border-radius: 5px;
+                color: #0f1224;
+                font-size: 18px;
+            }
+
+            .icon {
+                position: relative;
+            }
+
+            .icon i {
+                position: absolute;
+                color: #3c2846;
+                top: 27%;
+                border-right: 1px solid rgb(163, 162, 162);
+                padding: 0 5px;
+                height: fit-content;
+            }
+        }
+    }
+
+    .login-image {
+        grid-column: 3;
+        width: 100%;
+        height: 90%;
+        background-size: cover;
+        background-position: top;
+        margin: 0;
+        clip-path: polygon(25% 0%, 130% 0%, 100% 100%, 0% 100%);
+    }
 }
 
 .nav {
     grid-column: 1;
-}
-
-.login-container {
-    grid-column: 2;
-    margin: 0 auto;
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-    height: auto;
-}
-
-.login-container h1 {
-    margin-bottom: 20px;
-    font-size: 2rem;
-}
-
-.login-image {
-    grid-column: 3;
-    width: 100%;
-    height: 90%;
-    background-size: cover;
-    background-position: top;
-    margin: 0;
-    clip-path: polygon(25% 0%, 130% 0%, 100% 100%, 0% 100%);
-}
-
-.loginForm-container {
-    background: transparent;
-    padding: 3%;
-    border: 10px solid #ca90e0;
-    color: #0f1224;
-    border-radius: 30px;
-    width: 80%;
-    height: 90%;
-}
-
-.loginForm-container p,
-.loginForm-container label {
-    font-size: 16px;
-    margin: 30px 0;
-    font-weight: 400;
-}
-
-.loginForm-container form {
-    margin: 0 auto;
-}
-
-.loginForm-container .icon input {
-    height: 30px;
-    border: none;
-    width: 80%;
-    background: #fff;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    outline: none;
-    padding: 10px;
-    text-align: center;
-    border-radius: 5px;
-    color: #0f1224;
-    font-size: 18px;
-}
-
-.icon {
-    position: relative;
-}
-
-.icon input {
-    background: #eee;
-}
-
-.icon i {
-    position: absolute;
-    color: #3c2846;
-    top: 27%;
-    border-right: 1px solid rgb(163, 162, 162);
-    padding: 0 5px;
-    height: fit-content;
-}
-
-#eye-three {
-    position: absolute;
-    top: 27%;
-    right: 10%;
-    padding: 0 5px;
-    height: fit-content;
-    border-right: none;
-    cursor: pointer;
-}
-
-.second {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
 }
 
 .link {
@@ -118,100 +97,85 @@
 }
 
 /* Register */
-* {
-    font-family: "Roboto Mono", monospace;
-    color: #eee;
-}
-
 .register-section {
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: 1fr 2fr 2fr;
-    grid-gap: 0;
-    width: 100vw;
-    height: 100vh;
-    margin-top: 3%;
-    margin-bottom: 3%;
-}
+    @extend %login-section;
 
-.nav {
-    grid-column: 1;
-}
+    .register-container {
+        @extend %login-container;
+        width: 70%;
+        height: 80vh;
 
-.register-container {
-    grid-column: 2;
-    margin: 0 auto;
-    width: 70%;
-    height: 80vh;
-    display: flex;
-    flex-direction: row;
-}
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+    }
 
-.register-image {
-    grid-column: 3;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: top;
-    margin: 0;
-    clip-path: polygon(25% 0%, 130% 0%, 100% 100%, 0% 100%);
-}
+    .register-image {
+        grid-column: 3;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: top;
+        margin: 0;
+        clip-path: polygon(25% 0%, 130% 0%, 100% 100%, 0% 100%);
+    }
 
-.register-container h1 {
-    margin-bottom: 20px;
-    font-size: 2rem;
-}
+    .form-container {
+        background: transparent;
+        padding: 5%;
+        border: 10px solid #ca90e0;
+        color: #0f1224;
+        border-radius: 30px;
+        height: 100vh;
 
-.form-container {
-    background: transparent;
-    padding: 5%;
-    border: 10px solid #ca90e0;
-    color: #0f1224;
-    border-radius: 30px;
-    height: 100vh;
-}
+        .register-form label {
+            font-size: 16px;
+            margin: 30px 0;
+            font-weight: 400;
+        }
 
-.register-form label {
-    font-size: 16px;
-    margin: 30px 0;
-    font-weight: 400;
-}
+        form {
+            margin: 0 auto;
+        }
 
-.form-container form {
-    margin: 0 auto;
-}
+        .icon input {
+            height: 30px;
+            border: none;
+            width: 80%;
+            background: #fff;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            outline: none;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            color: #0f1224;
+            font-size: 18px;
+        }
 
-.form-container .icon input {
-    height: 30px;
-    border: none;
-    width: 80%;
-    background: #fff;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    outline: none;
-    padding: 10px;
-    text-align: center;
-    border-radius: 5px;
-    color: #0f1224;
-    font-size: 18px;
-}
+        .icon {
+            position: relative;
+        }
 
+        .icon i {
+            position: absolute;
+            color: #3c2846;
+            top: 27%;
+            border-right: 1px solid rgb(163, 162, 162);
+            padding: 0 5px;
+            height: fit-content;
+        }
 
-.icon {
-    position: relative;
-}
-
-.icon input {
-    background: #eee;
-}
-
-.icon i {
-    position: absolute;
-    color: #3c2846;
-    top: 27%;
-    border-right: 1px solid rgb(163, 162, 162);
-    padding: 0 5px;
-    height: fit-content;
+        .register-info {
+            color: #fff;
+            text-align: justify;
+            font-size: 14px;
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+    }
 }
 
 #eye-one,
@@ -225,29 +189,19 @@
     cursor: pointer;
 }
 
-.second {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-}
-
-.link {
-    color: #fff;
+#eye-three {
+    position: absolute;
+    top: 27%;
+    right: 10%;
+    padding: 0 5px;
+    height: fit-content;
+    border-right: none;
     cursor: pointer;
-    background-color: transparent;
-    margin: 2px auto;
-    font-weight: 400;
-    border-bottom: 1px solid #fff;
 }
 
-.register-info {
-    color: #fff;
-    text-align: justify;
-    font-size: 14px;
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px 0;
+.second {
+    @include flex($flex-direction: column);
+    text-decoration: none;
 }
 
 /* Flashcard */
@@ -260,10 +214,6 @@
     width: 100vw;
     height: 110vh;
     padding-top: 1%;
-}
-
-.nav {
-    grid-column: 1;
 }
 
 .create {
@@ -345,10 +295,8 @@
 }
 
 .level-info {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
+    @include flex($justify-content: flex-start);
+    color: #fff;
     grid-column: 3;
     width: 25vw;
     height: 60vh;
