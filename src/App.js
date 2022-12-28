@@ -1,3 +1,4 @@
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Category from './components/User/Category/Category.js';
 import Navbar from './components/Navbar.js';
@@ -24,7 +25,7 @@ import PrivateRoutes from './helpers/PrivateRoutes.js';
 import PublicRoutes from './helpers/PublicRoutes.js';
 import 'react-notifications-component/dist/theme.css';
 
-function App() {
+const App = () => {
 
   return (
     <AuthProvider>
