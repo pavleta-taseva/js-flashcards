@@ -25,7 +25,7 @@ export async function validateInput(username, email, password, repass) {
         return notification('Problem found', 'Two passwords don\'t match!');
     }
 
-    if (typeof username !== 'string' || !username instanceof String) {
+    if (typeof username !== 'string' || !(username instanceof String)) {
         return;
     }
 
