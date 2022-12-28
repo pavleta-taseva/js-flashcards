@@ -18,7 +18,7 @@ import Practice from './components/User/Practice/Practice.js';
 import Details from './components/User/Details/Details.js';
 import OwnerDetails from './components/Owner/OwnerDetails/OwnerDetails.js';
 import Footer from './components/Footer.js';
-import { ReactNotifications, Store } from 'react-notifications-component'
+import { ReactNotifications } from 'react-notifications-component'
 import NotFoundPage from './components/NotFoundPage.js';
 import { AuthProvider } from './contexts/AuthContext.js';
 import PrivateRoutes from './helpers/PrivateRoutes.js';
