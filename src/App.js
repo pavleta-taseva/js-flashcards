@@ -30,7 +30,7 @@ const App = () => {
   return (
     <AuthProvider>
       <div className="App">
-        <ReactNotification />
+        {/* <ReactNotification /> */}
         <Navbar />
         <main>
           <Routes>
