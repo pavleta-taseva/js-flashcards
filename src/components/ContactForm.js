@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useState, useNavigate } from "react";
 
 const ContactForm = () => {
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -21,7 +22,16 @@ const ContactForm = () => {
         },
         body: JSON.stringify(value),
       });
-      console.log("postFormData: ", postFormData);
+
+      if (
+        (postFormData && postFormData.ok) ||
+        postFormData.statusText === "Created"
+      ) {
+        setError(false);
+        form.reset();
+        navigate("/");
+        return;
+      }
       return postFormData;
     } catch (err) {
       setError(err.message);
