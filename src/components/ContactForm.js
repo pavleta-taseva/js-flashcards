@@ -31,7 +31,7 @@ const ContactForm = () => {
         setError(false);
         form.reset();
         navigate("/");
-        return;
+        console.log('Email sent');
       }
       return postFormData;
     } catch (err) {
