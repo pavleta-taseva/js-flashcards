@@ -11,6 +11,11 @@ const ContactForm = () => {
     const form = event.target;
     const data = new FormData(form);
     const value = Object.fromEntries(data.entries());
+    const projectId = process.env.REACT_APP_PROJECT_ID;
+    const emailData = {
+      ...value,
+      projectId,
+    };
 
     try {
       const postFormData = await fetch(`${process.env.REACT_APP_MAIL_SENDER}`, {
@@ -21,7 +26,7 @@ const ContactForm = () => {
           Connection: "keep-alive",
           credentials: "include",
         },
-        body: JSON.stringify(value),
+        body: JSON.stringify(emailData),
       });
 
       if (
