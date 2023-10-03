@@ -31,7 +31,10 @@ const ContactForm = () => {
         setError(false);
         form.reset();
         navigate("/");
-        console.log('Email sent');
+      }
+
+      if (!postFormData.ok) {
+        setError(`${postFormData.statusText}` + error);
       }
       return postFormData;
     } catch (err) {
@@ -44,7 +47,7 @@ const ContactForm = () => {
       <div className='login-container'>
         <div className='loginForm-container'>
           <form onSubmit={onSubmit}>
-            {error && <div>{`Error: ${error}`}</div>}
+            {error && <div style={{ color: "red" }}>{`Error: ${error}`}</div>}
             <h1>Send email</h1>
             <p>Please enter your email data</p>
             <label>Sender</label>
@@ -75,7 +78,7 @@ const ContactForm = () => {
               placeholder='Message'
               style={{
                 height: "200px",
-                width: "90%",
+                width: "80%",
                 marginBottom: "20px",
                 padding: "10px",
                 color: "black",
