@@ -21,7 +21,7 @@ const ContactForm = () => {
         },
         body: JSON.stringify(value),
       });
-
+      console.log("postFormData: ", postFormData);
       return postFormData;
     } catch (err) {
       setError(err.message);
