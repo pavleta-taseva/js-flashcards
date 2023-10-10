@@ -56,22 +56,51 @@ const ContactForm = () => {
             method='POST'
           >
             <h1>Send email</h1>
-            <label for='sender'>Sender</label>
-            <input name='sender' type='email' required />
-            <label for='subject'>Subject</label>
-            <input name='subject' type='text' required />
+            <p>Please enter your email data</p>
+            <label>Sender</label>
+            <br></br>
+            <div className='icon'>
+              <input
+                name='sender'
+                type='email'
+                className='login-password'
+              ></input>
+              <br></br>
+            </div>
+
+            <label>Subject</label>
+            <br></br>
+            <div className='icon'>
+              <input
+                name='subject'
+                className='login-password'
+                type='text'
+              ></input>
+              <br></br>
+            </div>
             <textarea
               name='body'
+              className='login-password'
+              type='text'
               placeholder='Message'
-              id='userMessage'
-              required
+              style={{
+                height: "200px",
+                width: "80%",
+                marginBottom: "20px",
+                padding: "10px",
+                color: "black",
+              }}
             ></textarea>
             <input
               type='hidden'
               name='origin'
               value='https://js-flashcards.netlify.app/'
             />
-            <input type='submit' value='Submit' />
+            <div>
+              <button type='submit' className='createBtn'>
+                Submit email
+              </button>
+            </div>
           </form>
         </div>
       </div>
