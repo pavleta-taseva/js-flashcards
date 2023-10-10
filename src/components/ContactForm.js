@@ -66,6 +66,11 @@ const ContactForm = () => {
               id='userMessage'
               required
             ></textarea>
+            <input
+              type='hidden'
+              name='origin'
+              value='https://js-flashcards.netlify.app/'
+            />
             <input type='submit' value='Submit' />
           </form>
         </div>
