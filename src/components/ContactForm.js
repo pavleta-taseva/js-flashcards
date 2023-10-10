@@ -51,49 +51,22 @@ const ContactForm = () => {
     <section className='login-section'>
       <div className='login-container'>
         <div className='loginForm-container'>
-          <form onSubmit={onSubmit}>
-            {error && <div style={{ color: "red" }}>{`Error: ${error}`}</div>}
+          <form
+            action='http://localhost:5000/api/email-sender/651567092bdd8eee5f3bbfc0'
+            method='POST'
+          >
             <h1>Send email</h1>
-            <p>Please enter your email data</p>
-            <label>Sender</label>
-            <br></br>
-            <div className='icon'>
-              <input
-                name='sender'
-                type='email'
-                className='login-password'
-              ></input>
-              <br></br>
-            </div>
-
-            <label>Subject</label>
-            <br></br>
-            <div className='icon'>
-              <input
-                name='subject'
-                className='login-password'
-                type='text'
-              ></input>
-              <br></br>
-            </div>
+            <label for='sender'>Sender</label>
+            <input name='sender' type='email' required />
+            <label for='subject'>Subject</label>
+            <input name='subject' type='text' required />
             <textarea
               name='body'
-              className='login-password'
-              type='text'
               placeholder='Message'
-              style={{
-                height: "200px",
-                width: "80%",
-                marginBottom: "20px",
-                padding: "10px",
-                color: "black",
-              }}
+              id='userMessage'
+              required
             ></textarea>
-            <div>
-              <button type='submit' className='createBtn'>
-                Submit email
-              </button>
-            </div>
+            <input type='submit' value='Submit' />
           </form>
         </div>
       </div>
