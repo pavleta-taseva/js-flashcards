@@ -51,56 +51,16 @@ const ContactForm = () => {
     <section className='login-section'>
       <div className='login-container'>
         <div className='loginForm-container'>
-          <form
-            action='http://localhost:5000/api/email-sender/651567092bdd8eee5f3bbfc0'
-            method='POST'
-          >
-            <h1>Send email</h1>
-            <p>Please enter your email data</p>
-            <label>Sender</label>
-            <br></br>
-            <div className='icon'>
-              <input
-                name='sender'
-                type='email'
-                className='login-password'
-              ></input>
-              <br></br>
-            </div>
-
-            <label>Subject</label>
-            <br></br>
-            <div className='icon'>
-              <input
-                name='subject'
-                className='login-password'
-                type='text'
-              ></input>
-              <br></br>
-            </div>
-            <textarea
-              name='body'
-              className='login-password'
-              type='text'
-              placeholder='Message'
-              style={{
-                height: "200px",
-                width: "80%",
-                marginBottom: "20px",
-                padding: "10px",
-                color: "black",
-              }}
-            ></textarea>
-            <input
-              type='hidden'
-              name='origin'
-              value='https://js-flashcards.netlify.app/'
-            />
-            <div>
-              <button type='submit' className='createBtn'>
-                Submit email
-              </button>
-            </div>
+          <form action='https://formspree.io/f/xknleeaa' method='POST'>
+            <label>
+              Your email:
+              <input type='email' name='email' />
+            </label>
+            <label>
+              Your message:
+              <textarea name='message'></textarea>
+            </label>
+            <button type='submit'>Send</button>
           </form>
         </div>
       </div>
